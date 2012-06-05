@@ -28,4 +28,7 @@
 # a build is to use PRODUCT_PACKAGES in a product definition file).
 #
 
+# HACK: inherit from the emulator - TODO: remove this
+include build/target/board/generic/BoardConfig.mk
+
 -include vendor/lge/mako/BoardConfigVendor.mk

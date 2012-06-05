@@ -14,14 +14,18 @@
 # limitations under the License.
 #
 
-# This is only a placeholder, which should be replaced once there's
-# a proper mako device
+# Sample: This is where we'd set a backup provider if we had one
+# $(call inherit-product, device/sample/products/backup_overlay.mk)
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/lge/mako/device.mk)
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 PRODUCT_NAME := full_mako
+PRODUCT_DEVICE := mako
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Full AOSP on Mako
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := owner path
-

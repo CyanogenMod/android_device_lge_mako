@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# HACK: inherit from the emulator - TODO: remove this
+$(call inherit-product, $(SRC_TARGET_DIR)/board/generic/device.mk)
+
 # The list of hardware-specific modules that are available in AOSP
 PRODUCT_PACKAGES :=
 
@@ -25,12 +28,13 @@ PRODUCT_PROPERTY_OVERRIDES :=
 
 # Finally, the kernel, which is special-cased so that it can be
 # overridden with an environment variable.
+# Temporarily disabled until we have a kernel - TODO: enable back
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-PRODUCT_COPY_FILES += \
-    device/lge/mako-kernel/kernel:kernel
+#PRODUCT_COPY_FILES += \
+#    device/lge/mako-kernel/kernel:kernel
 else
-PRODUCT_COPY_FILES += \
-    $(TARGET_PREBUILT_KERNEL):kernel
+#PRODUCT_COPY_FILES += \
+#    $(TARGET_PREBUILT_KERNEL):kernel
 endif
 
 # Inherit from the non-open-source side, if present
