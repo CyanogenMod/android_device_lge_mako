@@ -108,15 +108,18 @@ PRODUCT_PACKAGES += \
 	make_ext4fs \
 	setup_fs
 
-# HWComposer
-#PRODUCT_PACKAGES += \
-#	hwcomposer.default
 PRODUCT_PACKAGES += \
 	libgenlock \
 	liboverlay \
 	hwcomposer.msm8960 \
 	gralloc.msm8960 \
 	copybit.msm8960
+
+PRODUCT_PACKAGES += \
+	snd_soc_msm_2x_Fusion3 \
+	alsa.msm8960 \
+	audio_policy.msm8960 \
+	audio.primary.msm8960
 
 #Qcom spec graphics
 MM_GRAPHICS := libgsl
