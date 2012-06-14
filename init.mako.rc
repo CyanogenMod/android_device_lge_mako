@@ -232,7 +232,7 @@ on post-fs-data
 
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
-    symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
+    #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
     #Create directories for wiper services
     mkdir /data/wpstiles/ 0755 shell
@@ -389,10 +389,12 @@ service amp_unload /system/bin/amploader -u
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant -Dnl80211 -ddd
-    class late_start
-    user root
+service wpa_supplicant /system/bin/wpa_supplicant \
+	-Dnl80211 -iwlan0 -c/system/etc/wifi/wpa_supplicant.conf \
+	-C/data/misc/wifi/sockets -ddd
+    class main
     group wifi inet
+    socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
