@@ -610,3 +610,12 @@ service immvibed /system/bin/immvibed
 # underlying files in /data/media will be created with user and group media_rw (1023)
 service sdcard /system/bin/sdcard /data/media 1023 1023
     class late_start
+
+# Create ext4 filesystems when the partitions are empty or corrupted.
+service setup_fs /system/bin/setup_fs \
+    /dev/block/platform/msm_sdcc.1/by-name/userdata \
+    /dev/block/platform/msm_sdcc.1/by-name/cache
+    class core
+    user root
+    group root
+    oneshot
