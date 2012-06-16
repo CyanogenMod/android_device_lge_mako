@@ -141,6 +141,13 @@ PRODUCT_PACKAGES += \
 	libOmxVenc \
 	libOmxCore
 
+PRODUCT_PACKAGES += \
+	libloc_adapter \
+	libloc_eng \
+	libloc_api_v02 \
+	libgps.utils \
+	gps.msm8960
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
 
