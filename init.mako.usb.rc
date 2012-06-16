@@ -26,15 +26,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-on boot
-     write /sys/class/android_usb/android0/enable 0
-     write /sys/class/android_usb/android0/idVendor 18d1
-     write /sys/class/android_usb/android0/idProduct D002
-     write /sys/class/android_usb/android0/functions adb
-     write /sys/class/android_usb/android0/enable 1
-     start adbd
-     setprop sys.usb.state adb
-
 on property:service.adb.root=1
      write /sys/class/android_usb/android0/enable 0
      restart adbd

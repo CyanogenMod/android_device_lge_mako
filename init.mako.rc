@@ -128,6 +128,8 @@ on boot
     chmod 2770 /dev/socket/qmux_audio
     mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
     chmod 2770 /dev/socket/qmux_bluetooth
+    # Allow QMUX daemon to assign port open wait time
+    chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
 
     setprop wifi.interface wlan0
 
@@ -309,13 +311,9 @@ service cnd /system/bin/cnd
     class late_start
     socket cnd stream 666 root radio
 
-service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11 /dev/block/mmcblk0p17
-    class late_start
+service rmt_storage /system/bin/rmt_storage
+    class main
     user root
-    disabled
-
-on property:ro.emmc=1
-    start rmt_storage
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
@@ -325,59 +323,29 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     oneshot
 
 service bridgemgrd /system/bin/bridgemgrd
-    class late_start
+    class main
     user radio
     group radio
-    disabled
-
-service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
-    class late_start
-    user system
-    group system inet
-    disabled
-
-on property:ro.baseband="msm"
-    # Enable BT-DUN only for all msms
-    setprop ro.qualcomm.bluetooth.dun false
-
-service qmiproxy /system/bin/qmiproxy
-    class late_start
-    user radio
-    group radio
-    disabled
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
-    class late_start
+    class main
     user radio
     group radio audio bluetooth
-    disabled
+
+service kickstart /system/bin/qcks -i /firmware/image/
+    class main
+    oneshot
 
 service netmgrd /system/bin/netmgrd
-    class late_start
-    disabled
+    class main
+
 
 service sensors /system/bin/sensors.qcom
     class late_start
     user root
     group root
     disabled
-
-on property:ro.use_data_netmgrd=false
-    # netmgr not supported on specific target
-    stop netmgrd
-
-# Adjust socket buffer to enlarge TCP receive window for high bandwidth
-# but only if ro.data.large_tcp_window_size property is set.
-on property:ro.data.large_tcp_window_size=true
-    write /proc/sys/net/ipv4/tcp_adv_win_scale  1
-
-service btwlancoex /system/bin/sh /system/etc/init.qcom.coex.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet net_admin net_raw
-    disabled
-    oneshot
 
 service amp_init /system/bin/amploader -i
     class late_start
