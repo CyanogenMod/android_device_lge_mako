@@ -59,7 +59,7 @@ on fs
     #modem firmware files
     mkdir /firmware 0771 system system
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
-    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware nosuid
+    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro dmask=177 fmask=177
 
     #cache
     wait /dev/block/platform/msm_sdcc.1/by-name/cache
