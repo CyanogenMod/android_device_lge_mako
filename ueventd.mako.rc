@@ -2,3 +2,4 @@
 /dev/kgsl                 0666   system     system
 /dev/kgsl-3d0             0666   system     system
 /dev/ion                  0664   system     system
+/dev/msm_rotator          0664   system     system
