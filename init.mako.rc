@@ -28,10 +28,12 @@
 import init.mako.usb.rc
 
 on early-init
-    export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt/sdcard 0000 system system
     # for backwards compatibility
-    symlink /mnt/sdcard /sdcard
+    export EXTERNAL_STORAGE /storage/sdcard0
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
 
 on init
     # Set permissions for persist partition
@@ -597,7 +599,7 @@ service immvibed /system/bin/immvibed
     group root
     oneshot
 
-# create virtual SD card at /mnt/sdcard, based on the /data/media directory
+# create virtual SD card at /storage/sdcard0, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media will be created with user and group media_rw (1023)
 service sdcard /system/bin/sdcard /data/media 1023 1023

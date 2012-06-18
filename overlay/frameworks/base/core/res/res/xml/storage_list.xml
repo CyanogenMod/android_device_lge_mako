@@ -35,14 +35,10 @@
 -->
 
 <StorageList xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- removable is not set in nosdcard product -->
-    <storage android:mountPoint="/mnt/sdcard"
-                        android:storageDescription="@string/storage_internal"
-                        android:primary="true"
-                        android:emulated="true"
-                        android:mtpReserve="10" />
-    <storage android:mountPoint="/mnt/sdcard/external_sd"
-                        android:storageDescription="@string/storage_sd_card"
-                        android:removable="true"/>
+    <!-- internal emulated storage -->
+    <storage android:mountPoint="/storage/sdcard0"
+            android:storageDescription="@string/storage_internal"
+            android:primary="true"
+            android:emulated="true"
+            android:mtpReserve="100" />
 </StorageList>
-
