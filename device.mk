@@ -99,6 +99,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.audio.handset.mic=analog
+
 PRODUCT_CHARACTERISTICS := nosdcard
 
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -123,7 +126,8 @@ PRODUCT_PACKAGES += \
 	snd_soc_msm_2x_Fusion3 \
 	alsa.msm8960 \
 	audio_policy.msm8960 \
-	audio.primary.msm8960
+	audio.primary.msm8960 \
+	audio_policy.conf
 
 #Qcom spec graphics
 MM_GRAPHICS := libgsl
