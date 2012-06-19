@@ -40,10 +40,16 @@ on init
     mkdir /persist 0771 system system
 
 on fs
-    wait /dev/block/platform/msm_sdcc.1/by-name/system
-    chmod 0777 /sbin/e2fsck_static
-    exec /sbin/e2fsck_static -y /dev/block/platform/msm_sdcc.1/by-name/system
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
+
+    mount_all ./fstab.mako
+
+    # TODO: Move the following mount commands into the fstab. /system has
+    #       been moved to the fstab but is probably missing some options
+    #       to run a fsck.
+    # wait /dev/block/platform/msm_sdcc.1/by-name/system
+    # chmod 0777 /sbin/e2fsck_static
+    # exec /sbin/e2fsck_static -y /dev/block/platform/msm_sdcc.1/by-name/system
+    # mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
 
     #userdata
     wait /dev/block/platform/msm_sdcc.1/by-name/userdata
