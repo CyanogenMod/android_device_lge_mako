@@ -31,6 +31,10 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_PACKAGES := \
 	lights.msm8960
 
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    charger
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
         LiveWallpapers \
