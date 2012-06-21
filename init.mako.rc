@@ -192,10 +192,6 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
 
-    insmod /system/lib/modules/texfat.ko
-
-
-
 # import cne init file
 on post-fs
     export_rc /persist/init.cne.rc
