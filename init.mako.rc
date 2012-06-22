@@ -283,6 +283,7 @@ on post-fs-data
     mkdir /data/logger 0775 system system
     exec /system/bin/smpl_count
 
+    mkdir /data/qcks 0770 system system
     setprop vold.post_fs_data_done 1
 
 # Export GPIO56 for fusion targets to enable/disable hub
