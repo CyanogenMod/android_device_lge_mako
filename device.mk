@@ -61,19 +61,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/lge/mako/apq8064-tabla-snd-card_Button_Jack.kl:system/usr/keylayout/apq8064-tabla-snd-card_Button_Jack.kl \
 	device/lge/mako/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
+	device/lge/mako/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+	device/lge/mako/keypad_8064.kl:system/usr/keylayout/keypad_8064.kl \
 	device/lge/mako/apq8064-tabla-snd-card_Button_Jack.kcm:system/usr/keychars/apq8064-tabla-snd-card_Button_Jack.kcm \
-	device/lge/mako/hs_detect.kcm:system/usr/keychars/hs_detect.kcm
+	device/lge/mako/hs_detect.kcm:system/usr/keychars/hs_detect.kcm \
+	device/lge/mako/keypad_8064.kcm:system/usr/keychars/keypad_8064.kcm \
+	device/lge/mako/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm
 
 # Prebuilt input device calibration files
 PRODUCT_COPY_FILES += \
 	device/lge/mako/touch_dev.idc:system/usr/idc/touch_dev.idc
-
-ifeq (0,1)
-PRODUCT_COPY_FILES += \
-	device/lge/mako/mako-keypad.kl:system/usr/keylayout/mako-keypad.kl \
-	device/lge/mako/mako-keypad.kcm:system/usr/keychars/mako-keypad.kcm \
-	device/lge/mako/keypad_8064.idc:system/usr/idc/keypad_8064.idc
-endif
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
