@@ -191,6 +191,7 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
+    write /sys/class/leds/lcd-backlight/brightness 255
 
 # import cne init file
 on post-fs
