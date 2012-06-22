@@ -162,10 +162,6 @@ MM_GRAPHICS += gpu_dcvsd
 
 PRODUCT_PACKAGES += $(MM_GRAPHICS)
 
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	persist.sys.usb.config=pc_suite
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
 
