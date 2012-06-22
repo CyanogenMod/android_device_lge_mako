@@ -55,9 +55,6 @@ endif
 
 BOARD_EGL_CFG := device/lge/mako/egl.cfg
 
-# no hardware audio
-BOARD_USES_GENERIC_AUDIO := true
-
 # no hardware camera
 USE_CAMERA_STUB := true
 
