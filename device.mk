@@ -127,6 +127,11 @@ PRODUCT_PACKAGES += \
 	audio.primary.msm8960 \
 	audio_policy.conf
 
+PRODUCT_PACKAGES += \
+	libOmxVdec \
+	libOmxVenc \
+	libOmxCore
+
 #Qcom spec graphics
 MM_GRAPHICS := libgsl
 MM_GRAPHICS += libsc-adreno200.a
