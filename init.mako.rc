@@ -597,7 +597,8 @@ service sdcard /system/bin/sdcard /data/media 1023 1023
 # Create ext4 filesystems when the partitions are empty or corrupted.
 service setup_fs /system/bin/setup_fs \
     /dev/block/platform/msm_sdcc.1/by-name/userdata \
-    /dev/block/platform/msm_sdcc.1/by-name/cache
+    /dev/block/platform/msm_sdcc.1/by-name/cache \
+    /dev/block/platform/msm_sdcc.1/by-name/sns
     class core
     user root
     group root
