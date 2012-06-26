@@ -156,8 +156,13 @@ MM_GRAPHICS += a330_pfp.fw
 MM_GRAPHICS += a330_pm4.fw
 MM_GRAPHICS += gpu_dcvsd
 
+MM_VIDEO = libOmxVdec
+MM_VIDEO += libOmxVenc
+MM_VIDEO += libdivxdrmdecrypt
+MM_VIDEO += mm-vdec-omx-test
+MM_VIDEO += mm-venc-omx-test720p
 
-PRODUCT_PACKAGES += $(MM_GRAPHICS)
+PRODUCT_PACKAGES += $(MM_GRAPHICS) $(MM_VIDEO)
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
