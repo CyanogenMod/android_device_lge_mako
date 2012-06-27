@@ -363,9 +363,18 @@ service amp_unload /system/bin/amploader -u
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/wpa_supplicant \
-	-Dnl80211 -iwlan0 -c/system/etc/wifi/wpa_supplicant.conf \
-	-C/data/misc/wifi/sockets -ddd
+service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
+    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf \
+    -C/data/misc/wifi/sockets -ddd
+    class main
+    group wifi inet
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
+    -Dnl80211 -iwlan0 -c/data/misc/wifi/p2p_supplicant.conf \
+    -C/data/misc/wifi/sockets -ddd
     class main
     group wifi inet
     socket wpa_wlan0 dgram 660 wifi wifi
