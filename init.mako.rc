@@ -62,6 +62,11 @@ on fs
     exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/persist
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1 data=ordered nodelalloc
 
+    #tombstones
+    mkdir /tombstones 0771 system system
+    wait /dev/block/platform/msm_sdcc.1/by-name/tombstones
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/tombstones /tombstones nosuid nodev barrier=1
+
     #modem firmware files
     mkdir /firmware 0771 system system
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
@@ -597,7 +602,8 @@ service sdcard /system/bin/sdcard /data/media 1023 1023
 service setup_fs /system/bin/setup_fs \
     /dev/block/platform/msm_sdcc.1/by-name/userdata \
     /dev/block/platform/msm_sdcc.1/by-name/cache \
-    /dev/block/platform/msm_sdcc.1/by-name/sns
+    /dev/block/platform/msm_sdcc.1/by-name/sns \
+    /dev/block/platform/msm_sdcc.1/by-name/tombstones
     class core
     user root
     group root
