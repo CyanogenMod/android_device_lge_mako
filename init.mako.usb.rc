@@ -31,13 +31,12 @@ on property:service.adb.root=1
      restart adbd
      write /sys/class/android_usb/android0/enable 1
 
-# adb+diag USB configuration for programming non-Linux configuration using diag
-on property:sys.usb.config=diag,adb
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18d1
-    write /sys/class/android_usb/android0/idProduct 2d06
-    write /sys/class/android_usb/android0/f_diag/clients diag,diag_mdm
-    write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/class/android_usb/android0/enable 1
-    start adbd
-    setprop sys.usb.state ${sys.usb.config}
+# adb
+on boot
+     write /sys/class/android_usb/android0/enable 0
+     write /sys/class/android_usb/android0/idVendor 18d1
+     write /sys/class/android_usb/android0/idProduct D002
+     write /sys/class/android_usb/android0/functions adb
+     write /sys/class/android_usb/android0/enable 1
+     start adbd
+     setprop sys.usb.state adb
