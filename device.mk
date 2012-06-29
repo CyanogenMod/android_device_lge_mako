@@ -128,47 +128,12 @@ PRODUCT_PACKAGES += \
 	audio_policy.conf
 
 PRODUCT_PACKAGES += \
+	mm-vdec-omx-test \
+	mm-venc-omx-test720p \
+	libdivxdrmdecrypt \
 	libOmxVdec \
 	libOmxVenc \
 	libOmxCore
-
-#Qcom spec graphics
-MM_GRAPHICS := libgsl
-MM_GRAPHICS += libsc-adreno200.a
-MM_GRAPHICS += libEGL_adreno200
-MM_GRAPHICS += eglsubAndroid
-MM_GRAPHICS += libGLESv2_adreno200
-MM_GRAPHICS += libGLESv2S3D_adreno200
-MM_GRAPHICS += libGLESv1_CM_adreno200
-MM_GRAPHICS += libq3dtools_adreno200
-MM_GRAPHICS += libOpenVG
-MM_GRAPHICS += libC2D2
-MM_GRAPHICS += libc2d2_a3xx
-MM_GRAPHICS += libc2d2_z180
-MM_GRAPHICS += libllvm-a3xx
-MM_GRAPHICS += libOpenCL
-MM_GRAPHICS += libsc-a2xx
-MM_GRAPHICS += libsc-a3xx
-MM_GRAPHICS += yamato_pfp.fw
-MM_GRAPHICS += yamato_pm4.fw
-MM_GRAPHICS += leia_pfp_470.fw
-MM_GRAPHICS += leia_pm4_470.fw
-MM_GRAPHICS += a225_pfp.fw
-MM_GRAPHICS += a225_pm4.fw
-MM_GRAPHICS += a225p5_pm4.fw
-MM_GRAPHICS += a300_pfp.fw
-MM_GRAPHICS += a300_pm4.fw
-MM_GRAPHICS += a330_pfp.fw
-MM_GRAPHICS += a330_pm4.fw
-MM_GRAPHICS += gpu_dcvsd
-
-MM_VIDEO = libOmxVdec
-MM_VIDEO += libOmxVenc
-MM_VIDEO += libdivxdrmdecrypt
-MM_VIDEO += mm-vdec-omx-test
-MM_VIDEO += mm-venc-omx-test720p
-
-PRODUCT_PACKAGES += $(MM_GRAPHICS) $(MM_VIDEO)
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
