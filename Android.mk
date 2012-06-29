@@ -23,6 +23,8 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+ifneq ($(filter mako occam,$(TARGET_DEVICE)),)
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -33,4 +35,7 @@ LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
 include $(BUILD_PREBUILT)
 
+endif
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
