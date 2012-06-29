@@ -20,6 +20,7 @@
 /system/bin/qcks
 /system/bin/qmuxd
 /system/bin/rmt_storage
+/system/bin/sensors.qcom
 /system/etc/firmware/a225_pfp.fw
 /system/etc/firmware/a225_pm4.fw
 /system/etc/firmware/a300_pfp.fw
@@ -31,6 +32,7 @@
 /system/lib/egl/libGLESv1_CM_adreno200.so
 /system/lib/egl/libGLESv2S3D_adreno200.so
 /system/lib/egl/libGLESv2_adreno200.so
+/system/lib/hw/sensors.msm8960.so
 /system/lib/libdiag.so
 /system/lib/libDiagService.so
 /system/lib/libdsi_netctrl.so
@@ -53,3 +55,5 @@
 /system/lib/libril-qc-qmi-1.so
 /system/lib/libril-qcril-hook-oem.so
 /system/lib/libsc-a3xx.so
+/system/lib/libsensor1.so
+/system/lib/libsensor_reg.so
