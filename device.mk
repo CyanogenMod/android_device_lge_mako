@@ -50,6 +50,9 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_COPY_FILES += \
+	device/lge/mako/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3
+
+PRODUCT_COPY_FILES += \
 	device/lge/mako/init.mako.rc:root/init.mako.rc \
 	device/lge/mako/init.mako.usb.rc:root/init.mako.usb.rc \
 	device/lge/mako/fstab.mako:root/fstab.mako \
@@ -121,7 +124,6 @@ PRODUCT_PACKAGES += \
 	copybit.msm8960
 
 PRODUCT_PACKAGES += \
-	snd_soc_msm_2x_Fusion3 \
 	alsa.msm8960 \
 	audio_policy.msm8960 \
 	audio.primary.msm8960 \
