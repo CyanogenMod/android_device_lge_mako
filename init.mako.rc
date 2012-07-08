@@ -647,3 +647,9 @@ service setup_fs /system/bin/setup_fs \
     user root
     group root
     oneshot
+
+service thermald /system/bin/thermald
+    class main
+
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+    class main
