@@ -57,9 +57,6 @@ endif
 
 BOARD_EGL_CFG := device/lge/mako/egl.cfg
 
-# no hardware camera
-USE_CAMERA_STUB := true
-
 #BOARD_USES_HGL := true
 #BOARD_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true

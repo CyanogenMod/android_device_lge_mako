@@ -130,6 +130,10 @@ PRODUCT_PACKAGES += \
 	audio_policy.conf
 
 PRODUCT_PACKAGES += \
+	camera.msm8960 \
+	libmmcamera_interface2
+
+PRODUCT_PACKAGES += \
 	mm-vdec-omx-test \
 	mm-venc-omx-test720p \
 	libdivxdrmdecrypt \
