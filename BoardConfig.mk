@@ -36,7 +36,7 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOOTLOADER_BOARD_NAME := MAKO
 TARGET_BOOTLOADER_NAME=mako
-#TARGET_BOARD_INFO_FILE := device/lge/j1tm/board-info.txt
+TARGET_BOARD_INFO_FILE := device/lge/mako/board-info.txt
 
 # FIXME: HOSTAPD-derived wifi driver 
 ifeq (0,0)
