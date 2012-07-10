@@ -401,3 +401,8 @@ service bugreport /system/bin/bugmailer.sh -v
     disabled
     oneshot
     keycodes 114 115 116
+
+service qseecomd /system/bin/qseecomd
+    class late_start
+    user system
+    group system

@@ -34,3 +34,4 @@
 /dev/gemini*              0660   system     camera
 /dev/msm_dsps             0600   system     system
 /dev/bcm2079x-i2c         0660   nfc        nfc
+/dev/qseecom              0666   system     drmrpc
