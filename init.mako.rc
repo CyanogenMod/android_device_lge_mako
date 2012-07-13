@@ -27,6 +27,8 @@ on early-init
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
+    mkdir /tombstones 0771 system system
+    mkdir /firmware 0771 system system
 
 on fs
 
@@ -35,63 +37,10 @@ on fs
     # TODO: Move the following mount commands into the fstab. /system has
     #       been moved to the fstab but is probably missing some options
     #       to run a fsck.
-    # wait /dev/block/platform/msm_sdcc.1/by-name/system
-    # chmod 0777 /sbin/e2fsck_static
-    # exec /sbin/e2fsck_static -y /dev/block/platform/msm_sdcc.1/by-name/system
-    # mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
-
-    #userdata
-    wait /dev/block/platform/msm_sdcc.1/by-name/userdata
-    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/userdata
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/userdata /data nosuid nodev barrier=1 data=ordered noauto_da_alloc
-
-    #persist
-    mkdir /persist 0771 system system
-    wait /dev/block/platform/msm_sdcc.1/by-name/persist
-    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/persist
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1 data=ordered nodelalloc
-
-    #tombstones
-    mkdir /tombstones 0771 system system
-    wait /dev/block/platform/msm_sdcc.1/by-name/tombstones
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/tombstones /tombstones nosuid nodev barrier=1
 
     #modem firmware files
-    mkdir /firmware 0771 system system
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro dmask=177 fmask=177
-
-    #cache
-    wait /dev/block/platform/msm_sdcc.1/by-name/cache
-    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/cache
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1 data=ordered
-
-    #persist-lg
-    mkdir /persist-lg 0771 system system
-    wait /dev/block/platform/msm_sdcc.1/by-name/drm
-    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/drm
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/drm /persist-lg nosuid nodev barrier=1 data=ordered
-
-    #mpt
-    mkdir /mpt 0775 system system
-    wait /dev/block/platform/msm_sdcc.1/by-name/mpt
-    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/mpt
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/mpt /mpt nosuid nodev barrier=1 data=ordered
-
-    #factory
-    mkdir /factory 0775 system system
-    wait /dev/block/platform/msm_sdcc.1/by-name/factory
-    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/factory
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/factory /factory nosuid nodev barrier=1 data=ordered
-	chmod 0775 /factory
-	chown system system /factory
-
-    #sns
-    mkdir /sns 0775 system system
-    wait /dev/block/platform/msm_sdcc.1/by-name/sns
-    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/sns
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/sns /sns nosuid nodev barrier=1 data=ordered
-    mkdir /sns/cal 0771 system system
 
     setprop ro.crypto.fuse_sdcard true
 
