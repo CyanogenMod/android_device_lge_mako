@@ -312,12 +312,18 @@ service rmt_storage /system/bin/rmt_storage
     class main
     user root
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+service hciattach /system/bin/sh /system/etc/init.mako.bt.sh
     class late_start
     user bluetooth
     group qcom_oncrpc bluetooth net_bt_admin system
     disabled
     oneshot
+
+on property:bluetooth.hciattach=true
+    start hciattach
+
+on property:bluetooth.hciattach=false
+    write /sys/module/hci_smd/parameters/hcismd_set 0
 
 service bridgemgrd /system/bin/bridgemgrd
     class main

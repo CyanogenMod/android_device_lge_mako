@@ -50,6 +50,9 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_COPY_FILES += \
+	system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
+
+PRODUCT_COPY_FILES += \
 	device/lge/mako/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3
 
 PRODUCT_COPY_FILES += \
@@ -128,6 +131,15 @@ PRODUCT_PACKAGES += \
 	audio_policy.msm8960 \
 	audio.primary.msm8960 \
 	audio_policy.conf
+
+PRODUCT_PACKAGES += \
+	hci_qcomm_init
+
+PRODUCT_COPY_FILES += \
+	device/lge/mako/init.mako.bt.sh:system/etc/init.mako.bt.sh
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.qualcomm.bt.hci_transport=smd
 
 PRODUCT_PACKAGES += \
 	camera.msm8960 \
