@@ -128,11 +128,6 @@ on boot
     # Allow QMUX daemon to assign port open wait time
     chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
 
-    setprop wifi.interface wlan0
-
-    # Enable Bluetooth 802.11 PAL when Bluetooth is turned on
-    setprop ro.config.bt.amp no
-
     #Set SUID bit for usbhub
     chmod 4755 /system/bin/usbhub
     chmod 755 /system/bin/usbhub_init

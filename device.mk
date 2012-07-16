@@ -155,6 +155,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	drm.service.enabled=true \
 	ro.telephony.default_network=9
 
+PRODUCT_PROPERTY_OVERRIDES += \
+	wifi.interface=wlan0 \
+	wifi.supplicant_scan_interval=15
+
 # for bugmailer
 PRODUCT_PACKAGES += send_bug
 PRODUCT_COPY_FILES += \
