@@ -1,2 +1,2 @@
-require board=mako
+require board=mako|J1TM
 
