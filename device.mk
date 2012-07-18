@@ -45,9 +45,9 @@ PRODUCT_COPY_FILES := \
 
 PRODUCT_COPY_FILES += \
 	device/lge/mako-kernel/prima_wlan.ko:system/lib/modules/wlan.ko \
-	device/lge/mako/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-	device/lge/mako/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-	device/lge/mako/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+	device/lge/mako/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
+	device/lge/mako/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+	device/lge/mako/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_COPY_FILES += \
 	system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
@@ -159,6 +159,10 @@ PRODUCT_PACKAGES += \
 	libloc_api_v02 \
 	libgps.utils \
 	gps.msm8960
+
+PRODUCT_PACKAGES += \
+	libwfcu \
+	conn_init
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
