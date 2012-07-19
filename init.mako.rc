@@ -369,7 +369,7 @@ service amp_unload /system/bin/amploader -u
 
 service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf \
-    -C/data/misc/wifi/sockets -ddd
+    -C/data/misc/wifi/sockets
     class main
     group wifi inet
     socket wpa_wlan0 dgram 660 wifi wifi
@@ -378,7 +378,7 @@ service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
 
 service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -Dnl80211 -iwlan0 -c/data/misc/wifi/p2p_supplicant.conf \
-    -C/data/misc/wifi/sockets -ddd
+    -C/data/misc/wifi/sockets
     class main
     group wifi inet
     socket wpa_wlan0 dgram 660 wifi wifi
@@ -479,7 +479,7 @@ service ppd /system/bin/mm-pp-daemon
     socket pps stream 0660 system system graphics
     group system graphics
 
-service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
+service hostapd /system/bin/hostapd -d /data/hostapd/hostapd.conf
     class late_start
     user root
     group root
