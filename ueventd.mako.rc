@@ -32,3 +32,4 @@
 /dev/v4l-subdev*          0660   system     camera
 /dev/msm_camera/*         0660   system     camera
 /dev/gemini*              0660   system     camera
+/dev/msm_dsps             0600   system     system
