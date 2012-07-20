@@ -53,7 +53,8 @@ PRODUCT_COPY_FILES += \
 	system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
 
 PRODUCT_COPY_FILES += \
-	device/lge/mako/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3
+	device/lge/mako/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
+	device/lge/mako/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
 	device/lge/mako/init.mako.rc:root/init.mako.rc \
@@ -130,7 +131,8 @@ PRODUCT_PACKAGES += \
 	alsa.msm8960 \
 	audio_policy.msm8960 \
 	audio.primary.msm8960 \
-	audio_policy.conf
+	audio.a2dp.default \
+	audio.usb.default
 
 PRODUCT_PACKAGES += \
 	hci_qcomm_init
