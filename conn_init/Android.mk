@@ -52,27 +52,33 @@ LOCAL_MODULE := WCNSS_qcom_cfg.ini
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_OWNER := lge
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/firmware/wlan/prima
 include $(BUILD_SYSTEM)/base_rules.mk
-$(LOCAL_BUILT_MODULE): PRIVATE_LINK_PATH := $(LOCAL_MODULE_PATH)/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): PRIVATE_DIRECTORY_PATH := $(LOCAL_MODULE_PATH)
+$(LOCAL_BUILT_MODULE): TARGET := /data/misc/wifi/$(LOCAL_MODULE)
+$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/prima/$(LOCAL_MODULE)
 $(LOCAL_BUILT_MODULE):
-	@echo Creating Wifi Link... WCNSS_qcom_cfg_mako.ini
-	mkdir -p $(PRIVATE_DIRECTORY_PATH)
-	ln -sf /data/misc/wifi/WCNSS_qcom_cfg.ini $(PRIVATE_LINK_PATH)
+	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
+	$(hide) mkdir -p $(dir $@)
+	$(hide) mkdir -p $(dir $(SYMLINK))
+	$(hide) rm -rf $@
+	$(hide) rm -rf $(SYMLINK)
+	$(hide) ln -sf $(TARGET) $(SYMLINK)
+	$(hide) touch $@
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := WCNSS_qcom_wlan_nv.bin
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_OWNER := lge
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/firmware/wlan/prima
 include $(BUILD_SYSTEM)/base_rules.mk
-$(LOCAL_BUILT_MODULE): PRIVATE_LINK_PATH := $(LOCAL_MODULE_PATH)/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): PRIVATE_DIRECTORY_PATH := $(LOCAL_MODULE_PATH)
+$(LOCAL_BUILT_MODULE): TARGET := /data/misc/wifi/$(LOCAL_MODULE)
+$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/prima/$(LOCAL_MODULE)
 $(LOCAL_BUILT_MODULE):
-	@echo Creating Wifi Link... WCNSS_qcom_wlan_nv_mako.bin
-	mkdir -p $(PRIVATE_DIRECTORY_PATH)
-	ln -sf /data/misc/wifi/WCNSS_qcom_wlan_nv.bin $(PRIVATE_LINK_PATH)
+	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
+	$(hide) mkdir -p $(dir $@)
+	$(hide) mkdir -p $(dir $(SYMLINK))
+	$(hide) rm -rf $@
+	$(hide) rm -rf $(SYMLINK)
+	$(hide) ln -sf $(TARGET) $(SYMLINK)
+	$(hide) touch $@
 
 endif
