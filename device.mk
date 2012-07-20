@@ -161,6 +161,7 @@ PRODUCT_PACKAGES += \
 	gps.msm8960
 
 PRODUCT_PACKAGES += \
+	bdAddrLoader \
 	libwfcu \
 	conn_init
 

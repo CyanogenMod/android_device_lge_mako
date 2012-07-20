@@ -4,8 +4,6 @@ BLUETOOTH_SLEEP_PATH=/proc/bluetooth/sleep/proto
 LOG_TAG="mako-bluetooth"
 LOG_NAME="${0}:"
 
-hciattach_pid=""
-
 loge ()
 {
   /system/bin/log -t $LOG_TAG -p e "$LOG_NAME $@"
@@ -31,6 +29,11 @@ TRANSPORT=`getprop ro.qualcomm.bt.hci_transport`
 #find the transport type
 logi "Transport : $TRANSPORT"
 
+#load bd addr
+BDADDR=`/system/bin/bdAddrLoader -p`
+
+logi "BDADDR: $BDADDR"
+
 case $POWER_CLASS in
   1) PWR_CLASS="-p 0" ;
      logi "Power Class: 1";;
@@ -43,7 +46,12 @@ case $POWER_CLASS in
      logi "Power Class: To override, Before turning BT ON; setprop qcom.bt.dev_power_class <1 or 2 or 3>";;
 esac
 
-logwrapper /system/bin/hci_qcomm_init -e $PWR_CLASS
+if ["$BDADDR" == ""]
+then
+  logwrapper /system/bin/hci_qcomm_init -e $PWR_CLASS -vv
+else
+  logwrapper /system/bin/hci_qcomm_init -b $BDADDR -e $PWR_CLASS -vv
+fi
 
 case $? in
   0) logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD $BTS_ADDRESS";;
