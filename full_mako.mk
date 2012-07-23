@@ -30,12 +30,3 @@ PRODUCT_RESTRICT_VENDOR_FILES := true
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/lge/mako/device.mk)
 $(call inherit-product-if-exists, vendor/lge/mako/device-vendor.mk)
-
-GPS_HARDWARE := gps.default
-GPS_HARDWARE += gps.mahimahi
-GPS_HARDWARE += libloc_adapter
-GPS_HARDWARE += libgps.utils
-GPS_HARDWARE += libloc_eng
-GPS_HARDWARE += libloc_api_v02
-PRODUCT_PACKAGES += $(GPS_HARDWARE)
-
