@@ -127,6 +127,11 @@ on boot
     # do not panic when a subsystem crashes
     write /sys/module/subsystem_restart/parameters/restart_level 3
 
+# NFC Feature
+    chmod 0600 /dev/bcm2079x-i2c
+    chown nfc system /dev/bcm2079x-i2c
+    setprop ro.nfc.port I2C
+
 # msm specific files that need to be created on /data
 on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
