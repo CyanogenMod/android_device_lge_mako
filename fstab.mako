@@ -7,4 +7,4 @@
 /dev/block/platform/msm_sdcc.1/by-name/tombstones   /tombstones     ext4    nosuid,nodev,barrier=1                                          wait
 /dev/block/platform/msm_sdcc.1/by-name/cache        /cache          ext4    noatime,nosuid,nodev,barrier=1,data=ordered                     wait
 /dev/block/platform/msm_sdcc.1/by-name/userdata     /data           ext4    noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc     wait,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
-/dev/block/platform/msm_sdcc.1/by-name/persist      /persist        ext4    nosuid,nodev,barrier=1,data=ordered,nodelalloc                  wait
+/dev/block/platform/msm_sdcc.1/by-name/persist      /persist        ext4    ro,barrier=1                                                    wait
