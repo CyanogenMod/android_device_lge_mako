@@ -409,3 +409,10 @@ service conn_init /system/bin/logwrapper /system/bin/conn_init
     user system
     group system wifi
     oneshot
+
+# bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/bugmailer.sh -v
+    class main
+    disabled
+    oneshot
+    keycodes 114 115 116
