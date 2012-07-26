@@ -168,8 +168,8 @@ on post-fs-data
     write /data/system/sensors/settings 1
     chmod 660 /data/system/sensors/settings
 
-    mkdir /data/misc/sensors
-    chmod 775 /data/misc/sensors
+    mkdir /persist/sensors
+    chmod 775 /persist/sensors
 
     #Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
