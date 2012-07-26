@@ -324,11 +324,6 @@ service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
-service hdmid /system/bin/hdmid
-    class late_start
-    socket hdmid stream 0660 root system graphics
-    disabled
-
 service hostapd /system/bin/hostapd -d /data/hostapd/hostapd.conf
     class late_start
     user root
