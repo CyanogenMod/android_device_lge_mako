@@ -112,8 +112,6 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
-    # do not panic when a subsystem crashes
-    write /sys/module/subsystem_restart/parameters/restart_level 3
 
 # NFC Feature
     chmod 0600 /dev/bcm2079x-i2c
