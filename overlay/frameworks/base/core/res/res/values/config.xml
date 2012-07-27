@@ -38,15 +38,16 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>2</item>
         <item>10</item>
+        <item>50</item>
+        <item>100</item>
         <item>200</item>
+        <item>400</item>
         <item>500</item>
+        <item>800</item>
         <item>1000</item>
-        <item>2000</item>
-        <item>4000</item>
-        <item>6000</item>
-        <item>8000</item>
+        <item>1600</item>
+        <item>3000</item>
         <item>10000</item>
     </integer-array>
 
@@ -55,16 +56,17 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>5</item>    <!-- 0-1 -->
-        <item>10</item>   <!-- 1-10 -->
-        <item>20</item>   <!-- 10-200 -->
-        <item>40</item>   <!-- 200-500 -->
-        <item>60</item>   <!-- 500-1000 -->
-        <item>80</item>   <!-- 1000-2000 -->
-        <item>100</item>  <!-- 2000-4000 -->
-        <item>120</item>  <!-- 4000-6000 -->
-        <item>140</item>  <!-- 6000-8000 -->
-        <item>160</item>  <!-- 8000-10000 -->
+        <item>20</item>   <!-- 0-10 -->
+        <item>38</item>   <!-- 10-50 -->
+        <item>49</item>   <!-- 50-100 -->
+        <item>67</item>   <!-- 100-200 -->
+        <item>99</item>   <!-- 200-400 -->
+        <item>105</item>  <!-- 400-500 -->
+        <item>130</item>  <!-- 500-800 -->
+        <item>148</item>  <!-- 800-1000 -->
+        <item>200</item>  <!-- 1000-1600 -->
+        <item>250</item>  <!-- 1600-3000 -->
+        <item>255</item>  <!-- 3000-10000 -->
         <item>255</item>  <!-- 10000+ -->
     </integer-array>
 
@@ -73,6 +75,7 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
+        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
