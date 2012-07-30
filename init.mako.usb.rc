@@ -14,11 +14,6 @@
 # limitations under the License.
 #
 
-on property:service.adb.root=1
-     write /sys/class/android_usb/android0/enable 0
-     restart adbd
-     write /sys/class/android_usb/android0/enable 1
-
 # adb
 on boot
      write /sys/class/android_usb/android0/enable 0
@@ -28,3 +23,4 @@ on boot
      write /sys/class/android_usb/android0/enable 1
      start adbd
      setprop sys.usb.state adb
+
