@@ -112,8 +112,6 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
-    # do not panic when a subsystem crashes
-    write /sys/module/subsystem_restart/parameters/restart_level 3
 
 # NFC Feature
     chmod 0600 /dev/bcm2079x-i2c
@@ -325,11 +323,6 @@ service iprenew_p2p /system/bin/dhcpcd -n p2p
 service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
-
-service hdmid /system/bin/hdmid
-    class late_start
-    socket hdmid stream 0660 root system graphics
-    disabled
 
 service hostapd /system/bin/hostapd -d /data/hostapd/hostapd.conf
     class late_start

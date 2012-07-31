@@ -176,8 +176,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	drm.service.enabled=true \
-	ro.telephony.default_network=9
+	drm.service.enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0 \
