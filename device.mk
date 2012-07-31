@@ -96,12 +96,38 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
 	frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
 	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-	frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 #	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+
+# NFC packages
+PRODUCT_PACKAGES += \
+    libnfc-nci \
+    libnfc_nci_jni \
+    NfcNci \
+    Tag \
+    com.android.nfc_extras
+
+# NFCEE access control
+ifeq ($(TARGET_BUILD_VARIANT),user)
+    NFCEE_ACCESS_PATH := device/lge/mako/nfc/nfcee_access.xml
+else
+    NFCEE_ACCESS_PATH := device/lge/mako/nfc/nfcee_access_debug.xml
+endif
+
+# NFC access control + feature files + configuration
+PRODUCT_COPY_FILES += \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    device/lge/mako/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+
+# NFC firmware for BCM2079x
+PRODUCT_COPY_FILES += \
+    hardware/broadcom/nfc/bcm2079x/bcm2079x_firmware.ncd:system/vendor/firmware/bcm2079x_firmware.ncd \
+    hardware/broadcom/nfc/bcm2079x/bcm2079x_pre_firmware.ncd:system/vendor/firmware/bcm2079x_pre_firmware.ncd
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=131072

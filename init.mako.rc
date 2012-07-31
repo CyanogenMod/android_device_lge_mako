@@ -113,10 +113,9 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
 
-# NFC Feature
-    chmod 0600 /dev/bcm2079x-i2c
-    chown nfc system /dev/bcm2079x-i2c
-    setprop ro.nfc.port I2C
+# NFC: create data/nfc for nv storage
+    mkdir /data/nfc 770 nfc nfc
+    mkdir /data/nfc/param 770 nfc nfc
 
 # msm specific files that need to be created on /data
 on post-fs-data
