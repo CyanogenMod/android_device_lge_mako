@@ -136,7 +136,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.audio.handset.mic=analog
+	persist.audio.handset.mic=dmic \
+	persist.audio.fluence.mode=endfire
 
 PRODUCT_CHARACTERISTICS := nosdcard
 

@@ -30,7 +30,7 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=mako lpj=
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01300000
 
 BOARD_USES_ALSA_AUDIO:= true
-
+BOARD_USES_FLUENCE_INCALL := true
 BOARD_HAVE_BLUETOOTH := true
 
 TARGET_NO_RADIOIMAGE := true

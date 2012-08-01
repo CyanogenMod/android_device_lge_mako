@@ -124,17 +124,17 @@ SectionVerb
 EndSection
 
 SectionVerb
-        Name "HiFiPROXY Tx"
+	Name "HiFiPROXY Tx"
 
-        EnableSequence
-        EndSequence
+	EnableSequence
+	EndSequence
 
-        DisableSequence
-        EndSequence
+	DisableSequence
+	EndSequence
 
-        # ALSA PCMs
-        CapturePCM 0
-        PlaybackPCM 0
+	# ALSA PCMs
+	CapturePCM 0
+	PlaybackPCM 0
 
 EndSection
 }
@@ -256,17 +256,17 @@ SectionVerb
 EndSection
 
 SectionVerb
-        Name "HiFi Low PowerPROXY Tx"
+	Name "HiFi Low PowerPROXY Tx"
 
-        EnableSequence
-        EndSequence
+	EnableSequence
+	EndSequence
 
-        DisableSequence
-        EndSequence
+	DisableSequence
+	EndSequence
 
-        # ALSA PCMs
-        CapturePCM 0
-        PlaybackPCM 4
+	# ALSA PCMs
+	CapturePCM 0
+	PlaybackPCM 4
 
 EndSection
 }
@@ -881,19 +881,19 @@ SectionVerb
 
 EndSection
 
-SectionVerb
-        Name "HiFi TunnelPROXY Rx"
+	SectionVerb
+	Name "HiFi TunnelPROXY Rx"
 
-        EnableSequence
-                'AFE_PCM_RX Audio Mixer MultiMedia4':1:1
-        EndSequence
+	EnableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia4':1:1
+	EndSequence
 
-        DisableSequence
-                'AFE_PCM_RX Audio Mixer MultiMedia4':1:0
-        EndSequence
+	DisableSequence
+		'AFE_PCM_RX Audio Mixer MultiMedia4':1:0
+	EndSequence
 
-        # ALSA PCMs
-        PlaybackPCM 9
+	# ALSA PCMs
+	PlaybackPCM 9
 
 EndSection
 
@@ -902,19 +902,19 @@ SectionUseCase."ADSP testfwk" {
 Comment "ADSP testfwk use case"
 
 SectionVerb
-        Name "ADSP testfwk"
+	Name "ADSP testfwk"
 
-        EnableSequence
+	EnableSequence
 		'SLIMBUS_DL_HL Switch':1:1
-        EndSequence
+	EndSequence
 
-        DisableSequence
+	DisableSequence
 		'SLIMBUS_DL_HL Switch':1:0
-        EndSequence
+	EndSequence
 
-        # ALSA PCMs
-        PlaybackPCM 5
-        CapturePCM 5
+	# ALSA PCMs
+	PlaybackPCM 5
+	CapturePCM 5
 
 EndSection
 }
@@ -1446,37 +1446,36 @@ EndSection
 
 SectionDevice
 
-        Name "QMIC"
-        Comment "Quad mic device"
+	Name "QMIC"
+	Comment "Quad mic device"
+	EnableSequence
+		'SLIM_0_TX Channels':0:Four
+		'SLIM TX7 MUX':0:DEC7
+		'DEC7 MUX':0:DMIC1
+		'SLIM TX8 MUX':0:DEC8
+		'DEC8 MUX':0:DMIC2
+		'SLIM TX9 MUX':0:DEC10
+		'DEC10 MUX':0:DMIC3
+		'SLIM TX10 MUX':0:DEC9
+		'DEC9 MUX':0:DMIC4
+		'MICBIAS1 CAPLESS Switch':1:1
+		'MICBIAS3 CAPLESS Switch':1:1
+	EndSequence
 
-        EnableSequence
-                'SLIM_0_TX Channels':0:Four
-                'SLIM TX7 MUX':0:DEC7
-                'DEC7 MUX':0:DMIC1
-                'SLIM TX8 MUX':0:DEC8
-                'DEC8 MUX':0:DMIC2
-                'SLIM TX9 MUX':0:DEC10
-                'DEC10 MUX':0:DMIC3
-                'SLIM TX10 MUX':0:DEC9
-                'DEC9 MUX':0:DMIC4
-                'MICBIAS1 CAPLESS Switch':1:1
-                'MICBIAS3 CAPLESS Switch':1:1
-        EndSequence
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC7 MUX':0:ZERO
+		'SLIM TX8 MUX':0:ZERO
+		'DEC8 MUX':0:ZERO
+		'SLIM TX9 MUX':0:ZERO
+		'DEC9 MUX':0:ZERO
+		'SLIM TX10 MUX':0:ZERO
+		'DEC10 MUX':0:ZERO
+		'MICBIAS1 CAPLESS Switch':1:0
+		'MICBIAS3 CAPLESS Switch':1:0
+	EndSequence
 
-        DisableSequence
-                'SLIM TX7 MUX':0:ZERO
-                'DEC7 MUX':0:ZERO
-                'SLIM TX8 MUX':0:ZERO
-                'DEC8 MUX':0:ZERO
-                'SLIM TX9 MUX':0:ZERO
-                'DEC9 MUX':0:ZERO
-                'SLIM TX10 MUX':0:ZERO
-                'DEC10 MUX':0:ZERO
-                'MICBIAS1 CAPLESS Switch':1:0
-                'MICBIAS3 CAPLESS Switch':1:0
-        EndSequence
-
-        ACDBID  19:2
+	ACDBID  19:2
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
@@ -1517,22 +1516,25 @@ SectionDevice
 
 	EnableSequence
 		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
+		'DEC7 MUX':0:ADC1
 		'SLIM TX8 MUX':0:DEC9
-		'DEC9 MUX':0:DMIC4
-		'MICBIAS1 CAPLESS Switch':1:1
-		'MICBIAS3 CAPLESS Switch':1:1
+		'DEC9 MUX':0:ADC3
+		'DEC7 Volume':1:63
+		'ADC1 Volume':1:100
+		'DEC9 Volume':1:63
+		'ADC3 Volume':1:100
 		'SLIM_0_TX Channels':0:Two
-		'IIR1 INP1 Volume':1:50
-		'IIR1 INP1 MUX':0:DEC7
+		'MICBIAS1 CAPLESS Switch':1:0
 	EndSequence
 
 	DisableSequence
+		'DEC7 Volume':1:60
+		'DEC9 Volume':1:60
 		'SLIM TX7 MUX':0:ZERO
 		'DEC7 MUX':0:ZERO
 		'SLIM TX8 MUX':0:ZERO
 		'DEC9 MUX':0:ZERO
-		'MICBIAS1 CAPLESS Switch':1:0
+		'MICBIAS1 CAPLESS Switch':1:1
 		'MICBIAS3 CAPLESS Switch':1:0
 		'IIR1 INP1 Volume':1:0
 		'IIR1 INP1 MUX':0:ZERO
@@ -1575,9 +1577,9 @@ SectionDevice
 
 	EnableSequence
 		'SLIM TX7 MUX':0:DEC7
-		'DEC7 MUX':0:DMIC1
+		'DEC7 MUX':0:ADC1
 		'SLIM TX8 MUX':0:DEC9
-		'DEC9 MUX':0:DMIC4
+		'DEC9 MUX':0:ADC3
 		'MICBIAS1 CAPLESS Switch':1:1
 		'MICBIAS3 CAPLESS Switch':1:1
 		'SLIM_0_TX Channels':0:Two
