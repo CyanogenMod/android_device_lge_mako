@@ -881,7 +881,7 @@ SectionVerb
 
 EndSection
 
-	SectionVerb
+SectionVerb
 	Name "HiFi TunnelPROXY Rx"
 
 	EnableSequence
@@ -1345,6 +1345,56 @@ SectionDevice
 
 	ACDBID	4:2
 	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Camcorder Tx"
+	Comment "Camcorder Tx device"
+
+	EnableSequence
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX7 MUX':0:DEC6
+		'DEC6 MUX':0:ADC1
+		'DEC6 Volume':1:72
+		'ADC1 Volume':1:100
+		'MICBIAS1 CAPLESS Switch':1:0
+	EndSequence
+
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC6 MUX':0:ZERO
+		'DEC6 Volume':1:60
+		'ADC1 Volume':1:0
+		'MICBIAS1 CAPLESS Switch':1:1
+	EndSequence
+
+	ACDBID	61:2
+
+EndSection
+
+SectionDevice
+	Name "Voice Recognition"
+	Comment "Voice Recognition Tx device"
+
+	EnableSequence
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX7 MUX':0:DEC6
+		'DEC6 MUX':0:ADC1
+		'DEC6 Volume':1:60
+		'ADC1 Volume':1:100
+		'MICBIAS1 CAPLESS Switch':1:0
+	EndSequence
+
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC6 MUX':0:ZERO
+		'DEC6 Volume':1:60
+		'ADC1 Volume':1:0
+		'MICBIAS1 CAPLESS Switch':1:1
+	EndSequence
+
+	ACDBID	62:2
 
 EndSection
 
