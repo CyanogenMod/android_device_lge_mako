@@ -17,6 +17,8 @@
 import init.mako.usb.rc
 
 on early-init
+    mount debugfs debugfs /sys/kernel/debug
+
     # for backwards compatibility
     export EXTERNAL_STORAGE /storage/sdcard0
     mkdir /storage 0050 system sdcard_r
