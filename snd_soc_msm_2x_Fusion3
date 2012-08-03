@@ -1569,9 +1569,9 @@ SectionDevice
 		'DEC7 MUX':0:ADC1
 		'SLIM TX8 MUX':0:DEC9
 		'DEC9 MUX':0:ADC3
-		'DEC7 Volume':1:63
+		'DEC7 Volume':1:64
 		'ADC1 Volume':1:100
-		'DEC9 Volume':1:63
+		'DEC9 Volume':1:64
 		'ADC3 Volume':1:100
 		'SLIM_0_TX Channels':0:Two
 		'MICBIAS1 CAPLESS Switch':1:0
@@ -2287,6 +2287,79 @@ SectionModifier
 		'IIR1 Band3':2:0x0 0x0 0x0 0x0 0x0
 		'IIR1 Band4':2:0x0 0x0 0x0 0x0 0x0
 		'IIR1 Band5':2:0x0 0x0 0x0 0x0 0x0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 12
+	CapturePCM 12
+
+EndSection
+
+SectionModifier
+	Name "Play VoiceSpeaker"
+
+	EnableSequence
+		'STUB_RX Mixer Voice Stub':1:1
+		'RX3 Digital Volume':1:70
+		'LINEOUT1 Volume':1:100
+		'LINEOUT2 Volume':1:100
+		'LINEOUT3 Volume':1:100
+		'LINEOUT4 Volume':1:100
+	EndSequence
+
+	DisableSequence
+		'RX3 Digital Volume':1:70
+		'LINEOUT1 Volume':1:58
+		'LINEOUT2 Volume':1:58
+		'LINEOUT3 Volume':1:58
+		'LINEOUT4 Volume':1:58
+		'STUB_RX Mixer Voice Stub':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 12
+	CapturePCM 12
+
+EndSection
+
+SectionModifier
+	Name "Play VoiceHeadphones"
+
+	EnableSequence
+		'RX1 Digital Volume':1:53
+		'RX2 Digital Volume':1:53
+		'HPHL Volume':1:50
+		'HPHR Volume':1:50
+	EndSequence
+
+	DisableSequence
+		'RX1 Digital Volume':1:53
+		'RX2 Digital Volume':1:53
+		'HPHL Volume':1:50
+		'HPHR Volume':1:50
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 12
+	CapturePCM 12
+
+EndSection
+
+SectionModifier
+	Name "Play VoiceLine"
+
+	EnableSequence
+		'Voice Stub Tx Mixer STUB_TX_HL':1:1
+		'Voice Stub Tx Mixer STUB_1_TX_HL':1:1
+		'DEC4 Volume':1:63
+		'ADC3 Volume':1:100
+	EndSequence
+
+	DisableSequence
+		'DEC4 Volume':1:73
+		'ADC3 Volume':1:100
+		'Voice Stub Tx Mixer STUB_TX_HL':1:0
+		'Voice Stub Tx Mixer STUB_1_TX_HL':1:0
 	EndSequence
 
 	# ALSA PCMs
