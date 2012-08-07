@@ -34,11 +34,6 @@ on init
 
 on fs
     mount_all ./fstab.mako
-
-    #modem firmware files
-    wait /dev/block/platform/msm_sdcc.1/by-name/modem
-    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro dmask=177 fmask=177
-
     setprop ro.crypto.fuse_sdcard true
 
 on early-boot
