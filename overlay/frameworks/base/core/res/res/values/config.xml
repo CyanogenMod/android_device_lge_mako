@@ -180,7 +180,10 @@
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
-      <item>20</item>
+        <item>20</item>
     </integer-array>
+
+    <!-- enable screen saver feature -->
+    <bool name="config_enableDreams">true</bool>
 
 </resources>
