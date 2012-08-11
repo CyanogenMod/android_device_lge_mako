@@ -1859,7 +1859,6 @@ SectionDevice
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC7
 		'DEC7 MUX':0:ADC1
-		'DEC7 Volume':1:80
 		'ADC1 Volume':1:100
 		'IIR1 INP1 Volume':1:50
 		'IIR1 INP1 MUX':0:DEC7
@@ -1868,7 +1867,6 @@ SectionDevice
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
 		'DEC7 MUX':0:ZERO
-		'DEC7 Volume':1:60
 		'ADC1 Volume':1:0
 		'IIR1 INP1 Volume':1:0
 		'IIR1 INP1 MUX':0:ZERO
@@ -1912,7 +1910,7 @@ SectionDevice
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC6
 		'DEC6 MUX':0:ADC1
-		'DEC6 Volume':1:80
+		'DEC6 Volume':1:72
 		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:0
 	EndSequence
@@ -1986,7 +1984,7 @@ SectionDevice
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC4
 		'DEC4 MUX':0:ADC3
-		'DEC4 Volume':1:63
+		'DEC4 Volume':1:80
 		'ADC3 Volume':1:100
 		'IIR1 INP1 Volume':1:50
 		'IIR1 INP1 MUX':0:DEC4
@@ -2908,7 +2906,7 @@ SectionModifier
 	EnableSequence
 		'Voice Stub Tx Mixer STUB_TX_HL':1:1
 		'Voice Stub Tx Mixer STUB_1_TX_HL':1:1
-		'DEC4 Volume':1:63
+		'DEC4 Volume':1:70
 		'ADC3 Volume':1:100
 	EndSequence
 
