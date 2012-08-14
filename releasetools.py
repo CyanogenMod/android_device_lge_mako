@@ -1,6 +1,13 @@
 import common
 import struct
 
+def FindRadio(zipfile):
+  try:
+    return zipfile.read("RADIO/radio.img")
+  except KeyError:
+    return None
+
+
 def FullOTA_InstallEnd(info):
   try:
     bootloader_img = info.input_zip.read("RADIO/bootloader.img")
@@ -8,6 +15,26 @@ def FullOTA_InstallEnd(info):
     print "no bootloader.img in target_files; skipping install"
   else:
     WriteBootloader(info, bootloader_img)
+
+  radio_img = FindRadio(info.input_zip)
+  if radio_img:
+    WriteRadio(info, radio_img)
+  else:
+    print "no radio.img in target_files; skipping install"
+
+
+def IncrementalOTA_VerifyEnd(info):
+  target_radio_img = FindRadio(info.target_zip)
+  source_radio_img = FindRadio(info.source_zip)
+  if not target_radio_img or not source_radio_img: return
+  if source_radio_img != target_radio_img:
+    info.script.CacheFreeSpaceCheck(len(source_radio_img))
+    radio_type, radio_device = common.GetTypeAndDevice("/radio", info.info_dict)
+    info.script.PatchCheck("%s:%s:%d:%s:%d:%s" % (
+        radio_type, radio_device,
+        len(source_radio_img), common.sha1(source_radio_img).hexdigest(),
+        len(target_radio_img), common.sha1(target_radio_img).hexdigest()))
+
 
 def IncrementalOTA_InstallEnd(info):
   try:
@@ -24,6 +51,48 @@ def IncrementalOTA_InstallEnd(info):
   except KeyError:
     print "no bootloader.img in target target_files; skipping install"
 
+  tf = FindRadio(info.target_zip)
+  if not tf:
+    # failed to read TARGET radio image: don't include any radio in update.
+    print "no radio.img in target target_files; skipping install"
+  else:
+    tf = common.File("radio.img", tf)
+
+    sf = FindRadio(info.source_zip)
+    if not sf:
+      # failed to read SOURCE radio image: include the whole target
+      # radio image.
+      WriteRadio(info, tf.data)
+    else:
+      sf = common.File("radio.img", sf)
+
+      if tf.sha1 == sf.sha1:
+        print "radio image unchanged; skipping"
+      else:
+        diff = common.Difference(tf, sf, diff_program="bsdiff")
+        common.ComputeDifferences([diff])
+        _, _, d = diff.GetPatch()
+        if d is None or len(d) > tf.size * common.OPTIONS.patch_threshold:
+          # computing difference failed, or difference is nearly as
+          # big as the target:  simply send the target.
+          WriteRadio(info, tf.data)
+        else:
+          common.ZipWriteStr(info.output_zip, "radio.img.p", d)
+          info.script.Print("Patching radio...")
+          radio_type, radio_device = common.GetTypeAndDevice(
+              "/radio", info.info_dict)
+          info.script.ApplyPatch(
+              "%s:%s:%d:%s:%d:%s" % (radio_type, radio_device,
+                                     sf.size, sf.sha1, tf.size, tf.sha1),
+              "-", tf.size, tf.sha1, sf.sha1, "radio.img.p")
+
+
+def WriteRadio(info, radio_img):
+  info.script.Print("Writing radio...")
+  common.ZipWriteStr(info.output_zip, "radio.img", radio_img)
+  _, device = common.GetTypeAndDevice("/radio", info.info_dict)
+  info.script.AppendExtra(
+      'package_extract_file("radio.img", "%s");' % (device,))
 
 
 # /* mako bootloader.img format */
@@ -43,6 +112,8 @@ def IncrementalOTA_InstallEnd(info):
 # };
 
 def WriteBootloader(info, bootloader):
+  info.script.Print("Writing bootloader...")
+
   # bootloader.img contains 6 separate images.  We ignore the first
   # one (sbl1) and write the other five, each to their own partition.
   # There are also backup partitions of all 5 that we also write.
@@ -71,9 +142,6 @@ def WriteBootloader(info, bootloader):
     p += size
   assert p - start_offset == bootloader_size, "bootloader.img corrupted"
   imgs = img_dict
-
-  print magic, num_images, start_offset, bootloader_size
-  print imgs
 
   common.ZipWriteStr(info.output_zip, "bootloader-flag.txt",
                      "updating-bootloader" + "\0" * 13)
@@ -104,7 +172,6 @@ def WriteBootloader(info, bootloader):
           'package_extract_file("bootloader.%s.img", "%s");' % (i, device))
   except KeyError:
     pass
-
 
 
 def trunc_to_null(s):
