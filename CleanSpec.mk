@@ -46,5 +46,6 @@
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/etc/vold.fstab)
 $(call add-clean-step, find $(OUT_DIR) -name "lights.msm8960*" -print0 | xargs -0 rm -f)
 $(call add-clean-step, find $(OUT_DIR) -name "*.default.*so" -print0 | xargs -0 rm -f)
-
 $(call add-clean-step, find $(PRODUCT_OUT) -name "*.prop" -print0 | xargs -0 rm -f)
+
+$(call add-clean-step, find $(OUT_DIR) -name "wpa_supplicant*" -print0 | xargs -0 rm -f)
