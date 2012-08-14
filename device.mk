@@ -142,7 +142,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.handset.mic=dmic \
-	persist.audio.fluence.mode=endfire
+	persist.audio.fluence.mode=endfire \
+	persist.audio.lowlatency.rec=false
 
 #Upto 3 layers can go through overlays
 PRODUCT_PROPERTY_OVERRIDES += debug.mdpcomp.maxlayer=3
