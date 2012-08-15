@@ -257,7 +257,7 @@ on property:bluetooth.hciattach=true
     start hciattach
 
 on property:bluetooth.hciattach=false
-    write /sys/module/hci_smd/parameters/hcismd_set 0
+    setprop bluetooth.status off
 
 service bridgemgrd /system/bin/bridgemgrd
     class main
