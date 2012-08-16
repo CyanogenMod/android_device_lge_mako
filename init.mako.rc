@@ -191,6 +191,15 @@ on post-fs-data
     mkdir /data/qcks 0770 system system
     setprop vold.post_fs_data_done 1
 
+    mkdir /data/local 0770 root root
+    mkdir /data/local/tmp 0770 shell shell
+    rm /data/local/tmp/adreno_config.txt
+    write /data/local/tmp/adreno_config.txt "enableRotationShaderPatching=0
+"
+    chmod 0777 /data/local
+    chmod 0777 /data/local/tmp
+    chmod 0444 /data/local/tmp/adreno_config.txt
+
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
