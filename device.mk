@@ -142,6 +142,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.handset.mic=dmic \
 	persist.audio.fluence.mode=endfire
 
+#Upto 3 layers can go through overlays
+PRODUCT_PROPERTY_OVERRIDES += debug.mdpcomp.maxlayer=3
+
 PRODUCT_CHARACTERISTICS := nosdcard
 
 PRODUCT_TAGS += dalvik.gc.type-precise
