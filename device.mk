@@ -209,6 +209,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0 \
 	wifi.supplicant_scan_interval=15
 
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.camera.full.liveshot=0
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
 
