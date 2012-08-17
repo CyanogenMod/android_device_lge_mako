@@ -204,6 +204,9 @@ on post-fs-data
     chmod 0777 /data/local/tmp
     chmod 0444 /data/local/tmp/adreno_config.txt
 
+    # LED On/Off synchronization
+    chown system system /sys/class/leds/red/device/lock
+
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
