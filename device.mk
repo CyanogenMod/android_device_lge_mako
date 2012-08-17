@@ -172,7 +172,8 @@ PRODUCT_PACKAGES += \
 	audio_policy.msm8960 \
 	audio.primary.msm8960 \
 	audio.a2dp.default \
-	audio.usb.default
+	audio.usb.default \
+	audio.r_submix.default
 
 PRODUCT_PACKAGES += \
 	hci_qcomm_init
