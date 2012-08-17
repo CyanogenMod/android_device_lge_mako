@@ -114,11 +114,12 @@ def WriteRadio(info, radio_img):
 def WriteBootloader(info, bootloader):
   info.script.Print("Writing bootloader...")
 
-  # bootloader.img contains 6 separate images.  We ignore the first
-  # one (sbl1) and write the other five, each to their own partition.
-  # There are also backup partitions of all 5 that we also write.
-  # sbl1 is the lowest level of the bootloader and is not updatable
-  # via OTA.
+  # bootloader.img contains 6 separate images.  Each goes to its own
+  # partition; we write all 6 for development devices but skip one for
+  # release devices..  There are backup partitions of all but the
+  # special one that we also write.  The special one is "sbl1", which
+  # does not have a backup, so we don't update it on release devices..
+
 
   header_fmt = "<8sIII"
   header_size = struct.calcsize(header_fmt)
@@ -153,11 +154,25 @@ def WriteBootloader(info, bootloader):
       'package_extract_file("bootloader-flag.txt", "%s");' %
       (misc_device,))
 
-  # Write the five images to separate files in the OTA package
-  for i in "sbl2 sbl3 tz rpm aboot".split():
+  # flashing sbl1 is somewhat dangerous because if we die while doing
+  # it the device can't boot.  Do it for development devices but not
+  # release devices.
+  fp = info.info_dict["build.prop"]["ro.build.fingerprint"]
+  if "release-keys" in fp:
+    to_flash = "sbl2 sbl3 tz rpm aboot".split()
+  else:
+    to_flash = "sbl1 sbl2 sbl3 tz rpm aboot".split()
+
+  # Write the images to separate files in the OTA package
+  for i in to_flash:
+    try:
+      _, device = common.GetTypeAndDevice("/"+i, info.info_dict)
+    except KeyError:
+      print "skipping flash of %s; not in recovery.fstab" % (i,)
+      continue
     common.ZipWriteStr(info.output_zip, "bootloader.%s.img" % (i,),
                        bootloader[imgs[i][0]:imgs[i][0]+imgs[i][1]])
-    _, device = common.GetTypeAndDevice("/"+i, info.info_dict)
+
     info.script.AppendExtra('package_extract_file("bootloader.%s.img", "%s");' %
                             (i, device))
 
@@ -166,6 +181,7 @@ def WriteBootloader(info, bootloader):
       (misc_device,))
 
   try:
+    # there is no "sbl1b" partition
     for i in "sbl2 sbl3 tz rpm aboot".split():
       _, device = common.GetTypeAndDevice("/"+i+"b", info.info_dict)
       info.script.AppendExtra(
