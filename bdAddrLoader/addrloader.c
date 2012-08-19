@@ -36,7 +36,7 @@
 #define FTM_PATH_BT_ADDR "bluetooth/.bdaddr"
 #define FTM_PATH_WIFI_ADDR "wifi/.wlanaddr"
 
-#define DEFAULT_BD_ADDR_PROP "persist.service.bt.bdaddr"
+#define DEFAULT_BDADDR_PROP "persist.service.bdroid.bdaddr"
 
 int hexa_to_ascii(const unsigned char* hexa, char* ascii, int nHexLen)
 {
@@ -123,11 +123,13 @@ int main(int argc, char *argv[])
 
     if(!readBDAddrData(szBDAddrPath, addrData, BD_ADDR_LEN)){
         if(!hexa_to_ascii(addrData, szBDAddr, BD_ADDR_LEN)){
-            formattingBdAddr(szBDAddr, '.');
+            formattingBdAddr(szBDAddr, ':');
             // write loaded bdaddr to property
             if(szProperty != NULL) property_set(szProperty, szBDAddr);
             // print out szBDAddr
             if(bStdOut) printf("%s",szBDAddr);
+            if (property_set(DEFAULT_BDADDR_PROP, szBDAddr) < 0)
+                ALOGE("Failed to set address in prop %s", DEFAULT_BDADDR_PROP);
             return 0;
         }
         else{

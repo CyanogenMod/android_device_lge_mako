@@ -410,6 +410,12 @@ service conn_init /system/bin/logwrapper /system/bin/conn_init
     group system wifi
     oneshot
 
+service bdAddrLoader /system/bin/bdAddrLoader -p
+    class main
+    user bluetooth
+    group system bluetooth
+    oneshot
+
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/bugmailer.sh -v
     class main
