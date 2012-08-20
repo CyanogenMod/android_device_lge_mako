@@ -181,7 +181,8 @@ PRODUCT_PACKAGES += \
 	libdivxdrmdecrypt \
 	libOmxVdec \
 	libOmxVenc \
-	libOmxCore
+	libOmxCore \
+	libstagefrighthw
 
 PRODUCT_PACKAGES += \
 	libloc_adapter \
