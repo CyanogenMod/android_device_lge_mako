@@ -20,16 +20,20 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
 
 on init
-    mkdir /mnt/secure/sdcard0 0700 root root
+    mkdir /mnt/shell/sdcard0 0700 shell shell
 
+    # External storage path for apps
     export EXTERNAL_STORAGE /storage/sdcard0
+    # External storage path for adb
+    export ADB_EXTERNAL_STORAGE /mnt/shell/sdcard0/0
+
     mkdir /storage 0711 root root
     mkdir /storage/sdcard0 0000 root root
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
 
     # Save bugreports as owner
-    export BUGREPORT_WRITE_PATH /mnt/secure/sdcard0/0
+    export BUGREPORT_WRITE_PATH /mnt/shell/sdcard0/0
     export BUGREPORT_READ_PATH /storage/sdcard0
 
 on init
@@ -376,7 +380,7 @@ service charger /charger
     class charger
 
 # virtual sdcard daemon running as media_rw (1023)
-service sdcard /system/bin/sdcard /data/media /mnt/secure/sdcard0 1023 1023
+service sdcard /system/bin/sdcard /data/media /mnt/shell/sdcard0 1023 1023
     class late_start
 
 # Create ext4 filesystems when the partitions are empty or corrupted.
