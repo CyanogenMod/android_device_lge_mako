@@ -98,6 +98,10 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 
+# GPS configuration
+PRODUCT_COPY_FILES += \
+	device/lge/mako/gps.conf:system/etc/gps.conf
+
 # NFC packages
 PRODUCT_PACKAGES += \
     libnfc-nci \
