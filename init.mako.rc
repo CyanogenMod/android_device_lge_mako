@@ -43,6 +43,7 @@ on init
 
 on fs
     mount_all ./fstab.mako
+    start setup_fs
     setprop ro.crypto.fuse_sdcard true
 
 on early-boot
