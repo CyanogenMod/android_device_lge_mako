@@ -39,7 +39,6 @@ on init
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
-    mkdir /tombstones 0771 system system
     mkdir /firmware 0771 system system
 
 on fs
@@ -387,7 +386,6 @@ service sdcard /system/bin/sdcard /data/media /mnt/shell/sdcard0 1023 1023
 service setup_fs /system/bin/setup_fs \
     /dev/block/platform/msm_sdcc.1/by-name/userdata \
     /dev/block/platform/msm_sdcc.1/by-name/cache \
-    /dev/block/platform/msm_sdcc.1/by-name/tombstones
     class core
     user root
     group root
