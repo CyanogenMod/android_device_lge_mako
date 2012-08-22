@@ -12,6 +12,7 @@
 /dev/msm_vidc_dec_sec     0660   system     audio
 /dev/msm_vidc_enc         0660   system     audio
 /dev/msm_acdb             0660   system     audio
+/dev/msm_rtac             0660   system     audio
 /dev/smd4                 0660   system     system
 /dev/smd7                 0640   radio      radio
 /dev/smdcntl0             0640   radio      radio
