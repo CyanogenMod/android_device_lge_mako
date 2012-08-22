@@ -289,7 +289,7 @@ service qmuxd /system/bin/qmuxd
     user radio
     group radio audio bluetooth gps
 
-service kickstart /system/bin/qcks -i /firmware/image/
+service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
     class main
     oneshot
 
