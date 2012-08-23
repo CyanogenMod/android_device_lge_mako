@@ -20,15 +20,14 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
 
 on init
+    # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/sdcard0 0700 shell shell
 
-    # External storage path for apps
     export EXTERNAL_STORAGE /storage/sdcard0
-    # External storage path for adb
-    export ADB_EXTERNAL_STORAGE /mnt/shell/sdcard0/0
+    export MULTIUSER_EXTERNAL_STORAGE /mnt/shell/sdcard0
 
-    mkdir /storage 0711 root root
-    mkdir /storage/sdcard0 0000 root root
+    # Support legacy paths
+    symlink /mnt/shell/sdcard0/0 /storage/sdcard0
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
 
