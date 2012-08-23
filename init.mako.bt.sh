@@ -25,12 +25,19 @@ failed ()
 
 POWER_CLASS=`getprop qcom.bt.dev_power_class`
 TRANSPORT=`getprop ro.qualcomm.bt.hci_transport`
+DUTADDR=`getprop net.btdut.address`
 
 #find the transport type
 logi "Transport : $TRANSPORT"
+logi "DUTADDR : $DUTADDR"
 
 #load bd addr
-BDADDR=`/system/bin/bdAddrLoader -p`
+if [$DUTADDR == ""]
+then
+BDADDR=`/system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x`
+else
+BDADDR=`/system/bin/bdAddrLoader -p net.btdut.address -s -x`
+fi
 
 setprop bluetooth.status off
 
@@ -48,15 +55,15 @@ case $POWER_CLASS in
      logi "Power Class: To override, Before turning BT ON; setprop qcom.bt.dev_power_class <1 or 2 or 3>";;
 esac
 
-if ["$BDADDR" == ""]
+if [$BDADDR == ""]
 then
-  logwrapper /system/bin/hci_qcomm_init -e $PWR_CLASS -vv
+logwrapper /system/bin/hci_qcomm_init -e $PWR_CLASS -vv
 else
-  logwrapper /system/bin/hci_qcomm_init -b $BDADDR -e $PWR_CLASS -vv
+logwrapper /system/bin/hci_qcomm_init -b $BDADDR -e $PWR_CLASS -vv
 fi
 
 case $? in
-  0) logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD $BTS_ADDRESS";;
+  0) logi "Bluetooth QSoC firmware download succeeded, $PWR_CLASS $BDADDR $TRANSPORT";;
   *) failed "Bluetooth QSoC firmware download failed" $exit_code_hci_qcomm_init;
      setprop bluetooth.status off;
      exit $exit_code_hci_qcomm_init;;
