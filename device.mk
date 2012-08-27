@@ -189,7 +189,8 @@ PRODUCT_PACKAGES += \
 	libOmxVdec \
 	libOmxVenc \
 	libOmxCore \
-	libstagefrighthw
+	libstagefrighthw \
+	libc2dcolorconvert
 
 PRODUCT_PACKAGES += \
 	libloc_adapter \
