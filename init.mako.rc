@@ -321,7 +321,7 @@ service qmuxd /system/bin/qmuxd
     group radio audio bluetooth gps
 
 service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
-    class main
+    class core
     oneshot
 
 service netmgrd /system/bin/netmgrd
