@@ -37,6 +37,7 @@
 /system/bin/usbhub
 /system/bin/usbhub_init
 /system/bin/v4l2-qcamera-app
+/system/etc/diag.cfg
 /system/etc/firmware/a225p5_pm4.fw
 /system/etc/firmware/a225_pfp.fw
 /system/etc/firmware/a225_pm4.fw
