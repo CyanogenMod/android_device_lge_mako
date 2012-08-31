@@ -66,7 +66,7 @@
         </MediaCodec>
         <MediaCodec name="OMX.google.vpx.decoder" type="video/x-vnd.on2.vp8" />
         <MediaCodec name="OMX.google.h264.decoder" type="video/avc" />
-        <MediaCodec name="OMX.google.mpeg4.decoder" type="video/mpeg4" />
+        <MediaCodec name="OMX.google.h263.decoder" type="video/3gpp" />
         <MediaCodec name="OMX.google.mpeg4.decoder" type="video/mp4v-es" />
     </Decoders>
 </MediaCodecs>
