@@ -416,21 +416,6 @@ SectionVerb
 EndSection
 
 SectionVerb
-	Name "Voice CallEarpiece"
-
-	EnableSequence
-	EndSequence
-
-	DisableSequence
-	EndSequence
-
-	# ALSA PCMs
-	PlaybackPCM 12
-	CapturePCM 12
-
-EndSection
-
-SectionVerb
 	Name "Voice CallHeadset"
 	Comment "Headset Tx device in Call verb"
 
