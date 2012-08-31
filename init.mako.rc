@@ -178,6 +178,7 @@ on post-fs-data
 
     # kickstart
     mkdir /data/qcks 0770 system system
+    chown system /dev/block/platform/msm_sdcc.1/by-name
 
     setprop vold.post_fs_data_done 1
 
@@ -326,6 +327,8 @@ service qmuxd /system/bin/qmuxd
 
 service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
     class core
+    user system
+    group system
     oneshot
 
 service netmgrd /system/bin/netmgrd

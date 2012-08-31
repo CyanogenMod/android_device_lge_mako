@@ -38,3 +38,7 @@
 /dev/bcm2079x-i2c         0660   nfc        nfc
 /dev/qseecom              0666   system     drmrpc
 /dev/diag                 0666   root       root
+/dev/mdm                  0660   system     system
+/dev/ttyUSB0              0660   system     system
+/dev/block/mmcblk0p8      0660   system     system
+/dev/block/mmcblk0p9      0660   system     system
