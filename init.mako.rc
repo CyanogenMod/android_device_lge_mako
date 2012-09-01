@@ -142,6 +142,7 @@ on post-fs-data
     chown dhcp system /data/misc/dhcp
 
     write /dev/wcnss_wlan 1
+    write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
