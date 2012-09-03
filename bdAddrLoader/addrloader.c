@@ -107,6 +107,7 @@ int readBDAddrData(const char* szFilePath, unsigned char* addrData, int nDataLen
         close(nFd);
         return FAIL;
     }
+    close(nFd);
     return SUCCESS;
 }
 
