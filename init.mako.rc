@@ -49,9 +49,6 @@ on early-boot
     setrlimit 8 67108864 67108864
 
 on boot
-    chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
-    chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
-
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
@@ -131,8 +128,6 @@ on boot
 on post-fs-data
     mkdir /data/media 0775 media_rw media_rw
 
-    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
-
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
@@ -187,10 +182,6 @@ on post-fs-data
     # Enable the setgid bit on the directory
     mkdir /data/audio 0770 media audio
     chmod 2770 /data/audio
-
-    # Enable the setgid bit on the directory
-    mkdir /data/bluetooth 0770 bluetooth bluetooth
-    chmod 2770 /data/bluetooth
 
     # kickstart
     mkdir /data/qcks 0770 system system
