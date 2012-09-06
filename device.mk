@@ -210,7 +210,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	bdAddrLoader \
 	libwfcu \
-	conn_init
+	conn_init \
+	charger_touch
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
