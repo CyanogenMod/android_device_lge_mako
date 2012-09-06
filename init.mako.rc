@@ -25,6 +25,7 @@ on init
     mkdir /storage/sdcard0 0000 root root
 
     export EXTERNAL_STORAGE /storage/sdcard0
+    export ADB_EXTERNAL_STORAGE /mnt/shell/sdcard0/0
     export MULTIUSER_EXTERNAL_STORAGE /mnt/shell/sdcard0
 
     # Support legacy paths
