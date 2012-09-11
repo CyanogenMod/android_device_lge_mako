@@ -464,3 +464,10 @@ service charger_touch /system/bin/charger_touch
     class main
     user system
     group system
+
+service diag_mdlog /system/bin/logwrapper /system/bin/diag_mdlog -s 100
+    class late_start
+    disabled
+
+# on property:gsm.sim.state=READY
+#    start diag_mdlog
