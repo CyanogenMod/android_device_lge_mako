@@ -266,6 +266,7 @@ on post-fs-data
     chown system /sys/module/pm_8x60/modes/cpu2/standalone_power_collapse/idle_enabled
     chown system /sys/module/pm_8x60/modes/cpu3/standalone_power_collapse/idle_enabled
     chown system /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled
+    chown system /sys/devices/virtual/input/lge_touch/charger
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
@@ -301,7 +302,7 @@ on charger
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
-    
+
 service rmt_storage /system/bin/rmt_storage
     class main
     user root
@@ -456,5 +457,10 @@ service bugreport /system/bin/bugmailer.sh -v
 
 service qseecomd /system/bin/qseecomd
     class late_start
+    user system
+    group system
+
+service charger_touch /system/bin/charger_touch
+    class main
     user system
     group system
