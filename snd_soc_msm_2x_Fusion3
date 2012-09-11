@@ -2110,6 +2110,7 @@ SectionDevice
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC7
 		'DEC7 MUX':0:ADC1
+		'DEC7 Volume':1:68
 		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:1
 	EndSequence
@@ -2117,6 +2118,7 @@ SectionDevice
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
 		'DEC7 MUX':0:ZERO
+		'DEC7 Volume':1:68
 		'ADC1 Volume':1:0
 		'MICBIAS1 CAPLESS Switch':1:0
 	EndSequence
@@ -2158,7 +2160,7 @@ SectionDevice
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC7
 		'DEC7 MUX':0:ADC1
-		'DEC7 Volume':1:60
+		'DEC7 Volume':1:68
 		'ADC1 Volume':1:100
 		'MICBIAS1 CAPLESS Switch':1:0
 	EndSequence
@@ -2166,7 +2168,7 @@ SectionDevice
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
 		'DEC7 MUX':0:ZERO
-		'DEC7 Volume':1:60
+		'DEC7 Volume':1:68
 		'ADC1 Volume':1:0
 		'MICBIAS1 CAPLESS Switch':1:1
 	EndSequence
@@ -2394,7 +2396,7 @@ SectionDevice
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC8
 		'DEC8 MUX':0:ADC2
-		'DEC8 Volume':1:60
+		'DEC8 Volume':1:68
 		'ADC2 Volume':1:100
 	EndSequence
 
@@ -2402,7 +2404,7 @@ SectionDevice
 		'TTY Mode':0:ZERO
 		'SLIM TX7 MUX':0:ZERO
 		'DEC8 MUX':0:ZERO
-		'DEC8 Volume':1:60
+		'DEC8 Volume':1:68
 		'ADC2 Volume':1:0
 	EndSequence
 
@@ -2453,14 +2455,14 @@ SectionDevice
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC8
 		'DEC8 MUX':0:ADC2
-		'DEC8 Volume':1:60
+		'DEC8 Volume':1:68
 		'ADC2 Volume':1:100
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
 		'DEC8 MUX':0:ZERO
-		'DEC8 Volume':1:60
+		'DEC8 Volume':1:68
 		'ADC2 Volume':1:0
 	EndSequence
 
@@ -3135,7 +3137,7 @@ SectionModifier
 
 	EnableSequence
 		'STUB_RX Mixer Voice Stub':1:1
-		'RX3 Digital Volume':1:70
+		'RX3 Digital Volume':1:68
 		'LINEOUT1 Volume':1:100
 		'LINEOUT3 Volume':1:100
 		'SLIM TX3 MUX':0:RMIX3
