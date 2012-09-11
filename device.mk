@@ -48,7 +48,6 @@ PRODUCT_COPY_FILES := \
 	$(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-	device/lge/mako-kernel/prima_wlan.ko:system/lib/modules/wlan.ko \
 	device/lge/mako/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
 	device/lge/mako/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
 	device/lge/mako/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
