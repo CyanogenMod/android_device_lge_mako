@@ -206,4 +206,6 @@
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
     <integer name="config_shutdownBatteryTemperature">600</integer>
 
+    <bool name="config_ui_enableFadingMarquee">false</bool>
+
 </resources>
