@@ -53,3 +53,4 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/obj/SHARED_LIBRARIES/libhardware_le
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib/modules/wlan.ko)
 
 $(call add-clean-step, find $(PRODUCT_OUT) -name "*.prop" -print0 | xargs -0 rm -f)
+$(call add-clean-step, find $(PRODUCT_OUT) -name "*.prop" -print0 | xargs -0 rm -f)

@@ -149,6 +149,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.apm_sim_not_pwdn=1
 
+# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.telephony.call_ring.multiple=0
+
 #Upto 3 layers can go through overlays
 PRODUCT_PROPERTY_OVERRIDES += debug.mdpcomp.maxlayer=3
 
