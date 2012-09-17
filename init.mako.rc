@@ -436,7 +436,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group camera system inet input
 
 service conn_init /system/bin/logwrapper /system/bin/conn_init
-    class main
+    class late_start
     user system
     group system wifi
     oneshot
