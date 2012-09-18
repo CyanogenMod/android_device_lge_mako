@@ -417,15 +417,6 @@ service charger /charger
 service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
     class late_start
 
-# Create ext4 filesystems when the partitions are empty or corrupted.
-service setup_fs /system/bin/setup_fs \
-    /dev/block/platform/msm_sdcc.1/by-name/userdata \
-    /dev/block/platform/msm_sdcc.1/by-name/cache
-    class core
-    user root
-    group root
-    oneshot
-
 service thermald /system/bin/thermald
     class main
 
