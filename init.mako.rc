@@ -171,6 +171,10 @@ on post-fs-data
     write /data/system/sensors/settings 1
     chmod 660 /data/system/sensors/settings
 
+    # AKM setting data
+    mkdir /data/misc/sensors
+    chmod 775 /data/misc/sensors
+
     mkdir /persist/sensors
     chmod 775 /persist/sensors
 
