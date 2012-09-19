@@ -51,7 +51,7 @@ $(call add-clean-step, find $(OUT_DIR) -name "wpa_supplicant*" -print0 | xargs -
 $(call add-clean-step, find $(PRODUCT_OUT) -name "*.img" -print0 | xargs -0 rm -f)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/obj/SHARED_LIBRARIES/libhardware_legacy_intermediates/)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib/modules/wlan.ko)
-$(call add-clean-step, find $(PRODUCT_OUT) -name "*.prop" -print0 | xargs -0 rm -f)
-$(call add-clean-step, find $(PRODUCT_OUT) -name "*.prop" -print0 | xargs -0 rm -f)
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
 
-$(call add-clean-step, find $(PRODUCT_OUT) -name "*.prop" -print0 | xargs -0 rm -f)
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
