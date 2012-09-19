@@ -154,8 +154,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.call_ring.multiple=0
 
-#Upto 3 layers can go through overlays
-PRODUCT_PROPERTY_OVERRIDES += debug.mdpcomp.maxlayer=3
+# Disable HWC
+PRODUCT_PROPERTY_OVERRIDES += debug.mdpcomp.maxlayer=0
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
