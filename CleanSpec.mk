@@ -53,5 +53,6 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/obj/SHARED_LIBRARIES/libhardware_le
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib/modules/wlan.ko)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
 
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
