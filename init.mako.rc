@@ -189,6 +189,8 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+    rm /data/local/tmp/adreno_config.txt
+
     # LED On/Off synchronization
     chown system system /sys/class/leds/red/device/lock
 
