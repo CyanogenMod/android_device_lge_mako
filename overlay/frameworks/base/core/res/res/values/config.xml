@@ -225,4 +225,11 @@
 
     <bool name="config_enableWifiDisplay">true</bool>
 
+    <!-- Minimum span needed to begin a touch scaling gesture.
+         If the span is equal to or greater than this size, a scaling gesture
+         will begin, where supported. (See android.view.ScaleGestureDetector)
+
+         This value has been tuned for the "mako" device. -->
+    <dimen name="config_minScalingSpan">35mm</dimen>
+
 </resources>
