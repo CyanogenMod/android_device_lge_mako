@@ -136,10 +136,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
+# Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.handset.mic=dmic \
 	persist.audio.fluence.mode=endfire \
-	persist.audio.lowlatency.rec=false
+	persist.audio.lowlatency.rec=false \
+	af.resampler.quality=4
+
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -177,7 +180,8 @@ PRODUCT_PACKAGES += \
 	audio.primary.msm8960 \
 	audio.a2dp.default \
 	audio.usb.default \
-	audio.r_submix.default
+	audio.r_submix.default \
+	libaudio-resampler
 
 PRODUCT_PACKAGES += \
 	hci_qcomm_init
