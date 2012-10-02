@@ -232,4 +232,8 @@
          This value has been tuned for the "mako" device. -->
     <dimen name="config_minScalingSpan">35mm</dimen>
 
+    <!-- Setting this true forces the headset jack switches to use the/dev/input/event subsystem
+         rather than the uevent framework. -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+
 </resources>
