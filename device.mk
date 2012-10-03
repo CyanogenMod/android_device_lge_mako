@@ -240,6 +240,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.prerotation.disable=1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+        debug.egl.recordable.rgba8888=1
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
 
