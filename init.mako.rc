@@ -241,6 +241,7 @@ on post-fs-data
     chmod 664 /sys/devices/system/cpu/cpu2/online
     chmod 664 /sys/devices/system/cpu/cpu3/online
     chown system /sys/devices/system/cpu/cpu0/rq-stats/run_queue_avg
+    chown system /sys/devices/system/cpu/cpu0/rq-stats/cpu_normalized_load
     chown system /sys/devices/system/cpu/cpu0/rq-stats/run_queue_poll_ms
     chown system /sys/devices/system/cpu/cpu0/rq-stats/def_timer_ms
     chown system /sys/module/pm_8x60/modes/cpu0/power_collapse/suspend_enabled
