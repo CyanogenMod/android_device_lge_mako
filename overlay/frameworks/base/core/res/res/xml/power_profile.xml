@@ -19,13 +19,13 @@
 <device name="Android">
     <!-- All values are in mAh except as noted -->
     <item name="none">0</item>
-    <item name="screen.on">158.0</item>
-    <item name="screen.full">248.0</item>
+    <item name="screen.on">42.4</item>
+    <item name="screen.full">211.6</item>
     <item name="bluetooth.active">66.2</item>
-    <item name="bluetooth.on">5.3</item>
-    <item name="wifi.on">1.38</item>
-    <item name="wifi.active">53.6</item>
-    <item name="wifi.scan">77.8</item>
+    <item name="bluetooth.on">0.7</item>
+    <item name="wifi.on">6.44</item>
+    <item name="wifi.active">101.56</item>
+    <item name="wifi.scan">52.1</item>
     <item name="dsp.audio">0.1</item>
     <item name="dsp.video">0.1</item>
     <item name="gps.on">59.7</item>
@@ -54,8 +54,8 @@
         <value>1512000</value> <!-- 1512 MHz CPU speed -->
     </array>
     <!-- Power consumption when CPU is idle -->
-    <item name="cpu.idle">2.55</item>
-    <item name="cpu.awake">36.7</item>
+    <item name="cpu.idle">3.5</item>
+    <item name="cpu.awake">35.33</item>
     <!-- Power consumption at different speeds -->
     <array name="cpu.active">
         <value>92.6</value> <!-- 384 MHz CPU speed -->
@@ -64,12 +64,12 @@
         <value>121.4</value> <!-- 702 MHz CPU speed -->
         <value>127.3</value> <!-- 810 MHz CPU speed -->
         <value>133.1</value> <!-- 918 MHz CPU speed -->
-        <value>138.9</value> <!-- 1026 MHz CPU speed -->
-        <value>172.4</value> <!-- 1134 MHz CPU speed -->
-        <value>176.9</value> <!-- 1242 MHz CPU speed -->
-        <value>192.9</value> <!-- 1350 MHz CPU speed -->
-        <value>202.4</value> <!-- 1458 MHz CPU speed -->
-        <value>209.7</value> <!-- 1512 MHz CPU speed -->
+        <value>173.3</value> <!-- 1026 MHz CPU speed -->
+        <value>209.5</value> <!-- 1134 MHz CPU speed -->
+        <value>216.5</value> <!-- 1242 MHz CPU speed -->
+        <value>228.5</value> <!-- 1350 MHz CPU speed -->
+        <value>236.0</value> <!-- 1458 MHz CPU speed -->
+        <value>239.7</value> <!-- 1512 MHz CPU speed -->
     </array>
     <!-- This is the battery capacity in mAh -->
     <item name="battery.capacity">2100</item>
