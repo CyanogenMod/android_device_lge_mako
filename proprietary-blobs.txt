@@ -138,6 +138,7 @@
 /system/lib/libmmmpo.so
 /system/lib/libmmmpod.so
 /system/lib/libmmstillomx.so
+/system/lib/libmorpho_noise_reduction.so
 /system/lib/libnetmgr.so
 /system/lib/liboemcamera.so
 /system/lib/libOmxAacDec.so
@@ -164,6 +165,7 @@
 /system/lib/libsensor_reg.so
 /system/lib/libsensor_test.so
 /system/lib/libsensor_user_cal.so
+/system/lib/libstagefright_hdcp.so
 /system/lib/libxml.so
 /system/lib/lib_dlb_msd.so
 /system/vendor/firmware/bcm2079x_firmware.ncd
