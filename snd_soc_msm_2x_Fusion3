@@ -2161,6 +2161,10 @@ SectionDevice
 		'ADC3 Volume':1:100
 		'SLIM_0_TX Channels':0:Two
 		'MICBIAS1 CAPLESS Switch':1:0
+		'RX1 MIX2 INP1':0:IIR1
+		'RX2 MIX2 INP1':0:IIR1
+		'IIR1 INP1 Volume':1:51
+		'IIR1 INP1 MUX':0:DEC7
 	EndSequence
 
 	DisableSequence
@@ -2171,6 +2175,10 @@ SectionDevice
 		'SLIM TX8 MUX':0:ZERO
 		'DEC9 MUX':0:ZERO
 		'MICBIAS1 CAPLESS Switch':1:1
+		'RX1 MIX2 INP1':0:ZERO
+		'RX2 MIX2 INP1':0:ZERO
+		'IIR1 INP1 Volume':1:0
+		'IIR1 INP1 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	6:2
