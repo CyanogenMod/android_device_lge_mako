@@ -234,9 +234,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0 \
 	wifi.supplicant_scan_interval=15
 
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.camera.full.liveshot=0
-
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
 	media.aac_51_output_enabled=true
