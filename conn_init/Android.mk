@@ -45,6 +45,9 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_OUT)/bin
 LOCAL_MODULE := conn_init
 LOCAL_MODULE_OWNER := lge
+
+# Make sure the symlinks get created as well.
+LOCAL_REQUIRED_MODULES := WCNSS_qcom_cfg.ini WCNSS_qcom_wlan_nv.bin
 include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
