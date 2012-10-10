@@ -25,10 +25,4 @@
 
     <!-- Maximum width for an attached image -->
     <int name="maxImageWidth">1296</int>
-
-    <!-- User-Agent parameter used in MMS http request -->
-    <string name="userAgent">Nexus</string>
-
-    <!-- UAProf URL -->
-    <string name="uaProfUrl">http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
 </mms_config>
