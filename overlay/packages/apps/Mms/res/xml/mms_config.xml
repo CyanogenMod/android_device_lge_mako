@@ -50,6 +50,9 @@
          set the limit above this value. -->
     <int name="maxMessageCountPerThread">5000</int>
 
+    <!-- UAProf URL -->
+    <string name="uaProfUrl">http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
+
     <!-- Maximum number of recipients allowed per message. Use a value of -1
          to indicate no limit. -->
     <int name="recipientLimit">-1</int>
@@ -62,4 +65,8 @@
     <!-- Maximum length for message text. Use a value of -1
          to indicate default value -->
     <int name="maxMessageTextSize">-1</int>
+
+    <!-- User-Agent parameter used in MMS http request -->
+    <string name="userAgent">Nexus</string>
+
 </mms_config>
