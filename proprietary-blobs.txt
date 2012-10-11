@@ -175,5 +175,4 @@
 /system/vendor/firmware/discretix/dxhdcp2.b02
 /system/vendor/firmware/discretix/dxhdcp2.b03
 /system/vendor/firmware/discretix/dxhdcp2.mdt
-/system/vendor/lib/libbt-vendor.so
 /system/vendor/lib/libdrmdecrypt.so
