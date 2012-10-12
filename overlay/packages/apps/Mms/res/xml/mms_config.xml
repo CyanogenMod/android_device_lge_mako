@@ -67,6 +67,6 @@
     <int name="maxMessageTextSize">-1</int>
 
     <!-- User-Agent parameter used in MMS http request -->
-    <string name="userAgent">Nexus</string>
+    <string name="userAgent">Nexus4</string>
 
 </mms_config>
