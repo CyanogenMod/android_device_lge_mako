@@ -223,40 +223,6 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
-    chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-    chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    chown system /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
-    chown system /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
-    chown system /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
-    chown system /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
-    chown system /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
-    chown system /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
-    chown root.system /sys/devices/system/cpu/mfreq
-    chmod 220 /sys/devices/system/cpu/mfreq
-    chown system /sys/devices/system/cpu/cpu1/online
-    chown system /sys/devices/system/cpu/cpu2/online
-    chown system /sys/devices/system/cpu/cpu3/online
-    chmod 664 /sys/devices/system/cpu/cpu1/online
-    chmod 664 /sys/devices/system/cpu/cpu2/online
-    chmod 664 /sys/devices/system/cpu/cpu3/online
-    chown system /sys/devices/system/cpu/cpu0/rq-stats/run_queue_avg
-    chown system /sys/devices/system/cpu/cpu0/rq-stats/cpu_normalized_load
-    chown system /sys/devices/system/cpu/cpu0/rq-stats/run_queue_poll_ms
-    chown system /sys/devices/system/cpu/cpu0/rq-stats/def_timer_ms
-    chown system /sys/module/pm_8x60/modes/cpu0/power_collapse/suspend_enabled
-    chown system /sys/module/pm_8x60/modes/cpu1/power_collapse/suspend_enabled
-    chown system /sys/module/pm_8x60/modes/cpu2/power_collapse/suspend_enabled
-    chown system /sys/module/pm_8x60/modes/cpu3/power_collapse/suspend_enabled
-    chown system /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/suspend_enabled
-    chown system /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/suspend_enabled
-    chown system /sys/module/pm_8x60/modes/cpu2/standalone_power_collapse/suspend_enabled
-    chown system /sys/module/pm_8x60/modes/cpu3/standalone_power_collapse/suspend_enabled
-    chown system /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/idle_enabled
-    chown system /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled
-    chown system /sys/module/pm_8x60/modes/cpu2/standalone_power_collapse/idle_enabled
-    chown system /sys/module/pm_8x60/modes/cpu3/standalone_power_collapse/idle_enabled
-    chown system /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
@@ -401,8 +367,6 @@ service thermald /system/bin/thermald
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     class main
-    user system
-    group system
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
