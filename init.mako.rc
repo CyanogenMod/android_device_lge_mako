@@ -125,7 +125,7 @@ on boot
 
 # msm specific files that need to be created on /data
 on post-fs-data
-    mkdir /data/media 0775 media_rw media_rw
+    mkdir /data/media 0770 media_rw media_rw
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
