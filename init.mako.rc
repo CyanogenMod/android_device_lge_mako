@@ -94,6 +94,8 @@ on boot
 
     chown root system /proc/net/ip_conntrack
 
+    # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
+    write /sys/module/wakelock/parameters/debug_mask 7
 
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
