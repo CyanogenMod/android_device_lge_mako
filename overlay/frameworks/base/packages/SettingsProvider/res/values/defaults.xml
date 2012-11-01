@@ -21,4 +21,6 @@
     <integer name="def_screen_off_timeout">30000</integer>
     <!-- Set the automatic brightness mode on by default -->
     <bool name="def_screen_brightness_automatic_mode">true</bool>
+    <!-- Default screen brightness, from 0 to 255. 87 is 34%. -->
+    <integer name="def_screen_brightness">87</integer>
 </resources>
