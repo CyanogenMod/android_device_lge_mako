@@ -17,14 +17,15 @@
 # start jb-mr1-dev
 # 477685 = JOO88
 # 521994 = JOP32B
+# 526897 = JOP39B
 # end jb-mr1-dev
 
 source ../../../common/clear-factory-images-variables.sh
-BUILD=521994
+BUILD=526897
 DEVICE=mako
 PRODUCT=occam
-VERSION=jop32b
-#SRCPREFIX=signed-
-BOOTLOADER=makoz10k
-RADIO=m9615a-cefwmazm-2.0.1700.32
+VERSION=jop39b
+SRCPREFIX=signed-
+BOOTLOADER=makoz10l
+RADIO=m9615a-cefwmazm-2.0.1700.33
 source ../../../common/generate-factory-images-common.sh
