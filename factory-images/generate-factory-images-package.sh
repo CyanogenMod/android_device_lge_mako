@@ -19,13 +19,14 @@
 # 521994 = JOP32B
 # 526897 = JOP39B
 # 527221 = JOP40
+# 527662 = JOP40C
 # end jb-mr1-dev
 
 source ../../../common/clear-factory-images-variables.sh
-BUILD=527221
+BUILD=527662
 DEVICE=mako
 PRODUCT=occam
-VERSION=jop40
+VERSION=jop40c
 SRCPREFIX=signed-
 BOOTLOADER=makoz10l
 RADIO=m9615a-cefwmazm-2.0.1700.33
