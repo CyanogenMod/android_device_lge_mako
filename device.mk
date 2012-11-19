@@ -42,7 +42,8 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers \
         librs_jni
 
-LOCAL_KERNEL := device/lge/mako-kernel/kernel
+LOCAL_KERNEL := kernel/msm/omap/arch/arm/boot/zImage
+#LOCAL_KERNEL := device/lge/mako-kernel/kernel
 
 PRODUCT_COPY_FILES := \
 	$(LOCAL_KERNEL):kernel
