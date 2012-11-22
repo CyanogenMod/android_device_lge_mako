@@ -64,7 +64,6 @@ $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/root/default.prop)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/recovery/root/default.prop)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
-
 $(call add-clean-step, rm -rf $(OUT_DIR)/target/product/mako/obj/EXECUTABLES/mm-vdec-omx-test*_intermediates)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/symbols/system/bin/mm-vdec-omx-test*)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/bin/mm-vdec-omx-test*)
@@ -72,3 +71,7 @@ $(call add-clean-step, rm -rf $(OUT_DIR)/target/product/mako/obj/EXECUTABLES/cha
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/symbols/system/bin/charger_touch)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/bin/charger_touch)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/obj/NOTICE_FILES/src/system/bin/charger_touch.txt)
+
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/root/default.prop)
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/recovery/root/default.prop)
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
