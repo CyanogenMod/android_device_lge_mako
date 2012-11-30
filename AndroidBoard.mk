@@ -15,6 +15,6 @@
 #
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-TARGET_PREBUILT_KERNEL := kernel/msm/omap/arch/arm/boot/zImage
+TARGET_PREBUILT_KERNEL := kernel/msm/arch/arm/boot/zImage
 #TARGET_PREBUILT_KERNEL := device/lge/mako-kernel/kernel
 endif
