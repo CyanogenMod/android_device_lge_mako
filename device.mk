@@ -234,7 +234,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.aac_51_output_enabled=true
+	media.aac_51_output_enabled=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	debug.prerotation.disable=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
         debug.egl.recordable.rgba8888=1
