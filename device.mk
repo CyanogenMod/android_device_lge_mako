@@ -222,6 +222,9 @@ PRODUCT_PACKAGES += \
 	libwfcu \
 	conn_init
 
+PRODUCT_PACKAGES += \
+	keystore.msm8960
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
 
