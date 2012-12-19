@@ -23,9 +23,9 @@
     <item name="screen.full">211.6</item>
     <item name="bluetooth.active">59.22</item>
     <item name="bluetooth.on">0.7</item>
-    <item name="wifi.on">4.69</item>
-    <item name="wifi.active">25.14</item>
-    <item name="wifi.scan">19.61</item>
+    <item name="wifi.on">1.38</item>
+    <item name="wifi.active">62.09</item>
+    <item name="wifi.scan">52.1</item>
     <item name="dsp.audio">0.1</item>
     <item name="dsp.video">0.1</item>
     <item name="gps.on">20.9</item>
