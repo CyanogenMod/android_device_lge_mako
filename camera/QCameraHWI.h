@@ -206,6 +206,7 @@ static const char ExifUndefinedPrefix[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 #define GPS_PROCESSING_METHOD_SIZE       101
 #define FOCAL_LENGTH_DECIMAL_PRECISION   100
 #define EXIF_ASCII_PREFIX_SIZE           8   //(sizeof(ExifAsciiPrefix))
+#define F_NUMBER_DECIMAL_PRECISION       100
 
 typedef struct{
     //GPS tags
@@ -220,6 +221,7 @@ typedef struct{
     //Other tags
     char        dateTime[20];
     rat_t       focalLength;
+    rat_t       f_number;
     uint16_t    flashMode;
     uint16_t    isoSpeed;
     rat_t       exposure_time;
