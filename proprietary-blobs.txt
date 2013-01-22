@@ -176,3 +176,7 @@
 /system/vendor/firmware/discretix/dxhdcp2.b03
 /system/vendor/firmware/discretix/dxhdcp2.mdt
 /system/vendor/lib/libdrmdecrypt.so
+/system/vendor/lib/libWVStreamControlAPI_L1.so
+/system/vendor/lib/libwvm.so
+/system/vendor/lib/libwvdrm_L1.so
+/system/vendor/lib/drm/libdrmwvmplugin.so
