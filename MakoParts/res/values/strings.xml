@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nexus 4 Settings</string>
+
+    <string name="category_hardware_title">Hardware</string>
+    <string name="vibrator_tuning_title_head">Vibrator feedback tuning</string>
+    <string name="vibrator_tuning_summary_head">Controls the default power of vibrator feedback</string>
+    <string name="vibe_warning">Values higher than 88 are not recommended</string>
+
+    <string name="vibrator_title">Vibration %</string>
+    <string name="vibrator_default_title">Default</string>
+    <string name="vibrator_test_title">Test</string>
+
+</resources>
