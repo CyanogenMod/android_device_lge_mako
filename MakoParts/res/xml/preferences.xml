@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/app_name">
+
+    <!-- Color tuning -->
+    <PreferenceCategory
+        android:key="category_display"
+        android:title="@string/category_display_title" >
+        <com.cyanogenmod.settings.device.ColorTuningPreference
+            android:key="color_tuning"
+            android:title="@string/color_tuning_title_head"
+            android:summary="@string/color_tuning_summary_head" />
+    </PreferenceCategory>
+
+    <!-- General settings -->
+    <PreferenceCategory android:key="category_hardware"
+        android:title="@string/category_hardware_title">
+        <com.cyanogenmod.settings.device.VibratorTuningPreference
+            android:key="vibrator_tuning"
+            android:title="@string/vibrator_tuning_title_head"
+            android:summary="@string/vibrator_tuning_summary_head" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
