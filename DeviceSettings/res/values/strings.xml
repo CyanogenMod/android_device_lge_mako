@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Advanced settings</string>
+    <string name="category_display_title">Display</string>
+    <string name="color_tuning_title_head">Color calibration</string>
+    <string name="color_tuning_summary_head">Calibrate on-screen colors</string>
+    <string name="color_red_title">Red</string>
+    <string name="color_green_title">Green</string>
+    <string name="color_blue_title">Blue</string>
+    <string name="defaults_button">Reset to default</string>
+    <string name="category_hardware_title">Hardware</string>
+    <string name="vibrator_tuning_title_head">Vibration strength</string>
+    <string name="vibrator_tuning_summary_head">Adjust the strength of the vibration feedback</string>
+    <string name="vibe_warning">Values higher than 88 are not recommended</string>
+    <string name="vibrator_title">Vibration strength</string>
+
+</resources>
