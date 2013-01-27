@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nexus 4 Settings</string>
+
+    <string name="category_display_title">Display</string>
+    <string name="color_tuning_title_head">Color calibration</string>
+    <string name="color_tuning_summary_head">Calibrate on-screen colors</string>
+    <string name="color_red_title">Red</string>
+    <string name="color_green_title">Green</string>
+    <string name="color_blue_title">Blue</string>
+    <string name="defaults_button">Reset to default</string>
+
+    <string name="category_hardware_title">Hardware</string>
+    <string name="vibrator_tuning_title_head">Vibration strength</string>
+    <string name="vibrator_tuning_summary_head">Adjust the strength of the vibration feedback</string>
+    <string name="vibe_warning">Values higher than 88 are not recommended</string>
+
+    <string name="vibrator_title">Vibration strength</string>
+    <string name="vibrator_default_title">Default</string>
+    <string name="vibrator_test_title">Test</string>
+
+</resources>
