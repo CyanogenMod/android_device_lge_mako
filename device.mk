@@ -57,6 +57,9 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
+	device/lge/mako/mixer_paths.xml:system/etc/mixer_paths.xml
+
+PRODUCT_COPY_FILES += \
 	device/lge/mako/thermald-mako.conf:system/etc/thermald.conf
 
 PRODUCT_COPY_FILES += \
