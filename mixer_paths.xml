@@ -294,10 +294,6 @@
         <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
     </path>
 
-    <path name="voice-handset-tmus">
-        <path name="handset" />
-    </path>
-
     <path name="hac-handset">
         <path name="handset" />
         <ctl name="EAR PA Gain" value="POS_2_DB" />
@@ -323,6 +319,10 @@
 
     <path name="headset-mic">
         <path name="adc2" />
+    </path>
+
+    <path name="voice-handset-tmus">
+        <path name="handset" />
     </path>
 
     <path name="voice-speaker">
@@ -376,6 +376,78 @@
     </path>
 
     <path name="bt-sco-mic">
+    </path>
+
+    <!-- Dual MIC devices -->
+    <path name="dmic-endfire">
+        <ctl name="SLIM TX7 MUX" value="DEC7" />
+        <ctl name="DEC7 MUX" value="ADC1" />
+        <ctl name="SLIM TX8 MUX" value="DEC9" />
+        <ctl name="DEC9 MUX" value="ADC3" />
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
+        <ctl name="RX1 MIX2 INP1" value="IIR1" />
+        <ctl name="RX2 MIX2 INP1" value="IIR1" />
+        <ctl name="IIR1 INP1 Volume" value="63" />
+        <ctl name="IIR1 INP1 MUX" value="DEC7" />
+    </path>
+
+    <path name="dmic-broadside">
+        <ctl name="SLIM TX7 MUX" value="DEC7" />
+        <ctl name="DEC7 MUX" value="DMIC1" />
+        <ctl name="SLIM TX8 MUX" value="DEC8" />
+        <ctl name="DEC8 MUX" value="DMIC2" />
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
+        <ctl name="IIR1 INP1 Volume" value="63" />
+        <ctl name="IIR1 INP1 MUX" value="DEC7" />
+    </path>
+
+    <path name="speaker-dmic-endfire">
+        <ctl name="SLIM TX7 MUX" value="DEC7" />
+        <ctl name="DEC7 MUX" value="ADC1" />
+        <ctl name="SLIM TX8 MUX" value="DEC9" />
+        <ctl name="DEC9 MUX" value="ADC3" />
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
+        <ctl name="MICBIAS3 CAPLESS Switch" value="1" />
+    </path>
+
+    <path name="speaker-dmic-broadside">
+        <ctl name="SLIM TX7 MUX" value="DEC7" />
+        <ctl name="DEC7 MUX" value="DMIC1" />
+        <ctl name="SLIM TX8 MUX" value="DEC8" />
+        <ctl name="DEC8 MUX" value="DMIC2" />
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
+    </path>
+
+    <path name="voice-dmic-ef-tmus">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-dmic-ef">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-dmic-bs">
+        <path name="dmic-broadside" />
+    </path>
+
+    <path name="voice-speaker-dmic-ef">
+        <path name="speaker-dmic-endfire" />
+    </path>
+
+    <path name="voice-speaker-dmic-bs">
+        <path name="speaker-dmic-broadside" />
+    </path>
+
+    <path name="voice-rec-dmic-ef">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-rec-dmic-bs">
+        <path name="dmic-broadside" />
     </path>
 
 </mixer>
