@@ -450,4 +450,12 @@
         <path name="dmic-broadside" />
     </path>
 
+    <path name="voice-rec-dmic-ef-fluence">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-rec-dmic-bs-fluence">
+        <path name="dmic-broadside" />
+    </path>
+
 </mixer>
