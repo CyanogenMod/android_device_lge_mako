@@ -100,3 +100,7 @@ BOARD_HAVE_LOW_LATENCY_AUDIO := true
 -include vendor/lge/mako/BoardConfigVendor.mk
 
 BOARD_HAS_NO_SELECT_BUTTON := true
+
+TARGET_QCOM_DISPLAY_VARIANT := caf
+BOARD_HAVE_OLD_ION_API := true
+
