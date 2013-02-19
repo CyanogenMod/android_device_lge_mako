@@ -159,8 +159,16 @@
         <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
     </path>
 
+    <path name="audio-record bt-sco">
+        <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="1" />
+    </path>
+
     <path name="low-latency-record">
         <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="low-latency-record bt-sco">
+        <ctl name="MultiMedia5 Mixer INTERNAL_BT_SCO_TX" value="1" />
     </path>
 
     <path name="voice-call">
