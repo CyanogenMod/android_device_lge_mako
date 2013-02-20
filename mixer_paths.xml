@@ -397,6 +397,7 @@
 
     <path name="voice-rec-dmic-bs-fluence">
         <path name="dmic-broadside" />
+    </path>
 
     <!-- TTY devices -->
 
