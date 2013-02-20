@@ -1,0 +1,4 @@
+<resources>
+<!-- Disable software HDR on non-hw HDR devices -->
+<bool name="disableSoftwareHDR">true</bool>
+</resources>
