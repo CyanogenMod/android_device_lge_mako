@@ -28,7 +28,6 @@
 /system/bin/mpdecision
 /system/bin/netmgrd
 /system/bin/nl_listener
-/system/bin/PktRspTest
 /system/bin/port-bridge
 /system/bin/qcks
 /system/bin/qmuxd
@@ -36,12 +35,6 @@
 /system/bin/radish
 /system/bin/rmt_storage
 /system/bin/sensors.qcom
-/system/bin/sns_cm_conc_test
-/system/bin/sns_cm_test
-/system/bin/sns_debug_file_test
-/system/bin/sns_dsps_tc0001
-/system/bin/sns_smr_loopback_test
-/system/bin/test_diag
 /system/bin/thermald
 /system/bin/usbhub
 /system/bin/usbhub_init
@@ -163,7 +156,6 @@
 /system/lib/libsc-a3xx.so
 /system/lib/libsensor1.so
 /system/lib/libsensor_reg.so
-/system/lib/libsensor_test.so
 /system/lib/libsensor_user_cal.so
 /system/lib/libstagefright_hdcp.so
 /system/lib/libxml.so
@@ -175,4 +167,9 @@
 /system/vendor/firmware/discretix/dxhdcp2.b02
 /system/vendor/firmware/discretix/dxhdcp2.b03
 /system/vendor/firmware/discretix/dxhdcp2.mdt
+/system/vendor/firmware/keymaster/keymaster.b00
+/system/vendor/firmware/keymaster/keymaster.b01
+/system/vendor/firmware/keymaster/keymaster.b02
+/system/vendor/firmware/keymaster/keymaster.b03
+/system/vendor/firmware/keymaster/keymaster.mdt
 /system/vendor/lib/libdrmdecrypt.so
