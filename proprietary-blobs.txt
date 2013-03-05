@@ -53,7 +53,6 @@
 /system/etc/firmware/vidc.b02
 /system/etc/firmware/vidc.b03
 /system/etc/firmware/vidc.mdt
-/system/etc/firmware/vidcfw.elf
 /system/etc/firmware/vidc_1080p.fw
 /system/etc/firmware/wcd9310/wcd9310_anc.bin
 /system/etc/firmware/wcd9310/wcd9310_mbhc.bin
@@ -64,10 +63,10 @@
 /system/lib/egl/libGLESv2_adreno200.so
 /system/lib/egl/libplayback_adreno200.so
 /system/lib/egl/libq3dtools_adreno200.so
+/system/lib/hw/gps.msm8960.so
 /system/lib/hw/sensors.msm8960.so
 /system/lib/libacdbloader.so
 /system/lib/libAKM.so
-/system/lib/libalsautils.so
 /system/lib/libaudcal.so
 /system/lib/libaudioalsa.so
 /system/lib/libaudioparsers.so
@@ -114,9 +113,10 @@
 /system/lib/libimage-jpeg-dec-omx-comp.so
 /system/lib/libimage-jpeg-enc-omx-comp.so
 /system/lib/libimage-omx-common.so
-/system/lib/libllvm-a3xx.so
 /system/lib/libllvm-arm.so
+/system/lib/libloc_adapter.so
 /system/lib/libloc_api_v02.so
+/system/lib/libloc_eng.so
 /system/lib/libmercury.so
 /system/lib/libmm-color-convertor.so
 /system/lib/libmmcamera_faceproc.so
@@ -136,7 +136,6 @@
 /system/lib/liboemcamera.so
 /system/lib/libOmxAacDec.so
 /system/lib/libOmxWmaDec.so
-/system/lib/libOpenCL.so
 /system/lib/libOpenVG.so
 /system/lib/libqcci_legacy.so
 /system/lib/libqdi.so
