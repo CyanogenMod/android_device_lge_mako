@@ -227,7 +227,7 @@
         <ctl name="RX3 MIX1 INP1" value="RX1" />
         <ctl name="RX3 MIX1 INP2" value="RX6" />
         <ctl name="RX4 DSM MUX" value="DSM_INV" />
-        <ctl name="SLIM TX3 MUX" value="RMIX1" />
+        <ctl name="SLIM TX3 MUX" value="RMIX3" />
     </path>
 
     <path name="speaker-mic">
