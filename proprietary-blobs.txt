@@ -102,6 +102,7 @@
 /system/lib/libimage-jpeg-dec-omx-comp.so
 /system/lib/libimage-jpeg-enc-omx-comp.so
 /system/lib/libimage-omx-common.so
+/system/lib/libllvm-a3xx.so
 /system/lib/libloc_adapter.so
 /system/lib/libloc_api_v02.so
 /system/lib/libloc_eng.so
@@ -138,6 +139,7 @@
 /system/lib/libQSEEComAPI.so
 /system/lib/libril-qc-qmi-1.so
 /system/lib/libril-qcril-hook-oem.so
+/system/lib/libsc-a3xx.so
 /system/lib/libsensor1.so
 /system/lib/libsensor_reg.so
 /system/lib/libsensor_user_cal.so
