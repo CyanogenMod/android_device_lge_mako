@@ -42,3 +42,5 @@
 /dev/ttyUSB0              0660   system     system
 /dev/block/mmcblk0p8      0660   system     system
 /dev/block/mmcblk0p9      0660   system     system
+/dev/ks_hsic_bridge       0660   system     system
+/dev/efs_hsic_bridge      0660   system     system
