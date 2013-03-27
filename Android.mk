@@ -37,5 +37,4 @@ include $(BUILD_PREBUILT)
 
 endif
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
+include $(call first-makefiles-under,$(LOCAL_PATH))
