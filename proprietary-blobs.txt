@@ -39,7 +39,6 @@
 /system/bin/usbhub
 /system/bin/usbhub_init
 /system/bin/v4l2-qcamera-app
-/system/etc/diag.cfg
 /system/etc/DxHDCP.cfg
 /system/etc/firmware/vidc.b00
 /system/etc/firmware/vidc.b01
