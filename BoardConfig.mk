@@ -94,6 +94,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/lge/mako
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-USE_DEVICE_SPECIFIC_CAMERA := true
+#USE_DEVICE_SPECIFIC_CAMERA := true
 
 -include vendor/lge/mako/BoardConfigVendor.mk
