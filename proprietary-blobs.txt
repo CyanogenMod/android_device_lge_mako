@@ -167,6 +167,11 @@
 /system/vendor/firmware/discretix/dxhdcp2.b02
 /system/vendor/firmware/discretix/dxhdcp2.b03
 /system/vendor/firmware/discretix/dxhdcp2.mdt
+/system/vendor/firmware/keymaster/keymaster.b00
+/system/vendor/firmware/keymaster/keymaster.b01
+/system/vendor/firmware/keymaster/keymaster.b02
+/system/vendor/firmware/keymaster/keymaster.b03
+/system/vendor/firmware/keymaster/keymaster.mdt
 /system/vendor/lib/libdrmdecrypt.so
 /system/vendor/lib/libWVStreamControlAPI_L1.so
 /system/vendor/lib/libwvm.so

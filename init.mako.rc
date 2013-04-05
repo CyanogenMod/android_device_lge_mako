@@ -39,6 +39,15 @@ on init
     mkdir /persist 0771 system system
     mkdir /firmware 0771 system system
 
+on init
+    # Setup custom emergency number list based on
+    # the MCC. This is needed by RIL.
+    setprop persist.radio.custom_ecc "1"
+    setprop persist.radio.custom_ecc_mcc "{234,235,424,426,427,430,431:999},{334:060,066},{422:9999},{730:133}"
+    setprop persist.radio.custom_ecc_mcc_ex "{450:111,112,113,119,122,125,127},{724:190}"
+    setprop persist.radio.custom_ecc_voice "{515:117},{452:113,114,115}"
+    setprop persist.radio.custom_ecc_hard "911,*911,#911,112,999,000,08,118,120,122,110,119,995,111,113,125,127,133"
+
 on fs
     mount_all ./fstab.mako
     setprop ro.crypto.fuse_sdcard true

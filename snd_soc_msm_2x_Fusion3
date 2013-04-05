@@ -1780,6 +1780,32 @@ SectionDevice
 EndSection
 
 SectionDevice
+	Name "Voice Earpiece TMUS"
+	Comment "Handset Rx device"
+
+	EnableSequence
+		'SLIM_0_RX Channels':0:One
+		'RX1 MIX1 INP1':0:RX1
+		'RX1 MIX1 INP2':0:RX6
+		'RX1 Digital Volume':1:68
+		'EAR PA Gain':0:POS_6_DB
+		'DAC1 Switch':1:1
+		'SLIM TX3 MUX':0:RMIX1
+	EndSequence
+
+	DisableSequence
+		'RX1 MIX1 INP1':0:ZERO
+		'RX1 MIX1 INP2':0:ZERO
+		'RX1 Digital Volume':1:68
+		'DAC1 Switch':1:0
+		'SLIM TX3 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	81:1
+
+EndSection
+
+SectionDevice
 	Name "HAC Earpiece"
 	Comment "Handset Rx device for Hearing AID"
 
@@ -2320,6 +2346,7 @@ SectionDevice
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
+
 SectionDevice
 	Name "HeadsetVM Tx"
 	Comment "Headset Tx device"
@@ -2667,6 +2694,46 @@ SectionDevice
 	EndSequence
 
 	ACDBID	6:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "DMIC Endfire TMUS"
+	Comment "Dual MIC Endfire Tx device"
+
+	EnableSequence
+		'SLIM TX7 MUX':0:DEC7
+		'DEC7 MUX':0:ADC1
+		'SLIM TX8 MUX':0:DEC9
+		'DEC9 MUX':0:ADC3
+		'DEC7 Volume':1:66
+		'ADC1 Volume':1:100
+		'DEC9 Volume':1:66
+		'ADC3 Volume':1:100
+		'SLIM_0_TX Channels':0:Two
+		'MICBIAS1 CAPLESS Switch':1:0
+		'RX1 MIX2 INP1':0:IIR1
+		'RX2 MIX2 INP1':0:IIR1
+		'IIR1 INP1 Volume':1:51
+		'IIR1 INP1 MUX':0:DEC7
+	EndSequence
+
+	DisableSequence
+		'DEC7 Volume':1:60
+		'DEC9 Volume':1:60
+		'SLIM TX7 MUX':0:ZERO
+		'DEC7 MUX':0:ZERO
+		'SLIM TX8 MUX':0:ZERO
+		'DEC9 MUX':0:ZERO
+		'MICBIAS1 CAPLESS Switch':1:1
+		'RX1 MIX2 INP1':0:ZERO
+		'RX2 MIX2 INP1':0:ZERO
+		'IIR1 INP1 Volume':1:0
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	91:2
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
