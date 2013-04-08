@@ -1,7 +1,6 @@
 [
  {
    "repository": "lge-kernel-mako",
-   "target_path": "kernel/lge/mako",
-   "branch": "jellybean"
+   "target_path": "kernel/lge/mako"
  }
 ]
