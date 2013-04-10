@@ -51,7 +51,7 @@ LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_CAMERA_HEAP_ID
 endif
 
 LOCAL_SHARED_LIBRARIES:= \
-         libcutils libdl
+         libcutils liblog libdl
 
 LOCAL_MODULE:= mm-qcamera-app-badger
 
