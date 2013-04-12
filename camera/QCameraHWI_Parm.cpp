@@ -4070,6 +4070,8 @@ void QCameraHardwareInterface::initExifData(){
                   3, 1, (void *)mExifValues.gpsTimeStamp);
         ALOGV("EXIFTAGID_GPS_TIMESTAMP set");
     }
+    if(mExifValues.exposure_time.num || mExifValues.exposure_time.denom)
+        addExifTag(EXIFTAGID_EXPOSURE_TIME, EXIF_RATIONAL, 1, 1, (void *)&mExifValues.exposure_time);
 
 }
 
@@ -4117,8 +4119,6 @@ void QCameraHardwareInterface::setExifTags()
         temp.num = 1;
         temp.denom = temp2;
         memcpy(&mExifValues.exposure_time, &temp, sizeof(mExifValues.exposure_time));
-        addExifTag(EXIFTAGID_EXPOSURE_TIME, EXIF_RATIONAL, 1, 1, (void *)&mExifValues.exposure_time);
-
         ALOGV(" The exposure value is %f", temp2);
     }
     //get time and date from system
