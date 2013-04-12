@@ -694,6 +694,13 @@ void QCameraHardwareInterface::loadTables()
     }
     ALOGV("%s: X", __func__);
 }
+
+rat_t getRational(int num, int denom)
+{
+    rat_t temp = {num, denom};
+    return temp;
+}
+
 void QCameraHardwareInterface::initDefaultParameters()
 {
     bool ret;
@@ -1246,6 +1253,12 @@ void QCameraHardwareInterface::initDefaultParameters()
             (void *)&verticalViewAngle);
     mParameters.setFloat(QCameraParameters::KEY_VERTICAL_VIEW_ANGLE,
                     verticalViewAngle);
+
+    //Set Aperture
+    float f_number = 0.0f;
+    cam_config_get_parm(mCameraId, MM_CAMERA_PARM_F_NUMBER,
+            (void *)&f_number);
+    mExifValues.f_number = getRational(f_number*F_NUMBER_DECIMAL_PRECISION, F_NUMBER_DECIMAL_PRECISION);
 
     //Set Exposure Compensation
     mParameters.set(
@@ -4004,12 +4017,6 @@ void QCameraHardwareInterface::addExifTag(exif_tag_id_t tagid, exif_tag_type_t t
     mExifTableNumEntries++;
 }
 
-rat_t getRational(int num, int denom)
-{
-    rat_t temp = {num, denom};
-    return temp;
-}
-
 void QCameraHardwareInterface::initExifData(){
     if(mExifValues.dateTime) {
         addExifTag(EXIFTAGID_EXIF_DATE_TIME_ORIGINAL, EXIF_ASCII,
@@ -4019,6 +4026,10 @@ void QCameraHardwareInterface::initExifData(){
     }
     addExifTag(EXIFTAGID_FOCAL_LENGTH, EXIF_RATIONAL, 1, 1, (void *)&(mExifValues.focalLength));
     addExifTag(EXIFTAGID_ISO_SPEED_RATING,EXIF_SHORT,1,1,(void *)&(mExifValues.isoSpeed));
+
+    // normal f_number is from 1.2 to 22, but I'd like to put some margin.
+    if(mExifValues.f_number.num>0 && mExifValues.f_number.num<3200)
+      addExifTag(EXIFTAGID_F_NUMBER,EXIF_RATIONAL,1,1,(void *)&(mExifValues.f_number));
 
     if(mExifValues.mGpsProcess) {
         addExifTag(EXIFTAGID_GPS_PROCESSINGMETHOD, EXIF_ASCII,

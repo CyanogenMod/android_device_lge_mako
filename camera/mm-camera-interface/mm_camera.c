@@ -669,6 +669,10 @@ int32_t mm_camera_get_parm(mm_camera_obj_t * my_obj,
     case MM_CAMERA_PARM_GET_AF_STATUS:
         return mm_camera_send_native_ctrl_cmd(my_obj,   CAMERA_GET_PARM_AF_STATUS,
                      sizeof(af_actuator_status_t), (void *)parm->p_value);
+
+    case MM_CAMERA_PARM_F_NUMBER:
+        return mm_camera_send_native_ctrl_cmd(my_obj,   CAMERA_GET_PARM_F_NUMBER,
+                     sizeof(float), (void *)parm->p_value);
     default:
         /* needs to add more implementation */
         rc = -1;
