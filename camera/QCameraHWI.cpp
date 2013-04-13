@@ -1621,6 +1621,7 @@ void liveshot_callback(mm_camera_ch_data_buf_t *recvd_frame,
         ALOGE("%s: Error : returned from takePictureLiveshot",__func__);
         return;
     }
+    pme->setCAFLockCancel();
     ALOGV("%s: X", __func__);
 
 }
