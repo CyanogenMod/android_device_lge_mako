@@ -4291,15 +4291,15 @@ status_t QCameraHardwareInterface::setNoDisplayMode(const QCameraParameters& par
 status_t QCameraHardwareInterface::setCAFLockCancel(void)
 {
     ALOGV("%s : E", __func__);
-    status_t rc = NO_ERROR;
-    int32_t value;
 
     //for CAF unlock
-    value = 1;
-    rc = (native_set_parms(MM_CAMERA_PARM_CAF_LOCK_CANCEL, sizeof(int32_t), (void *)(&value))) ?
-                        NO_ERROR : UNKNOWN_ERROR;
+    if(MM_CAMERA_OK!=cam_ops_action(mCameraId,false,MM_CAMERA_OPS_FOCUS,NULL )) {
+      ALOGE("%s: AF command failed err:%d error %s",__func__, errno,strerror(errno));
+      return -1;
+    }
+
     ALOGV("%s : X", __func__);
-    return rc;
+    return NO_ERROR;
 }
 
 void QCameraHardwareInterface::prepareVideoPicture(bool disable){
