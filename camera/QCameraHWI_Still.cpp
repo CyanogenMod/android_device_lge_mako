@@ -1998,7 +1998,7 @@ status_t QCameraStream_Snapshot::receiveRawPicture(mm_camera_ch_data_buf_t* recv
             ALOGV("[DNR] DNR Processing Start.... %d * %d\n", mPictureWidth, mPictureHeight);
             ret = NO_ERROR;
             if (mHalCamCtrl->LINK_morpho_DNR_ProcessFrame)
-                ret = (int)mHalCamCtrl->LINK_morpho_DNR_ProcessFrame(dnr_buffer, mPictureWidth, mPictureHeight, 0, 1); //bright->normal->dark
+                ret = (int)mHalCamCtrl->LINK_morpho_DNR_ProcessFrame(dnr_buffer, mPictureWidth, mPictureHeight, 1, 1); //bright->normal->dark
             ALOGV("[DNR] DNR Processing result.... ret = %d\n", ret);
             memcpy((uint8_t *)recvd_frame->snapshot.main.frame->buffer, (uint8_t *)dnr_buffer, mPictureWidth*mPictureHeight*3/2);
             ALOGV("[DNR] DNR Processing END....\n");
