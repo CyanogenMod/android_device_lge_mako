@@ -1638,7 +1638,7 @@ status_t  QCameraHardwareInterface::takePicture()
 
     if(QCAMERA_HAL_RECORDING_STARTED != mPreviewState){
       isp3a_af_mode_t afMode = getAutoFocusMode(mParameters);
-      if (afMode != AF_MODE_CAF && !mFlashCond)
+      if (!mFlashCond)
       {
         mFlashCond = getFlashCondition();
       }
