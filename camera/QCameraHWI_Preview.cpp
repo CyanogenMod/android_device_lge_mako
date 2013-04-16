@@ -232,6 +232,13 @@ status_t QCameraStream_preview::getBufferFromSurface()
         mHalCamCtrl->mPreviewMemory.private_buffer_handle[cnt]->offset);
     }
 
+    //Cancel min_undequeued_buffer buffers back to the window
+    for (int i = 0;  i < numMinUndequeuedBufs; i ++) {
+        if( mHalCamCtrl->mPreviewMemory.local_flag[i] != BUFFER_NOT_OWNED) {
+            err = mPreviewWindow->cancel_buffer(mPreviewWindow, mHalCamCtrl->mPreviewMemory.buffer_handle[i]);
+        }
+        mHalCamCtrl->mPreviewMemory.local_flag[i] = BUFFER_NOT_OWNED;
+    }
 
     memset(&mHalCamCtrl->mMetadata, 0, sizeof(mHalCamCtrl->mMetadata));
     memset(mHalCamCtrl->mFace, 0, sizeof(mHalCamCtrl->mFace));
@@ -920,8 +927,8 @@ status_t QCameraStream_preview::processPreviewFrameWithDisplay(
         }
     } else {
         ALOGE("%s: buffer to be enqueued is not locked", __FUNCTION__);
-	    //mHalCamCtrl->mPreviewMemoryLock.unlock();
-        //return -EINVAL;
+	    mHalCamCtrl->mPreviewMemoryLock.unlock();
+        return -EINVAL;
     }
 
 #ifdef USE_ION
