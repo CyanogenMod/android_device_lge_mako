@@ -92,6 +92,13 @@ TARGET_NO_RPC := true
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/lge/mako
 
+BOARD_SEPOLICY_DIRS := \
+       device/lge/mako/sepolicy
+
+BOARD_SEPOLICY_UNION := \
+       file_contexts
+
+
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 USE_DEVICE_SPECIFIC_CAMERA := true
