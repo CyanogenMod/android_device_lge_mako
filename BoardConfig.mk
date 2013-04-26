@@ -96,7 +96,11 @@ BOARD_SEPOLICY_DIRS := \
        device/lge/mako/sepolicy
 
 BOARD_SEPOLICY_UNION := \
-       file_contexts
+       app.te \
+       device.te \
+       file_contexts \
+       surfaceflinger.te \
+       system.te
 
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
