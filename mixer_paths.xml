@@ -21,12 +21,12 @@
     <ctl name="RX5 Digital Volume" value="84" />
     <ctl name="RX6 Digital Volume" value="84" />
     <ctl name="RX7 Digital Volume" value="84" />
-    <ctl name="ADC1 Volume" value="25" />
-    <ctl name="ADC2 Volume" value="25" />
-    <ctl name="ADC3 Volume" value="25" />
-    <ctl name="ADC4 Volume" value="25" />
-    <ctl name="ADC5 Volume" value="25" />
-    <ctl name="ADC6 Volume" value="25" />
+    <ctl name="ADC1 Volume" value="3" />
+    <ctl name="ADC2 Volume" value="3" />
+    <ctl name="ADC3 Volume" value="3" />
+    <ctl name="ADC4 Volume" value="3" />
+    <ctl name="ADC5 Volume" value="3" />
+    <ctl name="ADC6 Volume" value="3" />
     <ctl name="DEC1 Volume" value="84" />
     <ctl name="DEC2 Volume" value="84" />
     <ctl name="DEC3 Volume" value="84" />
@@ -262,7 +262,7 @@
 
     <path name="headset-mic">
         <path name="adc2" />
-        <ctl name="ADC2 Volume" value="16" />
+        <ctl name="ADC2 Volume" value="2" />
     </path>
 
     <path name="voice-handset-tmus">
@@ -306,7 +306,7 @@
 
     <path name="voice-rec-mic">
         <path name="adc1" />
-        <ctl name="ADC1 Volume" value="16" />
+        <ctl name="ADC1 Volume" value="2" />
     </path>
 
     <path name="camcorder-mic">
