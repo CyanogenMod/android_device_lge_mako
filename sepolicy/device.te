@@ -1,2 +1,6 @@
 # GPU (used by most UI apps)
 type gpu_device, dev_type;
+
+# Qualcomm Secure Execution Environment Communicator (QSEECOM) device
+type qseecom_device, dev_type;
+
