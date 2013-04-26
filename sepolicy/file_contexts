@@ -1,3 +1,7 @@
 # GPU device
 /dev/kgsl-3d0       u:object_r:gpu_device:s0
 /dev/msm_rotator    u:object_r:gpu_device:s0
+
+# Qualcomm Secure Execution Environment Communicator (QSEECOM) device
+/dev/qseecom        u:object_r:qseecom_device:s0
+
