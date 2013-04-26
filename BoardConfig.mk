@@ -100,7 +100,8 @@ BOARD_SEPOLICY_UNION := \
        device.te \
        file_contexts \
        surfaceflinger.te \
-       system.te
+       system.te \
+       ueventd.te
 
 
 BOARD_CHARGER_ENABLE_SUSPEND := true

@@ -1,0 +1,1 @@
+allow ueventd sdcard_external:file r_file_perms;
