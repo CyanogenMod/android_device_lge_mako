@@ -5,3 +5,4 @@
 # Qualcomm Secure Execution Environment Communicator (QSEECOM) device
 /dev/qseecom        u:object_r:qseecom_device:s0
 
+/dev/socket/qmux_radio/*           u:object_r:qmux_socket:s0

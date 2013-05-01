@@ -99,6 +99,7 @@ BOARD_SEPOLICY_UNION := \
        app.te \
        device.te \
        drmserver.te \
+       file.te \
        file_contexts \
        keystore.te \
        rild.te \
