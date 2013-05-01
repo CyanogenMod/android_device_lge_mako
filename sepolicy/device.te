@@ -5,3 +5,4 @@ type gpu_device, dev_type;
 type qseecom_device, dev_type;
 
 type diag_device, dev_type;
+type bcm2079x_device, dev_type;

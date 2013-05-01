@@ -102,6 +102,7 @@ BOARD_SEPOLICY_UNION := \
        file.te \
        file_contexts \
        keystore.te \
+       nfc.te \
        rild.te \
        surfaceflinger.te \
        system.te \
