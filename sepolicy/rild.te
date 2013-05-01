@@ -1,1 +1,2 @@
 allow rild diag_device:chr_file rw_file_perms;
+allow rild qmux_socket:sock_file rw_file_perms;
