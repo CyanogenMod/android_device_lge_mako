@@ -6,3 +6,4 @@
 /dev/qseecom        u:object_r:qseecom_device:s0
 
 /dev/socket/qmux_radio/*           u:object_r:qmux_socket:s0
+/dev/bcm2079x-i2c                  u:object_r:bcm2079x_device:s0
