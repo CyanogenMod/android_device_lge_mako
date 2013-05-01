@@ -1,2 +1,3 @@
 # Grant GPU access to system apps (e.g., PowerManagerService)
 allow system gpu_device:chr_file rw_file_perms;
+allow system diag_device:chr_file rw_file_perms;
