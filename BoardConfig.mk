@@ -103,7 +103,8 @@ BOARD_SEPOLICY_UNION := \
        keystore.te \
        surfaceflinger.te \
        system.te \
-       ueventd.te
+       ueventd.te \
+       wpa.te
 
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
