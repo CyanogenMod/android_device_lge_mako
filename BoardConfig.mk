@@ -101,6 +101,7 @@ BOARD_SEPOLICY_UNION := \
        drmserver.te \
        file_contexts \
        keystore.te \
+       rild.te \
        surfaceflinger.te \
        system.te \
        ueventd.te \
