@@ -1,2 +1,6 @@
 # Grant access to Qualcomm MSM Audio ACDB device to mediaserver
 allow mediaserver msm_acdb_device:chr_file { ioctl };
+
+# Grant access to Qualcomm MSM Interface (QMI) audio sockets to mediaserver
+allow mediaserver qmux_audio_socket:sock_file create_file_perms;
+allow mediaserver qmux_audio_socket:dir rw_dir_perms;

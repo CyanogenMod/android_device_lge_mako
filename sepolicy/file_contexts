@@ -5,7 +5,12 @@
 # Qualcomm Secure Execution Environment Communicator (QSEECOM) device
 /dev/qseecom        u:object_r:qseecom_device:s0
 
-/dev/socket/qmux_radio/*           u:object_r:qmux_socket:s0
+# Qualcomm MSM Interface (QMI) devices
+/dev/socket/qmux_audio/*           u:object_r:qmux_audio_socket:s0
+/dev/socket/qmux_bluetooth/*       u:object_r:qmux_bluetooth_socket:s0
+/dev/socket/qmux_gps/*             u:object_r:qmux_gps_socket:s0
+/dev/socket/qmux_radio/*           u:object_r:qmux_radio_socket:s0
+
 /dev/bcm2079x-i2c                  u:object_r:bcm2079x_device:s0
 /dev/diag                          u:object_r:diag_device:s0
 
