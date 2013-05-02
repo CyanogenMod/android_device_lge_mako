@@ -1,0 +1,2 @@
+# Grant access to Qualcomm MSM Audio ACDB device to mediaserver
+allow mediaserver msm_acdb_device:chr_file { ioctl };
