@@ -13,6 +13,7 @@
 
 /dev/bcm2079x-i2c                  u:object_r:bcm2079x_device:s0
 /dev/diag                          u:object_r:diag_device:s0
+/dev/media([0-9])+                 u:object_r:camera_device:s0
 
 # Qualcomm MSM Audio ACDB device
 /dev/msm_acdb       u:object_r:msm_acdb_device:s0
