@@ -103,6 +103,7 @@ BOARD_SEPOLICY_UNION := \
        file_contexts \
        keystore.te \
        mediaserver.te \
+       kickstart.te \
        nfc.te \
        rild.te \
        surfaceflinger.te \

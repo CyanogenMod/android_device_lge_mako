@@ -20,3 +20,10 @@
 
 # Qualcomm audio firmware files
 /data/misc/audio/*                 u:object_r:audio_firmware_file:s0
+
+/dev/ks_hsic_bridge                u:object_r:kickstart_device:s0
+/dev/efs_hsic_bridge               u:object_r:kickstart_device:s0
+
+/system/bin/qcks                   u:object_r:kickstart_exec:s0
+/system/bin/efsks                  u:object_r:kickstart_exec:s0
+/system/bin/ks                     u:object_r:kickstart_exec:s0
