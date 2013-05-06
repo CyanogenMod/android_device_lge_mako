@@ -12,3 +12,6 @@ type msm_acdb_device, dev_type;
 
 # Kickstart device used by QC qcks
 type kickstart_device, dev_type;
+
+# SMD device, used by hci_qcomm_init
+type smd_device, dev_type;

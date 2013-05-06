@@ -97,10 +97,12 @@ BOARD_SEPOLICY_DIRS := \
 
 BOARD_SEPOLICY_UNION := \
        app.te \
+       bluetooth.te \
        device.te \
        drmserver.te \
        file.te \
        file_contexts \
+       hci_init.te \
        keystore.te \
        mediaserver.te \
        kickstart.te \
