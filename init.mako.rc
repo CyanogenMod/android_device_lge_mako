@@ -292,19 +292,11 @@ service qmuxd /system/bin/qmuxd
     user radio
     group radio audio bluetooth gps
 
-service ks_checker /system/bin/sh /system/etc/kickstart_checker.sh
-    class core
-    oneshot
-
 service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
     class core
     user system
     group system
-    disabled
     oneshot
-
-on property:persist.radio.kickstart=on
-    start kickstart
 
 service netmgrd /system/bin/netmgrd
     class main
