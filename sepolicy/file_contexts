@@ -14,6 +14,8 @@
 /dev/bcm2079x-i2c                  u:object_r:bcm2079x_device:s0
 /dev/diag                          u:object_r:diag_device:s0
 /dev/media([0-9])+                 u:object_r:camera_device:s0
+/dev/smd([0-9])+                   u:object_r:smd_device:s0
+/dev/mdm                           u:object_r:radio_device:s0
 
 # Qualcomm MSM Audio ACDB device
 /dev/msm_acdb       u:object_r:msm_acdb_device:s0
@@ -27,3 +29,8 @@
 /system/bin/qcks                   u:object_r:kickstart_exec:s0
 /system/bin/efsks                  u:object_r:kickstart_exec:s0
 /system/bin/ks                     u:object_r:kickstart_exec:s0
+
+/data/nfc(/.*)?                    u:object_r:nfc_data_file:s0
+
+/system/bin/hci_qcomm_init         u:object_r:hci_exec:s0
+/system/bin/bdAddrLoader           u:object_r:hci_exec:s0

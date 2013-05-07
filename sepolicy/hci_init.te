@@ -1,0 +1,11 @@
+type hci_init, domain;
+type hci_exec, file_type, exec_type;
+type hci_data_file, file_type;
+domain_auto_trans(shell, hci_exec, hci_init)
+
+allow hci_init shell:fd use;
+allow hci_init shell:fifo_file { write getattr };
+allow hci_init devpts:chr_file rw_file_perms;
+allow hci_init smd_device:chr_file rw_file_perms;
+allow hci_init bluetooth_data_file:file r_file_perms;
+unix_socket_connect(hci_init, property, init)
