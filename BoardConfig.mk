@@ -99,6 +99,7 @@ BOARD_SEPOLICY_UNION := \
        app.te \
        bluetooth.te \
        device.te \
+       domain.te \
        drmserver.te \
        file.te \
        file_contexts \
