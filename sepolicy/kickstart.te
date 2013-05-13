@@ -5,6 +5,7 @@ domain_auto_trans(init, kickstart_exec, kickstart)
 # XXX Everything bad happens here.
 allow kickstart kickstart_exec:file rx_file_perms;
 allow kickstart sdcard_external:file r_file_perms;
+allow kickstart sdcard_external:dir search;
 allow kickstart shell_exec:file rx_file_perms;
 allow kickstart system_file:file x_file_perms;
 allow kickstart system_data_file:file { create_file_perms rwx_file_perms };
