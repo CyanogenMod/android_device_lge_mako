@@ -3821,7 +3821,7 @@ status_t QCameraHardwareInterface::setHistogram(int histogram_en)
                 }
                 mHistServer.size = sizeof(camera_preview_histogram_info);
 #ifdef USE_ION
-                if(allocate_ion_memory(&mHistServer, cnt, ION_CP_MM_HEAP_ID) < 0) {
+                if(allocate_ion_memory(&mHistServer, cnt, ION_IOMMU_HEAP_ID) < 0) {
                   ALOGE("%s ION alloc failed\n", __func__);
                   return -1;
                 }
