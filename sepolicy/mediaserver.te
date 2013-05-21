@@ -1,0 +1,18 @@
+allow mediaserver audio_data_file:dir w_dir_perms;
+allow mediaserver audio_data_file:file create_file_perms;
+
+# Allow /dev/socket/qmux_audio
+allow mediaserver audio_socket:dir w_dir_perms;
+allow mediaserver audio_socket:sock_file { create setattr write unlink };
+allow mediaserver qmux:unix_stream_socket connectto;
+
+allow mediaserver self:socket create;
+
+allow mediaserver camera:unix_dgram_socket sendto;
+
+# /data/cam_socket* access
+#file_type_auto_trans(mediaserver, system_data_file, camera_data_file);
+allow mediaserver camera_data_file:sock_file write;
+
+# Allow logging diagnostic items
+allow mediaserver diagnostic_device:chr_file rw_file_perms;

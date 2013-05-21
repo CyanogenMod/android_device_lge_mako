@@ -1,0 +1,8 @@
+type diagnostic_device, dev_type;
+type kgsl_device, dev_type, mlstrustedobject;
+type mpdecision_device, dev_type;
+type shared_log_device, dev_type;
+type power_control_device, dev_type;
+type efs_block_device, dev_type;
+type bluetooth_device, dev_type;
+type shared_memory_device, dev_type;

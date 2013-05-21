@@ -1,0 +1,2 @@
+# bt_hc_worker access to shared memory driver
+allow bluetooth bluetooth_device:chr_file rw_file_perms;
