@@ -1,17 +1,6 @@
-type init_shell, domain;
-
-unix_socket_connect(init_shell, property, init)
-
-allow init_shell console_device:chr_file rw_file_perms;
-allow init_shell system_file:file execute_no_trans;
 allow init_shell kickstart_data_file:file getattr;
 allow init_shell kickstart_data_file:dir search;
 allow init_shell self:capability { fowner fsetid dac_override };
 # /data/qcks/
 #dontaudit init_shell self:capability dac_override;
-allow init_shell zygote_exec:file rx_file_perms;
-allow init_shell dalvikcache_data_file:file { write setattr };
-allow init_shell system:binder call;
-binder_use(init_shell);
-allow init_shell devpts:chr_file { read write open };
 allow init_shell radio_prop:property_service set;
