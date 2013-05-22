@@ -3,15 +3,15 @@ type bluetooth_loader, domain;
 type bluetooth_loader_exec, exec_type, file_type;
 
 # Run init.mako.bt.sh
-domain_auto_trans(init_shell, bluetooth_loader_exec, bluetooth_loader)
-allow bluetooth_loader init_shell:fd use;
-allow bluetooth_loader init_shell:fifo_file { getattr write };
+domain_auto_trans(init_trusted_shell, bluetooth_loader_exec, bluetooth_loader)
+allow bluetooth_loader init_trusted_shell:fd use;
+allow bluetooth_loader init_trusted_shell:fifo_file { getattr write };
 
 # Run hci_qcomm_init
-domain_auto_trans(init_shell, hci_attach_exec, hci_attach)
+domain_auto_trans(init_trusted_shell, hci_attach_exec, hci_attach)
 
 # hci_qcomm_init started with logwrapper
-allow hci_attach init_shell:fd use;
+allow hci_attach init_trusted_shell:fd use;
 allow hci_attach devpts:chr_file rw_file_perms;
 
 # Start bdAddrLoader from init

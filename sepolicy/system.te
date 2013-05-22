@@ -1,9 +1,10 @@
-allow system { mpdecision sensors qmux }:unix_stream_socket { connectto sendto };
+allow system { mpdecision sensors }:unix_stream_socket { connectto sendto };
 allow system { init mpdecision }:unix_dgram_socket sendto;
 # XXX how and why?
 allow system diagnostic_device:chr_file rw_file_perms;
-allow system rild_socket:sock_file { create setattr write };
-allow system rild_socket:dir w_dir_perms;
+
+qmux_socket(system)
+
 # XXX how and why
 allow system sysfs:file { read open write };
 allow system mpdecision_socket:sock_file write;

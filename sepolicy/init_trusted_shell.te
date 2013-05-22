@@ -1,0 +1,11 @@
+# shell started by init that is not UID shell
+type init_trusted_shell, domain, shelldomain;
+
+allow init_trusted_shell kickstart_data_file:dir { getattr read open search };
+allow init_trusted_shell kickstart_data_file:file getattr;
+
+allow init_trusted_shell shell_exec:file entrypoint;
+
+allow init_trusted_shell self:capability dac_override;
+
+allow init_trusted_shell radio_prop:property_service set;

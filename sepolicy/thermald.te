@@ -12,10 +12,8 @@ allow thermald self:capability { net_admin fsetid dac_override };
 allow thermald self:socket { ioctl create write read };
 allow thermald self:netlink_kobject_uevent_socket { read create setopt bind };
 
-# /dev/socket/qmux_radio access
-allow thermald rild_socket:sock_file { create setattr write unlink };
-allow thermald rild_socket:dir w_dir_perms;
-allow thermald qmux:unix_stream_socket connectto;
+# Talk to qmuxd
+qmux_socket(thermald)
 
 # Access to shared memory logger and logging diagnostic items
 allow thermald { shared_log_device diagnostic_device }:chr_file rw_file_perms;

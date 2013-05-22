@@ -34,4 +34,4 @@ allow sensors persist_sensors_file:file rw_file_perms;
 allow sensors system_data_file:file r_file_perms;
 
 # XXX label with own type?
-allow sensors sysfs:file { open append };
+allow sensors sysfs:file { open append read write getattr };

@@ -3,9 +3,7 @@ type kickstart, domain;
 type kickstart_exec, exec_type, file_type;
 
 # Run kickstart_checker.sh
-domain_auto_trans(init_shell, kickstart_exec, kickstart)
-
-allow init_shell kickstart_data_file:dir { getattr read open };
+domain_auto_trans(init_trusted_shell, kickstart_exec, kickstart)
 
 # kickstart_checker.sh talks to init over the property socket
 unix_socket_connect(kickstart, property, init)

@@ -10,10 +10,8 @@ allow bridge self:netlink_kobject_uevent_socket { create bind read };
 # Allow logging diagnostic items
 allow bridge diagnostic_device:chr_file rw_file_perms;
 
-# Create under /dev/socket
-allow bridge rild_socket:dir w_dir_perms;
-allow bridge rild_socket:sock_file { create write setattr unlink };
-allow bridge qmux:unix_stream_socket connectto;
+# Talk to qmuxd
+qmux_socket(bridge)
 
 # XXX Label sysfs files with a specific type?
 allow bridge sysfs:file { open write read getattr };

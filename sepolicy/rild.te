@@ -1,13 +1,11 @@
 allow rild self:netlink_socket { create bind read write };
 allow rild self:netlink_route_socket { write };
 
-# Create under /dev/socket
-allow rild rild_socket:sock_file { create setattr write unlink getattr };
-allow rild rild_socket:dir w_dir_perms;
-allow rild qmux:unix_stream_socket connectto;
+# Talk to qmuxd
+qmux_socket(rild)
 
 # Allow logging diagnostic items
 allow rild diagnostic_device:chr_file rw_file_perms;
 
 # XXX label with own type?
-allow rild sysfs:file { read open write };
+allow rild sysfs:file { read open write getattr };

@@ -1,0 +1,9 @@
+#####################################
+# qmux_socket(clientdomain)
+# Allow client to send via a local
+# socket to the qmux domain.
+define(`qmux_socket', `
+unix_socket_connect($1, qmux, qmux)
+allow $1 qmux_socket:dir w_dir_perms;
+allow $1 qmux_socket:sock_file { create setattr unlink getattr };
+')

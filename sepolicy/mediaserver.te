@@ -1,10 +1,10 @@
 allow mediaserver audio_data_file:dir w_dir_perms;
 allow mediaserver audio_data_file:file create_file_perms;
 
-# Allow /dev/socket/qmux_audio
-allow mediaserver audio_socket:dir w_dir_perms;
-allow mediaserver audio_socket:sock_file { create setattr write unlink };
-allow mediaserver qmux:unix_stream_socket connectto;
+# Talk to qmuxd. qmuxd doesn't seem to talk to
+# anything audio related on the other end...
+# Maybe dontaudit?
+qmux_socket(mediaserver)
 
 allow mediaserver self:socket create;
 
