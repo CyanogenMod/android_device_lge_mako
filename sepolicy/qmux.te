@@ -6,8 +6,8 @@ type qmux_exec, exec_type, file_type;
 init_daemon_domain(qmux)
 
 # Create local qmux_connect_socket
-allow qmux qmux_socket:dir w_dir_perms;
-allow qmux qmux_socket:sock_file { create setattr getattr unlink };
+allow qmux qmuxd_socket:dir w_dir_perms;
+allow qmux qmuxd_socket:sock_file { create setattr getattr unlink };
 
 # /dev/hsicctl* node access
 allow qmux radio_device:chr_file rw_file_perms;

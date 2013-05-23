@@ -53,10 +53,10 @@
 /dev/kgsl                      u:object_r:kgsl_device:s0
 
 # Sockets
-/dev/socket/qmux_audio(/.*)?     u:object_r:qmux_socket:s0
-/dev/socket/qmux_bluetooth(/.*)? u:object_r:qmux_socket:s0
-/dev/socket/qmux_gps(/.*)?       u:object_r:qmux_socket:s0
-/dev/socket/qmux_radio(/.*)?     u:object_r:qmux_socket:s0
+/dev/socket/qmux_audio(/.*)?     u:object_r:qmuxd_socket:s0
+/dev/socket/qmux_bluetooth(/.*)? u:object_r:qmuxd_socket:s0
+/dev/socket/qmux_gps(/.*)?       u:object_r:qmuxd_socket:s0
+/dev/socket/qmux_radio(/.*)?     u:object_r:qmuxd_socket:s0
 /dev/socket/mpdecision(/.*)?     u:object_r:mpdecision_socket:s0
 
 # Block labeling
