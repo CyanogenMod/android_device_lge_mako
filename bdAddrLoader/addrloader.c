@@ -151,15 +151,18 @@ int readBDAddr(InArg inArg, LoadedBDAddr *loadedBDAddr)
                 return FAIL;
         }
     }else if(inArg.nPathType == ARG_TYPE_PATH_PROP){
+        char prop_value[PROPERTY_VALUE_MAX];
         switch(inArg.nDataType){
             case ARG_TYPE_DATA_HEX:
-                if(property_get(inArg.szSrc, (char *)loadedBDAddr->data.bin, "")>=0){
+                if(property_get(inArg.szSrc, prop_value, "") >= 0 && strlen(prop_value) < BD_ADDR_LEN){
+                    strlcpy((char *)loadedBDAddr->data.bin, prop_value, BD_ADDR_LEN);
                     loadedBDAddr->nDataType = ARG_TYPE_DATA_HEX;
                     return SUCCESS;
                 }
                 break;
             case ARG_TYPE_DATA_ASCII:
-                if(property_get(inArg.szSrc, loadedBDAddr->data.sz, "")>=0){
+                if(property_get(inArg.szSrc, prop_value, "") >= 0 && strlen(prop_value) < BD_ADDR_STR_LEN){
+                    strlcpy(loadedBDAddr->data.sz, prop_value, BD_ADDR_STR_LEN);
                     loadedBDAddr->nDataType = ARG_TYPE_DATA_ASCII;
                     return SUCCESS;
                 }
