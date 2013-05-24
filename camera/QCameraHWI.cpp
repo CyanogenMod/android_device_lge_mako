@@ -2436,7 +2436,9 @@ int QCameraHardwareInterface::initHeapMem( QCameraHalHeap_t *heap,
     int rc = 0;
     int i;
     int path;
+    int ion_fd;
     struct msm_frame *frame;
+    struct ion_flush_data cache_inv_data;
     ALOGV("Init Heap =%p. stream_buf =%p, pmem_type =%d, num_of_buf=%d. buf_len=%d, cbcr_off=%d",
          heap, StreamBuf, pmem_type, num_of_buf, buf_len, cbcr_off);
     if(num_of_buf > MM_CAMERA_MAX_NUM_FRAMES || heap == NULL ||
@@ -2507,6 +2509,21 @@ int QCameraHardwareInterface::initHeapMem( QCameraHalHeap_t *heap,
             rc = -1;
             break;
         }
+
+        memset(&cache_inv_data, 0, sizeof(struct ion_flush_data));
+        cache_inv_data.vaddr = (void*) heap->camera_memory[i]->data;
+        cache_inv_data.fd = heap->ion_info_fd[i].fd;
+        cache_inv_data.handle = heap->ion_info_fd[i].handle;
+        cache_inv_data.length = heap->alloc[i].len;
+        ion_fd = heap->main_ion_fd[i];
+        if(ion_fd > 0) {
+            if(cache_ops(ion_fd, &cache_inv_data, ION_IOC_CLEAN_INV_CACHES) < 0)
+                ALOGE("%s: Cache Invalidate failed\n", __func__);
+            else {
+                ALOGV("%s: Successful cache invalidate\n", __func__);
+            }
+        }
+
         if (StreamBuf != NULL) {
             frame = &(StreamBuf->frame[i]);
             memset(frame, 0, sizeof(struct msm_frame));
