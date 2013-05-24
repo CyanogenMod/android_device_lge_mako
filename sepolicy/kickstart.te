@@ -2,19 +2,4 @@ type kickstart, domain;
 permissive kickstart;
 type kickstart_exec, file_type, exec_type;
 domain_auto_trans(init, kickstart_exec, kickstart)
-
-# XXX Everything bad happens here.
-allow kickstart kickstart_exec:file rx_file_perms;
-allow kickstart sdcard_external:file r_file_perms;
-allow kickstart sdcard_external:dir search;
-allow kickstart shell_exec:file rx_file_perms;
-allow kickstart system_file:file x_file_perms;
-allow kickstart system_data_file:file { create_file_perms rwx_file_perms };
-allow kickstart system_data_file:dir { write  add_name };
-
-allow kickstart block_device:blk_file rw_file_perms;
-allow kickstart kickstart_device:chr_file rw_file_perms;
-allow kickstart block_device:dir rw_dir_perms;
-
-allow kickstart radio_device:chr_file rw_file_perms;
-allow kickstart sysfs:file append;
+unconfined_domain(kickstart)
