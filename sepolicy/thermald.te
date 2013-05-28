@@ -6,7 +6,7 @@ type thermald_exec, exec_type, file_type;
 init_daemon_domain(thermald)
 
 # XXX should we allow kexec_load with /dev/socket/qmux_radio/qmux_client_socket
-# dac_override with /dev/socket/qmux_radio
+# dac_override open, unlink with /dev/socket/qmux_radio/qmux_client_socket
 allow thermald self:capability { net_admin fsetid dac_override };
 
 allow thermald self:socket { ioctl create write read };

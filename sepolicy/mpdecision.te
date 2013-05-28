@@ -5,7 +5,7 @@ type mpdecision_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(mpdecision)
 
-# Allow access to /dev/socket/mpdecision/*
+# dac_override to unlink /dev/socket/mpdecision/touchboost
 allow mpdecision self:capability { dac_override fsetid net_admin };
 allow mpdecision self:netlink_kobject_uevent_socket { create read setopt bind read };
 

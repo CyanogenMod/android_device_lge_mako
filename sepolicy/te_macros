@@ -3,7 +3,10 @@
 # Allow client to send via a local
 # socket to the qmux domain.
 define(`qmux_socket', `
+type $1_qmuxd_socket, file_type;
+file_type_auto_trans($1, qmuxd_socket, $1_qmuxd_socket)
 unix_socket_connect($1, qmuxd, qmux)
-allow $1 qmuxd_socket:dir w_dir_perms;
-allow $1 qmuxd_socket:sock_file { create setattr unlink getattr };
+allow qmux $1_qmuxd_socket:sock_file { getattr unlink };
 ')
+
+

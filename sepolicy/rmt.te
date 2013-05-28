@@ -10,7 +10,7 @@ allow rmt block_device:blk_file { open read };
 
 # XXX should we allow sys_rawio on /dev/mem?
 allow rmt self:capability { sys_rawio };
-# dac_override on /sys/power/wake_lock
+# dac_override on open /sys/power/wake_lock
 allow rmt self:capability { setuid setgid dac_override };
 allow rmt self:socket { create ioctl bind setopt read };
 

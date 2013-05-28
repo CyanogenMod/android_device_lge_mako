@@ -1,4 +1,4 @@
-# (radio process)
+# Bridge Manager (radio process)
 type bridge, domain;
 type bridge_exec, exec_type, file_type;
 

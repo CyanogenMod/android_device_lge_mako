@@ -68,6 +68,7 @@
 /data/nfc(/.*)?                u:object_r:nfc_data_file:s0
 /data/qcks(/.*)?               u:object_r:kickstart_data_file:s0
 /data/misc/sensors(/.*)?       u:object_r:sensors_data_file:s0
+/data/system/sensors(/.*)?     u:object_r:sensors_data_file:s0
 
 # System binaries
 /system/bin/rmt_storage          u:object_r:rmt_exec:s0

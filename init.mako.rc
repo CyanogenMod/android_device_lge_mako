@@ -188,6 +188,7 @@ on post-fs-data
     mkdir /data/system/sensors
     chmod 665 /data/system/sensors
     write /data/system/sensors/settings 1
+    restorecon /data/system/sensors/settings
     chmod 660 /data/system/sensors/settings
 
     # AKM setting data
@@ -203,7 +204,6 @@ on post-fs-data
     # Enable the setgid bit on the directory
     mkdir /data/audio 0770 media audio
     chmod 2770 /data/audio
-    restorecon /data/audio
 
     # kickstart
     mkdir /data/qcks 0770 system system
@@ -219,7 +219,6 @@ on post-fs-data
     # communicate with mpdecision and thermald
     mkdir /dev/socket/mpdecision 0770 system system
     chmod 2770 /dev/socket/mpdecision
-    restorecon /dev/socket/mpdecision
 
     # adjust vibrator amplitude
     write /sys/class/timed_output/vibrator/amp 70
@@ -285,7 +284,7 @@ service hciattach /system/bin/sh /system/etc/init.mako.bt.sh
     class late_start
     user bluetooth
     group qcom_oncrpc bluetooth net_bt_admin system
-    seclabel u:r:init_trusted_shell:s0
+    seclabel u:r:bluetooth_loader:s0
     disabled
     oneshot
 
@@ -308,7 +307,7 @@ service qmuxd /system/bin/qmuxd
 
 service ks_checker /system/bin/sh /system/etc/kickstart_checker.sh
     class core
-    seclabel u:r:init_trusted_shell:s0
+    seclabel u:r:kickstart:s0
     oneshot
 
 service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
