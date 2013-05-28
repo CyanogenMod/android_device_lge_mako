@@ -23,7 +23,6 @@ PRODUCT_COPY_FILES := \
     vendor/qcom/mako/proprietary/efsks:system/bin/efsks:qcom \
     vendor/qcom/mako/proprietary/hci_qcomm_init:system/bin/hci_qcomm_init:qcom \
     vendor/qcom/mako/proprietary/ks:system/bin/ks:qcom \
-    vendor/qcom/mako/proprietary/mm-audio-send-cal:system/bin/mm-audio-send-cal:qcom \
     vendor/qcom/mako/proprietary/mm-qcamera-daemon:system/bin/mm-qcamera-daemon:qcom \
     vendor/qcom/mako/proprietary/mpdecision:system/bin/mpdecision:qcom \
     vendor/qcom/mako/proprietary/netmgrd:system/bin/netmgrd:qcom \
@@ -49,18 +48,15 @@ PRODUCT_COPY_FILES := \
     vendor/qcom/mako/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so:qcom \
     vendor/qcom/mako/proprietary/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so:qcom \
     vendor/qcom/mako/proprietary/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so:qcom \
+    vendor/qcom/mako/proprietary/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so:qcom \
     vendor/qcom/mako/proprietary/gps.msm8960.so:system/lib/hw/gps.msm8960.so:qcom \
     vendor/qcom/mako/proprietary/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so:qcom \
     vendor/qcom/mako/proprietary/libC2D2.so:system/lib/libC2D2.so:qcom \
     vendor/qcom/mako/proprietary/libCommandSvc.so:system/lib/libCommandSvc.so:qcom \
     vendor/qcom/mako/proprietary/libI420colorconvert.so:system/lib/libI420colorconvert.so:qcom \
-    vendor/qcom/mako/proprietary/libOmxAacDec.so:system/lib/libOmxAacDec.so:qcom \
-    vendor/qcom/mako/proprietary/libOmxWmaDec.so:system/lib/libOmxWmaDec.so:qcom \
     vendor/qcom/mako/proprietary/libQSEEComAPI.so:system/lib/libQSEEComAPI.so:qcom \
-    vendor/qcom/mako/proprietary/lib_dlb_msd.so:system/lib/lib_dlb_msd.so:qcom \
     vendor/qcom/mako/proprietary/libaudcal.so:system/lib/libaudcal.so:qcom \
     vendor/qcom/mako/proprietary/libaudioalsa.so:system/lib/libaudioalsa.so:qcom \
-    vendor/qcom/mako/proprietary/libaudioparsers.so:system/lib/libaudioparsers.so:qcom \
     vendor/qcom/mako/proprietary/libc2d2_a3xx.so:system/lib/libc2d2_a3xx.so:qcom \
     vendor/qcom/mako/proprietary/libchromatix_imx111_default_video.so:system/lib/libchromatix_imx111_default_video.so:qcom \
     vendor/qcom/mako/proprietary/libchromatix_imx111_preview.so:system/lib/libchromatix_imx111_preview.so:qcom \
