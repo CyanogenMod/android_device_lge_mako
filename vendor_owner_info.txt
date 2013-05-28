@@ -25,14 +25,11 @@ system/lib/libAKM.so:lge
 system/lib/libCommandSvc.so:qcom
 system/lib/libDxHdcp.so:lge
 system/lib/libI420colorconvert.so:qcom
-system/lib/libOmxAacDec.so:qcom
-system/lib/libOmxWmaDec.so:qcom
 system/lib/libQSEEComAPI.so:qcom
-system/lib/lib_dlb_msd.so:qcom
+system/lib/libacdbdata.so:lge
 system/lib/libacdbloader.so:qcom
 system/lib/libaudcal.so:qcom
 system/lib/libaudioalsa.so:qcom
-system/lib/libaudioparsers.so:qcom
 system/lib/libcamera_fast_af.so:lge
 system/lib/libchromatix_imx111_default_video.so:qcom
 system/lib/libchromatix_imx111_preview.so:qcom
@@ -100,7 +97,6 @@ system/lib/libril-qcril-hook-oem.so:qcom
 system/lib/libsensor1.so:qcom
 system/lib/libsensor_user_cal.so:qcom
 system/lib/libstagefright_hdcp.so:qcom
-system/bin/mm-audio-send-cal:qcom
 system/bin/mm-qcamera-daemon:qcom
 system/bin/mpdecision:qcom
 system/bin/netmgrd:qcom

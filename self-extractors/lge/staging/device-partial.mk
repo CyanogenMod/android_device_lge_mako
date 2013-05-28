@@ -17,6 +17,7 @@ PRODUCT_COPY_FILES := \
     vendor/lge/mako/proprietary/DxHDCP.cfg:system/etc/DxHDCP.cfg:lge \
     vendor/lge/mako/proprietary/libAKM.so:system/lib/libAKM.so:lge \
     vendor/lge/mako/proprietary/libDxHdcp.so:system/lib/libDxHdcp.so:lge \
+    vendor/lge/mako/proprietary/libacdbdata.so:system/lib/libacdbdata.so:lge \
     vendor/lge/mako/proprietary/libcamera_fast_af.so:system/lib/libcamera_fast_af.so:lge \
     vendor/lge/mako/proprietary/libmorpho_noise_reduction.so:system/lib/libmorpho_noise_reduction.so:lge \
     vendor/lge/mako/proprietary/dxhdcp2.b00:system/vendor/firmware/discretix/dxhdcp2.b00:lge \
