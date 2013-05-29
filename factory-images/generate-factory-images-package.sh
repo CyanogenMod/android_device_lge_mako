@@ -27,13 +27,14 @@
 # start jb-mr2-dev
 # 683083 = JWR51
 # 689345 = JWR58
+# 690834 = JWR59
 # end jb-mr2-dev
 
 source ../../../common/clear-factory-images-variables.sh
-BUILD=689345
+BUILD=690834
 DEVICE=mako
 PRODUCT=occam
-VERSION=jwr58
+VERSION=jwr59
 #SRCPREFIX=signed-
 BOOTLOADER=makoz20g
 RADIO=m9615a-cefwmazm-2.0.1700.77
