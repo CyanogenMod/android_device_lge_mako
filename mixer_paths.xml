@@ -230,6 +230,11 @@
         <ctl name="SLIM TX3 MUX" value="RMIX3" />
     </path>
 
+    <path name="speaker-reverse">
+        <!-- mono speaker, no channel swap here -->
+        <path name="speaker" />
+    </path>
+
     <path name="speaker-mic">
         <path name="adc3" />
         <ctl name="DEC4 Volume" value="99" />
