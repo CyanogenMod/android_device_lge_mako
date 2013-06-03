@@ -23,17 +23,18 @@
 # 689345 = JWR58
 # 690834 = JWR59
 # 692263 = JWR60
+# 695489 = JWR64
 # end jb-mr2-dev
 BRANCH=jb-mr2-dev
 if test $BRANCH = jb-mr1.1-dev
 then
-  ZIP=occam-ota-573038.zip
+  ZIP=occam-ota-573038
   BUILD=jdq39
 fi # jb-mr1.1-dev
 if test $BRANCH = jb-mr2-dev
 then
-  ZIP=occam-ota-692263.zip
-  BUILD=jwr60
+  ZIP=occam-ota-695489
+  BUILD=jwr64
 fi # jb-mr2-dev
 ROOTDEVICE=mako
 DEVICE=mako
