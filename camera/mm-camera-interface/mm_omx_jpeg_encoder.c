@@ -462,15 +462,6 @@ int8_t omxJpegEncode(omx_jpeg_encode_params *encode_params)
         userpreferences.preference = OMX_JPEG_PREF_SOFTWARE_ONLY;
         hw_encode = 0;
     }
-    if (encode_params->scaling_params->in2_w &&
-        encode_params->scaling_params->in2_h) {
-        if (jpegRotation) {
-            userpreferences.preference = OMX_JPEG_PREF_SOFTWARE_ONLY;
-            ALOGV("%s:Scaling and roation true: setting pref to sw\n",
-                __func__);
-            hw_encode = 0;
-        }
-    }
     mm_jpeg_encoder_get_buffer_offset(bufferoffset.width, bufferoffset.height,
                     &bufferoffset.yOffset,
                     &bufferoffset.cbcrOffset,
