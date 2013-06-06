@@ -105,6 +105,7 @@
 /system/lib/libimage-omx-common.so
 /system/lib/libllvm-a3xx.so
 /system/lib/libloc_adapter.so
+/system/lib/libloc_api_v02.so
 /system/lib/libloc_eng.so
 /system/lib/libmercury.so
 /system/lib/libmm-color-convertor.so
