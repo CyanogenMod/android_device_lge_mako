@@ -7,6 +7,7 @@ init_daemon_domain(camera)
 
 allow camera self:process execmem;
 
+allow camera camera_device:dir search;
 allow camera { video_device camera_device }:chr_file rw_file_perms;
 allow camera { surfaceflinger mediaserver }:fd use;
 
@@ -22,3 +23,4 @@ allow camera camera_data_file:file create_file_perms;
 
 # Connect to /data/app/sensor_ctl_socket
 unix_socket_connect(camera, sensors, sensors)
+allow camera sensors_socket:sock_file read;

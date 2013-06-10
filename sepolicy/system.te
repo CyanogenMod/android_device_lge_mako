@@ -7,6 +7,7 @@ qmux_socket(system)
 
 # PowerManagerService
 unix_socket_connect(system, sensors, sensors)
+allow system sensors_socket:sock_file read;
 allow system sensors:unix_stream_socket sendto;
 
 # mpdecision access

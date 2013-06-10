@@ -15,7 +15,7 @@ allow sensors diagnostic_device:chr_file rw_file_perms;
 file_type_auto_trans(sensors, apk_data_file, sensors_socket);
 
 allow sensors sensors_data_file:dir create_dir_perms;
-allow sensors sensors_data_file:file r_file_perms;
+allow sensors sensors_data_file:file create_file_perms;
 dontaudit sensors apk_data_file:dir remove_name;
 
 # Access to sensor nodes
