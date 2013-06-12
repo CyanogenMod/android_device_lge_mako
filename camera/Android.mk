@@ -93,8 +93,8 @@ ifeq ($(USE_DEVICE_SPECIFIC_CAMERA),true)
         LOCAL_C_INCLUDES+= $(LOCAL_PATH)/mm-camera-interface
       endif
 
-      LOCAL_C_INCLUDES+= hardware/qcom/display/libgralloc
-      LOCAL_C_INCLUDES+= hardware/qcom/display/libgenlock
+      LOCAL_C_INCLUDES+= hardware/qcom/display/msm8960/libgralloc
+      LOCAL_C_INCLUDES+= hardware/qcom/display/msm8960/libgenlock
       LOCAL_C_INCLUDES+= hardware/qcom/media/libstagefrighthw
 
 
