@@ -42,11 +42,11 @@
 
 /dev/ttyHS0                    u:object_r:hci_attach_dev:s0
 /dev/ttyMSM0                   u:object_r:hci_attach_dev:s0
+/dev/smd2                      u:object_r:hci_attach_dev:s0
+/dev/smd3                      u:object_r:hci_attach_dev:s0
 
 /dev/cpu_dma_latency           u:object_r:power_control_device:s0
 /dev/diag                      u:object_r:diagnostic_device:s0
-/dev/smd2                      u:object_r:bluetooth_device:s0
-/dev/smd3                      u:object_r:bluetooth_device:s0
 /dev/smd.*                     u:object_r:shared_memory_device:s0
 /dev/smem_log                  u:object_r:shared_log_device:s0
 /dev/kgsl-3d0                  u:object_r:kgsl_device:s0

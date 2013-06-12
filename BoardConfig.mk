@@ -101,7 +101,6 @@ BOARD_SEPOLICY_UNION += \
 	file_contexts \
 	te_macros \
 	bluetooth_loader.te \
-	bluetooth.te \
 	bridge.te \
 	camera.te \
 	conn_init.te \
