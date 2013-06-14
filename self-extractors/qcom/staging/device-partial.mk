@@ -38,6 +38,11 @@ PRODUCT_COPY_FILES := \
     vendor/qcom/mako/proprietary/usbhub:system/bin/usbhub:qcom \
     vendor/qcom/mako/proprietary/usbhub_init:system/bin/usbhub_init:qcom \
     vendor/qcom/mako/proprietary/v4l2-qcamera-app:system/bin/v4l2-qcamera-app:qcom \
+    vendor/qcom/mako/proprietary/tzapps.b00:system/etc/firmware/tzapps.b00:qcom \
+    vendor/qcom/mako/proprietary/tzapps.b01:system/etc/firmware/tzapps.b01:qcom \
+    vendor/qcom/mako/proprietary/tzapps.b02:system/etc/firmware/tzapps.b02:qcom \
+    vendor/qcom/mako/proprietary/tzapps.b03:system/etc/firmware/tzapps.b03:qcom \
+    vendor/qcom/mako/proprietary/tzapps.mdt:system/etc/firmware/tzapps.mdt:qcom \
     vendor/qcom/mako/proprietary/vidc.b00:system/etc/firmware/vidc.b00:qcom \
     vendor/qcom/mako/proprietary/vidc.b01:system/etc/firmware/vidc.b01:qcom \
     vendor/qcom/mako/proprietary/vidc.b02:system/etc/firmware/vidc.b02:qcom \
