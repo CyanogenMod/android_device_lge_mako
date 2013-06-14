@@ -39,6 +39,11 @@
 /system/bin/usbhub_init
 /system/bin/v4l2-qcamera-app
 /system/etc/DxHDCP.cfg
+/system/etc/firmware/tzapps.b00
+/system/etc/firmware/tzapps.b01
+/system/etc/firmware/tzapps.b02
+/system/etc/firmware/tzapps.b03
+/system/etc/firmware/tzapps.mdt
 /system/etc/firmware/vidc.b00
 /system/etc/firmware/vidc.b01
 /system/etc/firmware/vidc.b02
