@@ -111,6 +111,11 @@ system/bin/rmt_storage:qcom
 system/lib/hw/sensors.msm8960.so:qcom
 system/bin/sensors.qcom:qcom
 system/bin/thermald:qcom
+system/etc/firmware/tzapps.b00:qcom
+system/etc/firmware/tzapps.b01:qcom
+system/etc/firmware/tzapps.b02:qcom
+system/etc/firmware/tzapps.b03:qcom
+system/etc/firmware/tzapps.mdt:qcom
 system/bin/usbhub:qcom
 system/bin/usbhub_init:qcom
 system/bin/v4l2-qcamera-app:qcom

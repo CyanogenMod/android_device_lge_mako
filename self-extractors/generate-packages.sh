@@ -27,6 +27,7 @@
 # 699533 = JWR66
 # 701448 = JWR66C
 # 704243 = JWR66G
+# 709441 = JWR66M
 # end jb-mr2-dev
 BRANCH=jb-mr2-dev
 if test $BRANCH = jb-mr1.1-dev
@@ -36,8 +37,8 @@ then
 fi # jb-mr1.1-dev
 if test $BRANCH = jb-mr2-dev
 then
-  ZIP=occam-ota-704243
-  BUILD=jwr66g
+  ZIP=occam-ota-709441
+  BUILD=jwr66m
 fi # jb-mr2-dev
 ROOTDEVICE=mako
 DEVICE=mako
@@ -103,6 +104,11 @@ do
             system/bin/usbhub \
             system/bin/usbhub_init \
             system/bin/v4l2-qcamera-app \
+            system/etc/firmware/tzapps.b00 \
+            system/etc/firmware/tzapps.b01 \
+            system/etc/firmware/tzapps.b02 \
+            system/etc/firmware/tzapps.b03 \
+            system/etc/firmware/tzapps.mdt \
             system/etc/firmware/vidc.b00 \
             system/etc/firmware/vidc.b01 \
             system/etc/firmware/vidc.b02 \
