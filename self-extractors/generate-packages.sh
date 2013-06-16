@@ -28,6 +28,7 @@
 # 701448 = JWR66C
 # 704243 = JWR66G
 # 709441 = JWR66M
+# 711294 = JWR66N
 # end jb-mr2-dev
 BRANCH=jb-mr2-dev
 if test $BRANCH = jb-mr1.1-dev
@@ -37,8 +38,8 @@ then
 fi # jb-mr1.1-dev
 if test $BRANCH = jb-mr2-dev
 then
-  ZIP=occam-ota-709441
-  BUILD=jwr66m
+  ZIP=occam-ota-711294
+  BUILD=jwr66n
 fi # jb-mr2-dev
 ROOTDEVICE=mako
 DEVICE=mako
