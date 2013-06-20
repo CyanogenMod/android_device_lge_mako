@@ -24,3 +24,5 @@ allow netmgrd system_file:file { execute_no_trans };
 
 # Talk to init over the property socket
 unix_socket_connect(netmgrd, property, init)
+# Set net.rmnet_usb0. values
+allow netmgrd radio_prop:property_service set;

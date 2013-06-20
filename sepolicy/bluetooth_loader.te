@@ -25,12 +25,11 @@ r_dir_file(bluetooth_loader, persist_bluetooth_file)
 
 # Talk to init over the property socket
 unix_socket_connect(bluetooth_loader, property, init)
+# Set persist.service.bdroid.* and bluetooth.* property values
+allow { bluetooth bluetooth_loader } bluetooth_prop:property_service set;
 
 # Shared memory node access
 allow hci_attach bluetooth_device:chr_file rw_file_perms;
 
 # Allow getprop/setprop for init.mako.bt.sh
 allow bluetooth_loader system_file:file execute_no_trans;
-
-# Allow bdAddrLoader to set bluetooth property value
-allow bluetooth_loader system_prop:property_service set;

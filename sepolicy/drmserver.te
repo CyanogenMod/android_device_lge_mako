@@ -1,0 +1,2 @@
+# Drm wants to read /firmware/image/tzapps.mdt
+r_dir_file(drmserver, radio_efs_file)
