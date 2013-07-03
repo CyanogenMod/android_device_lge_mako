@@ -69,6 +69,11 @@ then
 auto_owner=qcom
 fi
 
+if test "$auto_owner" = "" -a $file != system/etc/firmware/wcd9310/wcd9310_anc.bin -a $file != system/etc/firmware/wcd9310/wcd9310_mbhc.bin
+then
+echo $file has no known owner
+fi
+
 if test "$auto_owner" = "$target_owner"
 then
 if test $file != system/lib/libacdbloader.so
