@@ -31,14 +31,15 @@
 # 704243 = JWR66G
 # 709441 = JWR66M
 # 711294 = JWR66N
+# 737497 = JWR66V
 # end jb-mr2-dev
 
 source ../../../common/clear-factory-images-variables.sh
-BUILD=711294
+BUILD=737497
 DEVICE=mako
 PRODUCT=occam
-VERSION=jwr66n
+VERSION=jwr66v
 SRCPREFIX=signed-
 BOOTLOADER=makoz20i
-RADIO=m9615a-cefwmazm-2.0.1700.83
+RADIO=m9615a-cefwmazm-2.0.1700.84
 source ../../../common/generate-factory-images-common.sh
