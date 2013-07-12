@@ -67,6 +67,7 @@
 /system/lib/libC2D2.so
 /system/lib/libc2d2_a3xx.so
 /system/lib/libcamera_fast_af.so
+/system/lib/libCB.so
 /system/lib/libchromatix_imx111_default_video.so
 /system/lib/libchromatix_imx111_preview.so
 /system/lib/libchromatix_imx111_zsl.so
@@ -144,6 +145,9 @@
 /system/lib/libQSEEComAPI.so
 /system/lib/libril-qc-qmi-1.so
 /system/lib/libril-qcril-hook-oem.so
+/system/lib/libRSDriver_adreno.so
+/system/lib/librs_adreno.so
+/system/lib/librs_adreno_sha1.so
 /system/lib/libsc-a3xx.so
 /system/lib/libsensor1.so
 /system/lib/libsensor_reg.so
@@ -165,3 +169,4 @@
 /system/vendor/firmware/keymaster/keymaster.b03
 /system/vendor/firmware/keymaster/keymaster.mdt
 /system/vendor/lib/libdrmdecrypt.so
+/system/vendor/lib/oxili_rs_runtime.bc
