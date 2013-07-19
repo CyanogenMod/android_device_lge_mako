@@ -55,9 +55,15 @@ on fs
     restorecon /persist/bluetooth/.bdaddr
     restorecon /persist/playready
     restorecon /persist/playready/dxhdcp2
+    restorecon /persist/playready/dxhdcp2/acGSIRU1TX-2o-nJ69e1aFGgUxE_
+    restorecon /persist/playready/dxhdcp2/acGSIRU1TX-2o-nJ69e1aFGgUxE_/etK7oituoft7bxrO5H7GIVuhEQM_
+    restorecon /persist/playready/dxhdcp2/acGSIRU1TX-2o-nJ69e1aFGgUxE_/zttE+GVYd9YzREzMHiKY-IlERZM_
     restorecon /persist/sensors
     restorecon /persist/sensors/sns.reg
     restorecon /persist/widevine
+    restorecon /persist/widevine/5dsokxEEDXgQhkN50bp-Z2K5InM_
+    restorecon /persist/widevine/5dsokxEEDXgQhkN50bp-Z2K5InM_/RXFABDUxyT6Q+Zwx9ZhPGOq2Bq8_
+    restorecon /persist/widevine/5dsokxEEDXgQhkN50bp-Z2K5InM_/D3qpp0bxmJhbiZwIsCbXJ1434rc_
     restorecon /persist/wifi
     restorecon /persist/wifi/.macaddr
     setprop ro.crypto.fuse_sdcard true
@@ -156,6 +162,11 @@ on post-fs-data
 # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
 
+    mkdir /data/misc/playready
+    restorecon /data/misc/playready
+    mkdir /data/misc/tzapps
+    restorecon /data/misc/tzapps
+
     write /dev/wcnss_wlan 1
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
@@ -188,6 +199,7 @@ on post-fs-data
     mkdir /data/system/sensors
     chmod 665 /data/system/sensors
     write /data/system/sensors/settings 1
+    restorecon /data/system/sensors/settings
     chmod 660 /data/system/sensors/settings
 
     # AKM setting data
@@ -203,7 +215,6 @@ on post-fs-data
     # Enable the setgid bit on the directory
     mkdir /data/audio 0770 media audio
     chmod 2770 /data/audio
-    restorecon /data/audio
 
     # kickstart
     mkdir /data/qcks 0770 system system
@@ -219,7 +230,6 @@ on post-fs-data
     # communicate with mpdecision and thermald
     mkdir /dev/socket/mpdecision 0770 system system
     chmod 2770 /dev/socket/mpdecision
-    restorecon /dev/socket/mpdecision
 
     # adjust vibrator amplitude
     write /sys/class/timed_output/vibrator/amp 70
@@ -285,6 +295,7 @@ service hciattach /system/bin/sh /system/etc/init.mako.bt.sh
     class late_start
     user bluetooth
     group qcom_oncrpc bluetooth net_bt_admin system
+    seclabel u:r:bluetooth_loader:s0
     disabled
     oneshot
 
@@ -307,6 +318,7 @@ service qmuxd /system/bin/qmuxd
 
 service ks_checker /system/bin/sh /system/etc/kickstart_checker.sh
     class core
+    seclabel u:r:kickstart:s0
     oneshot
 
 service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/

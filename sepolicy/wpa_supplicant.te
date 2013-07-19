@@ -1,4 +1,3 @@
-# XXX not quite sure
 allow wpa init:unix_dgram_socket { read write };
 
 # logwrapper used with wpa_supplicant

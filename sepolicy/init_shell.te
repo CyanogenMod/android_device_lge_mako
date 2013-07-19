@@ -1,6 +1,0 @@
-allow init_shell kickstart_data_file:file getattr;
-allow init_shell kickstart_data_file:dir search;
-allow init_shell self:capability { fowner fsetid dac_override };
-# /data/qcks/
-#dontaudit init_shell self:capability dac_override;
-allow init_shell radio_prop:property_service set;

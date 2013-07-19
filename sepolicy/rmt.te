@@ -7,10 +7,11 @@ init_daemon_domain(rmt)
 
 # opens and reads the primary block device
 allow rmt block_device:blk_file { open read };
+allow rmt block_device:dir search;
 
 # XXX should we allow sys_rawio on /dev/mem?
 allow rmt self:capability { sys_rawio };
-# dac_override on /sys/power/wake_lock
+# dac_override on open /sys/power/wake_lock
 allow rmt self:capability { setuid setgid dac_override };
 allow rmt self:socket { create ioctl bind setopt read };
 
@@ -22,5 +23,5 @@ allow rmt kmem_device:chr_file rw_file_perms;
 allow rmt shared_log_device:chr_file rw_file_perms;
 
 # XXX Should we label with own type?
-allow rmt sysfs:file { open append read };
+allow rmt sysfs:file { open append read getattr write };
 allow rmt sysfs:dir rw_dir_perms;
