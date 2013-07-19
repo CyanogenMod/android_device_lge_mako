@@ -108,3 +108,33 @@ BOARD_HAVE_LOW_LATENCY_AUDIO := true
 -include vendor/lge/mako/BoardConfigVendor.mk
 
 BOARD_HAS_NO_SELECT_BUTTON := true
+
+BOARD_SEPOLICY_DIRS += \
+        device/lge/mako/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+	file_contexts \
+	bd_addr_loader.te \
+	bluetooth.te \
+	bridge.te \
+	camera.te \
+	conn_init.te \
+	device.te \
+	dhcp.te \
+	domain.te \
+	file.te \
+	kickstart.te \
+	init.te \
+	init_shell.te \
+	mediaserver.te \
+	mpdecision.te \
+	netmgrd.te \
+	qmux.te \
+	rild.te \
+	rmt.te \
+	sensors.te \
+	surfaceflinger.te \
+	system.te \
+	thermald.te \
+	ueventd.te \
+	wpa_supplicant.te

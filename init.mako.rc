@@ -50,6 +50,16 @@ on init
 
 on fs
     mount_all ./fstab.mako
+    restorecon /persist
+    restorecon /persist/bluetooth
+    restorecon /persist/bluetooth/.bdaddr
+    restorecon /persist/playready
+    restorecon /persist/playready/dxhdcp2
+    restorecon /persist/sensors
+    restorecon /persist/sensors/sns.reg
+    restorecon /persist/widevine
+    restorecon /persist/wifi
+    restorecon /persist/wifi/.macaddr
     setprop ro.crypto.fuse_sdcard true
 
 on early-boot
@@ -193,6 +203,7 @@ on post-fs-data
     # Enable the setgid bit on the directory
     mkdir /data/audio 0770 media audio
     chmod 2770 /data/audio
+    restorecon /data/audio
 
     # kickstart
     mkdir /data/qcks 0770 system system
@@ -208,6 +219,7 @@ on post-fs-data
     # communicate with mpdecision and thermald
     mkdir /dev/socket/mpdecision 0770 system system
     chmod 2770 /dev/socket/mpdecision
+    restorecon /dev/socket/mpdecision
 
     # adjust vibrator amplitude
     write /sys/class/timed_output/vibrator/amp 70
@@ -324,7 +336,7 @@ service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     #   user wifi
     #   group wifi inet keystore
     class main
-    socket wpa_wlan0 dgram 660 wifi wifi
+    socket wpa_wlan0 dgram 660 wifi wifi u:object_r:wpa_socket:s0
     disabled
     oneshot
 
@@ -337,7 +349,7 @@ service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
 #   user wifi
 #   group wifi inet keystore
     class main
-    socket wpa_wlan0 dgram 660 wifi wifi
+    socket wpa_wlan0 dgram 660 wifi wifi u:object_r:wpa_socket:s0
     disabled
     oneshot
 
