@@ -1,0 +1,22 @@
+# Temperature sensor daemon (root process)
+type thermald, domain;
+type thermald_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(thermald)
+
+# XXX should we allow kexec_load with /dev/socket/qmux_radio/qmux_client_socket
+# dac_override open, unlink with /dev/socket/qmux_radio/qmux_client_socket
+allow thermald self:capability { net_admin fsetid dac_override };
+
+allow thermald self:socket { ioctl create write read };
+allow thermald self:netlink_kobject_uevent_socket { read create setopt bind };
+
+# Talk to qmuxd
+qmux_socket(thermald)
+
+# Access to shared memory logger and logging diagnostic items
+allow thermald { shared_log_device diagnostic_device }:chr_file rw_file_perms;
+
+# XXX Should we label with own type?
+allow thermald sysfs:file { open read write getattr };

@@ -1,0 +1,7 @@
+allow wpa init:unix_dgram_socket { read write };
+
+# logwrapper used with wpa_supplicant
+allow wpa devpts:chr_file { read write };
+
+allow wpa wpa_socket:unix_dgram_socket { read write };
+allow wpa_socket system:unix_dgram_socket sendto;

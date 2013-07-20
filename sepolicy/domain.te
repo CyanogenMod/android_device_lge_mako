@@ -1,0 +1,3 @@
+allow domain kgsl_device:chr_file rw_file_perms;
+# libgsl is chatty about accessing /data/local/tmp
+dontaudit { surfaceflinger appdomain } shell_data_file:dir search;

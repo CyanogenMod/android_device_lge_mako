@@ -1,0 +1,11 @@
+allow rild self:netlink_socket { create bind read write };
+allow rild self:netlink_route_socket { write };
+
+# Talk to qmuxd
+qmux_socket(rild)
+
+# Allow logging diagnostic items
+allow rild diagnostic_device:chr_file rw_file_perms;
+
+# XXX label with own type?
+allow rild sysfs:file { read open write getattr };

@@ -44,12 +44,28 @@ on init
     # the MCC. This is needed by RIL.
     setprop persist.radio.custom_ecc "1"
     setprop persist.radio.custom_ecc_mcc "{234,235,424,426,427,430,431:999},{334:060,066},{422:9999},{730:133}"
-    setprop persist.radio.custom_ecc_mcc_ex "{450:111,112,113,119,122,125,127},{724:190}"
+    setprop persist.radio.custom_ecc_mcc_ex "{450:111,112,113,119,122,125,127},{724:190},{440,441:110,118,119,112,911}"
     setprop persist.radio.custom_ecc_voice "{515:117},{452:113,114,115}"
     setprop persist.radio.custom_ecc_hard "911,*911,#911,112,999,000,08,118,120,122,110,119,995,111,113,125,127,133"
 
 on fs
     mount_all ./fstab.mako
+    restorecon /persist
+    restorecon /persist/bluetooth
+    restorecon /persist/bluetooth/.bdaddr
+    restorecon /persist/playready
+    restorecon /persist/playready/dxhdcp2
+    restorecon /persist/playready/dxhdcp2/acGSIRU1TX-2o-nJ69e1aFGgUxE_
+    restorecon /persist/playready/dxhdcp2/acGSIRU1TX-2o-nJ69e1aFGgUxE_/etK7oituoft7bxrO5H7GIVuhEQM_
+    restorecon /persist/playready/dxhdcp2/acGSIRU1TX-2o-nJ69e1aFGgUxE_/zttE+GVYd9YzREzMHiKY-IlERZM_
+    restorecon /persist/sensors
+    restorecon /persist/sensors/sns.reg
+    restorecon /persist/widevine
+    restorecon /persist/widevine/5dsokxEEDXgQhkN50bp-Z2K5InM_
+    restorecon /persist/widevine/5dsokxEEDXgQhkN50bp-Z2K5InM_/RXFABDUxyT6Q+Zwx9ZhPGOq2Bq8_
+    restorecon /persist/widevine/5dsokxEEDXgQhkN50bp-Z2K5InM_/D3qpp0bxmJhbiZwIsCbXJ1434rc_
+    restorecon /persist/wifi
+    restorecon /persist/wifi/.macaddr
     setprop ro.crypto.fuse_sdcard true
 
 on early-boot
@@ -146,6 +162,11 @@ on post-fs-data
 # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
 
+    mkdir /data/misc/playready
+    restorecon /data/misc/playready
+    mkdir /data/misc/tzapps
+    restorecon /data/misc/tzapps
+
     write /dev/wcnss_wlan 1
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
@@ -178,6 +199,7 @@ on post-fs-data
     mkdir /data/system/sensors
     chmod 665 /data/system/sensors
     write /data/system/sensors/settings 1
+    restorecon /data/system/sensors/settings
     chmod 660 /data/system/sensors/settings
 
     # AKM setting data
@@ -273,6 +295,7 @@ service hciattach /system/bin/sh /system/etc/init.mako.bt.sh
     class late_start
     user bluetooth
     group qcom_oncrpc bluetooth net_bt_admin system
+    seclabel u:r:bluetooth_loader:s0
     disabled
     oneshot
 
@@ -295,6 +318,7 @@ service qmuxd /system/bin/qmuxd
 
 service ks_checker /system/bin/sh /system/etc/kickstart_checker.sh
     class core
+    seclabel u:r:kickstart:s0
     oneshot
 
 service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
@@ -324,7 +348,7 @@ service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     #   user wifi
     #   group wifi inet keystore
     class main
-    socket wpa_wlan0 dgram 660 wifi wifi
+    socket wpa_wlan0 dgram 660 wifi wifi u:object_r:wpa_socket:s0
     disabled
     oneshot
 
@@ -337,7 +361,7 @@ service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
 #   user wifi
 #   group wifi inet keystore
     class main
-    socket wpa_wlan0 dgram 660 wifi wifi
+    socket wpa_wlan0 dgram 660 wifi wifi u:object_r:wpa_socket:s0
     disabled
     oneshot
 

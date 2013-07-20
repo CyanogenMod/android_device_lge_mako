@@ -1,0 +1,17 @@
+# CPU governor (root process)
+type mpdecision, domain;
+type mpdecision_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(mpdecision)
+
+# dac_override to unlink /dev/socket/mpdecision/touchboost
+allow mpdecision self:capability { dac_override fsetid net_admin };
+allow mpdecision self:netlink_kobject_uevent_socket { create read setopt bind read };
+
+# Create under /dev/socket/mpdecision
+allow mpdecision mpdecision_socket:dir w_dir_perms;
+allow mpdecision mpdecision_socket:sock_file { create setattr write };
+
+# XXX Should we label with own type?
+allow mpdecision sysfs:file { read open write getattr };
