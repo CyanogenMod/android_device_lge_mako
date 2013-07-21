@@ -14,7 +14,7 @@ allow camera { surfaceflinger mediaserver }:fd use;
 # Create /data/cam_socket0 as camera_socket
 type_transition camera system_data_file:sock_file camera_socket "cam_socket0";
 allow camera camera_socket:sock_file { create unlink };
-dontaudit camera system_data_file:dir remove_name;
+allow camera system_data_file:dir remove_name;
 
 # All others under /data get camera_data_file
 file_type_auto_trans(camera, system_data_file, camera_data_file);
