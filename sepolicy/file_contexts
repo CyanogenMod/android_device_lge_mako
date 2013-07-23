@@ -101,3 +101,7 @@
 /persist/playready(/.*)?         u:object_r:persist_drm_file:s0
 /persist/widevine(/.*)?          u:object_r:persist_drm_file:s0
 /persist/wifi(/.*)?              u:object_r:persist_wifi_file:s0
+
+# Hardware tunables
+/sys/class/timed_output/vibrator/amp        u:object_r:sysfs_writable:s0
+/sys/devices/platform/kcal_ctrl.0(/.*)?  -- u:object_r:sysfs_writable:s0
