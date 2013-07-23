@@ -147,3 +147,5 @@ BOARD_SEPOLICY_UNION += \
 	thermald.te \
 	ueventd.te \
 	wpa_supplicant.te
+
+BOARD_HARDWARE_CLASS := device/lge/mako/cmhw/
