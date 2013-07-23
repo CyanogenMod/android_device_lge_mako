@@ -256,6 +256,17 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
 
+    # Hardware tunables
+    chown root system /sys/class/timed_output/vibrator/amp
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    chmod 0664 /sys/class/timed_output/vibrator/amp
+    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
+    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    restorecon /sys/class/timed_output/vibrator/amp
+    restorecon /sys/devices/platform/kcal_ctrl.0/kcal
+    restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
