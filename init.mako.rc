@@ -24,6 +24,10 @@ on init
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
 
+    # Set permissions for persist partition
+    mkdir /persist 0771 system system
+    mkdir /firmware 0771 system system
+
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
@@ -34,12 +38,6 @@ on init
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
-on init
-    # Set permissions for persist partition
-    mkdir /persist 0771 system system
-    mkdir /firmware 0771 system system
-
-on init
     # Setup custom emergency number list based on
     # the MCC. This is needed by RIL.
     setprop persist.radio.custom_ecc "1"
@@ -67,6 +65,7 @@ on fs
     restorecon /persist/wifi
     restorecon /persist/wifi/.macaddr
     setprop ro.crypto.fuse_sdcard true
+    write /sys/kernel/boot_adsp/boot 1
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -316,20 +315,11 @@ service qmuxd /system/bin/qmuxd
     user radio
     group radio audio bluetooth gps
 
-service ks_checker /system/bin/sh /system/etc/kickstart_checker.sh
-    class core
-    seclabel u:r:kickstart:s0
-    oneshot
-
 service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
     class core
     user system
     group system
-    disabled
     oneshot
-
-on property:persist.radio.kickstart=on
-    start kickstart
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -340,8 +330,9 @@ service sensors /system/bin/sensors.qcom
     user root
     group root
 
-service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
+service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -e/data/misc/wifi/entropy.bin
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
@@ -352,9 +343,11 @@ service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
-    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -N \
+service p2p_supplicant /system/bin/wpa_supplicant \
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
+    -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -e/data/misc/wifi/entropy.bin -puse_p2p_group_interface=1
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
@@ -385,7 +378,11 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
+service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
@@ -424,7 +421,8 @@ service bdAddrLoader /system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -
     oneshot
 
 # bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/bugmailer.sh -v
+service bugreport /system/bin/dumpstate -d -p -B \
+        -o /data/data/com.android.shell/files/bugreports/bugreport
     class main
     disabled
     oneshot

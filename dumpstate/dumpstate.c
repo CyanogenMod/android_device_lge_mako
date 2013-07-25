@@ -19,5 +19,8 @@
 void dumpstate_board()
 {
     dump_file("INTERRUPTS", "/proc/interrupts");
+    dump_file("Power Management Stats", "/proc/msm_pm_stats");
     run_command("MODEM TOMBSTONES", 5, SU_PATH, "root", "ls", "-l", "/data/tombstones/mdm", NULL);
+    dump_file("HSIC Control Events", "/sys/kernel/debug/ehci_hsic_msm_dbg/show_ctrl_events");
+    dump_file("HSIC Data Events", "/sys/kernel/debug/ehci_hsic_msm_dbg/show_data_events");
 };

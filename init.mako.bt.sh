@@ -64,9 +64,9 @@ fi
 
 case $? in
   0) logi "Bluetooth QSoC firmware download succeeded, $PWR_CLASS $BDADDR $TRANSPORT";;
-  *) failed "Bluetooth QSoC firmware download failed" $exit_code_hci_qcomm_init;
+  *) failed "Bluetooth QSoC firmware download failed" $?;
      setprop bluetooth.status off;
-     exit $exit_code_hci_qcomm_init;;
+     exit $?;;
 esac
 
 setprop bluetooth.status on

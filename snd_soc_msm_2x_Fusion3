@@ -2659,6 +2659,35 @@ SectionDevice
 EndSection
 
 SectionDevice
+	Name "DMIC Broadside Voice Rec"
+	Comment "Dual MIC Broadside Tx device Voice recognition"
+
+	EnableSequence
+		'SLIM TX7 MUX':0:DEC7
+		'DEC7 MUX':0:DMIC1
+		'SLIM TX8 MUX':0:DEC8
+		'DEC8 MUX':0:DMIC2
+		'MICBIAS1 CAPLESS Switch':1:1
+		'SLIM_0_TX Channels':0:Two
+		'IIR1 INP1 Volume':1:50
+		'IIR1 INP1 MUX':0:DEC7
+	EndSequence
+
+	DisableSequence
+		'SLIM TX7 MUX':0:ZERO
+		'DEC7 MUX':0:ZERO
+		'SLIM TX8 MUX':0:ZERO
+		'DEC8 MUX':0:ZERO
+		'MICBIAS1 CAPLESS Switch':1:0
+		'IIR1 INP1 Volume':1:0
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	62:2
+
+EndSection
+
+SectionDevice
 	Name "DMIC Endfire"
 	Comment "Dual MIC Endfire Tx device"
 
@@ -2735,6 +2764,45 @@ SectionDevice
 
 	ACDBID	91:2
 	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "DMIC Endfire Voice Rec"
+	Comment "Dual MIC Endfire Tx device voice recognition"
+
+	EnableSequence
+		'SLIM TX7 MUX':0:DEC7
+		'DEC7 MUX':0:ADC1
+		'SLIM TX8 MUX':0:DEC9
+		'DEC9 MUX':0:ADC3
+		'DEC7 Volume':1:66
+		'ADC1 Volume':1:100
+		'DEC9 Volume':1:66
+		'ADC3 Volume':1:100
+		'SLIM_0_TX Channels':0:Two
+		'MICBIAS1 CAPLESS Switch':1:0
+		'RX1 MIX2 INP1':0:IIR1
+		'RX2 MIX2 INP1':0:IIR1
+		'IIR1 INP1 Volume':1:51
+		'IIR1 INP1 MUX':0:DEC7
+	EndSequence
+
+	DisableSequence
+		'DEC7 Volume':1:60
+		'DEC9 Volume':1:60
+		'SLIM TX7 MUX':0:ZERO
+		'DEC7 MUX':0:ZERO
+		'SLIM TX8 MUX':0:ZERO
+		'DEC9 MUX':0:ZERO
+		'MICBIAS1 CAPLESS Switch':1:1
+		'RX1 MIX2 INP1':0:ZERO
+		'RX2 MIX2 INP1':0:ZERO
+		'IIR1 INP1 Volume':1:0
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	62:2
 
 EndSection
 

@@ -52,6 +52,9 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
+	device/lge/mako/mixer_paths.xml:system/etc/mixer_paths.xml
+
+PRODUCT_COPY_FILES += \
 	device/lge/mako/thermald-mako.conf:system/etc/thermald.conf
 
 PRODUCT_COPY_FILES += \
@@ -61,9 +64,6 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/ueventd.mako.rc:root/ueventd.mako.rc \
 	device/lge/mako/media_profiles.xml:system/etc/media_profiles.xml \
 	device/lge/mako/media_codecs.xml:system/etc/media_codecs.xml
-
-PRODUCT_COPY_FILES += \
-	device/lge/mako/kickstart_checker.sh:system/etc/kickstart_checker.sh
 
 # Prebuilt kl and kcm keymaps
 PRODUCT_COPY_FILES += \
@@ -96,7 +96,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
+	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
@@ -104,8 +105,6 @@ PRODUCT_COPY_FILES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    libnfc-nci \
-    libnfc_nci_jni \
     nfc_nci.mako \
     NfcNci \
     Tag \
@@ -126,13 +125,18 @@ PRODUCT_COPY_FILES += \
     device/lge/mako/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.opengles.version=131072
+	ro.opengles.version=196608
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
 # Audio Configuration
+# FIXME: Remove persist.audio.handset.mic and persist.audio.fluence.mode
+#        while switching new audio HAL from legacy HAL
 PRODUCT_PROPERTY_OVERRIDES += \
+	persist.audio.handset.mic.type=digital \
+	persist.audio.dualmic.config=endfire \
+	persist.audio.fluence.voicecall=true \
 	persist.audio.handset.mic=dmic \
 	persist.audio.fluence.mode=endfire \
 	persist.audio.lowlatency.rec=false \
@@ -170,13 +174,17 @@ PRODUCT_PACKAGES += \
 	copybit.msm8960
 
 PRODUCT_PACKAGES += \
-	alsa.msm8960 \
 	audio_policy.msm8960 \
 	audio.primary.msm8960 \
 	audio.a2dp.default \
 	audio.usb.default \
 	audio.r_submix.default \
 	libaudio-resampler
+
+# Voice processing
+PRODUCT_PACKAGES += libqcomvoiceprocessing
+PRODUCT_COPY_FILES += \
+    device/lge/mako/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 PRODUCT_PACKAGES += \
 	hci_qcomm_init
@@ -220,6 +228,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	keystore.msm8960
 
+PRODUCT_PACKAGES += \
+	wpa_supplicant_overlay.conf \
+	p2p_supplicant_overlay.conf
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
 
@@ -241,18 +253,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
         debug.egl.recordable.rgba8888=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.qc.sensors.wl_dis=true
+	ro.qc.sensors.wl_dis=true \
+	ro.qualcomm.sensors.smd=true
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
-
-# for bugmailer
-PRODUCT_PACKAGES += send_bug
-PRODUCT_COPY_FILES += \
-	system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-	system/extras/bugmailer/send_bug:system/bin/send_bug
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # This is the mako-specific audio package
 $(call inherit-product, frameworks/base/data/sounds/AudioPackage10.mk)
+
+$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)

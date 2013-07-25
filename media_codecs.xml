@@ -35,9 +35,11 @@
         <MediaCodec name="OMX.google.aac.encoder" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.google.amrwb.encoder" type="audio/amr-wb" />
         <MediaCodec name="OMX.google.flac.encoder" type="audio/flac" />
+        <MediaCodec name="OMX.google.vpx.encoder" type="video/x-vnd.on2.vp8" />
     </Encoders>
     <Decoders>
         <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis" />
+        <MediaCodec name="OMX.google.gsm.decoder" type="audio/gsm" />
         <MediaCodec name="OMX.google.mp3.decoder" type="audio/mpeg" />
         <MediaCodec name="OMX.google.amrnb.decoder" type="audio/3gpp" />
         <MediaCodec name="OMX.google.amrwb.decoder" type="audio/amr-wb" />

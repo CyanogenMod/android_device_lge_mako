@@ -23,7 +23,7 @@ LOCAL_SRC_FILES := addrloader.c
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH) \
 	$(TARGET_OUT_HEADERS)/common/inc
-LOCAL_SHARED_LIBRARIES := libcutils
+LOCAL_SHARED_LIBRARIES := libcutils liblog
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_OWNER := lge
 LOCAL_MODULE := bdAddrLoader

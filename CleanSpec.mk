@@ -74,7 +74,44 @@ $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/obj/NOTICE_FILES/src
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/root/default.prop)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/recovery/root/default.prop)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
-
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/root/default.prop)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/recovery/root/default.prop)
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
+
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/obj/EXECUTABLES/alsaucm_test_intermediates \
+                              $(PRODUCT_OUT)/obj/EXECUTABLES/amix_intermediates \
+                              $(PRODUCT_OUT)/obj/EXECUTABLES/aplay_intermediates \
+                              $(PRODUCT_OUT)/obj/EXECUTABLES/arec_intermediates \
+                              $(PRODUCT_OUT)/obj/include/mm-audio \
+                              $(PRODUCT_OUT)/obj/SHARED_LIBRARIES/alsa.msm8960_intermediates \
+                              $(PRODUCT_OUT)/obj/SHARED_LIBRARIES/audio_policy.msm8960_intermediates \
+                              $(PRODUCT_OUT)/obj/SHARED_LIBRARIES/audio.primary.msm8960_intermediates \
+                              $(PRODUCT_OUT)/obj/SHARED_LIBRARIES/libalsa-intf_intermediates \
+                              $(PRODUCT_OUT)/obj/lib/libalsa-intf.so \
+                              $(PRODUCT_OUT)/obj/lib/audio_policy.msm8960.so \
+                              $(PRODUCT_OUT)/obj/lib/audio.primary.msm8960.so \
+                              $(PRODUCT_OUT)/obj/lib/alsa.msm8960.so \
+                              $(PRODUCT_OUT)/obj/NOTICE_FILES/src/system/lib/libalsa-intf.so.txt \
+                              $(PRODUCT_OUT)/obj/NOTICE_FILES/src/system/lib/hw/audio_policy.msm8960.so.txt \
+                              $(PRODUCT_OUT)/obj/NOTICE_FILES/src/system/lib/hw/audio.primary.msm8960.so.txt \
+                              $(PRODUCT_OUT)/obj/NOTICE_FILES/src/system/lib/hw/alsa.msm8960.so.txt \
+                              $(PRODUCT_OUT)/symbols/system/lib/libalsa-intf.so \
+                              $(PRODUCT_OUT)/symbols/system/lib/hw/audio_policy.msm8960.so \
+                              $(PRODUCT_OUT)/symbols/system/lib/hw/audio.primary.msm8960.so \
+                              $(PRODUCT_OUT)/symbols/system/lib/hw/alsa.msm8960.so \
+                              $(PRODUCT_OUT)/system/lib/libalsa-intf.so \
+                              $(PRODUCT_OUT)/system/lib/hw/audio_policy.msm8960.so \
+                              $(PRODUCT_OUT)/system/lib/hw/audio.primary.msm8960.so \
+                              $(PRODUCT_OUT)/system/lib/hw/alsa.msm8960.so \
+                              $(PRODUCT_OUT)/system/bin/amix \
+                              $(PRODUCT_OUT)/system/bin/alsaucm_test \
+                              $(PRODUCT_OUT)/system/bin/aplay \
+                              $(PRODUCT_OUT)/system/bin/arec \
+                              $(PRODUCT_OUT)/symbols/system/bin/amix \
+                              $(PRODUCT_OUT)/symbols/system/bin/alsaucm_test \
+                              $(PRODUCT_OUT)/symbols/system/bin/aplay \
+                              $(PRODUCT_OUT)/symbols/system/bin/arec)
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
+
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
+
