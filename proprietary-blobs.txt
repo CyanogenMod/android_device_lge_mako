@@ -50,8 +50,6 @@
 /system/etc/firmware/vidc.b03
 /system/etc/firmware/vidc.mdt
 /system/etc/firmware/vidc_1080p.fw
-/system/etc/firmware/wcd9310/wcd9310_anc.bin
-/system/etc/firmware/wcd9310/wcd9310_mbhc.bin
 /system/lib/egl/eglsubAndroid.so
 /system/lib/egl/libEGL_adreno200.so
 /system/lib/egl/libGLESv1_CM_adreno200.so
@@ -60,7 +58,6 @@
 /system/lib/hw/gps.msm8960.so
 /system/lib/hw/sensors.msm8960.so
 /system/lib/libacdbdata.so
-/system/lib/libacdbloader.so
 /system/lib/libAKM.so
 /system/lib/libaudcal.so
 /system/lib/libaudioalsa.so
@@ -165,7 +162,3 @@
 /system/vendor/firmware/keymaster/keymaster.b03
 /system/vendor/firmware/keymaster/keymaster.mdt
 /system/vendor/lib/libdrmdecrypt.so
-/system/vendor/lib/libWVStreamControlAPI_L1.so
-/system/vendor/lib/libwvm.so
-/system/vendor/lib/libwvdrm_L1.so
-/system/vendor/lib/drm/libdrmwvmplugin.so
