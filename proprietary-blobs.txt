@@ -58,6 +58,7 @@
 /system/lib/hw/gps.msm8960.so
 /system/lib/hw/sensors.msm8960.so
 /system/lib/libacdbdata.so
+/system/lib/libacdbloader.so
 /system/lib/libAKM.so
 /system/lib/libaudcal.so
 /system/lib/libaudioalsa.so
@@ -162,3 +163,7 @@
 /system/vendor/firmware/keymaster/keymaster.b03
 /system/vendor/firmware/keymaster/keymaster.mdt
 /system/vendor/lib/libdrmdecrypt.so
+/system/vendor/lib/libWVStreamControlAPI_L1.so
+/system/vendor/lib/libwvm.so
+/system/vendor/lib/libwvdrm_L1.so
+/system/vendor/lib/drm/libdrmwvmplugin.so
