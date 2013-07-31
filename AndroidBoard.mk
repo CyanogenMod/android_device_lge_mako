@@ -15,5 +15,11 @@
 #
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
+
+ifeq ($(TARGET_PRODUCT),occam_svelte)
+TARGET_PREBUILT_KERNEL := device/lge/mako_svelte-kernel/kernel
+else
 TARGET_PREBUILT_KERNEL := device/lge/mako-kernel/kernel
+endif
+
 endif

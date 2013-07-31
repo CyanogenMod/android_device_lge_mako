@@ -42,7 +42,11 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers \
         librs_jni
 
+ifeq ($(TARGET_PRODUCT),occam_svelte)
+LOCAL_KERNEL := device/lge/mako_svelte-kernel/kernel
+else
 LOCAL_KERNEL := device/lge/mako-kernel/kernel
+endif
 
 PRODUCT_COPY_FILES := \
 	$(LOCAL_KERNEL):kernel
