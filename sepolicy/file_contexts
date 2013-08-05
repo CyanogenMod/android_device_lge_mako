@@ -62,6 +62,10 @@
 # Block labeling
 /dev/block/mmcblk0p[89]        u:object_r:efs_block_device:s0
 
+# Modem firmware loader
+/dev/ks_hsic_bridge                u:object_r:kickstart_device:s0
+/dev/efs_hsic_bridge               u:object_r:kickstart_device:s0
+
 # Data labeling
 /data/audio(/.*)?              u:object_r:audio_data_file:s0
 /data/misc/audio(/.*)?         u:object_r:audio_data_file:s0
@@ -86,7 +90,6 @@
 /system/bin/efsks                u:object_r:kickstart_exec:s0
 /system/bin/ks                   u:object_r:kickstart_exec:s0
 /system/bin/qcks                 u:object_r:kickstart_exec:s0
-/system/etc/kickstart_checker.sh u:object_r:kickstart_exec:s0
 /system/bin/hci_qcomm_init       u:object_r:hci_attach_exec:s0
 /system/etc/init.mako.bt.sh      u:object_r:bluetooth_loader_exec:s0
 /system/bin/bdAddrLoader         u:object_r:bluetooth_loader_exec:s0

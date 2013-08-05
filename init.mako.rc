@@ -319,6 +319,7 @@ service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
     class core
     user system
     group system
+    seclabel u:r:kickstart:s0
     oneshot
 
 service netmgrd /system/bin/netmgrd
