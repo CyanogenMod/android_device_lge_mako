@@ -1,6 +1,7 @@
 # kickstart processes and scripts
 type kickstart, domain;
 type kickstart_exec, exec_type, file_type;
+type kickstart_device, dev_type;
 
 # kickstart_checker.sh talks to init over the property socket
 unix_socket_connect(kickstart, property, init)
@@ -39,3 +40,10 @@ allow kickstart radio_prop:property_service set;
 allow kickstart shell_exec:file entrypoint;
 # ls on /data/qcks/
 allow kickstart self:capability dac_override;
+
+# Access to the modem bridge chardevs
+allow kickstart kickstart_device:chr_file rw_file_perms;
+
+# set wake locks
+allow kickstart sysfs:file { append };
+
