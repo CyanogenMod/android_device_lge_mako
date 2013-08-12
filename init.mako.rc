@@ -260,12 +260,24 @@ on post-fs-data
     chown root system /sys/class/timed_output/vibrator/amp
     chown root system /sys/devices/platform/kcal_ctrl.0/kcal
     chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_r
+    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_g
+    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_b
+    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_apply
     chmod 0664 /sys/class/timed_output/vibrator/amp
     chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
     chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_r
+    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_g
+    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_b
+    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_apply
     restorecon /sys/class/timed_output/vibrator/amp
     restorecon /sys/devices/platform/kcal_ctrl.0/kcal
     restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_r
+    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_g
+    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_b
+    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_apply
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
