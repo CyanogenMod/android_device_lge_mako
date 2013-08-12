@@ -105,3 +105,4 @@
 # Hardware tunables
 /sys/class/timed_output/vibrator/amp        u:object_r:sysfs_writable:s0
 /sys/devices/platform/kcal_ctrl.0(/.*)?  -- u:object_r:sysfs_writable:s0
+/sys/devices/platform/mipi_lgit.1537(/.*)?  -- u:object_r:sysfs_writable:s0
