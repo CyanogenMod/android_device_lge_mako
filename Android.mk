@@ -43,9 +43,9 @@ LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
 include $(BUILD_PREBUILT)
 
-endif
-
 include $(call first-makefiles-under,$(LOCAL_PATH))
+
+endif
 
 ifeq ($(TARGET_DEVICE),mako)
 
