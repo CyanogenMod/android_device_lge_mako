@@ -20,6 +20,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string-array name="config_usbHostBlacklist">
-    <item msgid="2854983642221012800">"‏/dev/bus/usb/001"</item>
+    <item msgid="2854983642221012800">"/dev/bus/usb/001"</item>
   </string-array>
 </resources>
