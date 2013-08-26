@@ -3636,7 +3636,9 @@ status_t QCameraHardwareInterface::setPreviewSizeTable(void)
 end:
     /* Save the table in global member*/
     mPreviewSizes = preview_size_table;
-    mPreviewSizeCount = preview_table_size - i;
+    /* Also remove the smallest preview (176x144) in the returned list, which occurs
+     * last - it's broken */
+    mPreviewSizeCount = preview_table_size - i - 1;
 
     return ret;
 }
