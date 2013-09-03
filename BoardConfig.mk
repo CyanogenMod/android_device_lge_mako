@@ -121,4 +121,6 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 USE_DEVICE_SPECIFIC_CAMERA:= true
 USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
 
+HAVE_ADRENO_SOURCE:= false
+
 -include vendor/lge/mako/BoardConfigVendor.mk
