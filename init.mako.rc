@@ -19,6 +19,7 @@ import init.mako_svelte.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
+    chown system system /sys/kernel/debug/kgsl/proc
 
 on init
     # See storage config details at http://source.android.com/tech/storage/
