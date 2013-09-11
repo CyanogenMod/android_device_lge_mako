@@ -42,7 +42,7 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers \
         librs_jni
 
-ifneq ($(filter occam_svelte%, $(TARGET_PRODUCT)),)
+ifneq ($(findstring svelte, $(TARGET_PRODUCT)),)
 LOCAL_KERNEL := device/lge/mako_svelte-kernel/kernel
 else
 LOCAL_KERNEL := device/lge/mako-kernel/kernel
