@@ -17,7 +17,7 @@ allow adbd proc:file write;
 allow adbd self:capability setpcap;
 
 #============= debuggerd ==============
-allow debuggerd system:unix_stream_socket connectto;
+allow debuggerd system_server:unix_stream_socket connectto;
 allow debuggerd system_data_file:sock_file write;
 
 #============= dhcp ==============
@@ -119,14 +119,14 @@ allow surfaceflinger sysfs:file write;
 allow surfaceflinger system_app:dir search;
 allow surfaceflinger system_app:file { read open };
 
-#============= system ==============
-allow system device:chr_file ioctl;
-allow system init:binder { transfer call };
-allow system init:unix_stream_socket { read write setopt };
-allow system proc:file write;
-allow system security_file:lnk_file read;
-allow system unlabeled:dir { read remove_name write open add_name };
-allow system unlabeled:file { rename getattr read create open ioctl append };
+#============= system_server ==============
+allow system_server device:chr_file ioctl;
+allow system_server init:binder { transfer call };
+allow system_server init:unix_stream_socket { read write setopt };
+allow system_server proc:file write;
+allow system_server security_file:lnk_file read;
+allow system_server unlabeled:dir { read remove_name write open add_name };
+allow system_server unlabeled:file { rename getattr read create open ioctl append };
 
 #============= system_app ==============
 allow system_app init:unix_stream_socket { read write setopt };
