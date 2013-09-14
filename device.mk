@@ -219,6 +219,10 @@ PRODUCT_PACKAGES += \
 	libstagefrighthw \
 	libc2dcolorconvert
 
+# GPS configuration
+PRODUCT_COPY_FILES += \
+        device/lge/mako/gps.conf:system/etc/gps.conf
+
 # GPS
 PRODUCT_PACKAGES += \
         libloc_adapter \
@@ -229,7 +233,6 @@ PRODUCT_PACKAGES += \
         libizat_core \
         libgeofence \
         libgps.utils \
-        gps.conf \
         gps.msm8960 \
         flp.msm8960
 
