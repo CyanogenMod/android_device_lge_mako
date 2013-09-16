@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 extern int wfc_util_qcom_check_config(unsigned char *nv_mac_addr);
 extern void wfc_util_atoh(char *pAsciiString, int szAsciiString, unsigned char *pHexaBuff, int szHexaBuff);
@@ -50,7 +51,12 @@ static int wifi_check_qcom_cfg_files()
 
 int main(void)
 {
+    int fd;
     wifi_check_qcom_cfg_files();
+
+    fd = open("/dev/wcnss_wlan",O_WRONLY);
+    write(fd,"1\n",2);
+    close(fd);
 
     return 0;
 }
