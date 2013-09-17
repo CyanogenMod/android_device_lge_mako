@@ -32,8 +32,7 @@ PRODUCT_PACKAGES := \
 	lights.msm8960
 
 PRODUCT_PACKAGES += \
-    charger_res_images \
-    charger
+    charger_res_images
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
