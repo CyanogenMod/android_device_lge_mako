@@ -32,6 +32,9 @@ public class DisplayColorCalibration {
     public static int getMinValue()  {
         return 0;
     }
+    public static String getDefaultColors()  {
+        return "255 255 255";
+    }
     public static String getCurColors()  {
         return FileUtils.readOneLine(COLOR_FILE);
     }
