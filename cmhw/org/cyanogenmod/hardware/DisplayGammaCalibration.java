@@ -16,9 +16,13 @@
 
 package org.cyanogenmod.hardware;
 
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
-import java.io.File;
+
 import org.cyanogenmod.hardware.util.FileUtils;
+
+import java.io.File;
 
 public class DisplayGammaCalibration {
     private static final String[] GAMMA_FILE_PATH = new String[] {
@@ -29,6 +33,17 @@ public class DisplayGammaCalibration {
 
     private static final String GAMMA_FILE_CTRL =
         "/sys/devices/platform/mipi_lgit.1537/kgamma_apply";
+
+    private static final long SET_DELAY = 100L; /* ms */
+
+    private static final Handler H = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            applyGamma(msg.what, (String) msg.obj);
+        }
+    };
+
+    private static String[] sLastSetValues = new String[2];
 
     public static boolean isSupported() {
         /* Barf out if the interface is absent */
@@ -52,6 +67,10 @@ public class DisplayGammaCalibration {
      * so lets stick with those for now */
 
     public static String getCurGamma(int control) {
+        if (H.hasMessages(control)) {
+            return sLastSetValues[control];
+        }
+
         StringBuilder values = new StringBuilder();
         for (String filePath : GAMMA_FILE_PATH) {
             String[] allGammaValues = FileUtils.readOneLine(filePath).split(" ");
@@ -63,9 +82,15 @@ public class DisplayGammaCalibration {
         return values.toString();
     }
 
-    public static boolean setGamma(int control, String gamma)  {
+    public static boolean setGamma(int control, String gamma) {
+        H.removeMessages(control);
+        H.sendMessageDelayed(H.obtainMessage(control, gamma), SET_DELAY);
+        sLastSetValues[control] = gamma;
+        return true;
+    }
+
+    private static void applyGamma(int control, String gamma) {
         String[] valueSplit = gamma.split(" ");
-        boolean result = true;
 
         for (int i = 0; i < 3; i++) {
             String targetFile = GAMMA_FILE_PATH[i];
@@ -77,11 +102,8 @@ public class DisplayGammaCalibration {
                 checksum += Integer.parseInt(allGammaValues[j]);
             }
             allGammaValues[0] = String.valueOf(checksum);
-            result &= FileUtils.writeLine(targetFile, TextUtils.join(" ", allGammaValues));
+            FileUtils.writeLine(targetFile, TextUtils.join(" ", allGammaValues));
         }
-        if (result) {
-            FileUtils.writeLine(GAMMA_FILE_CTRL, "1");
-        }
-        return result;
+        FileUtils.writeLine(GAMMA_FILE_CTRL, "1");
     }
 }
