@@ -45,6 +45,11 @@ public class DisplayGammaCalibration {
 
     private static String[] sLastSetValues = new String[2];
 
+    public static final String[] GAMMA_DESCRIPTOR = new String[] {
+        "Contrast (Amp 0)",
+        "Brightness (Amp 1)"
+    };
+
     public static boolean isSupported() {
         /* Barf out if the interface is absent */
         return new File(GAMMA_FILE_PATH[0]).exists() &&
