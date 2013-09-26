@@ -1,0 +1,9 @@
+# Integrated qualcomm sensor process
+type sensors, domain;
+type sensors_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(sensors)
+
+permissive sensors;
+unconfined_domain(sensors)
