@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Gamma calibration descriptors -->
+    <string-array name="gamma_descriptors">
+        <item>@string/gamma_tuning_contrast</item>
+        <item>@string/gamma_tuning_brightness</item>
+    </string-array>
+
+</resources>
