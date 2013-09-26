@@ -1,0 +1,9 @@
+# Network utilities (radio process)
+type netmgrd, domain;
+type netmgrd_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(netmgrd)
+
+permissive netmgrd;
+unconfined_domain(netmgrd)

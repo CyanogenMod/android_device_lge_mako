@@ -1,0 +1,9 @@
+# Qualcomm Management Interface Multiplexer
+type qmux, domain;
+type qmux_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(qmux)
+
+permissive qmux;
+unconfined_domain(qmux)

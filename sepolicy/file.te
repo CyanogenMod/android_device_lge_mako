@@ -5,3 +5,6 @@ type qmux_gps_socket, file_type;
 type qmux_radio_socket, file_type;
 
 type audio_firmware_file, file_type;
+
+# Default type for anything under /firmware
+type radio_efs_file, fs_type;
