@@ -1,0 +1,9 @@
+# remote storage process
+type rmt, domain;
+type rmt_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(rmt)
+
+permissive rmt;
+unconfined_domain(rmt)

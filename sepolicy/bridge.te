@@ -1,0 +1,9 @@
+# Bridge Manager (radio process)
+type bridge, domain;
+type bridge_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(bridge)
+
+permissive bridge;
+unconfined_domain(bridge)
