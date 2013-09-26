@@ -35,13 +35,6 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     charger
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
-
 ifneq ($(findstring svelte, $(TARGET_PRODUCT)),)
 LOCAL_KERNEL := device/lge/mako_svelte-kernel/kernel
 else
