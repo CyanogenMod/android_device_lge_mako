@@ -1675,8 +1675,9 @@ status_t  QCameraHardwareInterface::takePicture()
 
     mSnapCbDisabled = false;
 
+    isp3a_af_mode_t afMode = getAutoFocusMode(mParameters);
+
     if(QCAMERA_HAL_RECORDING_STARTED != mPreviewState){
-      isp3a_af_mode_t afMode = getAutoFocusMode(mParameters);
       if (!mFlashCond)
       {
         mFlashCond = getFlashCondition();
@@ -1719,8 +1720,12 @@ status_t  QCameraHardwareInterface::takePicture()
             }
             return ret;
         }
-        /*prepare snapshot, e.g LED*/
-        takePicturePrepareHardware( );
+
+
+        if (afMode != AF_MODE_CAF)
+            /*prepare snapshot, e.g LED*/
+            takePicturePrepareHardware( );
+
         /* There's an issue where we have a glimpse of corrupted data between
            a time we stop a preview and display the postview. It happens because
            when we call stopPreview we deallocate the preview buffers hence overlay
@@ -1731,6 +1736,10 @@ status_t  QCameraHardwareInterface::takePicture()
 
         /* stop preview */
         pausePreviewForSnapshot();
+
+        if (afMode == AF_MODE_CAF)
+            /*prepare snapshot, e.g LED*/
+            takePicturePrepareHardware( );
 
         /* call Snapshot start() :*/
         ret =  mStreamSnap->start();
