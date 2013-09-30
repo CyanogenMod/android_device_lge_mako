@@ -1,24 +1,69 @@
-# GPU device
+# GPU device (world r/w)
 /dev/kgsl-3d0       u:object_r:gpu_device:s0
-/dev/msm_rotator    u:object_r:gpu_device:s0
+/dev/kgsl           u:object_r:gpu_device:s0
+
+# Image Rotator Driver
+/dev/msm_rotator    u:object_r:video_device:s0
 
 # Qualcomm Secure Execution Environment Communicator (QSEECOM) device
-/dev/qseecom        u:object_r:qseecom_device:s0
+/dev/qseecom        u:object_r:tee_device:s0
 
 # Qualcomm MSM Interface (QMI) devices
-/dev/socket/qmux_audio/*           u:object_r:qmux_audio_socket:s0
-/dev/socket/qmux_bluetooth/*       u:object_r:qmux_bluetooth_socket:s0
-/dev/socket/qmux_gps/*             u:object_r:qmux_gps_socket:s0
-/dev/socket/qmux_radio/*           u:object_r:qmux_radio_socket:s0
+/dev/socket/qmux_audio(/.*)?           u:object_r:qmux_audio_socket:s0
+/dev/socket/qmux_bluetooth(/.*)?       u:object_r:qmux_bluetooth_socket:s0
+/dev/socket/qmux_gps(/.*)?             u:object_r:qmux_gps_socket:s0
+/dev/socket/qmux_radio(/.*)?           u:object_r:qmux_radio_socket:s0
 
-/dev/bcm2079x-i2c                  u:object_r:bcm2079x_device:s0
+/dev/bcm2079x-i2c                  u:object_r:nfc_device:s0
 /dev/diag                          u:object_r:diag_device:s0
-/dev/media([0-9])+                 u:object_r:camera_device:s0
-/dev/smd([0-9])+                   u:object_r:smd_device:s0
-/dev/mdm                           u:object_r:radio_device:s0
 
-# Qualcomm MSM Audio ACDB device
-/dev/msm_acdb       u:object_r:msm_acdb_device:s0
+# CPU governor controls
+/dev/socket/mpdecision(/.*)?           u:object_r:mpdecision_socket:s0
+
+## Radio related
+# modem driver
+/dev/mdm                               u:object_r:radio_device:s0
+# high speed inter-chip controls
+/dev/hsicctl[0-3]                      u:object_r:radio_device:s0
+# mux controller
+/dev/rmnet_mux_ctrl                    u:object_r:radio_device:s0
+# qmi protocol driver
+/dev/qmi[0-2]                          u:object_r:radio_device:s0
+# shared memory drivers
+/dev/smdcntl[0-7]                      u:object_r:radio_device:s0
+/dev/smd7                              u:object_r:radio_device:s0
+
+# Bluetooth shared memory interfaces
+/dev/smd2                              u:object_r:hci_attach_dev:s0
+/dev/smd3                              u:object_r:hci_attach_dev:s0
+# Default label for shared memory drivers
+/dev/smd([0-9])+                       u:object_r:smd_device:s0
+
+# Serial console
+/dev/ttyHS0                            u:object_r:hci_attach_dev:s0
+/dev/ttyMSM0                           u:object_r:hci_attach_dev:s0
+
+# Jpeg Engine support
+/dev/gemini.*                          u:object_r:camera_device:s0
+# MSM camera related
+/dev/v4l-subdev.*                      u:object_r:camera_device:s0
+/dev/video([0-9])+                     u:object_r:camera_device:s0
+/dev/msm_camera(/.*)?                  u:object_r:camera_device:s0
+/dev/media([0-9])+                     u:object_r:camera_device:s0
+
+# Qualcomm MSM Audio devices
+/dev/msm_acdb                      u:object_r:audio_device:s0
+/dev/msm_mp3                       u:object_r:audio_device:s0
+/dev/msm_rtac                      u:object_r:audio_device:s0
+/dev/msm_vidc.*                    u:object_r:audio_device:s0
+/dev/msm_amrnb.*                   u:object_r:audio_device:s0
+/dev/msm_amrwb.*                   u:object_r:audio_device:s0
+/dev/msm_aac.*                     u:object_r:audio_device:s0
+
+# MSM Dedicated Sensors Processor Subsystem
+/dev/msm_dsps                          u:object_r:sensors_device:s0
+# Sensors shared Memory Packet Interface
+/dev/smd_sns_dsps                      u:object_r:sensors_device:s0
 
 # Qualcomm audio firmware files
 /data/misc/audio/*                 u:object_r:audio_firmware_file:s0
@@ -45,4 +90,3 @@
 /system/bin/mm-qcamera-daemon      u:object_r:camera_exec:s0
 /system/bin/qseecomd               u:object_r:tee_exec:s0
 /system/bin/conn_init              u:object_r:conn_init_exec:s0
-
