@@ -43,7 +43,7 @@ public class DisplayGammaCalibration {
         }
     };
 
-    private static String[] sLastSetValues = new String[2];
+    private static String[] sLastSetValues = new String[3];
 
     public static boolean isSupported() {
         /* Barf out if the interface is absent */
@@ -52,9 +52,13 @@ public class DisplayGammaCalibration {
     }
 
     public static int getNumberOfControls() {
-        return 2;
+        return 3;
     }
 
+    /* maximum control values for this device are set by an overlaid integer array.
+     * getMaxValue() is not used and remains only as a reference such that the
+     * current settings implementation does not complain. What I have done here is a
+     * hack and will undoubtedly need to change */
     public static int getMaxValue()  {
         return 31;
     }
@@ -64,7 +68,7 @@ public class DisplayGammaCalibration {
     }
 
     /* The reference implementation only touched 2 values, 5 and 6,
-     * so lets stick with those for now */
+     * for this device it is now extended to encompass 7 as well */
 
     public static String getCurGamma(int control) {
         if (H.hasMessages(control)) {

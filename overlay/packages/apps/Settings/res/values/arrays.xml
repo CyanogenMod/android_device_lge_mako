@@ -20,5 +20,13 @@
     <string-array name="gamma_descriptors">
         <item>@string/gamma_tuning_contrast</item>
         <item>@string/gamma_tuning_brightness</item>
+        <item>@string/gamma_tuning_saturation</item>
     </string-array>
+
+    <!-- Gamma calibration maximums -->
+    <integer-array name="gamma_maximums">
+        <item>31</item>
+        <item>31</item>
+        <item>80</item>
+    </integer-array>
 </resources>
