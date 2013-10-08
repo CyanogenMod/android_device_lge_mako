@@ -6,4 +6,16 @@ type bridge_exec, exec_type, file_type;
 init_daemon_domain(bridge)
 
 permissive bridge;
-unconfined_domain(bridge)
+
+# Uevent for usb connection
+allow bridge self:netlink_kobject_uevent_socket { create bind read };
+
+# Allow logging diagnostic items to /dev/diag
+allow bridge diag_device:chr_file rw_file_perms;
+
+# Talk to qmuxd (qmux_radio)
+qmux_socket(bridge)
+
+# Alert the RmNet SMD & SDIO function driver of the correct transport.
+# (/sys/class/android_usb/f_rmnet_smd_sdio/transport)
+allow bridge sysfs_rmnet:file { open read write getattr };
