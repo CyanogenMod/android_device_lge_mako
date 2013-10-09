@@ -121,6 +121,7 @@ BOARD_SEPOLICY_UNION += \
        sensors.te \
        surfaceflinger.te \
        system_server.te \
+       te_macros \
        thermald.te \
        ueventd.te \
        wpa.te
