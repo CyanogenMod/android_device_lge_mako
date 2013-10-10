@@ -48,6 +48,7 @@ on init
 
 on fs
     mount_all ./fstab.mako
+    restorecon_recursive /persist
     setprop ro.crypto.fuse_sdcard true
     write /sys/kernel/boot_adsp/boot 1
 
