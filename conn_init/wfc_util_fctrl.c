@@ -464,16 +464,14 @@ void wfc_util_fset_string(char *pFileName, char *pEndOfCfg, char *pSTagString, c
  * return : it will return the length of the stored string value if procedure is success
  *          or will return 0 if not.
  */
-int wfc_util_fget_string(char *pFileName, char *pEndOfCfg, char *pSTagString, char *pETagString, char *pValueStringBuff, int stringBuffLength)
+int wfc_util_fget_string(char *pFileName, char *pEndOfCfg __attribute__((unused)), char *pSTagString,
+			 char *pETagString, char *pValueStringBuff, int stringBuffLength)
 {
 	int result = 0;
 	int fd;
 	off_t sz_file;
 	char *pReadBuff = NULL;
 	char *pSPointer = NULL, *pETagPointer = NULL, *pSValuePointer = NULL;
-
-	/* unused parameter*/
-	pEndOfCfg = pEndOfCfg;
 
 	fd = open( pFileName, O_RDONLY );
 
