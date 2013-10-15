@@ -43,6 +43,14 @@ LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
 include $(BUILD_PREBUILT)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE       := hostapd_default.conf
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/hostapd
+include $(BUILD_PREBUILT)
+
 include $(call first-makefiles-under,$(LOCAL_PATH))
 
 # This is ugly for more reasons than I can mention. Don't think

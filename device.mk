@@ -229,6 +229,7 @@ PRODUCT_PACKAGES += \
 	keystore.msm8960
 
 PRODUCT_PACKAGES += \
+	hostapd_default.conf \
 	wpa_supplicant_overlay.conf \
 	p2p_supplicant_overlay.conf
 
