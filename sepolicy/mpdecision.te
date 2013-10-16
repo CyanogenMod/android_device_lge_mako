@@ -5,8 +5,6 @@ type mpdecision_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(mpdecision)
 
-permissive mpdecision;
-
 # CPU hotplug uevent to manage cores
 allow mpdecision self:netlink_kobject_uevent_socket { create setopt bind read };
 allow mpdecision self:capability net_admin;
