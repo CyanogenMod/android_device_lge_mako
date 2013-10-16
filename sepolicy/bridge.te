@@ -5,8 +5,6 @@ type bridge_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(bridge)
 
-permissive bridge;
-
 # Uevent for usb connection
 allow bridge self:netlink_kobject_uevent_socket { create bind read };
 
