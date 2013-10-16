@@ -14,3 +14,5 @@ type persist_bluetooth_file, file_type;
 type persist_drm_file, file_type;
 type persist_sensors_file, file_type;
 type persist_wifi_file, file_type;
+
+type sysfs_rmnet, fs_type, sysfs_type;
