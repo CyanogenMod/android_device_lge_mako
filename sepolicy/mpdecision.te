@@ -6,4 +6,16 @@ type mpdecision_exec, exec_type, file_type;
 init_daemon_domain(mpdecision)
 
 permissive mpdecision;
-unconfined_domain(mpdecision)
+
+# CPU hotplug uevent to manage cores
+allow mpdecision self:netlink_kobject_uevent_socket { create setopt bind read };
+allow mpdecision self:capability net_admin;
+
+# Create under /dev/socket/mpdecision
+allow mpdecision mpdecision_socket:dir w_dir_perms;
+allow mpdecision mpdecision_socket:sock_file { create setattr write };
+
+# By-product of setting owner on sock_file (don't allow)
+dontaudit mpdecision self:capability fsetid;
+
+allow mpdecision sysfs_devices_system_cpu:file { open read write getattr };
