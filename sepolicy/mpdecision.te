@@ -18,4 +18,5 @@ allow mpdecision mpdecision_socket:sock_file { create setattr write };
 # By-product of setting owner on sock_file (don't allow)
 dontaudit mpdecision self:capability fsetid;
 
+allow mpdecision sysfs_devices_system_cpu:dir search;
 allow mpdecision sysfs_devices_system_cpu:file { open read write getattr };
