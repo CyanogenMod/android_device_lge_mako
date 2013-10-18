@@ -5,8 +5,6 @@ type conn_init_exec, exec_type, file_type;
 # Started by logwrapper in init
 domain_auto_trans(init, conn_init_exec, conn_init)
 
-permissive conn_init;
-
 allow conn_init devpts:chr_file { read write };
 
 # Allow /persist/wifi access
