@@ -56,56 +56,56 @@ extern "C" {
  */
 
 static hw_module_methods_t camera_module_methods = {
-    open: camera_device_open,
+    .open = camera_device_open,
 };
 
 static hw_module_t camera_common  = {
-  tag: HARDWARE_MODULE_TAG,
-  version_major: 0,
-  version_minor: 01,
-  id: CAMERA_HARDWARE_MODULE_ID,
-  name: "Qcamera",
-  author:"Qcom",
-  methods: &camera_module_methods,
-  dso: NULL,
+  .tag = HARDWARE_MODULE_TAG,
+  .version_major = 0,
+  .version_minor = 01,
+  .id = CAMERA_HARDWARE_MODULE_ID,
+  .name = "Qcamera",
+  .author ="Qcom",
+  .methods = &camera_module_methods,
+  .dso = NULL,
   //reserved[0]:  0,
 };
 camera_module_t HAL_MODULE_INFO_SYM = {
-  common: camera_common,
-  get_number_of_cameras: get_number_of_cameras,
-  get_camera_info: get_camera_info,
+  .common = camera_common,
+  .get_number_of_cameras = get_number_of_cameras,
+  .get_camera_info = get_camera_info,
 };
 
 camera_device_ops_t camera_ops = {
-  set_preview_window:         android::set_preview_window,
-  set_callbacks:              android::set_CallBacks,
-  enable_msg_type:            android::enable_msg_type,
-  disable_msg_type:           android::disable_msg_type,
-  msg_type_enabled:           android::msg_type_enabled,
+  .set_preview_window =         android::set_preview_window,
+  .set_callbacks =              android::set_CallBacks,
+  .enable_msg_type =            android::enable_msg_type,
+  .disable_msg_type =           android::disable_msg_type,
+  .msg_type_enabled =           android::msg_type_enabled,
 
-  start_preview:              android::start_preview,
-  stop_preview:               android::stop_preview,
-  preview_enabled:            android::preview_enabled,
-  store_meta_data_in_buffers: android::store_meta_data_in_buffers,
+  .start_preview =              android::start_preview,
+  .stop_preview =               android::stop_preview,
+  .preview_enabled =            android::preview_enabled,
+  .store_meta_data_in_buffers = android::store_meta_data_in_buffers,
 
-  start_recording:            android::start_recording,
-  stop_recording:             android::stop_recording,
-  recording_enabled:          android::recording_enabled,
-  release_recording_frame:    android::release_recording_frame,
+  .start_recording =           android::start_recording,
+  .stop_recording =            android::stop_recording,
+  .recording_enabled =         android::recording_enabled,
+  .release_recording_frame =   android::release_recording_frame,
 
-  auto_focus:                 android::auto_focus,
-  cancel_auto_focus:          android::cancel_auto_focus,
+  .auto_focus =                android::auto_focus,
+  .cancel_auto_focus =         android::cancel_auto_focus,
 
-  take_picture:               android::take_picture,
-  cancel_picture:             android::cancel_picture,
+  .take_picture =              android::take_picture,
+  .cancel_picture =            android::cancel_picture,
 
-  set_parameters:             android::set_parameters,
-  get_parameters:             android::get_parameters,
-  put_parameters:             android::put_parameters,
-  send_command:               android::send_command,
+  .set_parameters =            android::set_parameters,
+  .get_parameters =            android::get_parameters,
+  .put_parameters =            android::put_parameters,
+  .send_command =              android::send_command,
 
-  release:                    android::release,
-  dump:                       android::dump,
+  .release =                   android::release,
+  .dump =                      android::dump,
 };
 
 namespace android {
