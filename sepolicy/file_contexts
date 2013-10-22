@@ -43,6 +43,9 @@
 /dev/ttyHS0                            u:object_r:hci_attach_dev:s0
 /dev/ttyMSM0                           u:object_r:hci_attach_dev:s0
 
+# Serial-to-Usb support
+/dev/ttyUSB0                           u:object_r:radio_device:s0
+
 # Jpeg Engine support
 /dev/gemini.*                          u:object_r:camera_device:s0
 # MSM camera related
@@ -75,7 +78,11 @@
 /system/bin/efsks                  u:object_r:kickstart_exec:s0
 /system/bin/ks                     u:object_r:kickstart_exec:s0
 
+# Block labeling
+/dev/block/mmcblk0p[89]            u:object_r:efs_block_device:s0
+
 /data/nfc(/.*)?                    u:object_r:nfc_data_file:s0
+/data/qcks(/.*)?                   u:object_r:kickstart_data_file:s0
 
 /system/bin/hci_qcomm_init         u:object_r:hci_exec:s0
 /system/bin/bdAddrLoader           u:object_r:bluetooth_loader_exec:s0
