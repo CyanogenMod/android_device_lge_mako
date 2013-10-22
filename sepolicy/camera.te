@@ -5,5 +5,4 @@ type camera_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(camera)
 
-permissive camera;
 unconfined_domain(camera)
