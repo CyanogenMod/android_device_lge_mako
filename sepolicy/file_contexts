@@ -91,8 +91,7 @@
 /system/bin/qseecomd               u:object_r:tee_exec:s0
 /system/bin/conn_init              u:object_r:conn_init_exec:s0
 
-/sys/devices/system/cpu/cpu0/cpufreq(/.*)?    u:object_r:sysfs_devices_system_cpu:s0
-/sys/devices/system/cpu/cpu0/rq-stats(/.*)?   u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/system/cpu/cpu([0-9])+(/.*)?(/.*)?    u:object_r:sysfs_devices_system_cpu:s0
 
 # Persist firmware filesystem
 /persist(/.*)?                   u:object_r:persist_file:s0
@@ -104,3 +103,7 @@
 
 # Sysfs entry for the RmNet function driver
 /sys/class/android_usb/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0
+
+# Sysfs files used by mpdecision
+/sys/module/pm2/modes(/.*)?            u:object_r:sysfs_mpdecision:s0
+/sys/module/pm_8x60/modes(/.*)?        u:object_r:sysfs_mpdecision:s0
