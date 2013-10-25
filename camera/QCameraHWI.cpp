@@ -1232,7 +1232,11 @@ void QCameraHardwareInterface::stopPreview()
             stopPreviewInternal();
             mPreviewState = QCAMERA_HAL_PREVIEW_STOPPED;
             break;
-      case QCAMERA_HAL_TAKE_PICTURE:
+    case QCAMERA_HAL_TAKE_PICTURE:
+        cancelPictureInternal();
+        stopPreviewInternal();
+        mPreviewState = QCAMERA_HAL_PREVIEW_STOPPED;
+        break;
       case QCAMERA_HAL_PREVIEW_STOPPED:
       default:
             break;
