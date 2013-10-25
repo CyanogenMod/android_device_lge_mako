@@ -41,7 +41,7 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     charger
 
-ifneq ($(findstring svelte, $(TARGET_PRODUCT)),)
+ifeq ($(USE_SVELTE_KERNEL),true)
 LOCAL_KERNEL := device/lge/mako_svelte-kernel/kernel
 else
 LOCAL_KERNEL := device/lge/mako-kernel/kernel
@@ -204,6 +204,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.qualcomm.bt.hci_transport=smd
 
+ifeq ($(findstring tiny, $(TARGET_PRODUCT)),)
 PRODUCT_PACKAGES += \
 	camera.mako \
 	camera.msm8960 \
@@ -218,6 +219,7 @@ PRODUCT_PACKAGES += \
 	libOmxCore \
 	libstagefrighthw \
 	libc2dcolorconvert
+endif
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
@@ -254,8 +256,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	telephony.lteOnCdmaDevice=0
 
+ifeq ($(findstring tiny, $(TARGET_PRODUCT)),)
 PRODUCT_PROPERTY_OVERRIDES += \
 	drm.service.enabled=true
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0 \
