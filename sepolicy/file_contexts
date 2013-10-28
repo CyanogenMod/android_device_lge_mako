@@ -77,7 +77,7 @@
 
 /data/nfc(/.*)?                    u:object_r:nfc_data_file:s0
 
-/system/bin/hci_qcomm_init         u:object_r:hci_exec:s0
+/system/bin/hci_qcomm_init         u:object_r:hci_attach_exec:s0
 /system/bin/bdAddrLoader           u:object_r:bluetooth_loader_exec:s0
 /system/etc/init.mako.bt.sh        u:object_r:bluetooth_loader_exec:s0
 /system/bin/rmt_storage            u:object_r:rmt_exec:s0
