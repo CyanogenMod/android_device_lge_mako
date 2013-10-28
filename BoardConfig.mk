@@ -107,7 +107,6 @@ BOARD_SEPOLICY_UNION += \
        drmserver.te \
        file.te \
        file_contexts \
-       hci_init.te \
        init_shell.te \
        keystore.te \
        kickstart.te \
