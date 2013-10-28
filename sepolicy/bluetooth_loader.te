@@ -5,8 +5,6 @@ type bluetooth_loader_exec, exec_type, file_type;
 # Start bdAddrLoader from init
 init_daemon_domain(bluetooth_loader)
 
-permissive bluetooth_loader;
-
 # Run init.mako.bt.sh
 allow bluetooth_loader shell_exec:file { entrypoint read };
 allow bluetooth_loader bluetooth_loader_exec:file { getattr open execute_no_trans };
