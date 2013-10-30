@@ -11,20 +11,20 @@ allow mpdecision self:capability net_admin;
 
 # Create under /dev/socket/mpdecision
 allow mpdecision mpdecision_socket:dir w_dir_perms;
-allow mpdecision mpdecision_socket:sock_file { create setattr write };
+allow mpdecision mpdecision_socket:sock_file create_file_perms;
 
 # Also support mpdecision creating the /dev/socket/pb socket
 type_transition mpdecision socket_device:sock_file mpdecision_socket;
 allow mpdecision self:capability chown;
-allow mpdecision socket_device:dir { write add_name };
+allow mpdecision socket_device:dir w_dir_perms;
 
 # By-product of setting owner on sock_file (don't allow)
 dontaudit mpdecision self:capability fsetid;
 
-allow mpdecision sysfs_devices_system_cpu:dir search;
-allow mpdecision sysfs_devices_system_cpu:file { open read write getattr };
-allow mpdecision sysfs_mpdecision:dir search;
-allow mpdecision sysfs_mpdecision:file { open read write getattr };
+allow mpdecision sysfs_devices_system_cpu:dir r_dir_perms;
+allow mpdecision sysfs_devices_system_cpu:file rw_file_perms;
+allow mpdecision sysfs_mpdecision:dir r_dir_perms;
+allow mpdecision sysfs_mpdecision:file rw_file_perms;
 
 # Some files in /sys/devices/system/cpu may pop in and out of existance,
 # defeating our attempt to label them. As a result, they could have the
