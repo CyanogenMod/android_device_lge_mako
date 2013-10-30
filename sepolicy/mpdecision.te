@@ -21,7 +21,6 @@ allow mpdecision socket_device:dir w_dir_perms;
 # By-product of setting owner on sock_file (don't allow)
 dontaudit mpdecision self:capability fsetid;
 
-allow mpdecision sysfs_devices_system_cpu:dir r_dir_perms;
 allow mpdecision sysfs_devices_system_cpu:file rw_file_perms;
 allow mpdecision sysfs_mpdecision:dir r_dir_perms;
 allow mpdecision sysfs_mpdecision:file rw_file_perms;
