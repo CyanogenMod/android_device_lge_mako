@@ -15,3 +15,6 @@ type kickstart_device, dev_type;
 
 # SMD device, used by hci_qcomm_init
 type smd_device, dev_type;
+
+# Radio related block device
+type efs_block_device, dev_type;
