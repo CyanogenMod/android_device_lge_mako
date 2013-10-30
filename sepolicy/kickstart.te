@@ -2,8 +2,6 @@
 type kickstart, domain;
 type kickstart_exec, file_type, exec_type;
 
-permissive kickstart;
-
 init_daemon_domain(kickstart)
 
 # Spawn /system/bin/efsks and /system/bin/ks
