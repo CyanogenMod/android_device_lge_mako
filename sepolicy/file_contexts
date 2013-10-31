@@ -38,6 +38,7 @@
 /dev/smd3                              u:object_r:hci_attach_dev:s0
 # Default label for shared memory drivers
 /dev/smd([0-9])+                       u:object_r:smd_device:s0
+/dev/smem_log                          u:object_r:shared_log_device:s0
 
 # Serial console
 /dev/ttyHS0                            u:object_r:hci_attach_dev:s0
