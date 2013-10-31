@@ -98,8 +98,6 @@
 /system/bin/qseecomd               u:object_r:tee_exec:s0
 /system/bin/conn_init              u:object_r:conn_init_exec:s0
 
-/sys/devices/system/cpu/cpu([0-9])+(/.*)?(/.*)?    u:object_r:sysfs_devices_system_cpu:s0
-
 # Persist firmware filesystem
 /persist(/.*)?                   u:object_r:persist_file:s0
 /persist/bluetooth(/.*)?         u:object_r:persist_bluetooth_file:s0
