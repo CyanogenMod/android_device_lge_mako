@@ -20,9 +20,6 @@
 # Qualcomm MSM Audio ACDB device
 /dev/msm_acdb       u:object_r:msm_acdb_device:s0
 
-# Qualcomm audio firmware files
-/data/misc/audio/*                 u:object_r:audio_firmware_file:s0
-
 /dev/ks_hsic_bridge                u:object_r:kickstart_device:s0
 /dev/efs_hsic_bridge               u:object_r:kickstart_device:s0
 

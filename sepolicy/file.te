@@ -4,4 +4,3 @@ type qmux_bluetooth_socket, file_type;
 type qmux_gps_socket, file_type;
 type qmux_radio_socket, file_type;
 
-type audio_firmware_file, file_type;

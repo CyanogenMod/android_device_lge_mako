@@ -8,6 +8,3 @@ allow mediaserver qmux_audio_socket:dir rw_dir_perms;
 # Permit mediaserver to create sockets
 allow mediaserver self:socket create;
 
-# Grant access to audio firmware files to mediaserver
-allow mediaserver audio_firmware_file:dir ra_dir_perms;
-allow mediaserver audio_firmware_file:file create_file_perms;
