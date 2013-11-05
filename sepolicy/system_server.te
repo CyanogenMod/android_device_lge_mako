@@ -5,3 +5,9 @@ allow system_server diag_device:chr_file rw_file_perms;
 # Grant access to Qualcomm MSM Interface (QMI) radio sockets to system services
 # (e.g., LocationManager)
 qmux_socket(system_server)
+
+# mpdecision socket access
+unix_socket_connect(system_server, mpdecision, mpdecision)
+unix_socket_send(system_server, mpdecision, mpdecision)
+allow system_server mpdecision:unix_stream_socket sendto;
+allow system_server mpdecision_socket:dir search;
