@@ -1,49 +1,5 @@
-# kickstart processes and scripts
 type kickstart, domain;
-type kickstart_exec, exec_type, file_type;
-type kickstart_device, dev_type;
-
-# kickstart_checker.sh talks to init over the property socket
-unix_socket_connect(kickstart, property, init)
-
-# Start /system/bin/qcks from init
-init_daemon_domain(kickstart)
-
-# Spawn /system/bin/efsks and /system/bin/ks
-allow kickstart kickstart_exec:file { open execute_no_trans getattr };
-
-# Run dd on m9kefs[123] block devices; write to /data/qcks/
-# Run cat on firmware and m9kefs[123] data; write to /data/qcks/
-allow kickstart efs_block_device:blk_file rw_file_perms;
-allow kickstart kickstart_data_file:file create_file_perms;
-allow kickstart kickstart_data_file:dir rw_dir_perms;
-allow kickstart radio_efs_file:file r_file_perms;
-allow kickstart radio_efs_file:dir search;
-
-# Let qcks access /dev/mdm node (modem driver)
-allow kickstart radio_device:chr_file r_file_perms;
-
-# Allow /dev/ttyUSB0 access
-allow kickstart radio_device:chr_file { write };
-
-# Allow to run toolbox commands
-allow kickstart shell_exec:file rx_file_perms;
-# Toolbox commands for firmware dd
-allow kickstart system_file:file execute_no_trans;
-
-# Access to /dev/block/platform/msm_sdcc.1/by-name/m9kefs2
-allow kickstart block_device:dir { getattr write search };
-
-# Set system property key
-allow kickstart radio_prop:property_service set;
-
-allow kickstart shell_exec:file entrypoint;
-# ls on /data/qcks/
-allow kickstart self:capability dac_override;
-
-# Access to the modem bridge chardevs
-allow kickstart kickstart_device:chr_file rw_file_perms;
-
-# set wake locks
-allow kickstart sysfs:file { append };
-
+permissive kickstart;
+type kickstart_exec, file_type, exec_type;
+domain_auto_trans(init, kickstart_exec, kickstart)
+unconfined_domain(kickstart)

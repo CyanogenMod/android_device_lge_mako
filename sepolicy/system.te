@@ -1,19 +1,8 @@
-allow system diagnostic_device:chr_file rw_file_perms;
+# Grant GPU access to system apps (e.g., PowerManagerService)
+allow system gpu_device:chr_file rw_file_perms;
+allow system diag_device:chr_file rw_file_perms;
 
-allow system init:unix_dgram_socket sendto;
-allow system wpa_socket:unix_dgram_socket sendto;
-
-qmux_socket(system)
-
-# PowerManagerService
-unix_socket_connect(system, sensors, sensors)
-allow system sensors_socket:sock_file read;
-allow system sensors:unix_stream_socket sendto;
-
-# mpdecision access
-unix_socket_connect(system, mpdecision, mpdecision)
-unix_socket_send(system, mpdecision, mpdecision)
-allow system mpdecision:unix_stream_socket sendto;
-allow system mpdecision_socket:dir search;
-
-allow system sysfs:file { read open write };
+# Grant access to Qualcomm MSM Interface (QMI) radio sockets to system apps
+# (e.g., LocationManager)
+allow system qmux_radio_socket:sock_file create_file_perms;
+allow system qmux_radio_socket:dir rw_dir_perms;

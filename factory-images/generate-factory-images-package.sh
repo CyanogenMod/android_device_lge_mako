@@ -20,15 +20,26 @@
 # 526897 = JOP39B
 # 527221 = JOP40
 # 527662 = JOP40C
-# 573038 = JDQ39
 # end jb-mr1-dev
+# start jb-mr1.1-dev
+# 573038 = JDQ39
+# end jb-mr1.1-dev
+# start jb-mr2-dev
+# 683083 = JWR51
+# 689345 = JWR58
+# 690834 = JWR59
+# 704243 = JWR66G
+# 709441 = JWR66M
+# 711294 = JWR66N
+# 737497 = JWR66V
+# end jb-mr2-dev
 
 source ../../../common/clear-factory-images-variables.sh
-BUILD=573038
+BUILD=737497
 DEVICE=mako
 PRODUCT=occam
-VERSION=jdq39
+VERSION=jwr66v
 SRCPREFIX=signed-
-BOOTLOADER=makoz10o
-RADIO=m9615a-cefwmazm-2.0.1700.48
+BOOTLOADER=makoz20i
+RADIO=m9615a-cefwmazm-2.0.1700.84
 source ../../../common/generate-factory-images-common.sh

@@ -1,3 +1,0 @@
-persist.service.bdroid.         u:object_r:bluetooth_prop:s0
-bluetooth.                      u:object_r:bluetooth_prop:s0
-net.rmnet_usb0.                 u:object_r:radio_prop:s0

@@ -1,1 +1,0 @@
-allow init wpa_socket:unix_dgram_socket { bind create };
