@@ -177,12 +177,14 @@ on post-fs-data
     #Create directory used by sensor subsystem(dsps)
     mkdir /data/system/sensors
     chmod 665 /data/system/sensors
+    restorecon_recursive /data/system/sensors
     write /data/system/sensors/settings 1
     chmod 660 /data/system/sensors/settings
 
     # AKM setting data
     mkdir /data/misc/sensors
     chmod 775 /data/misc/sensors
+    restorecon_recursive /data/misc/sensors
 
     mkdir /persist/sensors
     chmod 775 /persist/sensors
@@ -307,7 +309,7 @@ service netmgrd /system/bin/netmgrd
 service sensors /system/bin/sensors.qcom
     class late_start
     user root
-    group root
+    group root radio system
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \

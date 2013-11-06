@@ -6,6 +6,12 @@ allow system_server diag_device:chr_file rw_file_perms;
 # (e.g., LocationManager)
 qmux_socket(system_server)
 
+# PowerManagerService access to sensors socket
+unix_socket_connect(system_server, sensors, sensors)
+unix_socket_send(system_server, sensors, sensors)
+allow system_server sensors:unix_stream_socket sendto;
+allow system_server sensors_socket:sock_file r_file_perms;
+
 # mpdecision socket access
 unix_socket_connect(system_server, mpdecision, mpdecision)
 unix_socket_send(system_server, mpdecision, mpdecision)

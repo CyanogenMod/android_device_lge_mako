@@ -69,6 +69,8 @@
 # Sensors shared Memory Packet Interface
 /dev/smd_sns_dsps                      u:object_r:sensors_device:s0
 
+/dev/cpu_dma_latency               u:object_r:power_control_device:s0
+
 # Qualcomm audio firmware files
 /data/misc/audio/*                 u:object_r:audio_firmware_file:s0
 
@@ -84,6 +86,8 @@
 
 /data/nfc(/.*)?                    u:object_r:nfc_data_file:s0
 /data/qcks(/.*)?                   u:object_r:kickstart_data_file:s0
+/data/misc/sensors(/.*)?           u:object_r:sensors_data_file:s0
+/data/system/sensors(/.*)?         u:object_r:sensors_data_file:s0
 
 /system/bin/hci_qcomm_init         u:object_r:hci_attach_exec:s0
 /system/bin/bdAddrLoader           u:object_r:bluetooth_loader_exec:s0
