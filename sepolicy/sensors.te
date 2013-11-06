@@ -5,8 +5,6 @@ type sensors_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(sensors)
 
-permissive sensors;
-
 # Change own perms to (nobody,nobody)
 allow sensors self:capability { setuid setgid };
 # Chown /data/misc/sensors/debug/ to nobody
