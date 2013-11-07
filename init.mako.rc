@@ -389,7 +389,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input
 
-service conn_init /system/bin/logwrapper /system/bin/conn_init
+service conn_init /system/bin/conn_init
     class late_start
     user system
     group system wifi
@@ -414,7 +414,7 @@ service qseecomd /system/bin/qseecomd
     user system
     group system
 
-service diag_mdlog /system/bin/logwrapper /system/bin/diag_mdlog -s 100
+service diag_mdlog /system/bin/diag_mdlog -s 100
     class late_start
     disabled
 
