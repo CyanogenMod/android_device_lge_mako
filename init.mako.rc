@@ -191,6 +191,9 @@ on post-fs-data
     mkdir /persist/sensors
     chmod 775 /persist/sensors
 
+    # Label in case file already exists
+    restorecon /data/fdAlbum
+
     #Provide the access to hostapd.conf only to root and group
     chmod 0660 /data/hostapd/hostapd.conf
 
