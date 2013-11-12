@@ -309,7 +309,7 @@ service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
 
 service netmgrd /system/bin/netmgrd
     class main
-
+    group radio
 
 service sensors /system/bin/sensors.qcom
     class late_start
