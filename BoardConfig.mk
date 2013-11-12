@@ -97,23 +97,18 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
        app.te \
-       bluetooth.te \
        bluetooth_loader.te \
        bridge.te \
        camera.te \
        conn_init.te \
        device.te \
        domain.te \
-       drmserver.te \
        file.te \
        file_contexts \
-       init_shell.te \
-       keystore.te \
        kickstart.te \
        mediaserver.te \
        mpdecision.te \
        netmgrd.te \
-       nfc.te \
        qmux.te \
        rild.te \
        rmt.te \
@@ -122,8 +117,7 @@ BOARD_SEPOLICY_UNION += \
        system_server.te \
        te_macros \
        thermald.te \
-       ueventd.te \
-       wpa.te
+       ueventd.te
 
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
