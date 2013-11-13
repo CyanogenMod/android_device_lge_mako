@@ -18,7 +18,7 @@ allow hci_attach bluetooth_loader:fd use;
 
 # Read mac address from persist partition
 allow bluetooth_loader persist_file:dir search;
-allow bluetooth_loader persist_bluetooth_file:file r_file_perms;
+r_dir_file(bluetooth_loader, persist_bluetooth_file)
 
 # Talk to init over the property socket
 unix_socket_connect(bluetooth_loader, property, init)
