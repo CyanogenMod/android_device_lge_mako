@@ -298,6 +298,7 @@ service bridgemgrd /system/bin/bridgemgrd
     class main
     user radio
     group radio
+    disabled
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
