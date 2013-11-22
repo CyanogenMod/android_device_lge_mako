@@ -35,14 +35,11 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     charger
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
-
+ifneq ($(findstring svelte, $(TARGET_PRODUCT)),)
+LOCAL_KERNEL := device/lge/mako_svelte-kernel/kernel
+else
 LOCAL_KERNEL := device/lge/mako-kernel/kernel
+endif
 
 PRODUCT_COPY_FILES := \
 	$(LOCAL_KERNEL):kernel
@@ -104,10 +101,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
-# GPS configuration
-PRODUCT_COPY_FILES += \
-	device/lge/mako/gps.conf:system/etc/gps.conf
-
 # NFC packages
 PRODUCT_PACKAGES += \
     nfc_nci.mako \
@@ -127,6 +120,7 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     device/lge/mako/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -176,7 +170,8 @@ PRODUCT_PACKAGES += \
 	liboverlay \
 	hwcomposer.msm8960 \
 	gralloc.msm8960 \
-	copybit.msm8960
+	copybit.msm8960 \
+	memtrack.msm8960
 
 PRODUCT_PACKAGES += \
 	audio_policy.msm8960 \
@@ -218,12 +213,22 @@ PRODUCT_PACKAGES += \
 	libstagefrighthw \
 	libc2dcolorconvert
 
+# GPS configuration
+PRODUCT_COPY_FILES += \
+        device/lge/mako/gps.conf:system/etc/gps.conf
+
+# GPS
 PRODUCT_PACKAGES += \
-	libloc_adapter \
-	libloc_eng \
-	libloc_api_v02 \
-	libgps.utils \
-	gps.msm8960
+        libloc_adapter \
+        libloc_eng \
+        libloc_api_v02 \
+        libloc_ds_api \
+        libloc_core \
+        libizat_core \
+        libgeofence \
+        libgps.utils \
+        gps.msm8960 \
+        flp.msm8960
 
 PRODUCT_PACKAGES += \
 	bdAddrLoader \

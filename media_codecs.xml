@@ -35,7 +35,7 @@
         <MediaCodec name="OMX.google.aac.encoder" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.google.amrwb.encoder" type="audio/amr-wb" />
         <MediaCodec name="OMX.google.flac.encoder" type="audio/flac" />
-        <MediaCodec name="OMX.google.vpx.encoder" type="video/x-vnd.on2.vp8" />
+        <MediaCodec name="OMX.google.vp8.encoder" type="video/x-vnd.on2.vp8" />
     </Encoders>
     <Decoders>
         <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis" />
@@ -61,7 +61,8 @@
             <Quirk name="requires-allocate-on-output-ports"/>
             <Quirk name="defers-output-buffer-allocation"/>
         </MediaCodec>
-        <MediaCodec name="OMX.google.vpx.decoder" type="video/x-vnd.on2.vp8" />
+        <MediaCodec name="OMX.google.vp8.decoder" type="video/x-vnd.on2.vp8" />
+        <MediaCodec name="OMX.google.vp9.decoder" type="video/x-vnd.on2.vp9" />
         <MediaCodec name="OMX.google.h264.decoder" type="video/avc" />
         <MediaCodec name="OMX.google.h263.decoder" type="video/3gpp" />
         <MediaCodec name="OMX.google.mpeg4.decoder" type="video/mp4v-es" />
