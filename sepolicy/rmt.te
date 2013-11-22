@@ -6,3 +6,6 @@ type rmt_exec, exec_type, file_type;
 init_daemon_domain(rmt)
 
 unconfined_domain(rmt)
+
+# Otherwise will overflow logs
+dontaudit rmt kmem_device:chr_file rw_file_perms;
