@@ -5,8 +5,6 @@ type thermald_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(thermald)
 
-permissive thermald;
-
 allow thermald self:socket create_socket_perms;
 
 # CPU hotplug uevent
