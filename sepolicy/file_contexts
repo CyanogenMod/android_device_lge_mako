@@ -85,6 +85,7 @@
 /data/qcks(/.*)?                   u:object_r:kickstart_data_file:s0
 /data/misc/sensors(/.*)?           u:object_r:sensors_data_file:s0
 /data/system/sensors(/.*)?         u:object_r:sensors_data_file:s0
+/data/misc/playready(/.*)?         u:object_r:drm_data_file:s0
 /data/fdAlbum                      u:object_r:camera_calibration_file:s0
 
 /system/bin/hci_qcomm_init         u:object_r:hci_attach_exec:s0

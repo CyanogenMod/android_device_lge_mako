@@ -1,5 +1,5 @@
 # GPU (used by most UI apps)
-type gpu_device, dev_type;
+type gpu_device, dev_type, mlstrustedobject;
 
 type diag_device, dev_type;
 

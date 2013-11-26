@@ -102,7 +102,6 @@ BOARD_SEPOLICY_UNION += \
        camera.te \
        conn_init.te \
        device.te \
-       domain.te \
        file.te \
        file_contexts \
        kickstart.te \
@@ -115,6 +114,7 @@ BOARD_SEPOLICY_UNION += \
        sensors.te \
        surfaceflinger.te \
        system_server.te \
+       tee.te \
        te_macros \
        thermald.te \
        ueventd.te
