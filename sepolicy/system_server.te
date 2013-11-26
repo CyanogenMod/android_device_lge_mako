@@ -17,3 +17,8 @@ unix_socket_connect(system_server, mpdecision, mpdecision)
 unix_socket_send(system_server, mpdecision, mpdecision)
 allow system_server mpdecision:unix_stream_socket sendto;
 allow system_server mpdecision_socket:dir search;
+
+# Access /dev/mdm
+allow system_server radio_device:chr_file r_file_perms;
+
+allow system_server self:netlink_socket create_socket_perms;
