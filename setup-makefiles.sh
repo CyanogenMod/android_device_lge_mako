@@ -67,12 +67,12 @@ PRODUCT_COPY_FILES := \\
 # Pick up overlay for features that depend on non-open-source files
 DEVICE_PACKAGE_OVERLAYS := vendor/$VENDOR/$DEVICE/overlay
 
-PRODUCT_PACKAGES += libacdbloader.so
+PRODUCT_PACKAGES += libacdbloader
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
 
-(cat << EOF) > ../../../$OUTDIR/BoardConfigVendor.mk
+(cat << EOF) > ../../../$OUTDIR/Android.mk
 # Copyright (C) 2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
