@@ -1,0 +1,14 @@
+# Qualcomm Secure Execution Environment Communicator policy
+
+# /data/misc/playready labeling
+type_transition tee system_data_file:dir drm_data_file;
+
+# Access /data/misc/playready
+allow tee system_data_file:dir ra_dir_perms;
+allow tee drm_data_file:dir create_dir_perms;
+allow tee drm_data_file:file create_file_perms;
+
+# Access /persist/{widevine,playready}
+allow tee persist_file:dir search;
+allow tee persist_drm_file:dir r_dir_perms;
+allow tee persist_drm_file:file r_file_perms;
