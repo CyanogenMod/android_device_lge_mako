@@ -276,7 +276,7 @@ on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
 service rmt_storage /system/bin/rmt_storage
-    class main
+    class core
     user root
 
 service hciattach /system/bin/sh /system/etc/init.mako.bt.sh
