@@ -96,7 +96,6 @@ BOARD_SEPOLICY_DIRS += \
        device/lge/mako/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-       app.te \
        bluetooth_loader.te \
        bridge.te \
        camera.te \
