@@ -1,5 +1,3 @@
-# Grant GPU access to system services (e.g., PowerManagerService)
-allow system_server gpu_device:chr_file rw_file_perms;
 allow system_server diag_device:chr_file rw_file_perms;
 
 # Grant access to Qualcomm MSM Interface (QMI) radio sockets to system services
