@@ -36,7 +36,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/ioctl.h>
 struct file;
 struct inode;
-#include <linux/android_pmem.h>
 #include <sys/mman.h>
 #include <errno.h>
 #include <sys/time.h>

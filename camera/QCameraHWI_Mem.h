@@ -25,7 +25,6 @@
 #include "QCamera_Intf.h"
 
 extern "C" {
-#include <linux/android_pmem.h>
 #include <linux/msm_ion.h>
 }
 
@@ -86,7 +85,6 @@ public:
     int myOffset;
     int mCameraControlFd;
     uint32_t mAlignedSize;
-    struct pmem_region mSize;
 };
 
 class IonPool : public MemPool {
