@@ -29,9 +29,6 @@
 #include <fcntl.h>
 #include <cutils/properties.h>
 #include <math.h>
-#if HAVE_ANDROID_OS
-#include <linux/android_pmem.h>
-#endif
 #include <linux/ioctl.h>
 #include <camera/CameraParameters.h>
 #include <media/mediarecorder.h>

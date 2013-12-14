@@ -35,7 +35,6 @@
 #include <QComOMXMetadata.h>
 
 extern "C" {
-#include <linux/android_pmem.h>
 #include <linux/ion.h>
 #include <mm_camera_interface2.h>
 
