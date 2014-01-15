@@ -178,8 +178,6 @@ static const str_map effects[] = {
     { QCameraParameters::EFFECT_SOLARIZE,   CAMERA_EFFECT_SOLARIZE },
     { QCameraParameters::EFFECT_SEPIA,      CAMERA_EFFECT_SEPIA },
     { QCameraParameters::EFFECT_POSTERIZE,  CAMERA_EFFECT_POSTERIZE },
-    { QCameraParameters::EFFECT_WHITEBOARD, CAMERA_EFFECT_WHITEBOARD },
-    { QCameraParameters::EFFECT_BLACKBOARD, CAMERA_EFFECT_BLACKBOARD },
     { QCameraParameters::EFFECT_AQUA,       CAMERA_EFFECT_AQUA },
     { QCameraParameters::EFFECT_EMBOSS,     CAMERA_EFFECT_EMBOSS },
     { QCameraParameters::EFFECT_SKETCH,     CAMERA_EFFECT_SKETCH },
