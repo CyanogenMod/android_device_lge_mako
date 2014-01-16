@@ -144,6 +144,9 @@ public:
     camera_mode_t myMode;
 
     mutable Mutex mStopCallbackLock;
+    mutable Mutex mPreviewFrameLock;
+	int     mSnapshotDataCallingBack;
+    int     mFreeSnapshotBufAfterDataCb;
 private:
    StreamQueue mBusyQueue;
    StreamQueue mFreeQueue;
@@ -287,6 +290,8 @@ public:
     void resetSnapshotCounters(void );
     void InitHdrInfoForSnapshot(bool HDR_on, int number_frames, int *exp );
     void notifyHdrEvent(cam_ctrl_status_t status, void * cookie);
+    bool getSnapJpegCbState(void);
+    void setSnapJpegCbState(bool state);
 
 private:
     QCameraStream_Snapshot(int, camera_mode_t);
