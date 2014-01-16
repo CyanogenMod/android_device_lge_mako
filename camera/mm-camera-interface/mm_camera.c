@@ -1087,11 +1087,6 @@ int32_t mm_camera_close(mm_camera_obj_t *my_obj)
                                 MM_CAMERA_STATE_EVT_RELEASE, NULL);
     }
 
-    CDBG("%s : Close Threads in Cam Close",__func__);
-    for(i = 0; i < MM_CAMERA_CH_MAX; i++) {
-        mm_camera_poll_thread_release(my_obj,(mm_camera_channel_type_t)i);
-    }
-    mm_camera_poll_threads_deinit(my_obj);
     my_obj->op_mode = MM_CAMERA_OP_MODE_NOTUSED;
     if(my_obj->ctrl_fd > 0) {
         rc = close(my_obj->ctrl_fd);

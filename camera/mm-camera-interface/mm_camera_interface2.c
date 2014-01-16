@@ -384,7 +384,7 @@ static void mm_camera_ops_close (mm_camera_t * camera)
       if(my_obj->ref_count > 0) {
         CDBG("%s: ref_count=%d\n", __func__, my_obj->ref_count);
       } else {
-        mm_camera_poll_thread_release(my_obj, MM_CAMERA_CH_MAX);
+        // mm_camera_poll_thread_release(my_obj, MM_CAMERA_CH_MAX);
         (void)mm_camera_close(g_cam_ctrl.cam_obj[camera_id]);
         pthread_mutex_destroy(&my_obj->mutex);
         free(my_obj);
@@ -393,6 +393,25 @@ static void mm_camera_ops_close (mm_camera_t * camera)
     }
     pthread_mutex_unlock(&g_mutex);
 }
+
+static void mm_camera_ops_stop (mm_camera_t * camera)
+{
+    mm_camera_obj_t * my_obj;
+    int i;
+    int8_t camera_id = camera->camera_info.camera_id;
+
+    pthread_mutex_lock(&g_mutex);
+    my_obj = g_cam_ctrl.cam_obj[camera_id];
+    if(my_obj) {
+        CDBG("%s : Close Threads in mm_camera_ops_stop",__func__);
+        for(i = 0; i <= MM_CAMERA_CH_MAX; i++) {
+            mm_camera_poll_thread_release(my_obj,(mm_camera_channel_type_t)i);
+        }
+        mm_camera_poll_threads_deinit(my_obj);
+    }
+    pthread_mutex_unlock(&g_mutex);
+}
+
 
 static int32_t mm_camera_ops_ch_acquire(mm_camera_t * camera,
                                         mm_camera_channel_type_t ch_type)
@@ -464,6 +483,7 @@ static mm_camera_ops_t mm_camera_ops = {
     .action = mm_camera_ops_action,
     .open = mm_camera_ops_open,
     .close = mm_camera_ops_close,
+    .stop = mm_camera_ops_stop,
     .ch_acquire = mm_camera_ops_ch_acquire,
     .ch_release = mm_camera_ops_ch_release,
     .ch_set_attr = mm_camera_ops_ch_attr,
@@ -847,6 +867,14 @@ void cam_ops_close(int cam_id)
   mm_camera_t * mm_cam = get_camera_by_id(cam_id);
   if (mm_cam) {
     mm_cam->ops->close(mm_cam);
+  }
+}
+
+void cam_ops_stop(int cam_id)
+{
+  mm_camera_t * mm_cam = get_camera_by_id(cam_id);
+  if (mm_cam) {
+    mm_cam->ops->stop(mm_cam);
   }
 }
 
