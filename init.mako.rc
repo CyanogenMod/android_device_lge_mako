@@ -131,6 +131,7 @@ on boot
 # NFC: create data/nfc for nv storage
     mkdir /data/nfc 770 nfc nfc
     mkdir /data/nfc/param 770 nfc nfc
+    restorecon_recursive /data/nfc
 
 # Assign TCP buffer thresholds to be ceiling value of technology maximums
 # Increased technology maximums should be reflected here.
@@ -140,6 +141,7 @@ on boot
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
+    restorecon_recursive /data/media
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -157,6 +159,7 @@ on post-fs-data
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
+    restorecon_recursive /data/misc/audio
 
     # Workaround for conn_init not copying the updated firmware
     rm /data/misc/wifi/WCNSS_qcom_cfg.ini
