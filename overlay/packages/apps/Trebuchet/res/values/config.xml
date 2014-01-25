@@ -1,4 +1,0 @@
-<resources>
-    <integer name="target_cell_count_x">5</integer>
-    <integer name="target_cell_count_y">5</integer>
-</resources>
