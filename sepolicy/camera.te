@@ -19,8 +19,8 @@ allow camera camera_socket:sock_file { create unlink };
 allow camera system_data_file:dir w_dir_perms;
 allow camera system_data_file:sock_file unlink;
 
-type_transition camera system_data_file:file camera_calibration_file "fdAlbum";
-allow camera camera_calibration_file:file create_file_perms;
+type_transition camera system_data_file:file camera_data_file "fdAlbum";
+allow camera camera_data_file:file create_file_perms;
 
 # Connect to sensor socket (/data/app/sensor_ctl_socket)
 unix_socket_connect(camera, sensors, sensors)
