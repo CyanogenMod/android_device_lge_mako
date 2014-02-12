@@ -127,6 +127,8 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
+    #Enable logging of the wake up reasons in the kernel log
+    write /sys/module/msm_show_resume_irq/parameters/debug_mask 1
 
 # NFC: create data/nfc for nv storage
     mkdir /data/nfc 770 nfc nfc
