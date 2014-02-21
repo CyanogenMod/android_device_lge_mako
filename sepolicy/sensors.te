@@ -15,9 +15,6 @@ dontaudit sensors self:capability fsetid;
 allow sensors self:capability dac_read_search;
 dontaudit sensors self:capability dac_override;
 
-# Log diagnostic items (/dev/diag)
-allow sensors diag_device:chr_file rw_file_perms;
-
 # Create /data/app/sensor_ctl_socket (Might want to change location).
 type_transition sensors apk_data_file:sock_file sensors_socket "sensor_ctl_socket";
 allow sensors sensors_socket:sock_file create_file_perms;

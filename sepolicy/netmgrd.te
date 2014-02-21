@@ -23,9 +23,6 @@ allow netmgrd system_prop:property_service set;
 # Talk to qmuxd (qmux_radio)
 qmux_socket(netmgrd)
 
-# Allow logging diagnostic items (/dev/diag)
-allow netmgrd diag_device:chr_file rw_file_perms;
-
 # Tries to access /data/data_test/ with toolbox. The data_test
 # directory doesn't exist so deny access.
 dontaudit netmgrd shell_exec:file rx_file_perms;
