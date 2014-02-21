@@ -8,9 +8,6 @@ init_daemon_domain(bridge)
 # Uevent for usb connection
 allow bridge self:netlink_kobject_uevent_socket { create bind read };
 
-# Allow logging diagnostic items to /dev/diag
-allow bridge diag_device:chr_file rw_file_perms;
-
 # Talk to qmuxd (qmux_radio)
 qmux_socket(bridge)
 
