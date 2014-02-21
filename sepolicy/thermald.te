@@ -14,8 +14,8 @@ allow thermald self:capability net_admin;
 # Talk to qmuxd (/dev/socket/qmux_radio)
 qmux_socket(thermald)
 
-# Access shared logger (/dev/smem_log) and diagnostic logger (/dev/diag)
-allow thermald { shared_log_device diag_device }:chr_file rw_file_perms;
+# Access shared logger (/dev/smem_log)
+allow thermald shared_log_device:chr_file rw_file_perms;
 
 # Access /sys/devices/system/cpu/
 allow thermald sysfs_devices_system_cpu:file rw_file_perms;
