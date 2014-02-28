@@ -133,7 +133,6 @@ on boot
 # NFC: create data/nfc for nv storage
     mkdir /data/nfc 770 nfc nfc
     mkdir /data/nfc/param 770 nfc nfc
-    restorecon_recursive /data/nfc
 
 # Assign TCP buffer thresholds to be ceiling value of technology maximums
 # Increased technology maximums should be reflected here.
@@ -143,20 +142,15 @@ on boot
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
-    restorecon_recursive /data/media
 
 # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
-
-    # Apply correct labeling to DRM files
-    restorecon_recursive /data/misc/playready
 
     write /dev/wcnss_wlan 1
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
-    restorecon_recursive /data/misc/audio
 
     # Workaround for conn_init not copying the updated firmware
     rm /data/misc/wifi/WCNSS_qcom_cfg.ini
@@ -183,20 +177,15 @@ on post-fs-data
     #Create directory used by sensor subsystem(dsps)
     mkdir /data/system/sensors
     chmod 665 /data/system/sensors
-    restorecon_recursive /data/system/sensors
     write /data/system/sensors/settings 1
     chmod 660 /data/system/sensors/settings
 
     # AKM setting data
     mkdir /data/misc/sensors
     chmod 775 /data/misc/sensors
-    restorecon_recursive /data/misc/sensors
 
     mkdir /persist/sensors
     chmod 775 /persist/sensors
-
-    # Label in case file already exists
-    restorecon /data/fdAlbum
 
     #Provide the access to hostapd.conf only to root and group
     chmod 0660 /data/hostapd/hostapd.conf
@@ -207,11 +196,7 @@ on post-fs-data
 
     # kickstart
     mkdir /data/qcks 0770 system system
-    restorecon_recursive /data/qcks
     chown system /dev/block/platform/msm_sdcc.1/by-name
-
-    # Remove old socket so that it is re-created in the right context.
-    rm /data/app/sensor_ctl_socket
 
     setprop vold.post_fs_data_done 1
 
