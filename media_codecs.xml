@@ -39,6 +39,7 @@
     </Encoders>
     <Decoders>
         <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis" />
+        <MediaCodec name="OMX.google.opus.decoder" type="audio/opus" />
         <MediaCodec name="OMX.google.gsm.decoder" type="audio/gsm" />
         <MediaCodec name="OMX.google.mp3.decoder" type="audio/mpeg" />
         <MediaCodec name="OMX.google.amrnb.decoder" type="audio/3gpp" />
