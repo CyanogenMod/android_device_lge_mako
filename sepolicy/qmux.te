@@ -12,8 +12,5 @@ allow qmux qmuxd_socket:sock_file { create setattr getattr unlink };
 # /dev/hsicctl* node access
 allow qmux radio_device:chr_file rw_file_perms;
 
-# Allow logging diagnostic items
-allow qmux diag_device:chr_file rw_file_perms;
-
 # wake lock access
 allow qmux sysfs_wake_lock:file { open append };
