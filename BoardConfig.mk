@@ -104,6 +104,7 @@ BOARD_SEPOLICY_UNION += \
        domain.te \
        file.te \
        file_contexts \
+       hostapd.te \
        kickstart.te \
        mediaserver.te \
        mpdecision.te \
