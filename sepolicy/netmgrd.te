@@ -18,7 +18,7 @@ allow netmgrd self:packet_socket create_socket_perms;
 
 # set net.rmnet* properties.
 unix_socket_connect(netmgrd, property, init)
-allow netmgrd system_prop:property_service set;
+allow netmgrd { radio_prop system_prop }:property_service set;
 
 # Talk to qmuxd (qmux_radio)
 qmux_socket(netmgrd)
