@@ -115,3 +115,6 @@ $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
 
 $(call add-clean-step, rm -f $(OUT_DIR)/target/product/mako/system/build.prop)
 
+# Revert mako to kernel logging to workaround prebuilt issue
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/obj/*/libc_intermediates/)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/obj/*/liblog_intermediates/)
