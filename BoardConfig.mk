@@ -130,4 +130,6 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 HAVE_ADRENO_SOURCE:= false
 
+TARGET_USES_LOGD := false
+
 -include vendor/lge/mako/BoardConfigVendor.mk
