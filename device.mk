@@ -73,6 +73,9 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/fstab.mako:root/fstab.mako \
 	device/lge/mako/ueventd.mako.rc:root/ueventd.mako.rc \
 	device/lge/mako/media_profiles.xml:system/etc/media_profiles.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
 	device/lge/mako/media_codecs.xml:system/etc/media_codecs.xml
 
 # Prebuilt kl and kcm keymaps
