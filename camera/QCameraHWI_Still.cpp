@@ -2082,11 +2082,13 @@ status_t QCameraStream_Snapshot::receiveRawPicture(mm_camera_ch_data_buf_t* recv
             goto end;
         }
 
+        mStopCallbackLock.unlock();
         if(!mHalCamCtrl->mShutterSoundPlayed) {
             notifyShutter(&crop, true);
         }
         notifyShutter(&crop, false);
         mHalCamCtrl->mShutterSoundPlayed = false;
+        mStopCallbackLock.lock();
 
         if(mHalCamCtrl->mHdrMode == HDR_MODE) {
             if ((hdrRawCount % 3) != 2) {
