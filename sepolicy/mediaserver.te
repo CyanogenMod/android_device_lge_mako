@@ -2,6 +2,7 @@
 qmux_socket(mediaserver)
 
 unix_socket_send(mediaserver, camera, camera)
+unix_socket_send(mediaserver, mpdecision, mpdecision)
 
 # Permit mediaserver to create sockets with no specific SELinux class.
 # TODO: Investigate the specific type of socket.
