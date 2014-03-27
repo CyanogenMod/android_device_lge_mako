@@ -37,3 +37,4 @@ allow mpdecision sysfs:file write;
 # This is needed to allow mpdecision to look at system_server's
 # /proc/PID/status file.
 r_dir_file(mpdecision, system_server)
+r_dir_file(mpdecision, mediaserver)
