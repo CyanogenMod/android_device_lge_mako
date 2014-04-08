@@ -116,6 +116,7 @@
     <ctl name="SLIM_0_TX Channels" value="One" />
     <ctl name="SLIM_3_RX Channels" value="One" />
     <ctl name="HDMI_RX Channels" value="Two" />
+    <ctl name="Internal BTSCO SampleRate" value="8000" />
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
@@ -135,6 +136,11 @@
         <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
+    <path name="deep-buffer-playback bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="deep-buffer-playback bt-sco" />
+    </path>
+
     <path name="low-latency-playback">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
     </path>
@@ -144,6 +150,11 @@
     </path>
     <path name="low-latency-playback bt-sco">
         <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="low-latency-playback bt-sco" />
     </path>
 
     <path name="low-latency-playback speaker-and-hdmi">
@@ -163,12 +174,22 @@
         <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="1" />
     </path>
 
+    <path name="audio-record bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="audio-record bt-sco" />
+    </path>
+
     <path name="low-latency-record">
         <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="1" />
     </path>
 
     <path name="low-latency-record bt-sco">
         <ctl name="MultiMedia5 Mixer INTERNAL_BT_SCO_TX" value="1" />
+    </path>
+
+    <path name="low-latency-record bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="low-latency-record bt-sco" />
     </path>
 
     <path name="voice-call">
@@ -185,7 +206,6 @@
     </path>
 
     <path name="voice-call bt-sco">
-        <ctl name="Internal BTSCO SampleRate" value="8000" />
         <ctl name="Voice Stub Tx Mixer INTERNAL_BT_SCO_TX" value="1" />
         <ctl name="SLIMBUS_1_RX Mixer Voice Stub" value="1" />
         <ctl name="Voice Stub Tx Mixer SLIM_1_TX" value="1" />
@@ -195,6 +215,11 @@
         <ctl name="SLIM_3_RX Channels" value="One" />
         <ctl name="SLIMBUS_3_RX_Voice Mixer Voice Stub" value="1" />
         <ctl name="SLIMBUS_3_RX Port Mixer INTERNAL_BT_SCO_RX" value="1" />
+    </path>
+
+    <path name="voice-call bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="voice-call bt-sco" />
     </path>
 
     <!-- These are actual sound device specific mixer settings -->
@@ -440,6 +465,12 @@
 
     <path name="voice-tty-vco-handset-mic">
         <path name="adc1" />
+    </path>
+
+    <path name="bt-sco-mic-wb">
+    </path>
+
+    <path name="bt-sco-headset-wb">
     </path>
 
 </mixer>
