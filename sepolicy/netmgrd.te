@@ -23,5 +23,9 @@ allow netmgrd { radio_prop system_prop }:property_service set;
 # Talk to qmuxd (qmux_radio)
 qmux_socket(netmgrd)
 
+# Runs commands via sh.
+# TODO:  Convert to direct exec of /system/bin/ip and any other helpers.
+allow netmgrd shell_exec:file rx_file_perms;
+
 # Runs /system/bin/ip addr flush dev <device> commands.
-allow netmgrd system_file:file execute_no_trans;
+allow netmgrd system_file:file rx_file_perms;
