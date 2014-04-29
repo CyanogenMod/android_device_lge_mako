@@ -443,7 +443,7 @@ static int32_t mm_camera_ch_util_qbuf(mm_camera_obj_t *my_obj,
             cache_frame = val->snapshot.main.frame;
             CDBG("buffer fd = %d, length = %d, vaddr = %p\n",
                  val->snapshot.main.frame->fd, val->snapshot.main.frame->ion_alloc.len, val->snapshot.main.frame->buffer);
-            if(!rc) {
+            if(!rc && (!my_obj->full_liveshot)) {
                 if (my_obj->op_mode == MM_CAMERA_OP_MODE_ZSL)
                   stream = &my_obj->ch[MM_CAMERA_CH_PREVIEW].preview.stream;
                 else
