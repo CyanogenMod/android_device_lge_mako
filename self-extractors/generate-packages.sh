@@ -68,10 +68,17 @@ do
     ;;
   lge)
     TO_EXTRACT="\
+            system/etc/DxHDCP.cfg \
+            system/lib/libDxHdcp.so \
             system/lib/libacdbdata.so \
             system/lib/libAKM.so \
             system/lib/libcamera_fast_af.so \
             system/lib/libmorpho_noise_reduction.so \
+            system/vendor/firmware/discretix/dxhdcp2.b00 \
+            system/vendor/firmware/discretix/dxhdcp2.b01 \
+            system/vendor/firmware/discretix/dxhdcp2.b02 \
+            system/vendor/firmware/discretix/dxhdcp2.b03 \
+            system/vendor/firmware/discretix/dxhdcp2.mdt \
             system/vendor/firmware/keymaster/keymaster.b00 \
             system/vendor/firmware/keymaster/keymaster.b01 \
             system/vendor/firmware/keymaster/keymaster.b02 \

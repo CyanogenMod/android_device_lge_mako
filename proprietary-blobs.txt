@@ -22,6 +22,7 @@ bin/thermald
 bin/usbhub
 bin/usbhub_init
 bin/v4l2-qcamera-app
+etc/DxHDCP.cfg
 etc/firmware/tzapps.b00
 etc/firmware/tzapps.b01
 etc/firmware/tzapps.b02
@@ -80,6 +81,7 @@ lib/libdsprofile.so
 lib/libdss.so
 lib/libdsucsd.so
 lib/libdsutils.so
+lib/libDxHdcp.so
 lib/libgemini.so
 lib/libgps.utils.so
 lib/libgsl.so
@@ -160,6 +162,11 @@ vendor/lib/libloc_api_v02.so
 vendor/lib/libloc_ds_api.so
 vendor/firmware/bcm2079x_firmware.ncd
 vendor/firmware/bcm2079x_pre_firmware.ncd
+vendor/firmware/discretix/dxhdcp2.b00
+vendor/firmware/discretix/dxhdcp2.b01
+vendor/firmware/discretix/dxhdcp2.b02
+vendor/firmware/discretix/dxhdcp2.b03
+vendor/firmware/discretix/dxhdcp2.mdt
 lib/libacdbdata.so
 lib/libacdbloader.so
 lib/libAKM.so
