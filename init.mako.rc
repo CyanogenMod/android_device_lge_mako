@@ -377,7 +377,7 @@ service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emul
 
 service thermald /system/bin/thermald
     class main
-    group radio
+    group radio system
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     class main
