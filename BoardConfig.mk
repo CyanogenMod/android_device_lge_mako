@@ -130,6 +130,4 @@ USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
 
 HAVE_ADRENO_SOURCE:= false
 
-TARGET_USES_LOGD := false
-
 -include vendor/lge/mako/BoardConfigVendor.mk
