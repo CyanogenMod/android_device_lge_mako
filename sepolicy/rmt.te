@@ -21,4 +21,4 @@ allow rmt self:socket create_socket_perms;
 allow rmt cgroup:dir { create add_name };
 
 # Wake lock access
-allow rmt sysfs_wake_lock:file { open append };
+wakelock_use(rmt)

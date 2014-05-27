@@ -40,6 +40,6 @@ allow sensors persist_sensors_file:dir r_dir_perms;
 allow sensors persist_sensors_file:file rw_file_perms;
 
 # Wake lock access
-allow sensors sysfs_wake_lock:file { open append };
+wakelock_use(sensors)
 
 allow sensors cgroup:dir { create add_name };
