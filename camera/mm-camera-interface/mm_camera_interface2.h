@@ -295,6 +295,7 @@ typedef struct {
                     mm_camera_ops_type_t opcode, void *val);
     int32_t (*open)(mm_camera_t * camera, mm_camera_op_mode_type_t op_mode);
     void (*close)(mm_camera_t * camera);
+    void (*stop)(mm_camera_t * camera);
     int32_t (*ch_acquire)(mm_camera_t * camera, mm_camera_channel_type_t ch_type);
     void (*ch_release)(mm_camera_t * camera, mm_camera_channel_type_t ch_type);
     int32_t (*ch_set_attr)(mm_camera_t * camera, mm_camera_channel_type_t ch_type,
@@ -473,6 +474,7 @@ int32_t cam_ops_action(int cam_id, uint8_t start,
   mm_camera_ops_type_t opcode, void *val);
 int32_t cam_ops_open(int cam_id, mm_camera_op_mode_type_t op_mode);
 void cam_ops_close(int cam_id);
+void cam_ops_stop(int cam_id);
 int32_t cam_ops_ch_acquire(int cam_id, mm_camera_channel_type_t ch_type);
 void cam_ops_ch_release(int cam_id, mm_camera_channel_type_t ch_type);
 int32_t cam_ops_ch_set_attr(int cam_id, mm_camera_channel_type_t ch_type,

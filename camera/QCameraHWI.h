@@ -849,6 +849,11 @@ private:
      int                 mNoDisplayMode;
      int                 mIsoValue;
 
+     /* Used to show the process state of snapshot_jpeg_cb*/
+     Mutex                  mSnapJpegCbLock;
+     Condition              mSnapJpegCbWait;
+     bool                   mSnapJpegCbRunning;
+     bool                   mSnapCbDisabled;
 };
 
 }; // namespace android

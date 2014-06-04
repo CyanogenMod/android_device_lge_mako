@@ -45,8 +45,8 @@ then
 fi # jb-mr2-dev
 if test $BRANCH = klp-dev
 then
-  ZIP=occam-ota-882570
-  BUILD=882570
+  ZIP=occam-ota-937116
+  BUILD=kot49h
 fi # klp-dev
 ROOTDEVICE=mako
 DEVICE=mako
