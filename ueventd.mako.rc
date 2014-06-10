@@ -1,5 +1,5 @@
-/dev/smd3                 0660   bluetooth  bluetooth
-/dev/smd2                 0660   bluetooth  bluetooth
+/dev/smd3                 0660   bluetooth  net_bt_stack
+/dev/smd2                 0660   bluetooth  net_bt_stack
 /dev/uinput               0660   system     bluetooth
 /dev/ttyHS0               0600   bluetooth  bluetooth
 /dev/ttyMSM0              0600   bluetooth  bluetooth
