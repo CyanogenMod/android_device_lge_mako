@@ -5,6 +5,10 @@ type thermald_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(thermald)
 
+# DAC overrides
+allow thermald self:capability dac_override;
+auditallow thermald self:capability dac_override;
+
 allow thermald self:socket create_socket_perms;
 
 # CPU hotplug uevent
