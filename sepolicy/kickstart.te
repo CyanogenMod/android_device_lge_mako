@@ -31,3 +31,7 @@ allow kickstart system_file:file execute_no_trans;
 
 # Wake lock access
 wakelock_use(kickstart)
+
+# Read tombstones
+allow kickstart tombstone_data_file:dir r_dir_perms;
+allow kickstart tombstone_data_file:file r_file_perms;
