@@ -370,6 +370,7 @@ on property:ro.data.large_tcp_window_size=true
 
 service charger /charger
     class charger
+    seclabel u:r:healthd:s0
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
