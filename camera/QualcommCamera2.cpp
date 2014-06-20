@@ -188,11 +188,11 @@ extern "C" int  camera_device_open(
 
     pthread_mutex_lock(&camera_session_lock);
 
-    //Return INVALID_OPERATION(-1) to framework if multiple camera instances detected.
+    //Return -EUSERS to framework if multiple camera instances detected.
     if(QCameraSession) {
-       ALOGE("%s Mutliple camera open instances are not supported",__func__);
+       ALOGE("%s Multiple camera open instances are not supported",__func__);
        pthread_mutex_unlock(&camera_session_lock);
-       return rc;
+       return -EUSERS;
     }
     if(module && id && hw_device) {
         int cameraId = atoi(id);
