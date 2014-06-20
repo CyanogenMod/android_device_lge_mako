@@ -5,8 +5,6 @@ type rmt_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(rmt)
 
-permissive rmt;
-
 # Drop (user, group) to (nobody, nobody)
 allow rmt self:capability { setuid setgid };
 
