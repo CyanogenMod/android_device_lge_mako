@@ -168,7 +168,7 @@ vendor/firmware/discretix/dxhdcp2.b02
 vendor/firmware/discretix/dxhdcp2.b03
 vendor/firmware/discretix/dxhdcp2.mdt
 lib/libacdbdata.so
--lib/libacdbloader.so
+lib/libacdbloader.so
 lib/libAKM.so
 lib/libcamera_fast_af.so
 lib/libmorpho_noise_reduction.so
