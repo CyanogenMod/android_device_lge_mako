@@ -53,7 +53,6 @@ on fs
     mount_all ./fstab.mako
     restorecon_recursive /persist
     setprop ro.crypto.fuse_sdcard true
-    write /sys/kernel/boot_adsp/boot 1
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -141,6 +140,8 @@ on boot
 
 # msm specific files that need to be created on /data
 on post-fs-data
+    write /sys/kernel/boot_adsp/boot 1
+
     mkdir /data/media 0770 media_rw media_rw
 
 # to observe dnsmasq.leases file for dhcp information of soft ap.
