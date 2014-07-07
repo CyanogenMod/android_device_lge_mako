@@ -78,11 +78,8 @@
 
         <!--  ffmpeg video codecs  -->
         <MediaCodec name="OMX.ffmpeg.mpeg2v.decoder" type="video/mpeg2"/>
-        <MediaCodec name="OMX.ffmpeg.h263.decoder" type="video/3gpp"/>
-        <MediaCodec name="OMX.ffmpeg.mpeg4.decoder" type="video/mp4v-es"/>
         <MediaCodec name="OMX.ffmpeg.wmv.decoder" type="video/x-ms-wmv"/>
         <MediaCodec name="OMX.ffmpeg.rv.decoder" type="video/vnd.rn-realvideo"/>
-        <MediaCodec name="OMX.ffmpeg.h264.decoder" type="video/avc"/>
         <MediaCodec name="OMX.ffmpeg.vc1.decoder" type="video/vc1"/>
         <MediaCodec name="OMX.ffmpeg.flv1.decoder" type="video/x-flv"/>
         <MediaCodec name="OMX.ffmpeg.divx.decoder" type="video/divx"/>
