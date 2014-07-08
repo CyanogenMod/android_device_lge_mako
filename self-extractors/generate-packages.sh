@@ -173,6 +173,7 @@ do
             system/lib/libimage-jpeg-enc-omx-comp.so \
             system/lib/libimage-omx-common.so \
             system/lib/libllvm-qcom.so \
+            system/lib/libbccQTI.so \
             system/lib/libloc_core.so \
             system/lib/libloc_eng.so \
             system/lib/libmercury.so \
