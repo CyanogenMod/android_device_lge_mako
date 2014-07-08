@@ -105,6 +105,7 @@ PRODUCT_COPY_FILES := \
     vendor/qcom/mako/proprietary/libimage-jpeg-enc-omx-comp.so:system/lib/libimage-jpeg-enc-omx-comp.so:qcom \
     vendor/qcom/mako/proprietary/libimage-omx-common.so:system/lib/libimage-omx-common.so:qcom \
     vendor/qcom/mako/proprietary/libllvm-qcom.so:system/lib/libllvm-qcom.so:qcom \
+    vendor/qcom/mako/proprietary/libbccQTI.so:system/lib/libbccQTI.so:qcom \
     vendor/qcom/mako/proprietary/libloc_core.so:system/lib/libloc_core.so:qcom \
     vendor/qcom/mako/proprietary/libloc_eng.so:system/lib/libloc_eng.so:qcom \
     vendor/qcom/mako/proprietary/libmercury.so:system/lib/libmercury.so:qcom \
