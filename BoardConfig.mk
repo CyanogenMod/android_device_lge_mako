@@ -133,4 +133,6 @@ HAVE_ADRENO_SOURCE:= false
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
+MALLOC_IMPL := dlmalloc
+
 -include vendor/lge/mako/BoardConfigVendor.mk
