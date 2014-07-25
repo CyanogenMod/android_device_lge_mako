@@ -116,7 +116,7 @@ PRODUCT_COPY_FILES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    nfc_nci.mako \
+    nfc_nci.bcm2079x.default \
     NfcNci \
     Tag
 
