@@ -223,13 +223,20 @@ static const str_map scenedetect[] = {
 };
 
 #define DONT_CARE AF_MODE_MAX
-static const str_map focus_modes[] = {
+// These are listed as the supported focus-modes for cameras with AF
+static const str_map focus_modes_auto[] = {
     { QCameraParameters::FOCUS_MODE_AUTO,     AF_MODE_AUTO},
     { QCameraParameters::FOCUS_MODE_INFINITY, AF_MODE_INFINITY },
     { QCameraParameters::FOCUS_MODE_NORMAL,   AF_MODE_NORMAL },
     { QCameraParameters::FOCUS_MODE_MACRO,    AF_MODE_MACRO },
     { QCameraParameters::FOCUS_MODE_CONTINUOUS_PICTURE, AF_MODE_CAF},
-    { QCameraParameters::FOCUS_MODE_CONTINUOUS_VIDEO, AF_MODE_CAF }
+    { QCameraParameters::FOCUS_MODE_CONTINUOUS_VIDEO, AF_MODE_CAF },
+    // Note that "FIXED" is omitted
+};
+
+// These are the supported focus-modes for cameras without AF
+static const str_map focus_modes_fixed[] = {
+    { QCameraParameters::FOCUS_MODE_FIXED,    AF_MODE_INFINITY },
 };
 
 static const str_map selectable_zone_af[] = {
@@ -810,7 +817,7 @@ void QCameraHardwareInterface::initDefaultParameters()
 
         if(mHasAutoFocusSupport){
             mFocusModeValues = create_values_str(
-                    focus_modes, sizeof(focus_modes) / sizeof(str_map));
+                    focus_modes_auto, sizeof(focus_modes_auto) / sizeof(str_map));
         }
 
         mSceneModeValues = create_values_str(scenemode, sizeof(scenemode) / sizeof(str_map));
@@ -1092,10 +1099,10 @@ void QCameraHardwareInterface::initDefaultParameters()
        mParameters.set(QCameraParameters::KEY_MAX_NUM_METERING_AREAS, "1");
    } else {
        mParameters.set(QCameraParameters::KEY_FOCUS_MODE,
-       QCameraParameters::FOCUS_MODE_INFINITY);
+       QCameraParameters::FOCUS_MODE_FIXED);
        mFocusMode = DONT_CARE;
        mParameters.set(QCameraParameters::KEY_SUPPORTED_FOCUS_MODES,
-       QCameraParameters::FOCUS_MODE_INFINITY);
+       QCameraParameters::FOCUS_MODE_FIXED);
        mParameters.set(QCameraParameters::KEY_MAX_NUM_FOCUS_AREAS, "0");
        mParameters.set(QCameraParameters::KEY_MAX_NUM_METERING_AREAS, "0");
    }
@@ -2062,8 +2069,17 @@ status_t QCameraHardwareInterface::setFocusMode(const QCameraParameters& params)
     ALOGV("%s",__func__);
     if (str != NULL) {
         ALOGV("Focus mode %s",str);
-        int32_t value = attr_lookup(focus_modes,
-                                    sizeof(focus_modes) / sizeof(str_map), str);
+
+        int32_t value;
+
+        if (mHasAutoFocusSupport){
+            value = attr_lookup(focus_modes_auto,
+                                    sizeof(focus_modes_auto) / sizeof(str_map), str);
+        } else {
+            value = attr_lookup(focus_modes_fixed,
+                                    sizeof(focus_modes_fixed) / sizeof(str_map), str);
+        }
+
         if (value != NOT_FOUND) {
             mParameters.set(QCameraParameters::KEY_FOCUS_MODE, str);
             mFocusMode = value;
