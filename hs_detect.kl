@@ -1,4 +1,4 @@
-key 226   HEADSETHOOK       WAKE
-key 116   POWER             WAKE
-key 107   ENDCALL           WAKE_DROPPED
+key 226   HEADSETHOOK
+key 116   POWER
+key 107   ENDCALL
 
