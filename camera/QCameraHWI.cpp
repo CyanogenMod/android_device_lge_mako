@@ -1888,6 +1888,8 @@ status_t QCameraHardwareInterface::autoFocus()
     bool status = true;
     isp3a_af_mode_t afMode = getAutoFocusMode(mParameters);
 
+    Mutex::Autolock afLock(mAutofocusLock);
+
     if(mAutoFocusRunning==true){
       ALOGV("%s:AF already running should not have got this call",__func__);
       return NO_ERROR;
@@ -1933,6 +1935,7 @@ status_t QCameraHardwareInterface::cancelAutoFocus()
 
     mAutofocusLock.lock();
     if(mAutoFocusRunning || mNeedToUnlockCaf) {
+      ALOGV("%s:Af either running or CAF needs unlocking", __func__);
       mNeedToUnlockCaf = false;
       mAutoFocusRunning = false;
       mAutofocusLock.unlock();
