@@ -10,5 +10,7 @@ allow tee drm_data_file:dir create_dir_perms;
 allow tee drm_data_file:file create_file_perms;
 
 # Access /persist/{widevine,playready}
-allow tee persist_file:dir { add_name create_dir_perms };
-allow tee persist_file:file create_file_perms;
+allow tee persist_file:dir r_dir_perms;
+# Write to drm related pieces of persist partition
+allow tee persist_drm_file:dir create_dir_perms;
+allow tee persist_drm_file:file create_file_perms;
