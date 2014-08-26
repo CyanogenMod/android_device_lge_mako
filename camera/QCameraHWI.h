@@ -201,7 +201,7 @@ static const char ExifAsciiPrefix[] = { 0x41, 0x53, 0x43, 0x49, 0x49, 0x0, 0x0, 
 static const char ExifUndefinedPrefix[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };   // "\0\0\0\0\0\0\0\0"
 
 //EXIF detfines
-#define MAX_EXIF_TABLE_ENTRIES           20
+#define MAX_EXIF_TABLE_ENTRIES           23
 #define GPS_PROCESSING_METHOD_SIZE       101
 #define FOCAL_LENGTH_DECIMAL_PRECISION   100
 #define EXIF_ASCII_PREFIX_SIZE           8   //(sizeof(ExifAsciiPrefix))
@@ -219,6 +219,7 @@ typedef struct{
     char        gpsProcessingMethod[EXIF_ASCII_PREFIX_SIZE+GPS_PROCESSING_METHOD_SIZE];
     //Other tags
     char        dateTime[20];
+    char subsecTime[7];
     rat_t       focalLength;
     rat_t       f_number;
     uint16_t    flashMode;
@@ -233,6 +234,9 @@ typedef struct{
 
     int         mAltitude_ref;
     long        mGPSTimestamp;
+    int         mWbMode;
+    char        make[20];
+    char        model[20];
 
 } exif_values_t;
 
