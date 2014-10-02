@@ -82,8 +82,10 @@
 /system/bin/ks                     u:object_r:kickstart_exec:s0
 
 # Block labeling
-/dev/block/mmcblk0p[89]            u:object_r:efs_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/m9kefs[12]    u:object_r:efs_block_device:s0
 /dev/block/mmcblk0                 u:object_r:root_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/system u:object_r:system_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/recovery u:object_r:recovery_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/userdata u:object_r:userdata_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/cache u:object_r:cache_block_device:s0
 
