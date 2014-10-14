@@ -731,6 +731,27 @@
       type="mms"
   />
 
+  <apn carrier="Carrefour"
+      mcc="214"
+      mnc="03"
+      apn="CARREFOURINTERNET"
+      authtype="1"
+      type="default,supl"
+  />
+
+  <apn carrier="Carrefour MMS"
+      mcc="214"
+      mnc="03"
+      apn="CARREFOURMMS"
+      user="CARREFOUR"
+      password="CARREFOUR"
+      mmsc="http://mms.orange.es"
+      mmsproxy="172.22.188.25"
+      mmsport="8080"
+      authtype="1"
+      type="mms"
+  />
+
   <apn carrier="Yoigo Navegador"
       mcc="214"
       mnc="04"
@@ -1051,23 +1072,21 @@
       type="default,supl"
   />
 
-  <apn carrier="HT Eronet WAP"
-      mcc="218"
-      mnc="03"
-      apn="wap.eronet.ba"
-      proxy="10.12.3.10"
-      port="8080"
-      type="default,supl"
-  />
-
-  <apn carrier="HT Eronet GPRS"
+  <apn carrier="ERONET START"
       mcc="218"
       mnc="03"
       apn="gprs.eronet.ba"
       type="default,supl"
   />
 
-  <apn carrier="Ht Eronet MMS"
+  <apn carrier="ERONET WEB"
+      mcc="218"
+      mnc="03"
+      apn="web.eronet.ba"
+      type="default,supl"
+  />
+
+  <apn carrier="MMS-ERONET"
       mcc="218"
       mnc="03"
       apn="mms.eronet.ba"
@@ -1077,12 +1096,10 @@
       type="mms"
   />
 
-  <apn carrier="m:tel"
+  <apn carrier="mtelgprs"
       mcc="218"
       mnc="05"
       apn="3g1"
-      proxy="192.168.61.10"
-      port="80"
       type="default,supl"
   />
 
@@ -1092,7 +1109,7 @@
       apn="mtelmms"
       mmsc="http://mmsc.mtel.ba/mms/wapenc"
       mmsproxy="192.168.61.11"
-      mmsport="8080"
+      mmsport="80"
       type="mms"
   />
 
@@ -1107,7 +1124,7 @@
       mcc="218"
       mnc="90"
       apn="mms.bhmobile.ba"
-      mmsc="http://mms.bhmobile.ba/cmmsc/post"
+      mmsc="http://mms.bhmobile.ba/servlets/mms"
       mmsproxy="195.222.56.041"
       mmsport="8080"
       type="mms"
