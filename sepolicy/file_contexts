@@ -88,6 +88,7 @@
 /dev/block/platform/msm_sdcc\.1/by-name/recovery u:object_r:recovery_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/userdata u:object_r:userdata_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/cache u:object_r:cache_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/metadata u:object_r:metadata_block_device:s0
 
 /data/cam_socket[0-9]              u:object_r:camera_socket:s0
 /data/app/sensor_ctl_socket        u:object_r:sensors_socket:s0
