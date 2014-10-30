@@ -1,3 +1,5 @@
+type wlan_device, dev_type;
+
 type diag_device, dev_type;
 
 # Kickstart device used by QC qcks
