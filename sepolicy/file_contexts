@@ -2,6 +2,9 @@
 /dev/kgsl-3d0       u:object_r:gpu_device:s0
 /dev/kgsl           u:object_r:gpu_device:s0
 
+# WLAN
+/dev/wcnss_wlan         u:object_r:wlan_device:s0
+
 # Image Rotator Driver
 /dev/msm_rotator    u:object_r:video_device:s0
 
