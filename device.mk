@@ -48,7 +48,6 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_COPY_FILES += \
-	device/lge/mako/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
 	device/lge/mako/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
