@@ -1,1 +1,3 @@
-allow domain init_tmpfs:file read;
+userdebug_or_eng(`
+  allow domain diag_device:chr_file rw_file_perms;
+')

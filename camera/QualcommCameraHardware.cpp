@@ -38,9 +38,6 @@
 #include <fcntl.h>
 #include <cutils/properties.h>
 #include <math.h>
-#if HAVE_ANDROID_OS
-#include <linux/android_pmem.h>
-#endif
 #include <linux/ioctl.h>
 #include "QCameraParameters.h"
 #include <media/mediarecorder.h>
@@ -3674,7 +3671,7 @@ int QualcommCameraHardware::allocate_ion_memory(int *main_ion_fd, struct ion_all
     alloc->len = (alloc->len + 4095) & (~4095);
     alloc->align = 4096;
     alloc->flags = 0;
-    alloc->heap_mask = (0x1 << ion_type | 0x1 << ION_IOMMU_HEAP_ID);
+    alloc->heap_id_mask = (0x1 << ion_type | 0x1 << ION_IOMMU_HEAP_ID);
 
     rc = ioctl(*main_ion_fd, ION_IOC_ALLOC, alloc);
     if (rc < 0) {

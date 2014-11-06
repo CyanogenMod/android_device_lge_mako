@@ -1888,6 +1888,8 @@ status_t QCameraHardwareInterface::autoFocus()
     bool status = true;
     isp3a_af_mode_t afMode = getAutoFocusMode(mParameters);
 
+    Mutex::Autolock afLock(mAutofocusLock);
+
     if(mAutoFocusRunning==true){
       ALOGV("%s:AF already running should not have got this call",__func__);
       return NO_ERROR;
@@ -1933,6 +1935,7 @@ status_t QCameraHardwareInterface::cancelAutoFocus()
 
     mAutofocusLock.lock();
     if(mAutoFocusRunning || mNeedToUnlockCaf) {
+      ALOGV("%s:Af either running or CAF needs unlocking", __func__);
       mNeedToUnlockCaf = false;
       mAutoFocusRunning = false;
       mAutofocusLock.unlock();
@@ -2347,7 +2350,7 @@ int QCameraHardwareInterface::allocate_ion_memory(QCameraHalHeap_t *p_camera_mem
   p_camera_memory->alloc[cnt].len = (p_camera_memory->alloc[cnt].len + 4095) & (~4095);
   p_camera_memory->alloc[cnt].align = 4096;
   p_camera_memory->alloc[cnt].flags = ION_FLAG_CACHED;
-  p_camera_memory->alloc[cnt].heap_mask = ion_type;
+  p_camera_memory->alloc[cnt].heap_id_mask = ion_type;
 
   rc = ioctl(p_camera_memory->main_ion_fd[cnt], ION_IOC_ALLOC, &p_camera_memory->alloc[cnt]);
   if (rc < 0) {
@@ -2404,7 +2407,7 @@ int QCameraHardwareInterface::allocate_ion_memory(QCameraStatHeap_t *p_camera_me
   p_camera_memory->alloc[cnt].len = (p_camera_memory->alloc[cnt].len + 4095) & (~4095);
   p_camera_memory->alloc[cnt].align = 4096;
   p_camera_memory->alloc[cnt].flags = ION_FLAG_CACHED;
-  p_camera_memory->alloc[cnt].heap_mask = (0x1 << ion_type | 0x1 << ION_IOMMU_HEAP_ID);
+  p_camera_memory->alloc[cnt].heap_id_mask = (0x1 << ion_type | 0x1 << ION_IOMMU_HEAP_ID);
 
   rc = ioctl(p_camera_memory->main_ion_fd[cnt], ION_IOC_ALLOC, &p_camera_memory->alloc[cnt]);
   if (rc < 0) {

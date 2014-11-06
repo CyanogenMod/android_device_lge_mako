@@ -15,57 +15,85 @@
 -->
 
 <MediaCodecs>
+    <Include href="media_codecs_google_audio.xml" />
+    <Include href="media_codecs_google_telephony.xml" />
     <Encoders>
         <MediaCodec name="OMX.qcom.video.encoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports"/>
             <Quirk name="requires-loaded-to-idle-after-allocation"/>
+            <Limit name="size" min="96x64" max="1920x1088" />
+            <Limit name="alignment" value="8x8" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" min="1" max="244800" />
+            <Limit name="bitrate" range="1-20000000" />
+            <Feature name="can-swap-width-height" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports"/>
             <Quirk name="requires-loaded-to-idle-after-allocation"/>
+            <Limit name="size" min="96x64" max="720x576" />
+            <Limit name="alignment" value="8x8" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports"/>
             <Quirk name="requires-loaded-to-idle-after-allocation"/>
+            <Limit name="size" min="96x64" max="1920x1088" />
+            <Limit name="alignment" value="8x8" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" min="1" max="244800" />
+            <Limit name="bitrate" range="1-20000000" />
+            <Feature name="can-swap-width-height" />
         </MediaCodec>
-        <MediaCodec name="OMX.google.amrnb.encoder" type="audio/3gpp" />
-        <MediaCodec name="OMX.google.aac.encoder" type="audio/mp4a-latm" />
-        <MediaCodec name="OMX.google.amrwb.encoder" type="audio/amr-wb" />
-        <MediaCodec name="OMX.google.flac.encoder" type="audio/flac" />
-        <MediaCodec name="OMX.google.vp8.encoder" type="video/x-vnd.on2.vp8" />
     </Encoders>
     <Decoders>
-        <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis" />
-        <MediaCodec name="OMX.google.gsm.decoder" type="audio/gsm" />
-        <MediaCodec name="OMX.google.mp3.decoder" type="audio/mpeg" />
-        <MediaCodec name="OMX.google.amrnb.decoder" type="audio/3gpp" />
-        <MediaCodec name="OMX.google.amrwb.decoder" type="audio/amr-wb" />
-        <MediaCodec name="OMX.google.aac.decoder" type="audio/mp4a-latm" />
-        <MediaCodec name="OMX.google.g711.alaw.decoder" type="audio/g711-alaw" />
-        <MediaCodec name="OMX.google.g711.mlaw.decoder" type="audio/g711-mlaw" />
         <MediaCodec name="OMX.qcom.video.decoder.avc" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports"/>
             <Quirk name="defers-output-buffer-allocation"/>
+            <Limit name="size" min="64x64" max="1920x1088" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" min="1" max="244800" />
+            <Limit name="bitrate" range="1-20000000" />
+            <Feature name="adaptive-playback" />
+            <Feature name="can-swap-width-height" />
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.decoder.avc.secure" type="video/avc" >
+            <Quirk name="requires-allocate-on-input-ports" />
+            <Quirk name="requires-allocate-on-output-ports"/>
+            <Quirk name="defers-output-buffer-allocation"/>
+            <Limit name="size" min="64x64" max="1920x1088" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" min="1" max="244800" />
+            <Limit name="bitrate" range="1-20000000" />
+            <Feature name="adaptive-playback" />
+            <Feature name="secure-playback" required="true" />
+            <Feature name="can-swap-width-height" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports"/>
             <Quirk name="defers-output-buffer-allocation"/>
+            <Limit name="size" min="64x64" max="1920x1088" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" min="1" max="244800" />
+            <Limit name="bitrate" range="1-20000000" />
+            <Feature name="adaptive-playback" />
+            <Feature name="can-swap-width-height" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports"/>
             <Quirk name="defers-output-buffer-allocation"/>
+            <Limit name="size" min="64x64" max="720x576" />
+            <Limit name="alignment" value="2x2" />
+            <Feature name="adaptive-playback" />
         </MediaCodec>
-        <MediaCodec name="OMX.google.vp8.decoder" type="video/x-vnd.on2.vp8" />
-        <MediaCodec name="OMX.google.vp9.decoder" type="video/x-vnd.on2.vp9" />
-        <MediaCodec name="OMX.google.h264.decoder" type="video/avc" />
-        <MediaCodec name="OMX.google.h263.decoder" type="video/3gpp" />
-        <MediaCodec name="OMX.google.mpeg4.decoder" type="video/mp4v-es" />
 
         <!--  ffmpeg audio codecs  -->
         <MediaCodec name="OMX.ffmpeg.ra.decoder" type="audio/vnd.rn-realaudio"/>
@@ -87,4 +115,5 @@
         <MediaCodec name="OMX.ffmpeg.vtrial.decoder" type="video/ffmpeg"/>
 
     </Decoders>
+    <Include href="media_codecs_google_video.xml" />
 </MediaCodecs>

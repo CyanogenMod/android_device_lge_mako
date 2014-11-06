@@ -29,9 +29,6 @@
 #include <fcntl.h>
 #include <cutils/properties.h>
 #include <math.h>
-#if HAVE_ANDROID_OS
-#include <linux/android_pmem.h>
-#endif
 #include <linux/ioctl.h>
 #include "QCameraParameters.h"
 #include <media/mediarecorder.h>
@@ -72,7 +69,7 @@ extern "C" {
 #define EXPOSURE_COMPENSATION_DEFAULT_NUMERATOR 0
 #define EXPOSURE_COMPENSATION_DENOMINATOR 6
 #define EXPOSURE_COMPENSATION_STEP ((float (1))/EXPOSURE_COMPENSATION_DENOMINATOR)
-#define DEFAULT_CAMERA_AREA "(0, 0, 0, 0, 0)"
+#define DEFAULT_CAMERA_AREA "(0,0,0,0,0)" // important: spaces not allowed
 
 #define HDR_HAL_FRAME 2
 
@@ -181,8 +178,6 @@ static const str_map effects[] = {
     { QCameraParameters::EFFECT_SOLARIZE,   CAMERA_EFFECT_SOLARIZE },
     { QCameraParameters::EFFECT_SEPIA,      CAMERA_EFFECT_SEPIA },
     { QCameraParameters::EFFECT_POSTERIZE,  CAMERA_EFFECT_POSTERIZE },
-    { QCameraParameters::EFFECT_WHITEBOARD, CAMERA_EFFECT_WHITEBOARD },
-    { QCameraParameters::EFFECT_BLACKBOARD, CAMERA_EFFECT_BLACKBOARD },
     { QCameraParameters::EFFECT_AQUA,       CAMERA_EFFECT_AQUA },
     { QCameraParameters::EFFECT_EMBOSS,     CAMERA_EFFECT_EMBOSS },
     { QCameraParameters::EFFECT_SKETCH,     CAMERA_EFFECT_SKETCH },
@@ -228,13 +223,20 @@ static const str_map scenedetect[] = {
 };
 
 #define DONT_CARE AF_MODE_MAX
-static const str_map focus_modes[] = {
+// These are listed as the supported focus-modes for cameras with AF
+static const str_map focus_modes_auto[] = {
     { QCameraParameters::FOCUS_MODE_AUTO,     AF_MODE_AUTO},
     { QCameraParameters::FOCUS_MODE_INFINITY, AF_MODE_INFINITY },
     { QCameraParameters::FOCUS_MODE_NORMAL,   AF_MODE_NORMAL },
     { QCameraParameters::FOCUS_MODE_MACRO,    AF_MODE_MACRO },
     { QCameraParameters::FOCUS_MODE_CONTINUOUS_PICTURE, AF_MODE_CAF},
-    { QCameraParameters::FOCUS_MODE_CONTINUOUS_VIDEO, AF_MODE_CAF }
+    { QCameraParameters::FOCUS_MODE_CONTINUOUS_VIDEO, AF_MODE_CAF },
+    // Note that "FIXED" is omitted
+};
+
+// These are the supported focus-modes for cameras without AF
+static const str_map focus_modes_fixed[] = {
+    { QCameraParameters::FOCUS_MODE_FIXED,    AF_MODE_INFINITY },
 };
 
 static const str_map selectable_zone_af[] = {
@@ -815,7 +817,7 @@ void QCameraHardwareInterface::initDefaultParameters()
 
         if(mHasAutoFocusSupport){
             mFocusModeValues = create_values_str(
-                    focus_modes, sizeof(focus_modes) / sizeof(str_map));
+                    focus_modes_auto, sizeof(focus_modes_auto) / sizeof(str_map));
         }
 
         mSceneModeValues = create_values_str(scenemode, sizeof(scenemode) / sizeof(str_map));
@@ -1097,10 +1099,10 @@ void QCameraHardwareInterface::initDefaultParameters()
        mParameters.set(QCameraParameters::KEY_MAX_NUM_METERING_AREAS, "1");
    } else {
        mParameters.set(QCameraParameters::KEY_FOCUS_MODE,
-       QCameraParameters::FOCUS_MODE_INFINITY);
+       QCameraParameters::FOCUS_MODE_FIXED);
        mFocusMode = DONT_CARE;
        mParameters.set(QCameraParameters::KEY_SUPPORTED_FOCUS_MODES,
-       QCameraParameters::FOCUS_MODE_INFINITY);
+       QCameraParameters::FOCUS_MODE_FIXED);
        mParameters.set(QCameraParameters::KEY_MAX_NUM_FOCUS_AREAS, "0");
        mParameters.set(QCameraParameters::KEY_MAX_NUM_METERING_AREAS, "0");
    }
@@ -2064,11 +2066,21 @@ status_t QCameraHardwareInterface::setFocusMode(const QCameraParameters& params)
 {
     const char *str = params.get(QCameraParameters::KEY_FOCUS_MODE);
     const char *prev_str = mParameters.get(QCameraParameters::KEY_FOCUS_MODE);
+    bool modesAreSame = strcmp(str, prev_str) == 0;
     ALOGV("%s",__func__);
     if (str != NULL) {
-        ALOGV("Focus mode %s",str);
-        int32_t value = attr_lookup(focus_modes,
-                                    sizeof(focus_modes) / sizeof(str_map), str);
+        ALOGV("Focus mode '%s', previous focus mode '%s' (cmp %d)",str, prev_str, strcmp(str, prev_str));
+
+        int32_t value;
+
+        if (mHasAutoFocusSupport){
+            value = attr_lookup(focus_modes_auto,
+                                    sizeof(focus_modes_auto) / sizeof(str_map), str);
+        } else {
+            value = attr_lookup(focus_modes_fixed,
+                                    sizeof(focus_modes_fixed) / sizeof(str_map), str);
+        }
+
         if (value != NOT_FOUND) {
             mParameters.set(QCameraParameters::KEY_FOCUS_MODE, str);
             mFocusMode = value;
@@ -2078,6 +2090,17 @@ status_t QCameraHardwareInterface::setFocusMode(const QCameraParameters& params)
                return UNKNOWN_ERROR;
             }
             mParameters.set(QCameraParameters::KEY_FOCUS_DISTANCES, mFocusDistance.string());
+
+            // Do not set the AF state to 'not running';
+            // this prevents a bug where an autoFocus followed by a setParameters
+            // with the same exact focus mode resulting in dropping the autoFocusEvent
+            if(modesAreSame) {
+                ALOGV("AF mode unchanged (still '%s'); don't touch CAF", str);
+                return NO_ERROR;
+            } else {
+                ALOGV("AF made has changed to '%s'", str);
+            }
+
             if(mHasAutoFocusSupport){
                 bool ret = native_set_parms(MM_CAMERA_PARM_FOCUS_MODE,
                                       sizeof(value),
@@ -2102,8 +2125,11 @@ status_t QCameraHardwareInterface::setFocusMode(const QCameraParameters& params)
                     }
                     ALOGV("caf_type %d rc %d", caf_type, rc);
                 }
+
+
                 ALOGV("Continuous Auto Focus %d", cafSupport);
                 if(mAutoFocusRunning && cafSupport){
+                  ALOGV("Set auto focus running to false");
                   mAutoFocusRunning = false;
                   if(MM_CAMERA_OK!=cam_ops_action(mCameraId,false,MM_CAMERA_OPS_FOCUS,NULL )) {
                     ALOGE("%s: AF command failed err:%d error %s",__func__, errno,strerror(errno));
@@ -4020,23 +4046,44 @@ void QCameraHardwareInterface::addExifTag(exif_tag_id_t tagid, exif_tag_type_t t
 }
 
 void QCameraHardwareInterface::initExifData(){
+    short val_short;
+    char value[PROPERTY_VALUE_MAX];
+    if (property_get("ro.product.manufacturer", value, "QCOM-AA") > 0) {
+        strncpy(mExifValues.make, value, 19);
+        mExifValues.make[19] = '\0';
+        addExifTag(EXIFTAGID_MAKE, EXIF_ASCII, strlen(value) + 1, 1, (void *)mExifValues.make);
+    } else {
+        ALOGE("%s: getExifMaker failed", __func__);
+    }
+
+    if (property_get("ro.product.model", value, "QCAM-AA") > 0) {
+        strncpy(mExifValues.model, value, 19);
+        mExifValues.model[19] = '\0';
+        addExifTag(EXIFTAGID_MODEL, EXIF_ASCII, strlen(value) + 1, 1, (void *)mExifValues.model);
+    } else {
+        ALOGE("%s: getExifModel failed", __func__);
+    }
+
     if(mExifValues.dateTime) {
         addExifTag(EXIFTAGID_EXIF_DATE_TIME_ORIGINAL, EXIF_ASCII,
-                  20, 1, (void *)mExifValues.dateTime);
+                20, 1, (void *)mExifValues.dateTime);
         addExifTag(EXIFTAGID_EXIF_DATE_TIME_DIGITIZED, EXIF_ASCII,
-                  20, 1, (void *)mExifValues.dateTime);
+                20, 1, (void *)mExifValues.dateTime);
     }
     addExifTag(EXIFTAGID_FOCAL_LENGTH, EXIF_RATIONAL, 1, 1, (void *)&(mExifValues.focalLength));
     addExifTag(EXIFTAGID_ISO_SPEED_RATING,EXIF_SHORT,1,1,(void *)&(mExifValues.isoSpeed));
 
     // normal f_number is from 1.2 to 22, but I'd like to put some margin.
-    if(mExifValues.f_number.num>0 && mExifValues.f_number.num<3200)
-      addExifTag(EXIFTAGID_F_NUMBER,EXIF_RATIONAL,1,1,(void *)&(mExifValues.f_number));
+    if(mExifValues.f_number.num>0 && mExifValues.f_number.num<3200) {
+        addExifTag(EXIFTAGID_F_NUMBER,EXIF_RATIONAL,1,1,(void *)&(mExifValues.f_number));
+        addExifTag(EXIFTAGID_APERTURE,EXIF_RATIONAL,1,1,(void *)&(mExifValues.f_number));
+    }
+
 
     if(mExifValues.mGpsProcess) {
         addExifTag(EXIFTAGID_GPS_PROCESSINGMETHOD, EXIF_ASCII,
-           EXIF_ASCII_PREFIX_SIZE + strlen(mExifValues.gpsProcessingMethod + EXIF_ASCII_PREFIX_SIZE) + 1,
-           1, (void *)mExifValues.gpsProcessingMethod);
+                EXIF_ASCII_PREFIX_SIZE + strlen(mExifValues.gpsProcessingMethod + EXIF_ASCII_PREFIX_SIZE) + 1,
+                1, (void *)mExifValues.gpsProcessingMethod);
     }
 
     if(mExifValues.mLatitude) {
@@ -4044,7 +4091,7 @@ void QCameraHardwareInterface::initExifData(){
 
         if(mExifValues.latRef) {
             addExifTag(EXIFTAGID_GPS_LATITUDE_REF, EXIF_ASCII, 2,
-                                    1, (void *)mExifValues.latRef);
+                    1, (void *)mExifValues.latRef);
         }
     }
 
@@ -4053,13 +4100,13 @@ void QCameraHardwareInterface::initExifData(){
 
         if(mExifValues.lonRef) {
             addExifTag(EXIFTAGID_GPS_LONGITUDE_REF, EXIF_ASCII, 2,
-                                1, (void *)mExifValues.lonRef);
+                    1, (void *)mExifValues.lonRef);
         }
     }
 
     if(mExifValues.mAltitude) {
         addExifTag(EXIFTAGID_GPS_ALTITUDE, EXIF_RATIONAL, 1,
-                    1, (void *)&(mExifValues.altitude));
+                1, (void *)&(mExifValues.altitude));
 
         addExifTag(EXIFTAGID_GPS_ALTITUDE_REF, EXIF_BYTE, 1, 1, (void *)&mExifValues.mAltitude_ref);
     }
@@ -4073,19 +4120,32 @@ void QCameraHardwareInterface::initExifData(){
 
         strftime(mExifValues.gpsDateStamp, sizeof(mExifValues.gpsDateStamp), "%Y:%m:%d", UTCTimestamp);
         addExifTag(EXIFTAGID_GPS_DATESTAMP, EXIF_ASCII,
-                          strlen(mExifValues.gpsDateStamp)+1 , 1, (void *)mExifValues.gpsDateStamp);
+                strlen(mExifValues.gpsDateStamp)+1 , 1, (void *)mExifValues.gpsDateStamp);
 
         mExifValues.gpsTimeStamp[0] = getRational(UTCTimestamp->tm_hour, 1);
         mExifValues.gpsTimeStamp[1] = getRational(UTCTimestamp->tm_min, 1);
         mExifValues.gpsTimeStamp[2] = getRational(UTCTimestamp->tm_sec, 1);
 
         addExifTag(EXIFTAGID_GPS_TIMESTAMP, EXIF_RATIONAL,
-                  3, 1, (void *)mExifValues.gpsTimeStamp);
+                3, 1, (void *)mExifValues.gpsTimeStamp);
         ALOGV("EXIFTAGID_GPS_TIMESTAMP set");
     }
     if(mExifValues.exposure_time.num || mExifValues.exposure_time.denom)
         addExifTag(EXIFTAGID_EXPOSURE_TIME, EXIF_RATIONAL, 1, 1, (void *)&mExifValues.exposure_time);
 
+    bool flashCondition = getFlashCondition();
+    addExifTag(EXIFTAGID_FLASH, EXIF_SHORT, 1, 1, &flashCondition);
+    if (mExifValues.mWbMode == CAMERA_WB_AUTO)
+        val_short = 0;
+    else
+        val_short = 1;
+    addExifTag(EXIFTAGID_WHITE_BALANCE, EXIF_SHORT, 1, 1, &val_short);
+
+    addExifTag(EXIFTAGID_SUBSEC_TIME, EXIF_ASCII, 7, 1, (void *)mExifValues.subsecTime);
+
+    addExifTag(EXIFTAGID_SUBSEC_TIME_ORIGINAL, EXIF_ASCII, 7, 1, (void *)mExifValues.subsecTime);
+
+    addExifTag(EXIFTAGID_SUBSEC_TIME_DIGITIZED, EXIF_ASCII, 7, 1, (void *)mExifValues.subsecTime);
 }
 
 //Add all exif tags in this function
@@ -4096,13 +4156,13 @@ void QCameraHardwareInterface::setExifTags()
     //set TimeStamp
     str = mParameters.get(QCameraParameters::KEY_EXIF_DATETIME);
     if(str != NULL) {
-      strncpy(mExifValues.dateTime, str, 19);
-      mExifValues.dateTime[19] = '\0';
+        strncpy(mExifValues.dateTime, str, 19);
+        mExifValues.dateTime[19] = '\0';
     }
 
     //Set focal length
     int focalLengthValue = (int) (mParameters.getFloat(
-                QCameraParameters::KEY_FOCAL_LENGTH) * FOCAL_LENGTH_DECIMAL_PRECISION);
+            QCameraParameters::KEY_FOCAL_LENGTH) * FOCAL_LENGTH_DECIMAL_PRECISION);
 
     mExifValues.focalLength = getRational(focalLengthValue, FOCAL_LENGTH_DECIMAL_PRECISION);
 
@@ -4142,10 +4202,16 @@ void QCameraHardwareInterface::setExifTags()
     //Write datetime according to EXIF Spec
     //"YYYY:MM:DD HH:MM:SS" (20 chars including \0)
     snprintf(mExifValues.dateTime, 20, "%04d:%02d:%02d %02d:%02d:%02d",
-                timeinfo->tm_year + 1900, timeinfo->tm_mon + 1,
-                timeinfo->tm_mday, timeinfo->tm_hour,
-                timeinfo->tm_min, timeinfo->tm_sec);
+            timeinfo->tm_year + 1900, timeinfo->tm_mon + 1,
+            timeinfo->tm_mday, timeinfo->tm_hour,
+            timeinfo->tm_min, timeinfo->tm_sec);
     //set gps tags
+
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    snprintf(mExifValues.subsecTime, 7, "%06ld", tv.tv_usec);
+
+    mExifValues.mWbMode = mParameters.getInt(QCameraParameters::KEY_WHITE_BALANCE);
     setExifTagsGPS();
 }
 
@@ -4156,13 +4222,13 @@ void QCameraHardwareInterface::setExifTagsGPS()
     //Set GPS processing method
     str = mParameters.get(QCameraParameters::KEY_GPS_PROCESSING_METHOD);
     if(str != NULL) {
-       memcpy(mExifValues.gpsProcessingMethod, ExifAsciiPrefix, EXIF_ASCII_PREFIX_SIZE);
-       strncpy(mExifValues.gpsProcessingMethod + EXIF_ASCII_PREFIX_SIZE, str,
-           GPS_PROCESSING_METHOD_SIZE - 1);
-       mExifValues.gpsProcessingMethod[EXIF_ASCII_PREFIX_SIZE + GPS_PROCESSING_METHOD_SIZE-1] = '\0';
-       ALOGV("EXIFTAGID_GPS_PROCESSINGMETHOD = %s %s", mExifValues.gpsProcessingMethod,
-                                                    mExifValues.gpsProcessingMethod+8);
-       mExifValues.mGpsProcess  = true;
+        memcpy(mExifValues.gpsProcessingMethod, ExifAsciiPrefix, EXIF_ASCII_PREFIX_SIZE);
+        strncpy(mExifValues.gpsProcessingMethod + EXIF_ASCII_PREFIX_SIZE, str,
+                GPS_PROCESSING_METHOD_SIZE - 1);
+        mExifValues.gpsProcessingMethod[EXIF_ASCII_PREFIX_SIZE + GPS_PROCESSING_METHOD_SIZE-1] = '\0';
+        ALOGV("EXIFTAGID_GPS_PROCESSINGMETHOD = %s %s", mExifValues.gpsProcessingMethod,
+                mExifValues.gpsProcessingMethod+8);
+        mExifValues.mGpsProcess  = true;
     }else{
         mExifValues.mGpsProcess = false;
     }
@@ -4233,10 +4299,10 @@ void QCameraHardwareInterface::setExifTagsGPS()
     str = NULL;
     str = mParameters.get(QCameraParameters::KEY_GPS_TIMESTAMP);
     if(str != NULL) {
-      mExifValues.mTimeStamp = true;
-      mExifValues.mGPSTimestamp = atol(str);
+        mExifValues.mTimeStamp = true;
+        mExifValues.mGPSTimestamp = atol(str);
     }else{
-         mExifValues.mTimeStamp = false;
+        mExifValues.mTimeStamp = false;
     }
 }
 
@@ -4263,31 +4329,31 @@ bool QCameraHardwareInterface::isLowPowerCamcorder() {
         return true;
 
     if(mHFRLevel > 1) /* hard code the value now. Need to move tgtcommon to camear.h */
-      return true;
+        return true;
 
-      return false;
+    return false;
 }
 
 status_t QCameraHardwareInterface::setNoDisplayMode(const QCameraParameters& params)
 {
-  char prop[PROPERTY_VALUE_MAX];
-  memset(prop, 0, sizeof(prop));
-  property_get("persist.camera.nodisplay", prop, "0");
-  int prop_val = atoi(prop);
+    char prop[PROPERTY_VALUE_MAX];
+    memset(prop, 0, sizeof(prop));
+    property_get("persist.camera.nodisplay", prop, "0");
+    int prop_val = atoi(prop);
 
-  if (prop_val == 0) {
-    const char *str_val  = params.get("no-display-mode");
-    if(str_val && strlen(str_val) > 0) {
-      mNoDisplayMode = atoi(str_val);
+    if (prop_val == 0) {
+        const char *str_val  = params.get("no-display-mode");
+        if(str_val && strlen(str_val) > 0) {
+            mNoDisplayMode = atoi(str_val);
+        } else {
+            mNoDisplayMode = 0;
+        }
+        ALOGV("Param mNoDisplayMode =%d", mNoDisplayMode);
     } else {
-      mNoDisplayMode = 0;
+        mNoDisplayMode = prop_val;
+        ALOGV("prop mNoDisplayMode =%d", mNoDisplayMode);
     }
-    ALOGV("Param mNoDisplayMode =%d", mNoDisplayMode);
-  } else {
-    mNoDisplayMode = prop_val;
-    ALOGV("prop mNoDisplayMode =%d", mNoDisplayMode);
-  }
-  return NO_ERROR;
+    return NO_ERROR;
 }
 
 status_t QCameraHardwareInterface::setCAFLockCancel(void)
@@ -4296,8 +4362,8 @@ status_t QCameraHardwareInterface::setCAFLockCancel(void)
 
     //for CAF unlock
     if(MM_CAMERA_OK!=cam_ops_action(mCameraId,false,MM_CAMERA_OPS_FOCUS,NULL )) {
-      ALOGE("%s: AF command failed err:%d error %s",__func__, errno,strerror(errno));
-      return -1;
+        ALOGE("%s: AF command failed err:%d error %s",__func__, errno,strerror(errno));
+        return -1;
     }
 
     ALOGV("%s : X", __func__);
@@ -4314,14 +4380,14 @@ void QCameraHardwareInterface::prepareVideoPicture(bool disable){
 
         mParameters.setPictureSize(mDimension.video_width, mDimension.video_height);
         mParameters.set(QCameraParameters::KEY_SUPPORTED_PICTURE_SIZES,
-                        str.string());
+                str.string());
         ALOGV("%s: Video Picture size supported = %d X %d",
-              __func__,mDimension.video_width,mDimension.video_height);
+                __func__,mDimension.video_width,mDimension.video_height);
     }else{
         //Set Picture Size
         mParameters.setPictureSize(mDimension.picture_width, mDimension.picture_height);
         mParameters.set(QCameraParameters::KEY_SUPPORTED_PICTURE_SIZES,
-                        mPictureSizeValues.string());
+                mPictureSizeValues.string());
     }
 }
 

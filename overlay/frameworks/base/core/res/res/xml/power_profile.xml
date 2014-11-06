@@ -19,7 +19,7 @@
 <device name="Android">
     <!-- All values are in mAh except as noted -->
     <item name="none">0</item>
-    <item name="screen.on">42.4</item>
+    <item name="screen.on">98.19</item>
     <item name="screen.full">211.6</item>
     <item name="bluetooth.active">59.22</item>
     <item name="bluetooth.on">0.7</item>
@@ -28,14 +28,14 @@
     <item name="wifi.scan">52.1</item>
     <item name="dsp.audio">0.1</item>
     <item name="dsp.video">0.1</item>
-    <item name="gps.on">20.9</item>
+    <item name="gps.on">70.05</item>
     <item name="radio.active">185.6</item>
     <!-- The current consumed by the radio when it is scanning for a signal -->
     <item name="radio.scanning">122.68</item>
     <!-- Current consumed by the radio at different signal strengths, when paging -->
     <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
-        <value>1.16</value>
-        <value>2.15</value>
+        <value>7.65</value> <!-- no signal -->
+        <value>0.97</value> <!-- others -->
     </array>
     <!-- Different CPU speeds as reported in
          /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state -->
@@ -54,22 +54,22 @@
         <value>1512000</value> <!-- 1512 MHz CPU speed -->
     </array>
     <!-- Power consumption when CPU is idle -->
-    <item name="cpu.idle">3.5</item>
-    <item name="cpu.awake">10.43</item>
+    <item name="cpu.idle">3.68</item>
+    <item name="cpu.awake">14.74</item>
     <!-- Power consumption at different speeds -->
     <array name="cpu.active">
-        <value>92.6</value> <!-- 384 MHz CPU speed -->
-        <value>108.6</value> <!-- 486 MHz CPU speed -->
-        <value>118.8</value> <!-- 594 MHz CPU speed -->
-        <value>121.4</value> <!-- 702 MHz CPU speed -->
-        <value>127.3</value> <!-- 810 MHz CPU speed -->
-        <value>133.1</value> <!-- 918 MHz CPU speed -->
-        <value>173.3</value> <!-- 1026 MHz CPU speed -->
-        <value>209.5</value> <!-- 1134 MHz CPU speed -->
-        <value>216.5</value> <!-- 1242 MHz CPU speed -->
-        <value>228.5</value> <!-- 1350 MHz CPU speed -->
-        <value>236.0</value> <!-- 1458 MHz CPU speed -->
-        <value>239.7</value> <!-- 1512 MHz CPU speed -->
+        <value>47.05</value> <!-- 384 MHz CPU speed -->
+        <value>75.78</value> <!-- 486 MHz CPU speed -->
+        <value>84.5</value> <!-- 594 MHz CPU speed -->
+        <value>93.99</value> <!-- 702 MHz CPU speed -->
+        <value>109.46</value> <!-- 810 MHz CPU speed -->
+        <value>122.35</value> <!-- 918 MHz CPU speed -->
+        <value>135.35</value> <!-- 1026 MHz CPU speed -->
+        <value>187.07</value> <!-- 1134 MHz CPU speed -->
+        <value>206.62</value> <!-- 1242 MHz CPU speed -->
+        <value>224.54</value> <!-- 1350 MHz CPU speed -->
+        <value>237.52</value> <!-- 1458 MHz CPU speed -->
+        <value>247.18</value> <!-- 1512 MHz CPU speed -->
     </array>
     <!-- This is the battery capacity in mAh -->
     <item name="battery.capacity">2100</item>
