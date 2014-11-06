@@ -14,3 +14,6 @@ allow conn_init persist_wifi_file:file r_file_perms;
 # Allow /data/misc/wifi access for firmware files
 allow conn_init wifi_data_file:dir w_dir_perms;
 allow conn_init wifi_data_file:file create_file_perms;
+
+# Let wcnss_service work
+allow conn_init wcnss_ctrl:chr_file rw_file_perms;
