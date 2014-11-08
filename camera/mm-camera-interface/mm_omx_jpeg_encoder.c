@@ -724,7 +724,7 @@ void omxJpegAbort()
     ALOGV("%s: encoding=%d", __func__, encoding);
     if (encoding) {
       encoding = 0;
-      OMX_SendCommand(pHandle, OMX_CommandFlush, NULL, NULL);
+      OMX_SendCommand(pHandle, OMX_CommandFlush, 0, NULL);
       ALOGV("%s:waitForEvent: OMX_CommandFlush", __func__);
       waitForEvent(OMX_EVENT_JPEG_ABORT, 0, 0);
       ALOGV("%s:waitForEvent: OMX_CommandFlush: DONE", __func__);
