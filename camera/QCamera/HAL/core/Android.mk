@@ -64,9 +64,9 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
-LOCAL_C_INCLUDES += hardware/qcom/display/msm8960/libgralloc \
-        hardware/qcom/display/msm8960/libgenlock \
-        hardware/qcom/media/libstagefrighthw
+LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/$(TARGET_BOARD_PLATFORM)/libgralloc \
+        $(call project-path-for,qcom-display)/$(TARGET_BOARD_PLATFORM)/libgenlock \
+        $(call project-path-for,qcom-media)/$(TARGET_BOARD_PLATFORM)/libstagefrighthw
 
 # if debug service layer and up , use stub camera!
 LOCAL_C_INCLUDES += \
