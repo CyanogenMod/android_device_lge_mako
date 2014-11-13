@@ -886,18 +886,6 @@
       mvno_type="imsi"
   />
 
-  <apn carrier="Movistar MMS"
-      mcc="214"
-      mnc="07"
-      apn="telefonica.es"
-      user="telefonica"
-      password="telefonica"
-      mmsc="http://mms.movistar.com"
-      mmsproxy="10.138.255.5"
-      mmsport="8080"
-      type="mms"
-  />
-
   <apn carrier="Movistar"
       mcc="214"
       mnc="07"
@@ -906,7 +894,11 @@
       password="telefonica"
       proxy="10.138.255.133"
       port="8080"
-      type="default,supl"
+      mmsc="http://mms.movistar.com"
+      mmsproxy="10.138.255.5"
+      mmsport="8080"
+      authtype="1"
+      type="default,supl,mms"
   />
 
   <apn carrier="Jazztel Internet"
