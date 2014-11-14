@@ -147,20 +147,11 @@ on post-fs-data
 # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
 
-    mkdir /data/misc/playready
-    restorecon /data/misc/playready
-    mkdir /data/misc/tzapps
-    restorecon /data/misc/tzapps
-
     chown system system /dev/wcnss_wlan
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
-
-    # Workaround for conn_init not copying the updated firmware
-    rm /data/misc/wifi/WCNSS_qcom_cfg.ini
-    rm /data/misc/wifi/WCNSS_qcom_wlan_nv.bin
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
@@ -290,6 +281,9 @@ on post-fs-data
     restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_g
     restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_b
     restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_apply
+
+    # disable diag port
+    rm /dev/diag
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
@@ -451,10 +445,11 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input
 
-service conn_init /system/bin/conn_init
-    class late_start
+service wcnss_init /system/bin/sh /system/etc/init.mako.wifi.sh
+    class main
     user system
     group system wifi
+    seclabel u:r:conn_init:s0
     oneshot
 
 service bdAddrLoader /system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x
