@@ -124,6 +124,3 @@
 # Sysfs files used by mpdecision
 /sys/module/pm2/modes(/.*)?            u:object_r:sysfs_mpdecision:s0
 /sys/module/pm_8x60/modes(/.*)?        u:object_r:sysfs_mpdecision:s0
-
-# For wcnss service
-/dev/wcnss_wlan		u:object_r:wcnss_ctrl:s0
