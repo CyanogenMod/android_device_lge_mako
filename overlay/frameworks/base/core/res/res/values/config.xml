@@ -31,11 +31,18 @@
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">9000</integer>
 
+    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveNotificationLed">true</bool>
+
+    <!-- Does the notification LED support multiple colors?
+         Used to decide if the user can change the colors -->
+    <bool name="config_multiColorNotificationLed">true</bool>
+
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <!--bool name="config_intrusiveBatteryLed">true</bool-->
+    <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <!--bool name="config_multiColorBatteryLed">true</bool-->
+    <bool name="config_multiColorBatteryLed">true</bool>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
@@ -281,10 +288,7 @@
             16 - App switch
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <!--integer name="config_deviceHardwareKeys">0</integer-->
-
-    <!-- Device supports LED flashlight -->
-    <!--bool name="config_enableTorch">true</bool-->
+    <integer name="config_deviceHardwareKeys">0</integer>
 
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
