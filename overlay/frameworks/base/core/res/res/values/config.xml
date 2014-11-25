@@ -31,11 +31,13 @@
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">9000</integer>
 
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <!--bool name="config_intrusiveBatteryLed">true</bool-->
+    <!-- Is the battery LED intrusive?
+         Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
 
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <!--bool name="config_multiColorBatteryLed">true</bool-->
+    <!-- Does the battery LED support multiple colors?
+         Used to decide if the user can change the colors -->
+    <bool name="config_multiColorBatteryLed">true</bool>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
@@ -163,8 +165,13 @@
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
-    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
+    <!-- Is the notification LED intrusive?
+         Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
+
+    <!-- Does the notification LED support multiple colors?
+         Used to decide if the user can change the colors -->
+    <bool name="config_multiColorNotificationLed">true</bool>
 
     <!-- This string array should be overridden by the device to present a list of network
          attributes.  This is used by the connectivity manager to decide which networks can coexist
