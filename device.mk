@@ -152,8 +152,6 @@ PRODUCT_PROPERTY_OVERRIDES += persist.hwc.mdpcomp.enable=true
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
-PRODUCT_TAGS += dalvik.gc.type-precise
-
 PRODUCT_PACKAGES += \
 	librs_jni \
 	com.android.future.usb.accessory
