@@ -30,14 +30,14 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 PRODUCT_PACKAGES := \
 	lights.mako \
-    libwpa_client \
-    hostapd \
-    dhcpcd.conf \
-    wpa_supplicant \
-    wpa_supplicant.conf
+	libwpa_client \
+	hostapd \
+	dhcpcd.conf \
+	wpa_supplicant \
+	wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
-    charger_res_images
+	charger_res_images
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -111,15 +111,15 @@ PRODUCT_COPY_FILES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    nfc_nci.bcm2079x.default \
-    NfcNci \
-    Tag
+	nfc_nci.bcm2079x.default \
+	NfcNci \
+	Tag
 
 # NFC feature files + configuration
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    device/lge/mako/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+	frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+	frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+	device/lge/mako/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=196608
@@ -180,7 +180,7 @@ PRODUCT_PACKAGES += \
 # Voice processing
 PRODUCT_PACKAGES += libqcomvoiceprocessing
 PRODUCT_COPY_FILES += \
-    device/lge/mako/audio_effects.conf:system/vendor/etc/audio_effects.conf
+	device/lge/mako/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 PRODUCT_PACKAGES += \
 	hci_qcomm_init
@@ -261,7 +261,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.aac_51_output_enabled=true
+	media.aac_51_output_enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
         debug.egl.recordable.rgba8888=1
@@ -275,13 +275,13 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Hardware codecs
 PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.hw.aac.encoder=true
+	qcom.hw.aac.encoder=true
 
 PRODUCT_PACKAGES += \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc
+	libOmxAacEnc \
+	libOmxAmrEnc \
+	libOmxEvrcEnc \
+	libOmxQcelp13Enc
 
 # QRNGD
 PRODUCT_PACKAGES += qrngd
