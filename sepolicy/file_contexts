@@ -124,3 +124,12 @@
 # Sysfs files used by mpdecision
 /sys/module/pm2/modes(/.*)?            u:object_r:sysfs_mpdecision:s0
 /sys/module/pm_8x60/modes(/.*)?        u:object_r:sysfs_mpdecision:s0
+
+# Hardware tunables
+/sys/devices/platform/kcal_ctrl.0/kcal               -- u:object_r:sysfs_hardware:s0
+/sys/devices/platform/kcal_ctrl.0/kcal_ctrl          -- u:object_r:sysfs_hardware:s0
+/sys/devices/platform/mipi_lgit.1537/kgamma_r        -- u:object_r:sysfs_hardware:s0
+/sys/devices/platform/mipi_lgit.1537/kgamma_g        -- u:object_r:sysfs_hardware:s0
+/sys/devices/platform/mipi_lgit.1537/kgamma_b        -- u:object_r:sysfs_hardware:s0
+/sys/devices/platform/mipi_lgit.1537/kgamma_apply    -- u:object_r:sysfs_hardware:s0
+/sys/class/timed_output/vibrator/amp                 -- u:object_r:sysfs_hardware:s0

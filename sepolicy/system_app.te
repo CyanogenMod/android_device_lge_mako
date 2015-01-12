@@ -1,0 +1,1 @@
+allow system_app sysfs_hardware:file rw_file_perms;
