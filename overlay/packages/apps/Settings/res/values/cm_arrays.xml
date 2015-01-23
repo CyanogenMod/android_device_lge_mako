@@ -1,0 +1,8 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Gamma calibration descriptors -->
+    <string-array name="gamma_descriptors">
+        <item>@string/gamma_tuning_contrast</item>
+        <item>@string/gamma_tuning_brightness</item>
+        <item>@string/gamma_tuning_saturation</item>
+    </string-array>
+</resources>
