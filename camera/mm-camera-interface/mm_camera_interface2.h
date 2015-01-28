@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+Copyright (c) 2011-2012,2015, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -177,6 +177,7 @@ typedef struct {
 
 typedef struct {
   int8_t num;
+  int8_t no_enqueue_flag[MM_CAMERA_MAX_NUM_FRAMES];
   union {
       mm_camera_sp_buf_t sp;
       mm_camera_mp_buf_t *mp;
@@ -463,7 +464,6 @@ int32_t cam_config_get_parm(
   mm_camera_parm_type_t parm_type,
   void* p_value);
 int32_t cam_config_request_buf(int cam_id, mm_camera_reg_buf_t *buf);
-int32_t cam_config_enqueue_buf(int cam_id, mm_camera_reg_buf_t *buf);
 int32_t cam_config_prepare_buf(int cam_id, mm_camera_reg_buf_t *buf);
 int32_t cam_config_unprepare_buf(int cam_id, mm_camera_channel_type_t ch_type);
 

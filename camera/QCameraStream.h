@@ -1,6 +1,6 @@
 /*
 ** Copyright 2008, Google Inc.
-** Copyright (c) 2009-2012, The Linux Foundation. All rights reserved.
+** Copyright (c) 2009-2012,2015, The Linux Foundation. All rights reserved.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -218,15 +218,11 @@ public:
     void *getLastQueuedFrame(void);
     /*init preview buffers with display case*/
     status_t initDisplayBuffers();
-    /*init preview buffers without display case*/
-    status_t initPreviewOnlyBuffers();
 
     status_t processPreviewFrame(mm_camera_ch_data_buf_t *frame);
 
     /*init preview buffers with display case*/
     status_t processPreviewFrameWithDisplay(mm_camera_ch_data_buf_t *frame);
-    /*init preview buffers without display case*/
-    status_t processPreviewFrameWithOutDisplay(mm_camera_ch_data_buf_t *frame);
 
     int setPreviewWindow(preview_stream_ops_t* window);
     void notifyROIEvent(fd_roi_t roi);
@@ -237,10 +233,6 @@ private:
     /*allocate and free buffers with display case*/
     status_t                 getBufferFromSurface();
     status_t                 putBufferToSurface();
-
-    /*allocate and free buffers without display case*/
-    status_t                 getBufferNoDisplay();
-    status_t                 freeBufferNoDisplay();
 
     void                     dumpFrameToFile(struct msm_frame* newFrame);
     bool                     mFirstFrameRcvd;
@@ -254,7 +246,6 @@ private:
     Mutex                   mDisplayLock;
     preview_stream_ops_t   *mPreviewWindow;
     static const int        kPreviewBufferCount = PREVIEW_BUFFER_COUNT;
-    mm_camera_ch_data_buf_t mNotifyBuffer[16];
     int8_t                  mNumFDRcvd;
     int                     mVFEOutputs;
     int                     mHFRFrameCnt;

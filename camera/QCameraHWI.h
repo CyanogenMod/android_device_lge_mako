@@ -492,7 +492,6 @@ public:
       char* ext, int index);
     preview_format_info_t getPreviewFormatInfo( );
     bool isCameraReady();
-    bool isNoDisplayMode();
 
 private:
     int16_t  zoomRatios[MAX_ZOOM_RATIOS];

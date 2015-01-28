@@ -1,5 +1,5 @@
 /*
-** Copyright (c) 2011-2012 The Linux Foundation. All rights reserved.
+** Copyright (c) 2011-2012,2015 The Linux Foundation. All rights reserved.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -176,7 +176,6 @@ QCameraHardwareInterface(int cameraId, int mode)
                     mSnapshotFormat(0),
                     mStartRecording(0),
                     mZslInterval(1),
-                    mNoDisplayMode(0),
                     mBrightness(0),
                     mContrast(0),
                     mEffects(0),
@@ -1031,7 +1030,7 @@ status_t QCameraHardwareInterface::startPreview()
         ALOGV("%s:  HAL::startPreview begin", __func__);
 
         if(QCAMERA_HAL_PREVIEW_START == mPreviewState &&
-           (mPreviewWindow || isNoDisplayMode())) {
+           (mPreviewWindow)) {
             ALOGD("%s:  start preview now", __func__);
             retVal = startPreview2();
             if(retVal == NO_ERROR)
@@ -2675,11 +2674,6 @@ void QCameraHardwareInterface::takePicturePrepareHardware()
                   MM_CAMERA_OPS_PREPARE_SNAPSHOT,
                   this);
     ALOGV("%s: X", __func__);
-}
-
-bool QCameraHardwareInterface::isNoDisplayMode()
-{
-  return (mNoDisplayMode != 0);
 }
 
 void QCameraHardwareInterface::pausePreviewForZSL()
