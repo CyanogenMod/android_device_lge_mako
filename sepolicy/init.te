@@ -1,0 +1,1 @@
+allow init diag_device:chr_file unlink;
