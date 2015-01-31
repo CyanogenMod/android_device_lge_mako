@@ -72,9 +72,6 @@ on boot
     # Allow QMUX daemon to assign port open wait time
     chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
 
-    #Remove SUID bit for iproute2 ip tool
-    chmod 0755 /system/bin/ip
-
     #port-bridge
     chmod 0660 /dev/smd0
     chown system system /dev/smd0
