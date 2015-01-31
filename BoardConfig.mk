@@ -121,6 +121,7 @@ BOARD_SEPOLICY_UNION += \
        file.te \
        file_contexts \
        hostapd.te \
+       init.te \
        kickstart.te \
        mediaserver.te \
        mpdecision.te \
