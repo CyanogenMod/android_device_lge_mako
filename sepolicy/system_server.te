@@ -22,3 +22,5 @@ allow system_server sensors_data_file:file r_file_perms;
 allow system_server radio_device:chr_file r_file_perms;
 
 allow system_server self:netlink_socket create_socket_perms;
+
+allow system_server sysfs_hardware:file rw_file_perms;
