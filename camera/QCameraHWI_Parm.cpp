@@ -1,5 +1,5 @@
 /*
-** Copyright (c) 2011-2012 The Linux Foundation. All rights reserved.
+** Copyright (c) 2011-2012, 2015, The Linux Foundation. All rights reserved.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -1411,13 +1411,12 @@ status_t QCameraHardwareInterface::setParameters(const QCameraParameters& params
     } else {
       mParameters.set("capture-burst-exposures", str_val);
     }
-    mParameters.set("num-snaps-per-shutter", params.get("num-snaps-per-shutter"));
 
     if ((rc = setAEBracket(params)))              final_rc = rc;
     //    if ((rc = setDenoise(params)))                final_rc = rc;
     if ((rc = setPreviewFpsRange(params)))              final_rc = rc;
     if((rc = setRecordingHint(params)))                 final_rc = rc;
-    if ((rc = setNumOfSnapshot(params)))                final_rc = rc;
+    if ((rc = setNumOfSnapshot()))                      final_rc = rc;
     if ((rc = setAecAwbLock(params)))                   final_rc = rc;
     if ((rc = setWhiteBalance(params)))                 final_rc = rc;
     const char *str = params.get(QCameraParameters::KEY_SCENE_MODE);
@@ -2167,6 +2166,14 @@ status_t QCameraHardwareInterface::setSceneMode(const QCameraParameters& params)
             if(strcmp(str,oldstr)) {
                 ALOGV("%s: valued changed from %s to %s",__func__,oldstr, str);
 
+                if (!strcmp(str, "hdr")) {
+                    ALOGV("%s: setting num-snaps-per-shutter to 2", __func__);
+                    mParameters.set("num-snaps-per-shutter", 2);
+                } else {
+                    ALOGV("%s: setting num-snaps-per-shutter to 1", __func__);
+                    mParameters.set("num-snaps-per-shutter", 1);
+                }
+
                 /* Check if we are either transitioning to/from HDR state
                    if yes preview needs restart*/
                 if(!strcmp(str, "hdr") || !strcmp(oldstr, "hdr") ) {
@@ -2180,7 +2187,9 @@ status_t QCameraHardwareInterface::setSceneMode(const QCameraParameters& params)
                         pausePreviewForZSL();
                     }
                 }
+
             }
+
 
             mParameters.set(QCameraParameters::KEY_SCENE_MODE, str);
             bool ret = native_set_parms(MM_CAMERA_PARM_BESTSHOT_MODE, sizeof(value),
@@ -2849,16 +2858,10 @@ status_t QCameraHardwareInterface::setJpegQuality(const QCameraParameters& param
 }
 
 status_t QCameraHardwareInterface::
-setNumOfSnapshot(const QCameraParameters& params) {
+setNumOfSnapshot() {
     status_t rc = NO_ERROR;
 
-    int num_of_snapshot = getNumOfSnapshots(params);
-
-    if (num_of_snapshot <= 0) {
-        num_of_snapshot = 1;
-    }
-    ALOGV("number of snapshots = %d", num_of_snapshot);
-    mParameters.set("num-snaps-per-shutter", num_of_snapshot);
+    int num_of_snapshot = getNumOfSnapshots();
 
     bool result = native_set_parms(MM_CAMERA_PARM_SNAPSHOT_BURST_NUM,
                                    sizeof(int),
@@ -3188,7 +3191,7 @@ status_t QCameraHardwareInterface::setAEBracket(const QCameraParameters& params)
     if(!strcmp(str2, "hdr")) {
         str="HDR";
     }   else {
-        str = params.get(QCameraParameters::KEY_AE_BRACKET_HDR);
+        str=QCameraParameters::AE_BRACKET_HDR_OFF;
     }
 
     if (str != NULL) {
@@ -3569,22 +3572,6 @@ int QCameraHardwareInterface::getNumOfSnapshots(void) const
     } else {
         return mParameters.getInt("num-snaps-per-shutter");
     }
-}
-
-int QCameraHardwareInterface::getNumOfSnapshots(const QCameraParameters& params)
-{
-    char prop[PROPERTY_VALUE_MAX];
-    memset(prop, 0, sizeof(prop));
-    property_get("persist.camera.snapshot.number", prop, "0");
-    ALOGV("%s: prop enable/disable = %d", __func__, atoi(prop));
-    if (atoi(prop)) {
-        ALOGV("%s: Reading maximum no of snapshots = %d"
-             "from properties", __func__, atoi(prop));
-        return atoi(prop);
-    } else {
-        return params.getInt("num-snaps-per-shutter");
-    }
-
 }
 
 int QCameraHardwareInterface::

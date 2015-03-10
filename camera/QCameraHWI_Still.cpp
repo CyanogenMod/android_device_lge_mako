@@ -2092,11 +2092,9 @@ status_t QCameraStream_Snapshot::receiveRawPicture(mm_camera_ch_data_buf_t* recv
 
         if(mHalCamCtrl->mHdrMode == HDR_MODE) {
             if ((hdrRawCount % 3) != 2) {
+                hdrRawCount++;
                 mStopCallbackLock.unlock();
                 return NO_ERROR;
-            }
-            else {
-                hdrRawCount++;
             }
         }
 

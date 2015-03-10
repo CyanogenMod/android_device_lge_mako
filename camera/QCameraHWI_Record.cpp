@@ -1,5 +1,5 @@
 /*
-** Copyright (c) 2011 The Linux Foundation. All rights reserved.
+** Copyright (c) 2011,2015 The Linux Foundation. All rights reserved.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -506,6 +506,8 @@ status_t QCameraStream_record::initEncodeBuffers()
           mRecordBuf.video.video.buf.mp[cnt].planes[j-1].reserved[0] +
           mRecordBuf.video.video.buf.mp[cnt].planes[j-1].length;
       }
+
+      mRecordBuf.video.video.no_enqueue_flag[cnt] = 0;
     }
 
     //memset(&mRecordBuf, 0, sizeof(mRecordBuf));

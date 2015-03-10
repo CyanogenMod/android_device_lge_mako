@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+Copyright (c) 2011-2012,2015, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -220,6 +220,10 @@ int mm_camera_read_msm_frame(mm_camera_obj_t * my_obj,
     stream->frame.frame[idx].frame.frame_id = vb.sequence;
     stream->frame.frame[idx].frame.ts.tv_sec  = vb.timestamp.tv_sec;
     stream->frame.frame[idx].frame.ts.tv_nsec = vb.timestamp.tv_usec * 1000;
+
+    CDBG("%s:type=%d,frame idx=%d, frame_id %d\n", __func__,
+      stream->stream_type, idx, vb.sequence);
+
     return idx;
 }
 
@@ -400,7 +404,7 @@ int mm_camera_stream_qbuf(mm_camera_obj_t * my_obj, mm_camera_stream_t *stream,
 
   rc = ioctl(stream->fd, VIDIOC_QBUF, &buffer);
   if (rc < 0) {
-      CDBG_ERROR("%s: VIDIOC_QBUF error = %d, stream type=%d\n", __func__, rc, stream->stream_type);
+      CDBG_ERROR("%s: VIDIOC_QBUF error = %d, stream type=%d, errno = %d\n", __func__, rc, stream->stream_type, errno);
       return rc;
   }
   CDBG("%s: X idx: %d, stream_type:%d", __func__, idx, stream->stream_type);
@@ -435,40 +439,6 @@ static int mm_camera_stream_util_request_buf(mm_camera_obj_t * my_obj,
     ALOGV("%s: stream fd=%d, ioctl VIDIOC_REQBUFS: memtype = %d, num_frames = %d, rc=%d\n",
         __func__, stream->fd, bufreq.memory, bufreq.count, rc);
 
-end:
-    return rc;
-}
-
-/* This function enqueue existing buffers (not first time allocated buffers from Surface) to kernel */
-static int mm_camera_stream_util_enqueue_buf(mm_camera_obj_t * my_obj,
-                      mm_camera_stream_t *stream,
-                      mm_camera_buf_def_t *vbuf)
-{
-    int32_t i, rc = MM_CAMERA_OK, j;
-
-    if(vbuf->num > MM_CAMERA_MAX_NUM_FRAMES) {
-        rc = -MM_CAMERA_E_GENERAL;
-        CDBG("%s: buf num %d > max limit %d\n",
-                 __func__, vbuf->num, MM_CAMERA_MAX_NUM_FRAMES);
-        goto end;
-    }
-
-    for(i = 0; i < vbuf->num; i++){
-        int idx = vbuf->buf.mp[i].idx;
-        ALOGV("%s: enqueue buf index = %d\n",__func__, idx);
-        if(idx < MM_CAMERA_MAX_NUM_FRAMES) {
-            ALOGV("%s: stream_fd = %d, frame_fd = %d, frame ID = %d, offset = %d\n",
-                     __func__, stream->fd, stream->frame.frame[i].frame.fd,
-                     idx, stream->frame.frame_offset[idx]);
-            rc = mm_camera_stream_qbuf(my_obj, stream, stream->frame.frame[idx].idx);
-            if (rc < 0) {
-                CDBG("%s: VIDIOC_QBUF rc = %d\n", __func__, rc);
-                goto end;
-            }
-            stream->frame.ref_count[idx] = 0;
-        }
-    }
-    stream->frame.qbuf = 1;
 end:
     return rc;
 }
@@ -548,15 +518,20 @@ static int mm_camera_stream_util_reg_buf(mm_camera_obj_t * my_obj,
             stream->frame.frame_offset[i] = 0;
         }
 
-        rc = mm_camera_stream_qbuf(my_obj, stream, stream->frame.frame[i].idx);
-        if (rc < 0) {
-            CDBG_ERROR("%s: VIDIOC_QBUF rc = %d\n", __func__, rc);
-            goto end;
+        if (!vbuf->no_enqueue_flag[i]) {
+            rc = mm_camera_stream_qbuf(my_obj, stream, stream->frame.frame[i].idx);
+            if (rc < 0) {
+                CDBG_ERROR("%s: VIDIOC_QBUF rc = %d\n", __func__, rc);
+                goto end;
+            }
+            stream->frame.ref_count[i] = 0;
+        } else {
+            stream->frame.ref_count[i] = 1;
         }
-        stream->frame.ref_count[i] = 0;
-        CDBG("%s: stream_fd = %d, frame_fd = %d, frame ID = %d, offset = %d\n",
+        stream->frame.reg_flag[i] = vbuf->no_enqueue_flag[i];
+        CDBG("%s: stream_fd = %d, frame_fd = %d, frame ID = %d, offset = %d, reg_flag = %d, ref_cnt = %d\n",
           __func__, stream->fd, stream->frame.frame[i].frame.fd,
-          i, stream->frame.frame_offset[i]);
+          i, stream->frame.frame_offset[i], stream->frame.reg_flag[i], stream->frame.ref_count[i]);
     }
     stream->frame.qbuf = 1;
 end:
@@ -707,10 +682,6 @@ static int32_t mm_camera_stream_fsm_cfg(mm_camera_obj_t * my_obj,
     case MM_CAMERA_STATE_EVT_REQUEST_BUF:
         rc = mm_camera_stream_util_request_buf(my_obj, stream, ((mm_camera_buf_def_t *)val)->num);
         break;
-    case MM_CAMERA_STATE_EVT_ENQUEUE_BUF:
-        rc = mm_camera_stream_util_enqueue_buf(my_obj, stream, (mm_camera_buf_def_t *)val);
-        if(!rc) mm_camera_stream_util_set_state(stream, MM_CAMERA_STREAM_STATE_REG);
-        break;
     default:
         CDBG_ERROR("%s: Invalid evt=%d, stream_state=%d", __func__, evt,
           stream->state);
@@ -796,13 +767,16 @@ static int32_t mm_camera_stream_fsm_reg(mm_camera_obj_t * my_obj,
             int i = 0;
             mm_camera_frame_t *frame;
             if(stream->frame.qbuf == 0) {
+                CDBG("%s: queueing buffers during stream on", __func__);
                 for(i = 0; i < stream->frame.num_frame; i++) {
-                    rc = mm_camera_stream_qbuf(my_obj, stream,
-                             stream->frame.frame[i].idx);
-                    if (rc < 0) {
-                        CDBG_ERROR("%s: ioctl VIDIOC_QBUF error=%d, stream->type=%d\n",
-                           __func__, rc, stream->stream_type);
-                        return rc;
+                    if (!stream->frame.reg_flag[i]) {
+                        rc = mm_camera_stream_qbuf(my_obj, stream,
+                                 stream->frame.frame[i].idx);
+                        if (rc < 0) {
+                            CDBG_ERROR("%s: ioctl VIDIOC_QBUF error=%d, stream->type=%d\n",
+                               __func__, rc, stream->stream_type);
+                            return rc;
+                        }
                     }
                     stream->frame.ref_count[i] = 0;
                 }
@@ -819,9 +793,6 @@ static int32_t mm_camera_stream_fsm_reg(mm_camera_obj_t * my_obj,
             else
                 mm_camera_stream_util_set_state(stream, MM_CAMERA_STREAM_STATE_ACTIVE);
         }
-        break;
-    case MM_CAMERA_STATE_EVT_ENQUEUE_BUF:
-        rc = mm_camera_stream_util_enqueue_buf(my_obj, stream, (mm_camera_buf_def_t *)val);
         break;
     default:
         CDBG_ERROR("%s: Invalid evt=%d, stream_state=%d", __func__, evt,
@@ -862,10 +833,7 @@ static int32_t mm_camera_stream_fsm_active(mm_camera_obj_t * my_obj,
             }
         }
         break;
-    case MM_CAMERA_STATE_EVT_ENQUEUE_BUF:
-        rc = mm_camera_stream_util_enqueue_buf(my_obj, stream, (mm_camera_buf_def_t *)val);
-        break;
-    default:
+   default:
         CDBG_ERROR("%s: Invalid evt=%d, stream_state=%d", __func__, evt,
           stream->state);
         return -1;

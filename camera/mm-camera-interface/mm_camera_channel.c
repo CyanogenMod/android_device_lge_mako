@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+Copyright (c) 2011-2012,2015, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -721,7 +721,6 @@ int32_t mm_camera_ch_fn(mm_camera_obj_t * my_obj,
         break;
     case MM_CAMERA_STATE_EVT_REG_BUF:
     case MM_CAMERA_STATE_EVT_REQUEST_BUF:
-    case MM_CAMERA_STATE_EVT_ENQUEUE_BUF:
         rc = mm_camera_ch_util_reg_buf(my_obj, ch_type, evt, val);
         break;
     case MM_CAMERA_STATE_EVT_UNREG_BUF:

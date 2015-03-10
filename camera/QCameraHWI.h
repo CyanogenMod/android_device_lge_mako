@@ -1,5 +1,5 @@
 /*
-** Copyright (c) 2011-2012 The Linux Foundation. All rights reserved.
+** Copyright (c) 2011-2012, 2015, The Linux Foundation. All rights reserved.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -453,7 +453,6 @@ public:
     void processEvent(mm_camera_event_t *);
     int  getJpegQuality() const;
     int  getNumOfSnapshots(void) const;
-    int  getNumOfSnapshots(const QCameraParameters& params);
     int  getThumbSizesFromAspectRatio(uint32_t aspect_ratio,
                                      int *picture_width,
                                      int *picture_height);
@@ -493,7 +492,6 @@ public:
       char* ext, int index);
     preview_format_info_t getPreviewFormatInfo( );
     bool isCameraReady();
-    bool isNoDisplayMode();
 
 private:
     int16_t  zoomRatios[MAX_ZOOM_RATIOS];
@@ -579,7 +577,7 @@ private:
     status_t setVideoSize(const QCameraParameters& params);
     status_t setPictureSize(const QCameraParameters& params);
     status_t setJpegQuality(const QCameraParameters& params);
-    status_t setNumOfSnapshot(const QCameraParameters& params);
+    status_t setNumOfSnapshot();
     status_t setJpegRotation(int isZSL);
     int getJpegRotation(void);
     int getISOSpeedValue();
