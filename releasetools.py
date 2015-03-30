@@ -91,8 +91,7 @@ def WriteRadio(info, radio_img):
   info.script.Print("Writing radio...")
   common.ZipWriteStr(info.output_zip, "radio.img", radio_img)
   _, device = common.GetTypeAndDevice("/radio", info.info_dict)
-  info.script.AppendExtra(
-      'package_extract_file("radio.img", "%s");' % (device,))
+  WriteImageAssert(info, "radio.img", radio_img, device)
 
 
 # /* mako bootloader.img format */
@@ -173,8 +172,8 @@ def WriteBootloader(info, bootloader):
     common.ZipWriteStr(info.output_zip, "bootloader.%s.img" % (i,),
                        bootloader[imgs[i][0]:imgs[i][0]+imgs[i][1]])
 
-    info.script.AppendExtra('package_extract_file("bootloader.%s.img", "%s");' %
-                            (i, device))
+    WriteImageAssert(info, "bootloader.%s.img" % i,
+            bootloader[imgs[i][0]:imgs[i][0]+imgs[i][1]], device)
 
   info.script.AppendExtra(
       'package_extract_file("bootloader-flag-clear.txt", "%s");' %
@@ -184,8 +183,8 @@ def WriteBootloader(info, bootloader):
     # there is no "sbl1b" partition
     for i in "sbl2 sbl3 tz rpm aboot".split():
       _, device = common.GetTypeAndDevice("/"+i+"b", info.info_dict)
-      info.script.AppendExtra(
-          'package_extract_file("bootloader.%s.img", "%s");' % (i, device))
+      WriteImageAssert(info, "bootloader.%s.img" % i,
+              bootloader[imgs[i][0]:imgs[i][0]+imgs[i][1]], device)
   except KeyError:
     pass
 
@@ -195,3 +194,12 @@ def trunc_to_null(s):
     return s[:s.index('\0')]
   else:
     return s
+
+
+def WriteImageAssert(info, file_name, file_data, partition):
+  checksum = common.sha1(file_data).hexdigest()
+  file_size = len(file_data)
+  info.script.AppendExtra('ifelse(sha1_check(read_file("EMMC:%s:%d:%s")) != ""),'
+          '(ui_print("%s already up to date")),'
+          'package_extract_file("%s", "%s")));'
+          % (partition, file_size, checksum, partition, file_name, partition))
