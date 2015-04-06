@@ -199,7 +199,7 @@ def trunc_to_null(s):
 def WriteImageAssert(info, file_name, file_data, partition):
   checksum = common.sha1(file_data).hexdigest()
   file_size = len(file_data)
-  info.script.AppendExtra('ifelse(sha1_check(read_file("EMMC:%s:%d:%s")) != ""),'
+  info.script.AppendExtra('ifelse((sha1_check(read_file("EMMC:%s:%d:%s")) != ""),'
           '(ui_print("%s already up to date")),'
-          'package_extract_file("%s", "%s")));'
+          '(package_extract_file("%s", "%s")));'
           % (partition, file_size, checksum, partition, file_name, partition))
