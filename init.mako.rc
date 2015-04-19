@@ -285,9 +285,6 @@ on post-fs-data
     # disable diag port
     rm /dev/diag
 
-    # disable diag port
-    rm /dev/diag
-
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
