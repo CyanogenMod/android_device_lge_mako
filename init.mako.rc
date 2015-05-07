@@ -282,8 +282,8 @@ on post-fs-data
     restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_b
     restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_apply
 
-    # disable diag port
-    rm /dev/diag
+    # Prevent disabling of diag port
+    # rm /dev/diag
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
