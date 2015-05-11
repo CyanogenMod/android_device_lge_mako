@@ -22,5 +22,4 @@ allow rmt cgroup:dir { create add_name };
 wakelock_use(rmt)
 
 # Access property service to set ctl.rmt_storage
-unix_socket_connect(rmt, property, init)
-allow rmt ctl_rmt_prop:property_service set;
+set_prop(rmt, ctl_rmt_prop)
