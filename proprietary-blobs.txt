@@ -82,6 +82,7 @@ lib/libidl.so
 lib/libimage-jpeg-dec-omx-comp.so
 lib/libimage-jpeg-enc-omx-comp.so
 lib/libimage-omx-common.so
+lib/libjni_latinimegoogle.so
 lib/libloc_core.so
 lib/libloc_eng.so
 lib/libmercury.so
