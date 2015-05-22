@@ -19,8 +19,8 @@ PRODUCT_MODEL := Nexus 4
 PRODUCT_MANUFACTURER := LGE
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-   PRODUCT_NAME=occam BUILD_FINGERPRINT=google/occam/mako:5.1/LMY47O/1783956:user/release-keys \
-   PRIVATE_BUILD_DESC="occam-user 5.1 LMY47O 1783956 release-keys"
+   PRODUCT_NAME=occam BUILD_FINGERPRINT=google/occam/mako:5.1.1/LMY47V/1836172:user/release-keys \
+   PRIVATE_BUILD_DESC="occam-user 5.1.1 LMY47V 1836172 release-keys"
 
 # Enable Torch
 PRODUCT_PACKAGES += Torch
