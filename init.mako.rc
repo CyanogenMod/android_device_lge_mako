@@ -252,7 +252,7 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
-    write /dev/cpuctl/apps/cpu.notify_on_migrate 1
+    write /dev/cpuctl/cpu.notify_on_migrate 1
 
     # Chown cpu online files as needed for the Settings app
     chown system system /sys/devices/system/cpu/cpu1/online
