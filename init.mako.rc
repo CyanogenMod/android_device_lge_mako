@@ -475,11 +475,6 @@ service diag_mdlog /system/bin/diag_mdlog -s 100
     class late_start
     disabled
 
-service qrngd /system/bin/qrngd -f
-    class main
-    user root
-    group root
-
 # CyanogenMod Performance Profiles
 # Powersave
 on property:sys.perf.profile=0
