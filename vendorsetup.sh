@@ -14,6 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo ownrom_mako-user
 add_lunch_combo ownrom_mako-userdebug
-add_lunch_combo ownrom_mako-eng
