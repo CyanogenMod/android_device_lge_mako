@@ -6,6 +6,12 @@
     "revision": "cm-12.1"
   },
   {
+    "repository": "CyanogenMod/android_device_qcom_common",
+    "target_path": "device/qcom/common",
+    "remote": "github",
+    "revision": "cm-12.1"
+  },
+  {
     "repository": "TheMuppets/proprietary_vendor_lge",
     "target_path": "vendor/lge",
     "remote": "github",
