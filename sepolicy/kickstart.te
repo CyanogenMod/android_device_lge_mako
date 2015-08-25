@@ -28,6 +28,7 @@ allow kickstart radio_efs_file:file r_file_perms;
 # Run dd from toolbox on firmware files
 allow kickstart shell_exec:file rx_file_perms;
 allow kickstart system_file:file execute_no_trans;
+allow kickstart toolbox_exec:file rx_file_perms;
 
 # Wake lock access
 wakelock_use(kickstart)
