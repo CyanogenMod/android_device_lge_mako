@@ -25,3 +25,4 @@ set_prop(bluetooth_loader, bluetooth_prop)
 
 # Allow getprop/setprop for init.mako.bt.sh
 allow bluetooth_loader system_file:file execute_no_trans;
+allow bluetooth_loader toolbox_exec:file rx_file_perms;
