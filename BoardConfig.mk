@@ -111,34 +111,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/lge/mako
 BOARD_SEPOLICY_DIRS += \
        device/lge/mako/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-       bluetooth_loader.te \
-       bridge.te \
-       camera.te \
-       conn_init.te \
-       device.te \
-       domain.te \
-       file.te \
-       file_contexts \
-       hostapd.te \
-       kickstart.te \
-       mediaserver.te \
-       mpdecision.te \
-       netmgrd.te \
-       property.te \
-       property_contexts \
-       qmux.te \
-       rild.te \
-       rmt.te \
-       sensors.te \
-       surfaceflinger.te \
-       system_server.te \
-       tee.te \
-       te_macros \
-       thermald.te \
-       ueventd.te
-
-
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 USE_DEVICE_SPECIFIC_CAMERA:= true
