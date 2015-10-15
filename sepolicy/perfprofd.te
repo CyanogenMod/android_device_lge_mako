@@ -1,0 +1,6 @@
+userdebug_or_eng(`
+  # perfprofd disables mpdecision temporarily via setprop ctl.stop,
+  # then re-enables afterwards with setprop ctl.start
+  allow perfprofd ctl_mpdecision:property_service set;
+  unix_socket_connect(perfprofd, property, init)
+')

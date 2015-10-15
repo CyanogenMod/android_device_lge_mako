@@ -5,7 +5,7 @@ type camera_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(camera)
 
-allow camera self:process execmem;
+allow camera system_file:file execmod;
 
 # Interact with other media devices
 allow camera camera_device:dir search;

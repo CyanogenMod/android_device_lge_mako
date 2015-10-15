@@ -1,6 +1,6 @@
 type wlan_device, dev_type;
 
-type diag_device, dev_type;
+type diag_device, dev_type, mlstrustedobject;
 
 # Kickstart device used by QC qcks
 type kickstart_device, dev_type;

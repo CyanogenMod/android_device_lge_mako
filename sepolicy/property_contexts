@@ -1,1 +1,3 @@
-ctl.rmt            u:object_r:ctl_rmt_prop:s0
+ctl.rmt        u:object_r:ctl_rmt_prop:s0
+ctl.rmt_storage        u:object_r:ctl_rmt_prop:s0
+ctl.mpdecision         u:object_r:ctl_mpdecision:s0
