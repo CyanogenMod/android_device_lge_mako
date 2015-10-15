@@ -1,2 +1,5 @@
 allow ueventd { radio_efs_file wifi_data_file }:dir search;
 allow ueventd { radio_efs_file wifi_data_file }:file r_file_perms;
+allow ueventd { firmware_file wifi_data_file }:dir r_dir_perms;
+allow ueventd { firmware_file wifi_data_file }:file r_file_perms;
+allow ueventd sysfs_smdcntl_open_timeout:file setattr;

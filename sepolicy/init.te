@@ -1,1 +1,2 @@
 allow init diag_device:chr_file unlink;
+allow init tmpfs:lnk_file create_file_perms;
