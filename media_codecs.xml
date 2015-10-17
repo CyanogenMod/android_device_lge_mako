@@ -17,6 +17,11 @@
 <MediaCodecs>
     <Include href="media_codecs_google_audio.xml" />
     <Include href="media_codecs_google_telephony.xml" />
+    <Settings>
+        <Setting name="max-video-encoder-input-buffers" value="4" />
+        <Setting name="supports-multiple-secure-codecs" value="false" />
+        <Setting name="supports-secure-with-non-secure-codec" value="false" />
+    </Settings>
     <Encoders>
         <MediaCodec name="OMX.qcom.video.encoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -28,6 +33,7 @@
             <Limit name="blocks-per-second" min="1" max="244800" />
             <Limit name="bitrate" range="1-20000000" />
             <Feature name="can-swap-width-height" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -35,6 +41,7 @@
             <Quirk name="requires-loaded-to-idle-after-allocation"/>
             <Limit name="size" min="96x64" max="720x576" />
             <Limit name="alignment" value="8x8" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -46,6 +53,7 @@
             <Limit name="blocks-per-second" min="1" max="244800" />
             <Limit name="bitrate" range="1-20000000" />
             <Feature name="can-swap-width-height" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
     </Encoders>
     <Decoders>
@@ -60,6 +68,7 @@
             <Limit name="bitrate" range="1-20000000" />
             <Feature name="adaptive-playback" />
             <Feature name="can-swap-width-height" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.avc.secure" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -73,6 +82,7 @@
             <Feature name="adaptive-playback" />
             <Feature name="secure-playback" required="true" />
             <Feature name="can-swap-width-height" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -85,6 +95,7 @@
             <Limit name="bitrate" range="1-20000000" />
             <Feature name="adaptive-playback" />
             <Feature name="can-swap-width-height" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -93,6 +104,7 @@
             <Limit name="size" min="64x64" max="720x576" />
             <Limit name="alignment" value="2x2" />
             <Feature name="adaptive-playback" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
 
         <!--  ffmpeg audio codecs  -->
