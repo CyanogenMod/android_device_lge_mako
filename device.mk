@@ -54,7 +54,7 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
 	device/lge/mako/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
 	device/lge/mako/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
-	device/lge/mako/init.mako.wifi.sh:system/etc/init.mako.wifi.sh
+	device/lge/mako/init.mako.wifi.sh:system/bin/init.mako.wifi.sh
 
 PRODUCT_COPY_FILES += \
 	device/lge/mako/audio_policy.conf:system/etc/audio_policy.conf
@@ -192,7 +192,7 @@ PRODUCT_PACKAGES += \
 	power.msm8960
 
 PRODUCT_COPY_FILES += \
-	device/lge/mako/init.mako.bt.sh:system/etc/init.mako.bt.sh
+	device/lge/mako/init.mako.bt.sh:system/bin/init.mako.bt.sh
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.qualcomm.bt.hci_transport=smd
@@ -290,9 +290,10 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxQcelp13Enc
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-filter=speed \
+    dalvik.vm.dex2oat-swap=false
 
-# This is the mako-specific audio package
-$(call inherit-product, frameworks/base/data/sounds/AudioPackage10.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
