@@ -1,5 +1,5 @@
 # Network utilities (radio process)
-type netmgrd, domain;
+type netmgrd, domain, domain_deprecated;
 type netmgrd_exec, exec_type, file_type;
 
 # Started by init

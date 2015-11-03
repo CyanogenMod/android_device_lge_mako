@@ -1,5 +1,5 @@
 # CPU governor (root process)
-type mpdecision, domain;
+type mpdecision, domain, domain_deprecated;
 type mpdecision_exec, exec_type, file_type;
 
 # DAC overrides

@@ -1,5 +1,5 @@
 # wifi connection service
-type conn_init, domain;
+type conn_init, domain, domain_deprecated;
 type conn_init_exec, exec_type, file_type;
 
 init_daemon_domain(conn_init)

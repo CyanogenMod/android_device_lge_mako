@@ -1,5 +1,5 @@
 # Temperature sensor daemon (root process)
-type thermald, domain;
+type thermald, domain, domain_deprecated;
 type thermald_exec, exec_type, file_type;
 
 # Started by init
