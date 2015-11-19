@@ -14,14 +14,13 @@
 # limitations under the License.
 #
 
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := krait
-
-TARGET_MPDECISION_BOOST_SOCKET := /dev/socket/mpdecision/touchboost
-
 TARGET_NO_BOOTLOADER := true
 
 BOARD_KERNEL_BASE := 0x80200000
@@ -72,7 +71,7 @@ USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
 TARGET_USES_OVERLAY := true
 TARGET_USES_SF_BYPASS := true
-TARGET_USES_C2D_COMPOSITION := false
+TARGET_USES_C2D_COMPOSITION := true
 
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
