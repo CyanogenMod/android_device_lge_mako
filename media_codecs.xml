@@ -106,26 +106,6 @@
             <Feature name="adaptive-playback" />
             <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
-
-        <!--  ffmpeg audio codecs  -->
-        <MediaCodec name="OMX.ffmpeg.ra.decoder" type="audio/vnd.rn-realaudio"/>
-        <MediaCodec name="OMX.ffmpeg.flac.decoder" type="audio/flac"/>
-        <MediaCodec name="OMX.ffmpeg.mp2.decoder" type="audio/mpeg-L2"/>
-        <MediaCodec name="OMX.ffmpeg.ac3.decoder" type="audio/ac3"/>
-        <MediaCodec name="OMX.ffmpeg.ape.decoder" type="audio/x-ape"/>
-        <MediaCodec name="OMX.ffmpeg.dts.decoder" type="audio/vnd.dts"/>
-        <MediaCodec name="OMX.ffmpeg.atrial.decoder" type="audio/ffmpeg"/>
-
-        <!--  ffmpeg video codecs  -->
-        <MediaCodec name="OMX.ffmpeg.mpeg2v.decoder" type="video/mpeg2"/>
-        <MediaCodec name="OMX.ffmpeg.wmv.decoder" type="video/x-ms-wmv"/>
-        <MediaCodec name="OMX.ffmpeg.rv.decoder" type="video/vnd.rn-realvideo"/>
-        <MediaCodec name="OMX.ffmpeg.vc1.decoder" type="video/vc1"/>
-        <MediaCodec name="OMX.ffmpeg.flv1.decoder" type="video/x-flv"/>
-        <MediaCodec name="OMX.ffmpeg.divx.decoder" type="video/divx"/>
-        <MediaCodec name="OMX.ffmpeg.hevc.decoder" type="video/hevc"/>
-        <MediaCodec name="OMX.ffmpeg.vtrial.decoder" type="video/ffmpeg"/>
-
     </Decoders>
     <Include href="media_codecs_google_video.xml" />
     <Include href="media_codecs_ffmpeg.xml" />
