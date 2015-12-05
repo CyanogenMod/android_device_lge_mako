@@ -24,7 +24,7 @@ static int wifi_check_qcom_cfg_files()
 {
     char macAddress[13];
     char hex[7];
-    memset(macAddress, 0, 13);
+    memset(macAddress, 0, sizeof(macAddress));
     memset(hex, 0, 7);
 
     // Read MAC String
@@ -40,6 +40,10 @@ static int wifi_check_qcom_cfg_files()
     {
         n = fread(macAddress, 12, 1, fp);
         fclose(fp);
+        if (n == 0) {
+            // Buffer may be partially written. Reset.
+            memset(macAddress, 0, sizeof(macAddress));
+        }
 
         // Write MAC String
         wfc_util_atoh( macAddress, 12, (unsigned char *)hex, 6);
