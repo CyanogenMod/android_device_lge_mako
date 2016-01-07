@@ -22,6 +22,8 @@ allow camera system_data_file:sock_file unlink;
 type_transition camera system_data_file:file camera_data_file "fdAlbum";
 allow camera camera_data_file:file create_file_perms;
 
+allow camera gpu_device:chr_file { read write open ioctl };
+
 # Connect to sensor socket (/data/app/sensor_ctl_socket)
 unix_socket_connect(camera, sensors, sensors)
 allow camera sensors_socket:sock_file read;
