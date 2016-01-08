@@ -51,12 +51,11 @@
 /dev/ttyUSB0                           u:object_r:radio_device:s0
 
 # Jpeg Engine support
-/dev/gemini.*                          u:object_r:camera_device:s0
+/dev/gemini.*                          u:object_r:video_device:s0
 # MSM camera related
-/dev/v4l-subdev.*                      u:object_r:camera_device:s0
-/dev/video([0-9])+                     u:object_r:camera_device:s0
-/dev/msm_camera(/.*)?                  u:object_r:camera_device:s0
-/dev/media([0-9])+                     u:object_r:camera_device:s0
+/dev/v4l-subdev.*                      u:object_r:video_device:s0
+/dev/msm_camera(/.*)?                  u:object_r:video_device:s0
+/dev/media([0-9])+                     u:object_r:video_device:s0
 
 # Qualcomm MSM Audio devices
 /dev/msm_acdb                      u:object_r:audio_device:s0
