@@ -905,14 +905,15 @@ static yv12_format_parms_t myv12_params;
 
 static String8 create_sizes_str(const camera_size_type *sizes, int len) {
     String8 str;
-    char buffer[32];
+    int bufSize = 32;
+    char buffer[bufSize];
 
     if (len > 0) {
-        sprintf(buffer, "%dx%d", sizes[0].width, sizes[0].height);
+        snprintf(buffer, bufSize,"%dx%d", sizes[0].width, sizes[0].height);
         str.append(buffer);
     }
     for (int i = 1; i < len; i++) {
-        sprintf(buffer, ",%dx%d", sizes[i].width, sizes[i].height);
+        snprintf(buffer, bufSize,",%dx%d", sizes[i].width, sizes[i].height);
         str.append(buffer);
     }
     return str;
@@ -920,14 +921,15 @@ static String8 create_sizes_str(const camera_size_type *sizes, int len) {
 
 static String8 create_fps_str(const android:: FPSRange* fps, int len) {
     String8 str;
-    char buffer[32];
+    int bufSize = 32;
+    char buffer[bufSize];
 
     if (len > 0) {
-        sprintf(buffer, "(%d,%d)", fps[0].minFPS, fps[0].maxFPS);
+        snprintf(buffer, bufSize,"(%d,%d)", fps[0].minFPS, fps[0].maxFPS);
         str.append(buffer);
     }
     for (int i = 1; i < len; i++) {
-        sprintf(buffer, ",(%d,%d)", fps[i].minFPS, fps[i].maxFPS);
+        snprintf(buffer, bufSize,",(%d,%d)", fps[i].minFPS, fps[i].maxFPS);
         str.append(buffer);
     }
     return str;
@@ -3491,8 +3493,9 @@ void QualcommCameraHardware::runVideoThread(void *data)
 #if 0
             static int frameCnt = 0;
             if (frameCnt >= 11 && frameCnt <= 13 ) {
-                char buf[128];
-                sprintf(buf,  "/data/%d_v.yuv", frameCnt);
+                int bufSize=128
+                char buf[bufSize];
+                snprintf(buf, bufSize, "/data/%d_v.yuv", frameCnt);
                 int file_fd = open(buf, O_RDWR | O_CREAT, 0777);
                 ALOGV("dumping video frame %d", frameCnt);
                 if (file_fd < 0) {
