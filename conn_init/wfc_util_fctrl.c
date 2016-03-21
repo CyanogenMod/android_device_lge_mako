@@ -418,7 +418,7 @@ void wfc_util_fset_string(char *pFileName, char *pEndOfCfg, char *pSTagString, c
 					 * prefare the new string to insert
 					 */
 					memset( pNewValueBuff, 0, sz_NewValueBuff );
-					sprintf( pNewValueBuff, "%c%s%s%s%c", '\n', pSTagString, pNewValueString, pETagString,'\n' );
+					snprintf( pNewValueBuff, sz_NewValueBuff,"%c%s%s%s%c", '\n', pSTagString, pNewValueString, pETagString,'\n' );
 
 					/*
 					 * insert new string to the file
