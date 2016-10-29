@@ -173,7 +173,8 @@ PRODUCT_COPY_FILES += \
 	device/lge/mako/init.mako.bt.sh:system/bin/init.mako.bt.sh
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.qualcomm.bt.hci_transport=smd
+	ro.qualcomm.bt.hci_transport=smd \
+	qcom.bluetooth.soc=smd
 
 ifeq ($(findstring tiny, $(TARGET_PRODUCT)),)
 PRODUCT_PACKAGES += \
