@@ -7,6 +7,3 @@ unix_socket_send(mediaserver, mpdecision, mpdecision)
 # Permit mediaserver to create sockets with no specific SELinux class.
 # TODO: Investigate the specific type of socket.
 allow mediaserver self:socket create_socket_perms;
-
-# For text relocations in /system/vendor/lib/libmmjpeg.so
-allow mediaserver system_file:file execmod;

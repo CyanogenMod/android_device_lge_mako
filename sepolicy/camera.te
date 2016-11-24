@@ -5,8 +5,6 @@ type camera_exec, exec_type, file_type;
 # Started by init
 init_daemon_domain(camera)
 
-allow camera system_file:file execmod;
-
 # Interact with other media devices
 allow camera camera_device:dir search;
 allow camera { video_device camera_device }:chr_file rw_file_perms;
