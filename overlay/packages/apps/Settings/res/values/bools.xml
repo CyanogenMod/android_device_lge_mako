@@ -17,7 +17,4 @@
 <resources>
     <!-- Whether to show a preference item for mobile plan -->
     <bool name="config_show_mobile_plan">false</bool>
-
-    <!-- PowerControl is deprecated, but it was shipped with this device -->
-    <bool name="has_powercontrol_widget">true</bool>
 </resources>
