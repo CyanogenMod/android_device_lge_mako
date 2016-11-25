@@ -54,7 +54,7 @@ LOCAL_SHARED_LIBRARIES:= \
          libcutils liblog libdl
 
 LOCAL_MODULE:= mm-qcamera-app-badger
-
+LOCAL_CLANG := false
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_EXECUTABLE)
