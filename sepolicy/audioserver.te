@@ -1,0 +1,4 @@
+allow audioserver self:socket { create ioctl read };
+allow audioserver qmuxd_socket:dir { add_name write search };
+allow audioserver qmuxd_socket:sock_file { create write setattr };
+allow audioserver qmux:unix_stream_socket connectto;

@@ -42,5 +42,6 @@ allow mpdecision sysfs:file write;
 # /proc/PID/status file.
 r_dir_file(mpdecision, system_server)
 r_dir_file(mpdecision, mediaserver)
+r_dir_file(mpdecision, cameraserver)
 
 allow mpdecision self:capability sys_nice;
