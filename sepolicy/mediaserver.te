@@ -8,4 +8,10 @@ unix_socket_send(mediaserver, mpdecision, mpdecision)
 # TODO: Investigate the specific type of socket.
 allow mediaserver self:socket create_socket_perms;
 
+# For text relocations in /system/vendor/lib/libmmjpeg.so
+allow mediaserver system_file:file execmod;
+
 allow mediaserver media_rw_data_file:file write;
+
+allow mediaserver camera_device:chr_file { read write open ioctl };
+allow mediaserver audio_device:chr_file { read write open ioctl };

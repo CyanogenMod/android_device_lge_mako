@@ -6,7 +6,7 @@ type rmt_exec, exec_type, file_type;
 init_daemon_domain(rmt)
 
 # Drop (user, group) to (nobody, nobody)
-allow rmt self:capability { setuid setgid };
+allow rmt self:capability { setuid setgid dac_override };
 
 # opens and reads /dev/block/mmcblk0
 allow rmt root_block_device:blk_file r_file_perms;
