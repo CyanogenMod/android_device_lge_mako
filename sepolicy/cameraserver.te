@@ -1,0 +1,7 @@
+unix_socket_send(cameraserver, camera, camera);
+unix_socket_send(cameraserver, mpdecision, mpdecision);
+
+allow cameraserver sysfs:file r_file_perms;
+
+# for libmmjpeg
+allow cameraserver system_file:file execmod;

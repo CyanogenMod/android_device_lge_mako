@@ -8,7 +8,7 @@ init_daemon_domain(camera)
 # Interact with other media devices
 allow camera camera_device:dir search;
 allow camera { video_device camera_device }:chr_file rw_file_perms;
-allow camera { surfaceflinger mediaserver }:fd use;
+allow camera { surfaceflinger mediaserver cameraserver }:fd use;
 
 # Create front and back camera sockets (/data/cam_socket[01])
 type_transition camera system_data_file:sock_file camera_socket "cam_socket0";
