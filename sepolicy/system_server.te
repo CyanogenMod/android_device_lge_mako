@@ -24,3 +24,6 @@ allow system_server radio_device:chr_file r_file_perms;
 allow system_server self:netlink_socket create_socket_perms;
 
 allow system_server sysfs_hardware:file rw_file_perms;
+
+allow system_server persist_file:dir r_dir_perms;
+allow system_server unlabeled:file unlink;
