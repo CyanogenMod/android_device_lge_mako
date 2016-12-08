@@ -14,7 +14,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
     <!-- All the capabilities of the LEDs on this device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
          of the following capabilities present:
@@ -29,4 +31,5 @@
          For example, a device support pulsating, RGB notification and
          battery LEDs would set this config to 11. -->
     <integer name="config_deviceLightCapabilities" translatable="false">11</integer>
+
 </resources>
