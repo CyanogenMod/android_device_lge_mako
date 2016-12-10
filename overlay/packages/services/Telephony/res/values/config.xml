@@ -21,4 +21,7 @@
          are routed through the android.media.AudioManager class (true) or through
          the com.android.internal.telephony.Phone interface (false). -->
     <bool name="send_mic_mute_to_AudioManager">true</bool>
+
+    <!-- Allow support for LTE network -->
+    <bool name="config_enabled_lte" translatable="false">true</bool>
 </resources>
